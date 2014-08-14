@@ -49,11 +49,11 @@ source codes must be compiled using the following steps:
    Note that these scripts do not perform any error checking, so watch the
    output.
 
-Some issues with compiling WOFOST:
+.. note:: Some issues with compiling WOFOST.
 
-    *  Although WOFOST7 has been written using FORTRAN77, it will not compile using
+    -  Although WOFOST7 has been written using FORTRAN77, it will not compile using
        the GNU FORTRAN77 compiler (g77), due to the missing SCAN() function in g77.
-    *  When installing MinGW on Windows, make sure that the MinGW 'bin' folder is
+    -  When installing MinGW on Windows, make sure that the MinGW 'bin' folder is
        included in your path, otherwise WOFOST will complain about missing DLLs.
 
 
