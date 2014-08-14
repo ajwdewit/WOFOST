@@ -1,0 +1,138 @@
+** Soil identity
+CRPNAM='grain maize'
+
+TBASEM   =     4.0
+TEFFMX   =    30.0
+TSUMEM   =   110.0
+
+** phenology
+IDSL     =       0
+DLO      =   -99.0
+DLC      =   -99.0
+TSUM1    =   750.0
+TSUM2    =   700.0
+DTSMTB   =    0.00,    0.00,
+              6.00,    0.00,
+             30.00,   24.00,
+             35.00,   24.00
+DVSI      =   0.00
+DVSEND   =    2.00
+
+** initial
+TDWI     =   50.00
+** ! Not used as input by WOF6_0 model
+LAIEM    =  0.0484
+RGRLAI   = 0.02940
+
+** green area
+SLATB    = 0.00000, 0.00260,
+           0.78000, 0.00120,
+           2.00000, 0.00120
+SPA      =   0.000
+SSATB    =  0.0000,  0.0000,
+            2.0000,  0.0000
+SPAN     =    35.0
+TBASE    =    10.0
+
+** assimilation
+KDIFTB   =    0.00,    0.60,
+              2.00,    0.60
+EFFTB    =    0.00,    0.45,
+             40.00,    0.45
+AMAXTB   =    0.00,   70.00,
+              1.25,   70.00,
+              1.50,   63.00,
+              1.75,   49.00,
+              2.00,   21.00
+TMPFTB   =    0.00,    0.01,
+              9.00,    0.05,
+             16.00,    0.80,
+             18.00,    0.94,
+             20.00,    1.00,
+             30.00,    1.00,
+             36.00,    0.95,
+             42.00,    0.56
+TMNFTB   =    5.00,    0.00,
+              8.00,    1.00
+
+** conversion of assimilates into biomass
+CVL      =   0.680
+CVO      =   0.700
+CVR      =   0.690
+CVS      =   0.658
+
+** maintenance respiration
+Q10      =     2.0
+RML      =  0.0300
+RMO      =  0.0100
+RMR      =  0.0150
+RMS      =  0.0150
+RFSETB   =    0.00,    1.00,
+              1.50,    1.00,
+              1.75,    0.75,
+              2.00,    0.25
+
+** partitioning
+FRTB     =    0.00,    0.40,
+              0.10,    0.37,
+              0.20,    0.34,
+              0.30,    0.31,
+              0.40,    0.27,
+              0.50,    0.23,
+              0.60,    0.19,
+              0.70,    0.15,
+              0.80,    0.10,
+              0.90,    0.06,
+              1.00,    0.00,
+              2.00,    0.00
+FLTB     =   0.000,   0.620,
+             0.330,   0.620,
+             0.880,   0.150,
+             0.950,   0.150,
+             1.100,   0.100,
+             1.200,   0.000,
+             2.000,   0.000
+FSTB     =   0.000,   0.380,
+             0.330,   0.380,
+             0.880,   0.850,
+             0.950,   0.850,
+             1.100,   0.400,
+             1.200,   0.000,
+             2.000,   0.000
+FOTB     =   0.950,   0.000,
+             1.100,   0.500,
+             1.200,   1.000,
+             2.000,   1.000
+
+** death rates
+PERDL    =  0.0200
+RDRRTB   =  0.0000,  0.0000,
+            1.5000,  0.0000,
+            1.5001,  0.0200,
+            2.0000,  0.0200
+RDRSTB   =  0.0000,  0.0000,
+            1.5000,  0.0000,
+            1.5001,  0.0200,
+            2.0000,  0.0200
+
+** water use
+CFET     =    1.00
+DEPNR    =     4.5
+IAIRDU   =       0
+
+** rooting
+RDI      =    10.0
+RRI      =     2.2
+RDMCR    =   100.0
+
+** nutrients
+** maximum and minimum concentrations of N, P, and K
+** in storage organs        in vegetative organs [kg kg-1]
+NMINSO   =   0.0000 ;       NMINVE   =   0.0000
+NMAXSO   =   0.0000 ;       NMAXVE   =   0.0000
+PMINSO   =   0.0000 ;       PMINVE   =   0.0000
+PMAXSO   =   0.0000 ;       PMAXVE   =   0.0000
+KMINSO   =   0.0000 ;       KMINVE   =   0.0000
+KMAXSO   =   0.0000 ;       KMAXVE   =   0.0000
+YZERO    =   0.     ! max. amount veg. organs at zero yield [kg ha-1]
+NFIX     =   0.00   ! fraction of N-uptake from biol. fixation [kg kg-1]

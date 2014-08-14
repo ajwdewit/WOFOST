@@ -1,0 +1,52 @@
+** $Id: sr2.new 1.2 1997/09/18 17:33:55 LEM release $
+**
+** SOIL DATA FILE for use with WOFOST Version 5.0, June 1990
+**
+** SR2-Loamy Fine Sand (B2 + O2)           
+
+SOLNAM='SR2 Staring reeks 2'
+
+** physical soil characteristics 
+
+** soil water retention
+SMTAB    =  -1.000,   0.432,    ! vol. soil moisture content 
+             1.000,   0.401,    ! as function of pF [log (cm); cm3 cm-3]
+             1.300,   0.392,
+             1.491,   0.381,
+             2.000,   0.276,
+             2.400,   0.203,
+             2.700,   0.155,
+             3.400,   0.087,
+             4.204,   0.045,
+             6.000,   0.013
+SMW      =   0.045  !  soil moisture content at wilting point [cm3/cm3]
+SMFCF    =   0.221  !  soil moisture content at field capacity [cm3/cm3]
+SM0      =   0.432  !  soil moisture content at saturation [cm3/cm3]
+CRAIRC   =   0.090  ! critical soil air content for aeration [cm3/cm3]
+
+** hydraulic conductivity
+CONTAB   =   0.000,   1.805,    ! 10-log hydraulic conductivity 
+             1.000,   1.180,    ! as function of pF [log (cm); log (cm/day)]
+             1.300,   0.924,
+             1.491,   0.742,
+             1.700,   0.428,
+             2.000,  -0.538,
+             2.400,  -2.585,
+             2.700,  -3.523,
+             3.000,  -4.420,
+             3.400,  -5.252,
+             3.700,  -5.854,
+             4.000,  -6.509,
+             4.204,  -7.086
+
+
+K0       =  63.826  ! hydraulic conductivity of saturated soil [cm day-1]
+SOPE     =   4.56   ! maximum percolation rate root zone[cm day-1]
+KSUB     =  15.13   ! maximum percolation rate subsoil [cm day-1]
+
+** soil workability parameters
+SPADS    =   0.600  !  1st topsoil seepage parameter deep seedbed
+SPODS    =   0.035  !  2nd topsoil seepage parameter deep seedbed
+SPASS    =   0.700  !  1st topsoil seepage parameter shallow seedbed
+SPOSS    =   0.060  !  2nd topsoil seepage parameter shallow seedbed
+DEFLIM   =  -0.100  !  required moisture deficit deep seedbed

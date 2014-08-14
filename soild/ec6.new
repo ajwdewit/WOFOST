@@ -1,0 +1,54 @@
+** $Id: ec6.new 1.2 1997/09/18 17:33:54 LEM release $
+**
+** SOIL DATA FILE for use with WOFOST Version 5.0, June 1990
+**
+** EC6-peat (fine and permeable)
+
+SOLNAM='EC6-fine and permeable'
+
+** physical soil characteristics 
+
+** soil water retention
+SMTAB    =  -1.000,   0.730,    ! vol. soil moisture content 
+             1.000,   0.675,    ! as function of pF [log (cm); cm3 cm-3]
+             1.300,   0.660,
+             1.491,   0.645,
+             2.000,   0.590,
+             2.400,   0.500,
+             2.700,   0.410,
+             3.400,   0.220,
+             4.204,   0.130,
+             6.000,   0.040
+SMW      =   0.130  !  soil moisture content at wilting point [cm3/cm3]
+SMFCF    =   0.522  !  soil moisture content at field capacity [cm3/cm3]
+SM0      =   0.730  !  soil moisture content at saturation [cm3/cm3]
+CRAIRC   =   0.100  ! critical soil air content for aeration [cm3/cm3]
+
+** hydraulic conductivity
+CONTAB   =   0.000,   1.130,    ! 10-log hydraulic conductivity 
+             1.000,   0.255,    ! as function of pF [log (cm); log (cm/day)]
+             1.300,   0.097,
+             1.491,  -0.444,
+             1.700,  -0.620,
+             2.000,  -1.190,
+             2.400,  -2.030,
+             2.700,  -2.740,
+             3.000,  -3.387,
+             3.400,  -4.012,
+             3.700,  -4.398,
+             4.000,  -4.795,
+             4.204,  -4.987
+
+
+K0       =  13.490  ! hydraulic conductivity of saturated soil [cm day-1]
+SOPE     =  13.00   ! maximum percolation rate root zone[cm day-1]
+KSUB     =  15.00   ! maximum percolation rate subsoil [cm day-1]
+
+** soil workability parameters
+
+*  peat soil as EC-course
+SPADS    =   0.800  !  1st topsoil seepage parameter deep seedbed
+SPODS    =   0.040  !  2nd topsoil seepage parameter deep seedbed
+SPASS    =   0.900  !  1st topsoil seepage parameter shallow seedbed
+SPOSS    =   0.070  !  2nd topsoil seepage parameter shallow seedbed
+DEFLIM   =   0.000  !  required moisture deficit deep seedbed

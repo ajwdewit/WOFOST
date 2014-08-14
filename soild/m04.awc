@@ -1,0 +1,29 @@
+** $Id: m04.awc 1.2 1997/09/18 17:33:55 LEM release $
+** file M04.AWC
+** SOIL DATA FILE for use with WOFOST Version 5.4, June 1992
+** Moisture data set 4 for texture class 4 (medium) of EC soil map.
+** Minimum data set on soil physics for use in subroutine WATFD, water 
+** balance for freely draining soils. 
+
+SOLNAM='texture 4-fine, AWC=190 mm'
+
+** PHYSICAL SOIL CHARACTERISTICS 
+
+** soil water retention
+SMW      =   0.160  !  soil moisture content at wilting point [cm3/cm3]
+SMFCF    =   0.350  !  soil moisture content at field capacity [cm3/cm3]
+SM0      =   0.450  !  soil moisture content at saturation [cm3/cm3]
+
+CRAIRC   =   0.075  ! critical soil air content for aeration [cm3/cm3]
+
+** percolation parameters
+K0       =  10.0  ! hydraulic conductivity of saturated soil [cm day-1]
+SOPE     =  10.0   ! maximum percolation rate root zone[cm day-1]
+KSUB     =  10.0   ! maximum percolation rate subsoil [cm day-1]
+
+** soil workability parameters
+SPADS    =   0.800  !  1st topsoil seepage parameter deep seedbed
+SPODS    =   0.040  !  2nd topsoil seepage parameter deep seedbed
+SPASS    =   0.900  !  1st topsoil seepage parameter shallow seedbed
+SPOSS    =   0.070  !  2nd topsoil seepage parameter shallow seedbed
+DEFLIM   =   0.000  !  required moisture deficit deep seedbed

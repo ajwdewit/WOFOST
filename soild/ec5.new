@@ -1,0 +1,52 @@
+** $Id: ec5.new 1.2 1997/09/18 17:33:54 LEM release $
+**
+** SOIL DATA FILE for use with WOFOST Version 5.0, June 1990
+**
+** EC5-very fine
+
+** physical soil characteristics 
+
+SOLNAM='EC5-very fine'
+
+** soil water retention
+SMTAB    =  -1.000,   0.630,    ! vol. soil moisture content 
+             1.000,   0.571,    ! as function of pF [log (cm); cm3 cm-3]
+             1.300,   0.564,
+             1.491,   0.559,
+             2.000,   0.541,
+             2.400,   0.524,
+             2.700,   0.511,
+             3.400,   0.478,
+             4.204,   0.444,
+             6.000,   0.403
+SMW      =   0.444  !  soil moisture content at wilting point [cm3/cm3]
+SMFCF    =   0.528  !  soil moisture content at field capacity [cm3/cm3]
+SM0      =   0.630  !  soil moisture content at saturation [cm3/cm3]
+CRAIRC   =   0.040  ! critical soil air content for aeration [cm3/cm3]
+
+** hydraulic conductivity
+CONTAB   =   0.000,   1.580,    ! 10-log hydraulic conductivity 
+             1.000,  -0.432,    ! as function of pF [log (cm); log (cm/day)]
+             1.300,  -1.155,
+             1.491,  -1.523,
+             1.700,  -2.000,
+             2.000,  -2.523,
+             2.400,  -3.027,
+             2.700,  -3.377,
+             3.000,  -3.678,
+             3.400,  -4.018,
+             3.700,  -4.301,
+             4.000,  -4.602,
+             4.204,  -4.824
+
+
+K0       =  38.019  ! hydraulic conductivity of saturated soil [cm day-1]
+SOPE     =   0.55   ! maximum percolation rate root zone[cm day-1]
+KSUB     =   0.37   ! maximum percolation rate subsoil [cm day-1]
+
+** soil workability parameters
+SPADS    =   0.020  !  1st topsoil seepage parameter deep seedbed
+SPODS    =   0.020  !  2nd topsoil seepage parameter deep seedbed
+SPASS    =   0.050  !  1st topsoil seepage parameter shallow seedbed
+SPOSS    =   0.030  !  2nd topsoil seepage parameter shallow seedbed
+DEFLIM   =  -0.300  !  required moisture deficit deep seedbed

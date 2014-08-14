@@ -1,0 +1,23 @@
+ *---------------------------------------------------------------------------*
+ * Station name: Wageningen (Haarweg), Netherlands
+ * Year: 1976
+ * Author: Peter Uithol                                     -99.000: NIL VALUE
+ * Source: Natuur- en Weerkunde via Nel van Keulen
+ * Comments:
+ * Longitude:  5 40 E, latitude: 51 58 N, altitude: 7 m.
+ *
+ * Column  Daily value
+ * 1       station number
+ * 2       year
+ * 3       day
+ * 4       irradiation                   (kJ m-2 d-1)
+ * 5       minimum temperature           (degrees Celsius)
+ * 6       maximum temperature           (degrees Celsius)
+ * 7       early morning vapour pressure (kPa)
+ * 8       mean wind speed (height: 2 m) (m s-1)
+ * 9       precipitation                 (mm d-1)
+ *
+ ** WCCDESCRIPTION=Netherlands, Wageningen
+ ** WCCFORMAT=2
+ ** WCCYEARNR=1976
+ *---------------------------------------------------------------------------*

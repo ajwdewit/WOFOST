@@ -1,0 +1,21 @@
+** $Id: direct.dat 1.1 1996/11/18 16:34:30 LEM release $
+* --------------------------
+* DIRECTORY FILE 'DIRECT.DAT'
+* --------------------------
+
+* UNIX-SECTION, SC, NOVEMBER 1998
+
+DBMDIR = '-'                                     ! not used
+DBRDIR = '../meteo/dbmrep/'                      ! repaired dbmeteo weather data
+WTRDIR = '../meteo/cabowe/'                      ! cabo-weather data
+SOLDIR = '../soild/'                             ! wofost-soil data
+CRPDIR = '../cropd/'                             ! wofost-crop data
+CLMDIR = '../meteo/climd/'                       ! wofost-climate data
+RUNDIR = '../runio/'                             ! run i/o
+OUTDIR = '../output/'                            ! wofost-output
+DCGDIR = '-'                                     ! not used
+DRVDIR = '-'                                     ! not used
+GEODIR = '-'                                     ! not used
+TMPDIR = '../output/tmp/'                        ! temporary data
+CURDIR = '-'                                     ! not used
+EUSDIR = '-'                                     ! not used

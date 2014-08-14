@@ -21,3 +21,9 @@
 *.i*86
 *.x86_64
 *.hex
+
+# TTUTIL tmp files
+*.tmp
+
+# zip files
+*.zip
