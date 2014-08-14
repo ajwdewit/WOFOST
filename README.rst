@@ -33,6 +33,7 @@ in the Netherlands and the Philipines.
  
 This package does not include a WOFOST binary and therefore the WOFOST FORTRAN
 source codes must be compiled using the following steps:
+
 1. Install a fortran90 compiler. The WOFOST7 package has been tested using the
    GNU fortran90/95 compiler (e.g. gfortran) which can be installed on a wide 
    variety of platforms. For MicroSoft Windows, gfortran can be downloaded 
@@ -48,10 +49,10 @@ source codes must be compiled using the following steps:
    Note that these scripts do not perform any error checking, so watch the
    output.
 
-Notes:
+.. note::
 *  Although WOFOST7 has been written using FORTRAN77, it will not compile using
    the GNU FORTRAN77 compiler (g77), due to the missing SCAN() function in g77.
-** When installing MinGW on Windows, make sure that the MinGW 'bin' folder is
+*  When installing MinGW on Windows, make sure that the MinGW 'bin' folder is
    included in your path, otherwise WOFOST will complain about missing DLLs.
 
 
@@ -68,7 +69,7 @@ order to check if the simulation results are reproduced correctly.
 4. More information
 -------------------
 
-More information and documentation about WOFOST can be obtained from 
-http://www.wageningenur.nl/wofost 
-The WOFOST7.1 reference manual contains detailed information on the use of
-WOFOST and the meaning of variable names in the various files.
+More information and documentation about WOFOST can be obtained from our website_. The `WOFOST7.1 reference manual`_  contains detailed information on the use of WOFOST and the meaning of variable names in the various files.
+
+.. _website: http://www.wageningenur.nl/wofost
+.. _WOFOST7.1 reference manual: http://www.wageningenur.nl/web/file?uuid=5c0873c3-8c07-4ddf-85a3-dd98bdb38781&owner=b875561e-c6d9-442d-b599-58e9d13cb80d
