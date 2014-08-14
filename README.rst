@@ -49,7 +49,7 @@ source codes must be compiled using the following steps:
    Note that these scripts do not perform any error checking, so watch the
    output.
 
-.. note:: Some issues with compiling WOFOST:
+Some issues with compiling WOFOST:
 
     *  Although WOFOST7 has been written using FORTRAN77, it will not compile using
        the GNU FORTRAN77 compiler (g77), due to the missing SCAN() function in g77.
