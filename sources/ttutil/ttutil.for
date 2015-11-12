@@ -4768,7 +4768,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80          CM
+      CHARACTER*250         CM
       LOGICAL          L(1),LM
  
 *     other
@@ -4796,7 +4796,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
        
 *     other
@@ -4847,7 +4847,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -4875,7 +4875,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER               IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -4925,7 +4925,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER               IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -4953,7 +4953,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL               LM
  
 *     other
@@ -4981,7 +4981,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL                  RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -5009,7 +5009,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION D(1),DM
       REAL                  RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -5060,7 +5060,7 @@ c      write (*,*) lowb,uppb,iunifl
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6221,7 +6221,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C,CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6378,7 +6378,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80          CM
+      CHARACTER*250          CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6405,7 +6405,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6455,7 +6455,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6482,7 +6482,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER               IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6531,7 +6531,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER               IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6558,7 +6558,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL               LM
  
 *     other
@@ -6585,7 +6585,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL                  RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6612,7 +6612,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL                  RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6660,7 +6660,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6694,7 +6694,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION      DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -6969,7 +6969,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -7130,7 +7130,7 @@ C                      write (*,*) rx(i)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C,CM
       LOGICAL          L(1),LM
  
 *     other
@@ -7921,7 +7921,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80          CM
+      CHARACTER*250         CM
       LOGICAL          L(1),LM
  
 *     other
@@ -7945,7 +7945,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -7969,7 +7969,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -7994,7 +7994,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8019,7 +8019,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8044,7 +8044,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8069,7 +8069,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8095,7 +8095,7 @@ C                     write (*,*) stbuf(ib:ie)
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8122,7 +8122,7 @@ C                     write (*,*) stbuf(ib:ie)
       REAL             R(1),RM
       INTEGER          I(1),IM
       LOGICAL          L(1),LM
-      CHARACTER*80          CM
+      CHARACTER*250         CM
  
 *     other
       INTEGER IL,IS
@@ -8485,7 +8485,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8532,7 +8532,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8561,7 +8561,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8615,7 +8615,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8661,7 +8661,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8690,7 +8690,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8719,7 +8719,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8748,7 +8748,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
@@ -8795,7 +8795,7 @@ c     $    ' rdsctb: ',token, tokenn(token),' -> state ',is
       DOUBLE PRECISION D(1),DM
       REAL             R(1),RM
       INTEGER          I(1),IM
-      CHARACTER*80     C(1),CM
+      CHARACTER*250    C(1),CM
       LOGICAL          L(1),LM
  
 *     other
