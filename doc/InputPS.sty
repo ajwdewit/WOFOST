@@ -1,0 +1,53 @@
+% InputPS.sty 10. 7. 1993
+
+%
+% \InputPS[caption]{params}
+%
+% 'params' follow the syntax of \BoxedEPSF parameters (see BoxedEPSF.tex)
+%
+% \begin{forcewidth}{1cm} ... \end{forcewidth}
+% \begin{forceheight}{2ex} ... \end{forceheight}
+%
+
+
+\input{BoxedEPSF.tex}
+
+%set the proper \special command syntax for your DVI driver:
+
+%\SetTexturesEPSFSpecial  for Textures on Macintosh
+%\SetArborEPSFSpecial  for ArborText's DVILASER/PS
+%\SetOzTeXEPSFSpecial  for OzTeX on Macintosh
+%\SetPSprintEPSFSpecial  for PSprint under VaXVMS
+%\SetUnixCoopEPSFSpecial  early unix "dvi2ps" driver.
+%\SetRokickiEPSFSpecial  for Rokicki's "dvips" driver
+%\SetClarkEPSFSpecial, for James Clark's "dvitops" driver
+%\SetDVIPSoneEPSFSpecial, for Y&Y driver for PC's
+%\SetBeebeEPSFSpecial, for N. Beebe's DVIALW driver
+
+\SetRokickiEPSFSpecial 
+
+\HideDisplacementBoxes
+
+\def\@PSproc{\if\@nextchar[\let\@PStempc\@PStempa\else\let\@PStempc\@PStempb\fi\@PStempc}
+
+\def\@ifbracket#1#2{\def\@PStempa{#1}\def\@PStempb{#2}\futurelet\@nextchar\@PSproc}
+
+\def\@includepsS[#1]#2{\shortstack[c]{\BoxedEPSF{#2}\\{\raisebox{2ex}[4ex][1ex]{#1}}}}
+
+
+\def\ForcedDims@{0}
+
+\def\ForceWidths#1{\gdef\fwh@{#1}\gdef\ForcedWidths@{1}\gdef\ForcedDims@{1}}
+\def\ForceHeights#1{\gdef\fwh@{#1}\gdef\ForcedWidths@{0}\gdef\ForcedDims@{1}}
+
+\def\UnforceDims{\gdef\ForcedDims@{0}}
+
+\def\ForcedWH{\if\ForcedDims@1
+\if\ForcedWidths@1\ForceWidth{\fwh@}\else\ForceHeight{\fwh@}\fi\fi}
+
+\def\InputPS{\ForcedWH\@ifbracket{\@includepsS}{\BoxedEPSF}}
+
+
+\newenvironment{forcewidth}[1]{\ForceWidths{#1}}{\UnforceDims}
+\newenvironment{forceheight}[1]{\ForceHeights{#1}}{\UnforceDims}
+

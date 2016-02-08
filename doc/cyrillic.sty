@@ -1,0 +1,37 @@
+% cyrillic.sty - suitable for lns596
+%  Usage:
+%  inside your latex2e document the header should look like:
+%\documentclass{article}   %e.g.
+%\usepackage{cyrillic}
+% ...etc.
+%
+% Written by Charles Karney (Karney%PPC.MFENET@NMFECC.ARPA) 1986/07/28.
+% The cyrillic style option loads up the cyrillic fonts.  It is assumed that
+% cyracc.def is on the system.  Only \textfont, \scriptfont, and
+% \scriptscriptfont sizes are provided.  10pt, 11pt, 12pt styles are
+% supported.  The fonts are accessed via \cyr.  E.g., {\cyr Zhurnal}.
+%
+% modified aug 1995 pvhp@lns62.lns.cornell.edu to the following:
+% set "\font\tencyr=mcyr10" -> "\font\tencyr=wncyr10" e.g.
+%
+
+\input cyracc.def
+\ifcase\@ptsize
+ \font\tencyr=wncyr10
+ \font\sevencyr=wncyr7
+ \font\fivecyr=wncyr6
+\or
+ \font\tencyr=wncyr10 scaled \magstephalf
+ \font\sevencyr=wncyr8
+ \font\fivecyr=wncyr6
+\or
+ \font\tencyr=wncyr10 scaled \magstep1
+ \font\sevencyr=wncyr8
+ \font\fivecyr=wncyr6
+\fi
+
+\newfam\cyrfam
+\textfont\cyrfam=\tencyr  \scriptfont\cyrfam=\sevencyr
+  \scriptscriptfont\cyrfam=\fivecyr
+
+\def\cyr{\fam\cyrfam\tencyr\cyracc}

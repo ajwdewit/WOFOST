@@ -1,0 +1,510 @@
+%
+%  Style-input-file for converted documents  STYLE FILE USED WITH OUTPUT
+%  WordPerfect 1.x,2.x,3.x,4.x,5.x,6.x --> LaTeX             OF WP2LATEX.
+%
+%  (c) Rob Houtepen   Januari 1989        Rekencentrum  TU-Eindhoven
+%  (c) Jaroslav Fojtik  1999 - 2008       CVUT FEL, Prague, Czech
+%
+%  adapted to LaTeX2e (marked with AT)
+%  warning, the header and footer definitions were changed
+%
+\typeout{Extra style `wp2latex' <4 Oct 2008>.}
+
+\def\WPtoLaTeX{{\rm W \kern-.38em\hbox{P}\kern-.2em\lower.7ex\hbox{2}\kern-.07em\hbox{\LaTeX}}}
+
+\newdimen\tempdim
+\newcount\tempnum
+
+
+%This fixup allows to use \providecommand under LaTeX209
+\ifx\providecommand\undefined % not defined in LaTeX209
+\long\def\@dummyreargdef#1[#2]#3{\relax}
+\long\def\@dummyargdef#1[#2]#3{\@dummyreargdef#1[#2]{#3}}
+
+\def\providecommand#1{\edef\@tempa{\expandafter\@cdr\string#1\@nil}
+\@ifundefined{\@tempa}{\let\@newargdef=\@argdef}{\let\@newargdef=\@dummyargdef}
+\@ifnextchar [{\@newargdef#1}{\@newargdef#1[0]}}
+
+\fi
+
+
+% This is a re-definition of the page-layout-parameters
+%
+\if@twoside \oddsidemargin 0pt \evensidemargin 0pt \marginparwidth 107pt
+\else \oddsidemargin 0pt \evensidemargin 0pt
+\marginparwidth 90pt
+\fi
+\marginparsep 11pt
+\topmargin 0pt \headheight 12pt \headsep 25pt
+\ifx\documentclass\undefined% (AT)
+   \footheight 12pt% not used in LaTeX2e (AT)
+\fi
+\footskip 30pt
+\columnsep 10pt \columnseprule 0pt
+\parskip 0pt plus 1pt \parindent 15pt \topsep 0pt plus 2pt minus 4pt
+\partopsep 2pt plus 1pt minus 1pt \itemsep 0pt plus 2pt minus 1pt
+\tolerance 9990    % To avoid to many blank rules
+
+\parindent 0pt
+\parskip 0pt
+\tabbingsep 0pt
+
+%
+% The command that eases placing index into the document
+%
+\newread\testin
+\providecommand{\printindex}{
+    \openin\testin=\jobname.ind
+    \ifeof\testin
+	\message{Warning: The file \jobname.ind does not exist! Try to run makeindex.}
+    \else \closein\testin {\input\jobname.ind}
+    \fi}
+
+
+%
+% newly created special chars
+%
+\newlength\@circht
+\providecommand{\@twodots}[1]{\mathrel{.\llap{\raisebox{#1}{.}}}}
+\providecommand{\@spjoinrel}{\mathrel{\mkern-9mu}}
+\providecommand{\sbullet}{\mbox{\the\scriptfont2\char'017}}
+\providecommand{\trademark}{\raisebox{0.7ex}{\the\scriptscriptfont0 TM}}
+\providecommand{\servicemark}{\raisebox{0.7ex}{\the\scriptscriptfont0 SM}}
+\providecommand{\circchar}[1]{%
+            {\ooalign{\hfil%
+                 \raise0.07ex\hbox{\the\scriptscriptfont0\raise0.15ex\hbox{#1}}%
+                      \hfil\crcr\mathhexbox20D%
+                     }%
+            }}
+\providecommand{\regmark}{\circchar{R}}
+\providecommand{\circdots}{\setbox0=\hbox{$\circ$}\setlength{\@circht}{\ht0}%
+                       \mbox{$\@twodots{\@circht}%
+                              \@spjoinrel\raisebox{0.1ex}{$\circ$}%
+                              \@spjoinrel\@twodots{\@circht}%
+                             $%
+                            }%
+		      }
+\providecommand{\astrike}{\charstrike{a}}
+\providecommand{\between}{\mbox{(\kern0.1ex\llap{)}}}
+\providecommand{\bigominus} {\mbox{\LARGE $\ominus$}}
+\providecommand{\bigsqcap} {\mbox{\LARGE $\sqcap$}}
+\providecommand{\because}{\mbox{$\raisebox{0.9ex}{.}\kern-0.1ex.\kern-0.1ex\raisebox{0.9ex}{.}$}}
+\providecommand{\bslash}{{\tt\char'134}}
+\providecommand{\degrees}{{\char'027}}
+\providecommand{\charstrike}[1]{\raisebox{0.7ex}{\the\scriptfont0\b{#1}}}
+\providecommand{\identical}{\mbox{$\raisebox{0ex}{..}\kern-1.55ex\raisebox{0.9ex}{..}$}}
+\providecommand{\image}{\mbox{\rlap{\raisebox{1.1ex}{.}}=\llap{\raisebox{-0.25ex}{.}}}}
+\providecommand{\rimage}{\mbox{\rlap{\raisebox{-0.25ex}{.}}=\llap{\raisebox{1.1ex}{.}}}}
+\providecommand{\lowerquote}{\raisebox{-1.2ex}{"}}
+\providecommand{\ostrike}{\charstrike{o}}
+\providecommand{\therefore}{\mbox{$.\kern-0.1ex\raisebox{0.9ex}{.}\kern-0.1ex.$}}
+\providecommand{\gtlt}{\mbox{
+     \raisebox{0.6ex}{\the\scriptscriptfont1 >}\llap{%
+     \raisebox{-0.4ex}{\the\scriptscriptfont1 <}} }}
+\providecommand{\sieq}{\mbox{
+     \raisebox{0.6ex}{\the\scriptscriptfont1 $\sim$}\llap{%
+     \raisebox{-0.4ex}{\the\scriptscriptfont1 -}} }}
+\def\primechar#1{#1\kern-0.4ex\llap{\raise0.7ex\hbox{$\prime$}}\kern0.4ex}
+\def\twottchars(#1#2){{\tt #1\kern-0.2ex\lower0.7ex\hbox{#2}}}
+
+\def\Bullet #1{\unitlength=#1
+ \begin{picture}(1,1)
+   \put(0.5,0.5){\circle*{1}}
+ \end{picture}}
+\def\HollowBullet #1{\unitlength=#1
+ \begin{picture}(1,1)
+   \put(0.5,0.5){\circle{1}}
+ \end{picture}}
+\def\ShadeBox #1{\unitlength=1ex \tempnum=#1
+ \ifcase\tempnum
+ \tempdim=0.1\unitlength \or
+ \tempdim=0.2\unitlength \or
+ \tempdim=0.3\unitlength \else
+ \tempdim=0.4\unitlength \fi
+ \begin{picture}(1.22, 2.35)
+   \multiput(0.2033, 0.0000)(0.4067, 0.00){ 3}{\rule{0.62\tempdim}{\tempdim}}
+   \multiput(0.0000, 0.5875)(0.4067, 0.00){ 3}{\rule{0.62\tempdim}{\tempdim}}
+   \multiput(0.2033, 1.1750)(0.4067, 0.00){ 3}{\rule{0.62\tempdim}{\tempdim}}
+   \multiput(0.0000, 1.7625)(0.4067, 0.00){ 3}{\rule{0.62\tempdim}{\tempdim}}
+ \end{picture}}
+
+\def\GrBox(#1#2#3#4){\unitlength=0.1958333ex
+\begin{picture}(6, 12)
+ \tempnum=#1
+ \ifcase\tempnum
+ \or \put(4,6){\line(1,0){2}}
+     \if 2#2 \put(4,6){\line(0,1){2}} \else
+         \if 2#3 \else
+             \put(3,6){\line(1,0){1}}
+             \if 2#4 \put(2,6){\line(1,0){1}} \fi \fi \fi
+     \if 2#4 \put(4,4){\line(0,1){2}} \else
+         \if 2#3 \else
+             \put(3,6){\line(1,0){1}}
+             \if 2#2 \put(2,6){\line(1,0){1}} \fi \fi \fi
+     \if 2#2 \else \if 2#4 \else
+         \put(3,6){\line(1,0){1}}
+         \if 2#3 \put(3,4){\line(0,1){4}} \fi
+     \fi \fi
+ \or \put(4,4){\line(1,0){2}}\put(4,8){\line(1,0){2}}
+     \if 2#2 \else
+         \put(3,8){\line(1,0){1}}
+         \if 2#4 \put(2,8){\line(1,0){1}} \fi \fi
+     \if 2#4 \else
+         \put(3,4){\line(1,0){1}}
+         \if 2#2 \put(2,4){\line(1,0){1}} \fi \fi
+ \fi
+
+ \tempnum=#2
+ \ifcase\tempnum
+ \or \put(3,8){\line(0,1){4}}
+     \if 2#1 \put(3,8){\line(1,0){1}} \else
+         \if 2#4 \else
+             \put(3,6){\line(0,1){2}}
+             \if 2#3 \put(3,4){\line(0,1){2}} \fi \fi \fi
+     \if 2#3 \put(2,8){\line(1,0){1}} \else
+         \if 2#4 \else
+             \put(3,6){\line(0,1){2}}
+             \if 2#1 \put(3,4){\line(0,1){2}} \fi \fi \fi
+     \if 2#1 \else \if 2#3 \else
+         \put(3,6){\line(0,1){2}}
+         \if 2#4 \put(2,6){\line(1,0){2}} \fi
+     \fi \fi
+ \or \put(2,8){\line(0,1){4}}\put(4,8){\line(0,1){4}}
+     \if 2#1 \else
+         \put(4,6){\line(0,1){2}}
+         \if 2#3 \put(4,4){\line(0,1){2}} \fi \fi
+     \if 2#3 \else
+         \put(2,6){\line(0,1){2}}
+         \if 2#1 \put(2,4){\line(0,1){2}} \fi \fi
+ \fi
+
+ \tempnum=#3
+ \ifcase\tempnum
+ \or \put(0,6){\line(1,0){2}}
+     \if 2#2 \put(2,6){\line(0,1){2}} \else
+         \if 2#1 \else
+             \put(2,6){\line(1,0){1}}
+             \if 2#4 \put(3,6){\line(1,0){1}} \fi \fi \fi
+     \if 2#4 \put(2,4){\line(0,1){2}} \else
+         \if 2#1 \else
+             \put(2,6){\line(1,0){1}}
+             \if 2#2 \put(3,6){\line(1,0){1}} \fi \fi \fi
+     \if 2#2 \else \if 2#4 \else
+         \put(2,6){\line(1,0){1}}
+         \if 2#1 \put(3,4){\line(0,1){4}} \fi \fi \fi
+ \or \put(0,4){\line(1,0){2}}\put(0,8){\line(1,0){2}}
+     \if 2#2 \else
+         \put(2,8){\line(1,0){1}}
+         \if 2#4 \put(3,8){\line(1,0){1}} \fi \fi
+     \if 2#4 \else
+         \put(2,4){\line(1,0){1}}
+         \if 2#2 \put(3,4){\line(1,0){1}} \fi \fi
+ \fi
+
+ \tempnum=#4
+ \ifcase\tempnum
+ \or \put(3,0){\line(0,1){4}}
+     \if 2#1 \put(3,4){\line(1,0){1}} \else
+         \if 2#2 \else
+             \put(3,4){\line(0,1){2}}
+             \if 2#3 \put(3,6){\line(0,1){2}} \fi \fi \fi
+     \if 2#3 \put(2,4){\line(1,0){1}} \else
+         \if 2#2 \else
+             \put(3,4){\line(0,1){2}}
+             \if 2#1 \put(3,6){\line(0,1){2}} \fi \fi \fi
+     \if 2#1 \else \if 2#3 \else
+         \put(3,4){\line(0,1){2}}
+         \if 2#2 \put(2,6){\line(1,0){2}} \fi
+         \fi \fi
+ \or \put(2,0){\line(0,1){4}}\put(4,0){\line(0,1){4}}
+     \if 2#1 \else
+         \put(4,4){\line(0,1){2}}
+         \if 2#3 \put(4,6){\line(0,1){2}} \fi \fi
+     \if 2#3 \else
+         \put(2,4){\line(0,1){2}}
+         \if 2#1 \put(2,6){\line(0,1){2}} \fi \fi
+ \fi
+\end{picture}}
+
+
+%The following command shrink a letter size in the math mode
+\def\mathsmaller#1{\mathchoice{\textstyle{#1}}{\scriptstyle{#1}}{\scriptscriptstyle{#1}}{#1}}
+
+
+% \justified makes \raggedright, \raggedleft and \centrering undone as good as
+% possible. The effect is effective for the whole alinea, so also on preceding
+% lines.
+%
+\def\justified{\let\\=\@normalcr \@rightskip 0pt%
+               \rightskip\@rightskip \leftskip 0pt
+              }
+
+%
+% New hard line command for enviroment
+%
+\providecommand{\nwln}{\vspace{\baselineskip}}
+
+%
+% A centre tab:
+%
+\providecommand{\ctab}[1]{\makebox[0pt][c]{#1}}
+
+%
+% An underline command with the line towards the writing-line
+%
+\providecommand{\uline}[1]{$\underline{\smash{\hbox{#1}}}$}
+\providecommand{\uuline}[1]{\underline{\uline{#1}}}
+
+%
+% An Strike Out command with the line towards the writing-line
+%
+\providecommand{\sout}[1]{\strut\raise 0.9ex\hbox{$\underline{\smash{\lower 0.9ex\hbox{#1}}}$}}
+
+
+% This command is used for drawing horizontal lines
+\def\Xvadjust#1{
+   \setbox0=\hbox to\hsize{#1}
+   \ifvmode \box0
+   \else    \ht0=-3.5pt\dp0=0pt\strut\vadjust{\box0}
+   \fi}
+
+
+%
+%      New environment for indenting.
+% I have found, that previous one was wrong
+%
+\newdimen\lastlinewidth    % the width of the last line in paragraph
+
+\def\testlastline{\setlength{\lastlinewidth}{0mm}\strut
+   \ifhmode $$ \advance\predisplaysize by-2em
+   \global\lastlinewidth=\predisplaysize
+   \predisplaysize=\maxdimen
+   \abovedisplayskip=-\baselineskip
+   \belowdisplayskip=0pt $$\endgraf \fi}
+\providecommand{\zerotestlastline}{\setlength{\lastlinewidth}{0mm}}
+
+\newenvironment{indenting}[1]
+{
+ \setlength{\tempdim}{#1}
+ \advance\lastlinewidth by 1em
+
+ \ifdim \tempdim > 0pt
+     \ifdim \tempdim > \lastlinewidth
+        \ifdim \lastlinewidth > 1em \vskip-\baselineskip \fi
+     \fi
+     \lastlinewidth=\tempdim
+ \else
+    \vskip-\baselineskip
+ \fi
+ \leftskip=\lastlinewidth
+ \noindent
+}
+{\testlastline}
+
+
+%
+%      New set of commands for managing
+%              user lists.
+%
+\def\UserList#1#2{\stepcounter{#1}\addcontentsline{#1}{#1}
+  {\protect\numberline{\csname the#1\endcsname}{\ignorespaces #2}}#2}
+
+\def\InitUserList#1{\newcounter{#1}
+%\renewcommand\thela{\@arabic\c@la}
+  \expandafter\let\csname l@#1\endcsname\l@figure}
+
+\def\ShowUserList#1#2{
+  \section*{#2\@mkboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}}%
+  \@starttoc{#1}%
+  }
+
+%   This user command seems to be removed from rotate.sty. Should be
+%   added just here.
+%   Now the user interface for LaTeX:  \rotate[type]{text} where
+%   ``type'' is `l' for left, `r' for right, `u' for upside-down, or
+%   `f' for flip.  `l' is the default.
+%
+\ifx\rotate\undefined
+  \def\rotate{\@ifnextchar[{\@rotate}{\@rotate[l]}}
+\else\relax\fi
+\ifx\@rotate\undefined
+  \newdimen\@rotdimen
+  \newbox\@rotbox
+  \def\@rotate[#1]#2{\setbox\@rotbox=\hbox{#2}\@nameuse{@rot#1}\@rotbox}
+\else\relax\fi
+
+
+%
+%       *****************************************************
+%       *      HEADERS AND FOOTERS AND PAGENUMBERINGS       *
+%       *****************************************************
+%
+%       (c) R.C.Houtepen 7-12-89
+%	Header and Footer was rewritten (c)1998 J.Fojtik
+%
+%    Variables for placing page numbers.
+%
+\newtoks\pntl \newtoks\pntc \newtoks\pntr
+\newtoks\pnbl \newtoks\pnbc \newtoks\pnbr
+\newtoks\pnat \newtoks\pnab \newtoks\pnno
+\newtoks\pnit \newtoks\pnib
+
+
+\newlength{\pnheadfootsep}  \setlength{\pnheadfootsep}{1em}
+
+\newdimen\oheadheight
+\newdimen\eheadheight
+\newdimen\ofootskip
+\newdimen\efootskip
+
+
+%
+%     The pagenumber place command
+%
+\providecommand{\pagenumpos}[1]{%
+           \ifx#1\pntl \headtext{\allpages}{\thepage\hfil}      %Top Left
+     \else \ifx#1\pntc \headtext{\allpages}{\hfil\thepage\hfil} %Top Center
+     \else \ifx#1\pntr \headtext{\allpages}{\hfill\thepage}     %Top Right
+     \else \ifx#1\pnat \headtext{\evenpages}{\thepage\hfil}
+		       \headtext{\oddpages}{\hfill\thepage}     %Alternating Top
+     \else \ifx#1\pnit \headtext{\evenpages}{\hfill\thepage}
+		       \headtext{\oddpages}{\thepage\thepage}   %Alternating Inside Top
+     \else \ifx#1\pnbl \foottext{\allpages}{\thepage\hfil}      %Bottom Left
+     \else \ifx#1\pnbc \foottext{\allpages}{\hfil\thepage\hfil} %Bottom Center
+     \else \ifx#1\pnbr \foottext{\allpages}{\hfill\thepage}     %Bottom Right
+     \else \ifx#1\pnab \foottext{\evenpages}{\thepage\hfil}
+		       \foottext{\oddpages}{\hfill\thepage}     %Alternating Top
+     \else \ifx#1\pnib \foottext{\evenpages}{\hfill\thepage}
+		       \foottext{\oddpages}{\thepage\thepage}   %Alternating Inside Bottom
+     \else \ifx#1\pnno \foottext{\allpages}{}\headtext{\allpages}{} %No Numbering
+	\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi     }
+
+%
+%     Command for measuring a full heigth of the box (Heigth = depth+heigth)
+%
+\def\SettoHeight#1#2{%
+    \setbox\@tempboxa\hbox{#2}#1\ht\@tempboxa\relax
+    \advance #1 by \dp\@tempboxa\relax     % The real Heigth is depth+heigth
+    \advance #1 by 2pt}
+
+%
+%    The placing of headers and footers
+%
+\providecommand{\@headfoot}[1]{%
+ 	    \begin{minipage}{0.98\textwidth}#1\end{minipage}
+            \hfil}
+
+
+%
+%     Variables T.b.v Headers and Footers
+%
+\newtoks\oddpages \newtoks\evenpages \newtoks\allpages
+\newtoks\neverpages
+
+
+\def\@ehead{}
+\def\@efoot{}
+\def\@ohead{}
+\def\@ofoot{}
+
+%
+%     The headtext-command:
+%
+\providecommand{\headtext}[2]{
+   \ifx#1\oddpages
+       \long\gdef\@ohead{#2}
+       \SettoHeight{\tempdim}{\@headfoot{\@ohead}} % measure real height
+       \global\oheadheight\tempdim
+   \else\ifx#1\evenpages
+       \long\gdef\@ehead{#2}
+       \SettoHeight{\tempdim}{\@headfoot{\@ehead}} % measure real height
+       \global\eheadheight\tempdim
+   \else\ifx#1\allpages
+       \long\gdef\@ohead{#2}
+       \long\gdef\@ehead{#2}
+       \SettoHeight{\tempdim}{\@headfoot{\@ohead}} % measure real height
+       \global\oheadheight\tempdim
+       \global\eheadheight\tempdim
+   \else\ifx#1\neverpages
+       \gdef\@ohead{}
+       \gdef\@ehead{}
+       \global\oheadheight 0pt
+       \global\eheadheight 0pt
+   \fi\fi\fi\fi%
+   \ifodd\value{page}
+       \global\headheight\oheadheight
+   \else
+       \global\headheight\eheadheight
+   \fi
+   }
+
+%
+%     The foottext-command:
+%
+\providecommand{\foottext}[2]{%
+   \ifx#1\oddpages
+	\long\gdef\@ofoot{#2}
+	\SettoHeight{\tempdim}{\@headfoot{\@ofoot}} % measure real height
+	\advance \tempdim by 20pt
+	\global\ofootskip\tempdim
+   \else\ifx#1\evenpages
+	\long\gdef\@efoot{#2}
+	\SettoHeight{\tempdim}{\@headfoot{\@efoot}} % measure real height
+	\advance \tempdim by 20pt
+	\global\efootskip\tempdim
+   \else\ifx#1\allpages
+	\long\gdef\@ofoot{#2}
+	\long\gdef\@efoot{#2}
+	\SettoHeight{\tempdim}{\@headfoot{\@efoot}} % measure real height
+	\advance \tempdim by 20pt
+	\global\efootskip\tempdim
+	\global\ofootskip\tempdim
+   \else\ifx#1\neverpages
+	\gdef\@ofoot{}
+	\gdef\@efoot{}
+        \global\efootskip=20pt
+        \global\ofootskip=20pt
+   \fi\fi\fi\fi
+   \ifodd\value{page}
+         \global\footskip\ofootskip
+    \else
+         \global\footskip\efootskip
+   \fi
+   }
+
+
+%
+%    These commands will be started at the beginning and the end of
+%    the page.
+%
+\def\ps@wptolatex{%
+   \def\@oddhead{
+      \@headfoot{\@ohead}
+      \global\headheight\eheadheight    %setup for next page
+      }
+
+  \def\@evenhead{
+      \@headfoot{\@ehead}
+      \global\headheight\oheadheight    %setup for next page
+      }
+
+
+   \def\@oddfoot{
+       \@headfoot{\@ofoot}%
+       \global\footskip\efootskip
+       }
+
+   \def\@evenfoot{
+       \@headfoot{\@efoot}
+       \global\footskip\ofootskip
+       }
+   }
+
+\SettoHeight{\tempdim}{\@headfoot{\@ohead}}
+\oheadheight=\tempdim
+\eheadheight=\tempdim
+\ofootskip=30pt
+\efootskip=30pt
+
+
+\pagestyle{wptolatex}
