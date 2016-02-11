@@ -9,6 +9,17 @@
 \newcommand{\FigDir}{.}
 \ShowDisplacementBoxes
 
+
+% This is to allow mixed equation number, see also:
+% http://tex.stackexchange.com/questions/34566/mixed-subequation-numbering-within-an-array#34568
+\usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
+\AtBeginEnvironment{align}{\setcounter{subeqn}{0}}% Reset subequation number at start of align
+\newcounter{subeqn} \renewcommand{\thesubeqn}{\theequation\alph{subeqn}}%
+\newcommand{\subeqn}{%
+  \refstepcounter{subeqn}% Step subequation number
+  \tag{\thesubeqn}% Label equation
+}  
+
 \begin{document}
 
 \chapter{one}

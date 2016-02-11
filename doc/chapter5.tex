@@ -27,13 +27,13 @@ R$_{{\rm m}}$  &:& Maintenance respiration rate    &  [kg CH$_{{\rm 2}}$O ha$^{{
 C$_{{\rm e}}$ &:& Conversion efficiency off assimilates total crop   &   [kg Dry Matter kg$^{{\rm -1}}$ CH$_{{\rm 2}}$O]\\
 \end{tabularx}
 
-
-
 The dry matter produced is partitioned amongst the various plant organs such as roots,
 leaves, stems and storage organs, using partitioning factors that are a function of the
 phenological development stage of the crop (Spitters et al., 1989). The fraction partioned
-to the leaves, determines leaf area development and hence the dynamics of light intercep\-tion. The dry weights of the plant organs are obtained by integrating their growth rates
-over time (see eq. 3.1). \\
+to the leaves, determines leaf area development and hence the dynamics of light intercep\-tion. 
+The dry weights of the plant organs are obtained by integrating their growth rates
+over time (see eq. 3.1).
+
 Leaf mass is subdivided into age classes. During the development of the crop a part of
 living biomass dies due to senescence. Some simulated crop growth processes are
 influenced by temperature, like for example the maximum rate of photosyn\-thesis and the
@@ -193,52 +193,33 @@ day len\-gth should be taken into account. Approaches that describe such effects
 f _{red} ~=~{\frac{D ~-~D _{c} }{D _{o} ~-~ D _{c} }} ~~~~~~~~~0~\le ~f _{red} ~\le ~1
 \end{equation}
 
- 
-\strut\hfill (5.5)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where f$_{{\rm red}}$ : Development rate reduction factor as \\
-   function of day length        [-]\\
-D : Present day length (see eq. 4.25)        [h]\\
-D$_{{\rm c}}$ : Critical day length for development (lower threshold)        [h]\\
-D$_{{\rm o}}$ : Optimum day length for development (upper threshold)        [h]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+f$_{{\rm red}}$ &:& Development rate reduction factor as function of day length   &     [-]\\
+D &:& Present day length (see eq. 4.25)        [h]\\
+D$_{{\rm c}}$ &:& Critical day length for development (lower threshold)    &    [h]\\
+D$_{{\rm o}}$ &:& Optimum day length for development (upper threshold)    &    [h]\\
+\end{tabularx}
 
 The user should provide information whether the development rate depends on tempera\-ture, on day length or on temperature and day length (acronym: {\bf IDSL}). The critical
-daylength, {\bf D$_{{\rm c}}$} (acronym: {\bf DLC}) and the optimum daylength, {\bf D$_{{\rm o}}$} (acronym: {\bf DLO}) are crop
-depen\-dent and should also be provided by the user. 
-
+daylength, {\bf D$_{{\rm c}}$} (acronym: {\bf DLC}) and the optimum daylength, {\bf D$_{{\rm o}}$} (acronym: {\bf DLO}) are crop depen\-dent and should also be provided by the user. 
 
 Note that in modern cultivars, photosen\-sitivity is much less pronounced than in traditional
 cultivars, and that for the purpose of modelling the day length influence can be ignored
 by choosing an appropriate temperature sum, which lead to  an equivalent crop life cycle.
 
-
 The simulation of crop growth stops when the development stage reaches the stage at
 which the crop will be harvested (acronym: {\bf DVSEND}). This development stage should be
 provided by the user. 
 
-
-
-\newpage
-
 \section{Daily assimilation  } 
 
 Daily dry matter production is the most detailed part of the model. The following steps
-can be distinguished and will be described separately:\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-$\bullet$  Total daily gross CO2 assimilation rate of the canopy\`[\S 5.3.1]\\
-$\bullet$ Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy \`[\S 5.3.2]
-\end{tabbing}
-
+can be distinguished and will be described separately:
+\begin{itemize}
+\item Total daily gross CO2 assimilation rate of the canopy\`[\S 5.3.1]
+\item Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy \`[\S 5.3.2]
+\end{itemize}
  
 The daily rate of CO$_{{\rm 2}}$ assimilation of the crop is driven by the intercepted light and can
 be obtained by integrating the total instanta\-neous CO$_{{\rm 2}}$ assimilation rate of the canopy over
@@ -249,20 +230,17 @@ fast method of numerical integration. This integration method is explained in Ap
 For calculat\-ing daily total assimilation, this 3-point integration method performs very well
 (Goudria\-an, 1986; Spitters, 1986)
 
-
-
-
-\subsection{Total daily gross CO2 assimilation rate of the canopy  }
+\subsection{Total daily gross CO2 assimilation rate of the canopy}
 
 To calculate the total daily gross CO$_{{\rm 2}}$ assimilation rate of the whole canopy, an integra\-tion over time should be performed. Therefore, for given fluxes of photosyntheti\-cally
 active radiation, at three different periods of the day, the total instantaneous gross canopy
-CO$_{{\rm 2}}$ {\nobreak}assimila\-tion rate is computed. Afterwards, the integral of the total instantaneous
+CO$_{{\rm 2}}$ assimila\-tion rate is computed. Afterwards, the integral of the total instantaneous
 gross canopy CO$_{{\rm 2}}$ assimila\-tion rate over time, as a weighted average of the selected three
 hours, is calculat\-ed (Gaussian integration, see Appendix 1).
 
 For the calculation of the total instantaneous gross canopy CO$_{{\rm 2}}$ assimilation rate, an
 integra\-tion over depth of the gross instantaneous assimilation rate has to be per\-formed.
-Therefore, at three different dephts in the canopy the gross instanta\-neous assimilation rate
+Therefore, at three different depths in the canopy the gross instanta\-neous assimilation rate
 is calculated, whereafter the integral of the gross instantaneous assimila\-tion rate over
 depth, as a weighted average of the selected depths, is computed (Gaussian integration,
 see Appendix 1)
@@ -283,44 +261,31 @@ can therfore be calculated for half a day only.
 The three points in time are selected from noon to sunset (this explains the use of the
 constants 0.5 and 12.00):
 
-\begin{displaymath}
-t _{h} ~=~ 12 ~+~ 0.5\, D\, (\, 0.5 ~+~ p\, \sqrt{0.15} \, )~~~~~p~=~-1,\, 0,\, 1
-\end{displaymath}
+\begin{equation}
+t _{h} ~=~ 12 ~+~ 0.5\, D\, (\, 0.5 ~+~ p\, \sqrt{0.15} \, ) ~p~=~-1,\, 0,\, 1
+\end{equation}
 
- 
-\strut\hfill (5.6)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where D : Day length (see eq. 4.25)        [h]\\
-t$_{{\rm h}}$ : Hour of the day        [h]\\
-p : Gaussian integration points        [-]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+D &:& Day length (see eq. 4.25)    &    [h]\\
+t$_{{\rm h}}$ &:& Hour of the day  &      [h]\\
+p &:& Gaussian integration points  &      [-]\\
+\end{tabularx}
 
 The incoming radiation and therefore gross assimilation rate, changes with solar eleva\-tion. The solar height as a function of the hour of the day can be calculated with:
 
-\begin{displaymath}
+\begin{equation}
 \sin \beta ~=~ \sin \lambda \, \sin \sigma ~+~ \cos \lambda \, \cos \sigma \, \cos \, (\, 2 \pi \,{\frac{t _{h} ~+~ 12}{24}} )
-\end{displaymath}
+\end{equation}
 
 
-\strut\hfill (5.7)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\beta$ : Solar elevation        [degrees]\\
-$\sigma$ : Solar declination        [degrees]\\
-$\lambda$ : Latitude        [degrees]\\
-t$_{{\rm h}}$ : Hour of the day        [h]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\beta$ &:& Solar elevation   &    [degrees]\\
+$\sigma$ &:& Solar declination    &    [degrees]\\
+$\lambda$ &:& Latitude     &   [degrees]\\
+t$_{{\rm h}}$ &:& Hour of the day    &    [h]\\
+\end{tabularx}
 
 Measured or estimated daily global solar radiation  (wavelength 300 - 3000 nm) is input
 in the model. Only half of this incoming radiation is photosynthetically active (PAR,
@@ -330,29 +295,18 @@ CO$_{{\rm 2}}$ assimilation rate of the canopy. In the model, the instantaneous 
 with the ratio of the actual effective solar elevation and the integral of the effective solar
 height (see also eq. 4.28):
 
-\begin{displaymath}
+\begin{equation}
 I _{0} ~=~ 0.5\, S _{g,d} \,{\frac{\sin \beta \, (\, 1~+~0.4\, \sin \beta \, )}{\int \, \sin \beta _{m} }}
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.8)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm 0}}$ : Photosynthetically active radia\-tion flux        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-S$_{{\rm g,d}}$ : Daily global radiation        [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-$\beta$ : Solar elevation        [degrees]\\
-$\int$sin$\beta$$_{{\rm m}}$ : The corrected integral of solar height over the day \\
-    for non homogeneous atmospheric transmission (eq. 4.28)        [s]
-\end{tabbing}
-
-
-
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+S$_{{\rm g,d}}$ &:& Daily global radiation   &     [J m$^{{\rm -2}}$ d$^{{\rm -1}}$] \\
+$\beta$ &:& Solar elevation    &    [degrees]\\
+$\int$sin$\beta$$_{{\rm m}}$ &:& The corrected integral of solar height over the day 
+    for non homogeneous atmospheric transmission (eq. 4.28)   &     [s]\\
+\end{tabularx}
 
 The calculated photosynthetically active radiation flux consists of a diffuse flux and a
 direct flux. The diffuse flux is the result of scattering of sun rays by clouds, aerosols and
@@ -360,79 +314,55 @@ gases in the atmosphere. The proportion of diffuse light in the total incident l
 depends on the status of the atmosphere (see also eq. 4.31). This fraction is calculated
 from the atmospheric transmission using an empirical function (Spitters {\it et al.\/}, 1986).
 
-\begin{displaymath}
+\begin{equation}
 I _{0,df} ~=~ D _{p~} \sin \beta
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.9)\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm 0,df}}$ : Diffuse part of the photosynthetically active radiation flux \\
-   at top of the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-D$_{{\rm p}}$ : Diffuse radiation perpendicular to the direction \\
-   light (see eq. 4.31)        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-sin$\beta$ : Solar elevation (see eq. 5.7)        [degrees]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm 0,df}}$ &:& Diffuse part of the photosynthetically active radiation flux 
+   at top of the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+D$_{{\rm p}}$ &:& Diffuse radiation perpendicular to the direction 
+   light (see eq. 4.31)    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+sin$\beta$ &:& Solar elevation (see eq. 5.7)    &    [degrees]\\
+\end{tabularx}
 
 The direct part can be easily obtained by subtracting the diffuse part from the
-{\nobreak}photosynthetically radiation flux:
+ photosynthetically radiation flux:
 
-\begin{displaymath}
+\begin{equation}
 I _{0,dr} ~=~ I _{0} ~-~I _{0,df} 
-\end{displaymath}
+\end{equation}
 
  
-\strut\hfill (5.10)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm 0,dr}}$ : Direct part of the photosynthetically active radiation flux \\
-   at top of the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ : Photosynthetically active radia\-tion flux (see eq. 5.8)        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0,df}}$ : Diffuse part of the photosynthetically active radiation flux \\
-   at top of the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm 0,dr}}$ &:& Direct part of the photosynthetically active radiation flux 
+   at top of the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux (see eq. 5.8)    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0,df}}$ &:& Diffuse part of the photosynthetically active radiation flux 
+   at top of the canopy     &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+\end{tabularx}
 
-
-
-Once the photosynthetically active radiation fluxes have been established, the instanta\-neous gross assimilation rate of the canopy can be calculated (see \S 5.3.2). And the
-integration over time can take place.\\
+Once the photosynthetically active radiation fluxes have been established, the 
+instanta\-neous gross assimilation rate of the canopy can be calculated (see \S 5.3.2). And the 
+integration over time can take place.
 The integral of the total gross canopy assimilation rate over time is calculated as the
 weighted average of the three selected hours of the day. Multiply\-ing by the day length
 results in the total daily gross rate of CO$_{{\rm 2}}$ assimilation. 
 
-\begin{displaymath}
+\begin{equation}
 A _{d} ~=~D~{\frac{A _{C\, ,\, -1} ~+~ 1.6\, A _{C\, ,\, 0} ~+~ A _{C,\, 1} }{3.6}}
-\end{displaymath}
+\end{equation}
 
 
-\strut\hfill (5.11)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm d}}$ : Total gross assimilation rate        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-D : Day length (see eq. 4.25)        [h]\\
-A$_{{\rm C}}$ : Total inst. gross assimila\-tion rate for\\
-   the whole canopy, p= -1,0,1 (see eq. 5.31)        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-   
-\end{tabbing}
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
- 
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm d}}$ &:& Total gross assimilation rate    &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+D &:& Day length (see eq. 4.25)   &     [h]\\
+A$_{{\rm C}}$ &:& Total inst. gross assimila\-tion rate for
+   the whole canopy, p= -1,0,1 (see eq. 5.31)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+\end{tabularx}
 
 \subsection{Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy  }  
 
@@ -440,135 +370,95 @@ In the subroutine {\bf ASSIM}, the total instantaneous rate of CO$_{{\rm 2}}$ as
 calculated from the incoming fluxes of diffuse and direct photosynthetic active radiation,
 solar elevation and leaf area index and several parameters.
 
-
-
-{\bf {\it Reflection and extinction\/}}\\
+\subsubsection{Reflection and extinction}
 The total incoming photosynthetically active radiation flux is partly reflected by the
 canopy. The reflection coefficient is defined as the fraction of the downward radiation
 flux that is reflected by the whole canopy. According to Goudriaan (1977), the reflection
 coefficient of a green leaf canopy with a random spherical leaf angle equals:
 
-\begin{displaymath}
+\begin{equation}
 \rho ~=~{\frac{1~-~ \sqrt{1~-~ \sigma } }{1~+~ \sqrt{1~-~ \sigma } }} \, {\rm \Bullet{0.75ex}}\,{\frac{2}{1~+~ 1.6\, \sin \beta }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.12)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\rho$ : Reflection coefficient of a green leaf canopy        [-]\\
-$\sigma$ : Scattering coefficient fraction (trans\-mission and reflection) \\
-   of single leaves for visible radiation         [-]\\
-   {\small (=0.2; Goudriaan, cited by Spitters, 1986)}\\
-$\beta$ : Solar elevation (see eq. 5.7)        [degrees]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\rho$ &:& Reflection coefficient of a green leaf canopy    &    [-]\\
+$\sigma$ &:& Scattering coefficient fraction (trans\-mission and reflection) 
+   of single leaves for visible radiation   
+   {\small (=0.2; Goudriaan, cited by Spitters, 1986)}  &     [-]\\  
+$\beta$ &:& Solar elevation (see eq. 5.7)    &    [degrees]\\
+\end{tabularx}
  
 The first term denotes the reflection of the canopy of horizontal leaves and the second
 term is the approximate correction factor for a spherical leaf angle distribu\-tion.
-
-
 
 A fraction (1-$\rho$) of the incoming visible radiation is potentially available for absorp\-tion by
 the canopy. Radiation fluxes attenuate exponentially within a canopy with increasing leaf
 area from the top downwards:
 
-\begin{displaymath}
+\begin{equation}
 I _{L~} =~ I _{0} \, (\, 1~-~\rho \, )\, e ^{- \kappa LAI _{L} }
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.13)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm L}}$ : Net photosynthetic active radiation flux at \\
-   depth L in the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ : Photosynthetically active radia\-tion flux (see eq. 5.8)        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-LAI$_{{\rm L}}$ : Cumulative leaf area index (from top downwards) at \\
-   relative depth L          [ha ha$^{{\rm -1}}$]\\
-$\rho$ : Reflection coefficient of the canopy        [-]\\
-$\kappa$ : Extinction coefficient for photosynthetic active \\
-   radiation flux        [-]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm L}}$   &:& Net photosynthetic active radiation flux at 
+    depth L in the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$   &:& Photosynthetically active radia\-tion flux (see eq. 5.8)  & 
+     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+LAI$_{{\rm L}}$ &:& Cumulative leaf area index (from top downwards) 
+    relative depth L & [ha ha$^{{\rm -1}}$]\\
+$\rho$          &:& Reflection coefficient of the canopy   &     [-]\\
+$\kappa$        &:& Extinction coefficient for photosynthetic active 
+    radiation flux   &     [-]\\
+\end{tabularx}
 
 
 The diffuse and the direct flux have different extinction coefficients, giving rise to
 different light profiles within the canopy for diffuse and direct radiation. Therefore three
-different radiation fluxes are distinguished:\\
-$\bullet$ the diffuse flux, with extinction coefficient $\kappa$$_{{\rm df}}$;\\
-$\bullet$ the total direct flux, with extinction coefficient $\kappa$$_{{\rm dr,t}}$;\\
-$\bullet$ the direct component of direct light, with extinction coefficient $\kappa$$_{{\rm dr,bl}}$.
-
-
+different radiation fluxes are distinguished:
+\begin{itemize}
+\item the diffuse flux, with extinction coefficient $\kappa$$_{{\rm df}}$;
+\item the total direct flux, with extinction coefficient $\kappa$$_{{\rm dr,t}}$;\
+\item the direct component of direct light, with extinction coefficient $\kappa$$_{{\rm dr,bl}}$.
+\end{itemize}
 
 Radiation becomes diffuse when sun rays are partly absorbed and partly scattered (i.e.
 reflected or transmitted) by a leaf. The subscript bl (black) is used, the leaves show
-neither transmis\-sion nor reflection. \\
-The extinction coefficient of 'black leaves' can be calculat\-ed as:
+neither transmis\-sion nor reflection. The extinction coefficient of 'black leaves'
+can be calculat\-ed as:
 
-\begin{displaymath}
+\begin{equation}
 \kappa _{bl} ~=~{\frac{0.5}{\sin \beta }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.14)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\kappa$$_{{\rm bl}}$ : Extinction coefficient for the direct radiation flux        [-]\\
-$\beta$ : Solar elevation        [degree]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\kappa$$_{{\rm bl}}$ &:& Extinction coefficient for the direct radiation flux   &     [-]\\
+$\beta$ &:& Solar elevation    &    [degree]\\
+\end{tabularx}
 
 For a spherical leaf area distribution (homogeneous, random), the extinction coefficient
 for the diffuse radiation flux equals:
 
-\begin{displaymath}
+\begin{equation}
  \kappa _{df} ~=~ \kappa _{bl} \, \sqrt{1~-~ \sigma }
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.15)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\kappa$$_{{\rm df}}$ : Extinction coefficient for the diffuse radiation flux        [-]\\
-$\sigma$ : Scattering coefficient fraction of single leaves for \\
-   visible radiation        [-]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\kappa$$_{{\rm df}}$ &:& Extinction coefficient for the diffuse radiation flux    &    [-]\\
+$\sigma$ &:& Scattering coefficient fraction of single leaves for 
+   visible radiation    &    [-]\\
+\end{tabularx}
 
  
 In the model, the extinction coefficient for the diffuse radiation flux, {\bf $\kappa$$_{{\rm df}}$} (acronym: {\bf KDIF})
-is not computed but should be provided by the user. It can be {\nobreak}measured directly under
-diffuse sky conditions.
-
-
+is not computed but should be provided by the user. It can be measured directly under diffuse sky conditions.
 
 In equation 5.14, 0.5 points to the average projection on the ground surface of leaves
 showing a spherical angle distribution, and 0.8 in equation 5.16 is the value of 0.5/sin$\beta$
 averaged over elevation $\beta$ of incident radiation under an overcast sky.
-
-
-
-
-
-
-
 
 The average extinction coefficient for the diffuse radiation flux is about 0.72 (Goudri\-aan,
 1977). However, in many situations, the leaf angle distribution is not spherical. For
@@ -577,77 +467,51 @@ planting on hills), and have a very vertical orientation. Other leaf angle distr
 be accounted for by a procedure described by Goudriaan (1986), which calculates the
 extinction coefficient for the diffuse radiation flux on the basis of the frequency distribu\-tion of leaves with angles in different classes.
 
-
-
 In the model however, the leaf angle distribution is accounted for by using a so called
 cluster factor which is the measured extinction coefficient for diffuse radiation flux,
 relative to the theoreti\-cal one for a spherical leaf area distribution. The cluster factor can
 be calculated as: 
 
-\begin{displaymath}
+\begin{equation}
 C _{f} ~=~{\frac{ \kappa _{df} }{0.8\, \sqrt{1 ~-~ \sigma } }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.16)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where C$_{{\rm f}}$ : Cluster factor        [-]\\
-$\kappa$$_{{\rm df}}$ : Extinction coefficient for diffuse radiation flux        [-]\\
-$\sigma$ : Scattering coefficient fraction of single leaves for\\
-   visible radiation        [-]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+C$_{{\rm f}}$ &:& Cluster factor    &    [-]\\
+$\kappa$$_{{\rm df}}$ &:& Extinction coefficient for diffuse radiation flux   &     [-]\\
+$\sigma$ &:& Scattering coefficient fraction of single leaves for
+   visible radiation  &      [-]\\
+\end{tabularx}
 
 The direct component can be calculated as (Goudriaan, 1977):
 
-\begin{displaymath}
+\begin{equation}
 \kappa _{dr,bl} ~=~{ C _{f} }\,{\frac{0.5}{\sin \beta }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.17)
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\kappa$$_{{\rm dr,bl}}$ &:& Extinction coefficient for the direct component of direct light   &     [-] \\
+C$_{{\rm f}}$ &:& Cluster factor     &   [-]\\
+$\beta$ &:& Solar elevation     &   [degrees]\\
+\end{tabularx}
 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\kappa$$_{{\rm dr,bl}}$ : Extinction coefficient for the direct component of \\
-   direct light        [-] \\
-C$_{{\rm f}}$ : Cluster factor        [-]\\
-$\beta$ : Solar elevation        [degrees]
-\end{tabbing}
+The extinction coefficient for the total direct radiation flux can be calculated as (Goudriaan, 1977):
 
-
-
-The extinction coefficient for the total direct radiation flux can be calculated as
-{\nobreak}(Goudriaan, 1977):
-
-\begin{displaymath}
+\begin{equation}
 \kappa _{dr,t} ~=~ \kappa _{dr,bl} \sqrt{1~-~\sigma }
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.18)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\kappa$$_{{\rm dr,t}}$ : Extinction coefficient for total direct radiation flux        [-]\\
-$\kappa$$_{{\rm dr,bl}}$ : Extinction coefficient for the direct component of \\
-   direct light        [-]\\
- $\sigma$ : Scattering coefficient         [-]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\kappa$$_{{\rm dr,t}}$ : Extinction coefficient for total direct radiation flux   &    [-]\\
+$\kappa$$_{{\rm dr,bl}}$ : Extinction coefficient for the direct component of direct light  &   [-]\\
+ $\sigma$ : Scattering coefficient     &    [-]\\
+\end{tabularx}
 
 
- {\it {\bf Absorption}\/}\\
+\subsubsection{Absorption}
 Three depths in the canopy are selected according to the Gaussian integration method (see
 Appendix 1) and at those levels the leaf area index, the amount of absorbed radiation and
 the leaf CO$_{{\rm 2}}$ assimilation is calculated. The total instantaneous assimilation is easily
@@ -656,107 +520,69 @@ obtained by multiplying the instantaneous assimilation with the total leaf area 
 assimila\-tion, will be explained in detail. Calculation of the leaf area index will be
 explained in \S 5.4.5.
 
-
 Canopy assimilation is calculated as a weighted average of the assimilation at three
 horizons within the canopy. The leaf area index of the selected horizons can be written as
 (Goudriaan, 1986):
 
-\begin{eqnarray*}
- LAI _{L~~} =~(\, 0.5~+~p\, \sqrt{0.15} \, )\, LAI~~~~p~=~-1,\, 0,\, 1~~ \Rightarrow   \nonumber  \\
-LAI _{1} ~=~0.1127017\, LAI \nonumber  \\
-LAI _{2} ~=~0.5\, LAI \nonumber  \\
-LAI _{3} ~=~0.8872983\, LAI
-\end{eqnarray*}
+\begin{align}
+% eq 5.19 a-d
+LAI_{L} &=~(\, 0.5~+~p\, \sqrt{0.15} \, )\, LAI~~~~p~=~-1,\, 0,\, 1~~ \Rightarrow   \subeqn  \\
+LAI_{1} &=~0.1127017\, LAI \subeqn  \\
+LAI_{2} &=~0.5\, LAI \subeqn  \\
+LAI_{3} &=~0.8872983\, LAI \subeqn
+\end{align}
 
  
-\strut\hfill (5.19a)\\
-\strut\hfill (5.19b)\\
-\strut\hfill (5.19c)\\
-\strut\hfill (5.19d)
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+LAI$_{{\rm L}}$ &:& Leaf area index at relative distance L in the canopy (L=0 at the top)    &    [ha ha$^{{\rm -1}}$]\\
+\end{tabularx}
 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where LAI$_{{\rm L}}$ : Leaf area index at relative distance L in the canopy         [ha ha$^{{\rm -1}}$]\\
-   (L=0 at the top)
-\end{tabbing}
-
-
-
-\selectlanguage{USenglish}The light absorbed at a certain depth in the canopy is obtained by taking the derivative of
+The light absorbed at a certain depth in the canopy is obtained by taking the derivative of
 equation 5.13 with respect to the cumulative leaf area index:
 
-\begin{displaymath}
+\begin{equation}
+% eq 5.20
 I _{a,L} ~=~{\frac{-dI _{0\, ,\, L} }{dL}} ~=~ \kappa \, (\, 1~-~ \rho \, )\, I _{0} \, e ^{- \kappa \, LAI _{L} }
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.20)
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm a,L}}$ &:& Amount absorbed of total radia\-tion flux\footnote{With the 'Total radiation flux' in this paragraph the total photosynthetically active radiation flux is meant.} at relative depth L    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0,L}}$ &:& Net photosynthetic active radiation at relative depth L in the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux at top of the canopy   &     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+L &:& Relative depth in the canopy   &     [-]\\
+$\kappa$ &:& The extinction coefficient for the PAR flux    &     [-]\\
+$\rho$ &:& Reflection coefficient of the canopy (see eq. 5.12)   &     [-]\\
+\end{tabularx}
 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm a,L}}$ : Amount absorbed of total radia\-tion flux\footnote{With the 'Total radiation flux' in this paragraph the total photosyntheti\-cally active radiation flux is meant.} at relative depth L        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0,L}}$ : Net photosynthetic active radiation at relative depth L \\
-   in the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ : Photosynthetically active radia\-tion flux at top of the canopy        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-L : Relative depth in the canopy        [-]\\
-$\kappa$ : The extinction coefficient for the PAR flux         [-]\\
-$\rho$ : Reflection coefficient of the canopy (see eq. 5.12)        [-]
-\end{tabbing}
-
-
-
-
-
-
- If expressed for the different light components, the absorbed fluxes for the different
+If expressed for the different light components, the absorbed fluxes for the different
 components per unit leaf area at a certain depth in the canopy are:
 
-\begin{eqnarray*}
-I _{a,df} ~=~{\frac{-dI _{df,L} }{dL}} ~=~ \kappa _{df} \, (\, 1~-~ \rho \, )\, I _{0,df} \, e ^{- \kappa _{df} \, LAI _{L} } \nonumber  \\
-I _{a,dr,t} ~=~{\frac{-dI _{dr,t,L} }{dL}} ~=~ \kappa _{dr,t} \, (\, 1~-~ \rho \, )\, I _{0,dr} \, e ^{- \kappa _{dr,t} \, LAI _{L} } \nonumber  \\
-I _{a,dr,dr} ~=~{\frac{-dI _{dr,L} }{dL}} ~=~ \kappa _{dr,bl} \, (\, 1~-~ \sigma \, )\, I _{0,dr} \, e ^{- \kappa _{dr,bl} \, LAI _{L} }
-\end{eqnarray*}
+\begin{align}
+% equation 5.21a-c
+I _{a,df} &=~{\frac{-dI _{df,L} }{dL}} &=~ \kappa _{df} \, (\, 1~-~ \rho \, )\, I _{0,df} \, e ^{- \kappa _{df} \, LAI _{L} } \subeqn  \\
+I _{a,dr,t} &=~{\frac{-dI _{dr,t,L} }{dL}} &=~ \kappa _{dr,t} \, (\, 1~-~ \rho \, )\, I _{0,dr} \, e ^{- \kappa _{dr,t} \, LAI _{L} } \subeqn  \\
+I _{a,dr,dr} &=~{\frac{-dI _{dr,L} }{dL}} &=~ \kappa _{dr,bl} \, (\, 1~-~ \sigma \, )\, I _{0,dr} \, e ^{- \kappa _{dr,bl} \, LAI _{L} } \subeqn
+\end{align}
 
- 
-\strut\hfill (5.21c)
-
-\strut\hfill (5.21b)
-
-\strut\hfill (5.21c)
-
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm a,.}}$ : Amount absorbed of specified radiation flux         [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm .,L}}$ : Net specified component of PAR flux at relative \\
-   depth L        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ : Photosynthetically active radia\-tion flux at top\\
-   of the canopy (see eq. 5.8)        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-L : Relative depth in the canopy        [-]\\
-$\kappa$$_{{\rm .}}$ : The extinction coefficient for specified\\
-   radiation (see eq. 5.15, 5.17 and 5.18)        [-]\\
-$\rho$ : Reflection coefficient of the canopy (see eq. 5.12)        [-]\\
-$\sigma$ : Scattering coefficient        [-]\\
-bl : Black\\
-df : Diffuse\\
-dr : Direct\\
-t : Total
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm a,.}}$ &:& Amount absorbed of specified radiation flux   &      [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm .,L}}$ &:& Net specified component of PAR flux at relative depth L    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux at top of the canopy (see eq. 5.8)   &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+L &:& Relative depth in the canopy   &     [-]\\
+$\kappa$$_{{\rm .}}$ &:& The extinction coefficient for specified radiation (see eq. 5.15, 5.17 and 5.18)    &    [-]\\
+$\rho$ &:& Reflection coefficient of the canopy (see eq. 5.12)   &     [-]\\
+$\sigma$ &:& Scattering coefficient    &    [-]\\
+bl &:& Black &\\
+df &:& Diffuse &\\
+dr &:& Direct &\\
+t &:& Total &\\
+\end{tabularx}
 
 Note that of the direct component of the direct flux the non-scattered part (1-$\sigma$) is
 absorbed.
-
-
 
 The total absorbed flux for shaded leaves can be calculated as the sum of the absorbed
 flux of diffuse radiation and absorbed flux of the diffuse radiation of the indirect
@@ -764,51 +590,35 @@ component of direct radiation. The last one is equal to the difference of the ab
 of the total radiation minus the absorbed flux of the direct component of the direct
 radiation.
 
-\begin{displaymath}
+\begin{equation}
 I _{a,sh} ~=~ I _{a,df} ~+~ (I _{a,dr,t} ~-~ I _{a,dr,dr} )
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.22)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm a,sh}}$ : Absorbed amount of the total radiation flux by \\
-   shaded leaves        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm a,df}}$ : Absorbed amount of the diffuse radiation flux        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm a,dr,t}}$ : Absorbed amount of the total direct radiation flux        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm a,dr,dr}}$ : Absorbed amount of direct component of the \\
-   direct radiation flux          [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm a,sh}}$ &:& Absorbed amount of the total radiation flux by shaded leaves    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm a,df}}$ &:& Absorbed amount of the diffuse radiation flux   &     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm a,dr,t}}$ &:& Absorbed amount of the total direct radiation flux   &     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm a,dr,dr}}$ &:& Absorbed amount of direct component of the  direct radiation flux & [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+\end{tabularx}
 
 
-{\bf {\it Instantaneous gross assimilation\/}}\\
+\subsubsection{Instantaneous gross assimilation}
 The CO$_{{\rm 2}}$ assimilation-light response can be obtained by introducing the absorbed amount
 of light into an assimilation-light response function of individual leaves. Satisfactory
 results can be acquired with (Peat, 1970):
 
-\begin{displaymath}
+\begin{equation}
 A _{L} ~=~ A _{m} \, (\, 1~-~ e ^{{\frac{ - \epsilon\, I _{a} }{ A _{m} }} } )
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.23)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm L}}$ : Inst.\footnote{ Inst. = Instantaneous} gross assimilation rate at relative\\
-   depth L (per unit leaf area)        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm m}}$ : Inst. gross assimilation rate at light saturation        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-$\epsilon$ : Initial light use efficiency      \`(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)\\
-I$_{{\rm a}}$ : Absorbed amount of the total radiation flux        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm L}}$ &:& Inst.\footnote{ Inst. = Instantaneous} gross assimilation rate at relative depth L (per unit leaf area)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+$\epsilon$ &:& Initial light use efficiency   &   [(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$])\\
+I$_{{\rm a}}$ &:& Absorbed amount of the total radiation flux     &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+\end{tabularx}
 
 The instantaneous gross assimilation rate at light saturation, {\bf A$_{{\rm m}}$} (acronym: {\bf AMAXTB}) is
 crop specific and should be provided by the user. It is a function of the development
@@ -817,64 +627,42 @@ describe this dependency (see also Appendix 2). The initial light use efficiency
 (acronym: {\bf EFF}), is also crop dependent and should be provided by the user. It is
 assumed, that the initial light use efficiency is always higher than 2.0 [kg ha$^{{\rm -1}}$ leaf h$^{{\rm -1}}$]. 
 
+Introducing the absorbed amount of radiation by shaded leaves (eq. 5.22) into equation 5.23 yields:
 
-
-Introducing the absorbed amount of radiation by shaded leaves (eq. 5.22) into equation
-5.23 yields:
-
-\begin{displaymath}
+\begin{equation}
 A _{sh} ~=~ A _{m} \, (\, 1~-~ e ^{{\frac{ - \epsilon\, I _{a,sh} }{ A _{m} }} } )
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.24)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm sh}}$ : Inst. gross assimilation rate for shaded leaves        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm m}}$ : Inst. gross assimilation rate at light saturation        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-$\epsilon$ : Initial light use efficiency      \`(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)\\
-I$_{{\rm a,sh}}$ : Absorbed amount of the total radiation flux \\
-   by shaded leaves (see eq. 5.22)        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]
-\end{tabbing}
-
-
-
-
-
-
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  & 
+    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation & 
+    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+$\epsilon$ &:& Initial light use efficiency  &  
+    [(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)]\\
+I$_{{\rm a,sh}}$ &:& Absorbed amount of the total radiation flux  by shaded leaves (see eq. 5.22)   &
+     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+\end{tabularx}
 
 For the sunlit leaf area, the average absorption intensity may be substituted in equation
 5.23. However, it is more accurate to account for the variation in leaf angle and thus in
 illumination intensity (Spitters, 1986). The direct flux is absorbed by a leaf perpendicular
 to the direct beam with an intensity of: 
 
-\begin{displaymath}
+\begin{equation}
 I _{a,dr,sl} ~=~{\frac{(1~-~ \sigma )\, I _{0,dr} }{\sin \beta }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.25)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where I$_{{\rm a,dr,sl}}$ : Absorbed amount of the direct radiation flux by leaves\\
-   perpendicular to the direct beam        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0,dr}}$ : Direct flux of visible radiation at the top of \\
-                  the canopy          [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-$\sigma$ : Scattering coefficient        [-]\\
-$\beta$ : Solar elevation        [degrees]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+I$_{{\rm a,dr,sl}}$ &:& Absorbed amount of the direct radiation flux by leaves
+   perpendicular to the direct beam    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0,dr}}$ &:& Direct flux of visible radiation at the top of 
+   the canopy &  [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+$\sigma$ &:& Scattering coefficient  &[-]\\
+$\beta$ &:& Solar elevation   & [degrees]\\
+\end{tabularx}
 
 The amount of absorbed direct radiation by leaves (eq. 5.25) depends on the sine of
 incidence at the leaf surfaces. Therefore, for sunlit leaves, CO$_{{\rm 2}}$ assimilation rates have to
@@ -882,106 +670,72 @@ be calculated separately for leaves with different angles and integrated over th
 incidence. In the model a spherical leaf angle distribution is assumed, so no integration
 over leaf angles is needed.
 
-
-
 Integration over the sine of incidence for the sunlit leaves yields (Goudriaan, personal
 communication):
 
-\begin{displaymath}
+\begin{equation}
 A _{sl} ~=~ A _{m} \, (\, 1~-\, (\, A _{m} ~-~A _{sh} \, )\, {{\frac{ 1~-~e ^{{\frac{{{-I _{a,dr,sl} \, \epsilon }}}{A}} _{m} } }{\epsilon\, I _{a,dr,sl} }} })
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.26)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm sl}}$ : Inst. gross assimilation rate for sunlit leaves        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sh}}$ : Inst. gross assimilation rate for shaded leaves        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm m}}$ : Inst. gross assimilation rate at light saturation        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-I$_{{\rm a,dr,sl}}$ : Absorbed amount of the direct radiation flux by leaves\\
-   perpendicular to the direct beam        [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-$\epsilon$ : Initial light use efficiency           (kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm sl}}$ &:& Inst. gross assimilation rate for sunlit leaves  &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+I$_{{\rm a,dr,sl}}$ &:& Absorbed amount of the direct radiation flux by leaves
+   perpendicular to the direct beam  &  [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+$\epsilon$ &:& Initial light use efficiency  &   [(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)]\\
+\end{tabularx}
 
 The assimilation rate per unit leaf area at a specific depth in the canopy is the sum of the
 assimilation rates of sunlit and shaded leaves, taking into account the proportion of sunlit
 and shaded leaf area at that depth in the canopy. 
 
-
-
-
 The fraction sunlit leaf area equals the fraction of the direct radiation reaching that layer:
 
-\begin{displaymath}
+\begin{equation}
 f _{sl} ~=~  e ^{-\kappa _{dr,bl} \, LAI _{L} }
-\end{displaymath}
+\end{equation}
 
  
-\strut\hfill (5.27)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where f$_{{\rm sl}}$ : Fraction sunlit leaf area        [-]\\
-$\kappa$$_{{\rm dr,bl}}$ : Extinction coefficient for the direct component of\\
-   direct radiation (see eq. 5.17)        [-]\\
-LAI$_{{\rm L}}$ : Cumulative leaf area index at relative depth L in canopy        [-]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+f$_{{\rm sl}}$ &:& Fraction sunlit leaf area   &     [-]\\
+$\kappa$$_{{\rm dr,bl}}$ &:& Extinction coefficient for the direct component of
+   direct radiation (see eq. 5.17)   &     [-]\\
+LAI$_{{\rm L}}$ &:& Cumulative leaf area index at relative depth L in canopy  &      [-]
+\end{tabularx}
 
-      
 
 The total instantaneous assimilation rate at a relative depth L can be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 A _{T,L} ~=~ f _{sl} \, A _{sl} \, +\, (\, 1\, -\, f _{sl} \, )\, A _{sh} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.28)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm T,L}}$ : Total inst. gross assimilation rate at a\\
-   relative depth L        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sl}}$ : Inst. gross assimilation rate for sunlit leaves        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sh}}$ : Inst. gross assimilation rate for shaded leaves        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-f$_{{\rm sl}}$ : Fraction sunlit leaf area        [-]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm T,L}}$ : Total inst. gross assimilation rate at a relative depth L   &
+     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sl}}$ : Inst. gross assimilation rate for sunlit leaves  & [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sh}}$ : Inst. gross assimilation rate for shaded leaves  & [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+f$_{{\rm sl}}$ : Fraction sunlit leaf area  &  [-]\\
+\end{tabularx}
 
 The total instantaneous assimilation rate for the whole canopy per unit leaf area can be
 established using the Gaussian integration method, as a weighted average of the assimila\-tion at three levels within the canopy.
 
-
-
 However, first the leaf area index of the levels selected have to be established:
 
-\begin{displaymath}
+\begin{equation}
 LAI _{L} ~=~ (0.5~+~p \sqrt{(0.15)} ~)~LAI~~~~p=-1,0,1
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.29)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where LAL$_{{\rm L}}$ : Leaf area index at relative depth L in canopy        [ha ha$^{{\rm -1}}$]\\
-LAI : Total leaf area of the crop    (see \S 5.4.5)    [ha ha$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+LAL$_{{\rm L}}$ &:& Leaf area index at relative depth L in canopy    &    [ha ha$^{{\rm -1}}$]\\
+LAI &:& Total leaf area of the crop    (see \S 5.4.5) &   [ha ha$^{{\rm -1}}$]\\
+\end{tabularx}
 
 Introducing the values of the leaf area index of the three selected layers in the equations\\
 mentioned before, will yield the instantaneous assimilation at these horizons. The
