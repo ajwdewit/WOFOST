@@ -742,56 +742,37 @@ mentioned before, will yield the instantaneous assimilation at these horizons. T
 weighted average of these values yields the total instantaneous assimilation rate for the
 whole canopy per unit leaf area.
 
+The weighted average of the total instanta\-neous assimilation rates can be calculated as:
 
-
-
-
-
- The weighted average of the total instanta\-neous assimilation rates can be calculated as:
-
-\begin{displaymath}
+\begin{equation}
 A _{C\, ,\, l} ~=~{\frac{(\, A _{T\, ,\, L\, ,\, -1} ~+~1.6\, A _{T\, ,\, L\, ,\, 0} ~+~A _{T\, ,\, L\, ,\, 1\, } )}{3.6}}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.30)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm C,l}}$ : Total instantaneous canopy assimi\-la\-tion \\
-   rate (per unit leaf area)        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm T,L,p}}$ : Total instantaneous gross assimilation rate at relative \\
-   depth L (see eq. 5.28) at p= -1,0,1 (see eq. 5.29)        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm C,l}}$ &:& Total instantaneous canopy assimi\-la\-tion 
+   rate (per unit leaf area)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm T,L,p}}$ &:& Total instantaneous gross assimilation rate at relative 
+   depth L (see eq. 5.28) at p= -1,0,1 (see eq. 5.29)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+\end{tabularx}
 
 This total instantaneous assimilation rate is calculated per unit leaf area and must
 therefore be multiplied with the leaf area index to yield the total assimilation rate for the
 whole canopy:
 
-\begin{displaymath}
+\begin{equation}
 A _{C} ~=~ A _{C\, ,\, l} \, {\rm \Bullet{0.75ex}}\, LAI
-\end{displaymath}
+\end{equation}
 
  
-\strut\hfill (5.31)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where A$_{{\rm C}}$ : Total inst. gross assimila\-tion rate for\\
-   the whole canopy        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm C,l}}$ : Total inst. gross canopy assimila\-tion rate\\
-   per unit leaf area        [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-LAI : Total leaf area of the crop (see \S 5.4.5)        [ha ha$^{{\rm -1}}$]
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+A$_{{\rm C}}$ &:& Total inst. gross assimila\-tion rate for
+   the whole canopy  &  [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm C,l}}$ &:& Total inst. gross canopy assimila\-tion rate 
+   per unit leaf area &  [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+LAI &:& Total leaf area of the crop (see \S 5.4.5)  & [ha ha$^{{\rm -1}}$]\\
 \end{tabbing}
-
-
 
 Note that the green parts of the stems and the storage organs (like panicles) may absorb a
 substan\-tial amount of radiation. Therefore, the green area index of these organs is added
@@ -799,9 +780,9 @@ to the total leaf area. The green area index of the stems and storage organs can
 calculated by multiplying the dry weight of the organ with respectively the specific stem
 area and the specific pod area (see also \S 5.4.5 and eq. 5.54). The specific stem area and
 specific pod area are crop specific and should be provided by the user.
-\newpage
 
-\section{Crop growth  }
+
+\section{Crop growth}
 
 The gross CO$_{{\rm 2}}$ assimilation discussed in chapter 5.3 is the basis for crop growth. The
 resulting actual crop growth depends further on a number of assimilation reducing factors
@@ -810,10 +791,7 @@ conversion of primary assimilates into plant tissue. The remaining dry matter is
 over the various organs. Besides growth, there may be death of the plant organs. All
 these processes simulated in {\bf CROPSI} or {\bf CRSIM} are described in the following sections.
 
-
-
-
-\subsection{Actual gross photosynthesis  }
+\subsection{Actual gross photosynthesis}
 
 In chapter 5.3, the assimilation was treated as a function of the intercepted light and of
 photosynthetic crop characteristics such as initial light use efficiency and maximum leaf
@@ -824,8 +802,7 @@ stomata as means to reduce transpiration. Thus, the gross assimila\-tion depends
 development stage, on temperature and on the transpiration rate. In this para\-graph this
 dependency will be briefly explained.
 
-
-{\bf {\it Development stage\/}}\\
+\subsubsection{Development stage}
 As mentioned before, the instantaneous gross assimilation rate at light saturation, also
 called the maximum leaf CO$_{{\rm 2}}$ assimilation rate, {\bf A$_{{\rm m}}$} (acronym: {\bf AMAXTB}) is a function of
 the development stage and is crop specific. An AFGEN table with the development stage
@@ -833,91 +810,48 @@ as the independent variable is used to describe this dependency (see also \S 5.2
 example see figure 5.3.
 
 \begin{figure}[htbp]
+% figure 5.3
+\caption{Maximum leaf CO$_{{\rm 2}}$ assimilation the rate as a function of develop\-ment of
+the development stage.}
 \begin{forcewidth}{8.44cm}
  \begin{center}\InputPS{\FigDir/AMAXTB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Fig. 5.3
-\testlastline
-
-\begin{indenting}{2.54cm}
-Ma\-xi\-mum leaf CO$_{{\rm 2}}$ assimilation the rate as a function of develop\-ment of
-the develop\-ment stage.
-\end{indenting}
-
- 
- {\bf {\it Daytime temperature\/}}\\
+\subsubsection{Daytime temperature}
 The maximum leaf CO$_{{\rm 2}}$ assimilation rate, A$_{{\rm m}}$, has to be corrected for sub-optimal average
 daytime tempera\-tures. The correction factor is determined by the average daytime
 temperature and is also crop specific. An AFGEN table (acronym: {\bf TMPFTB}) with the
 average day time temperature as the independent variable is used to describe this
-dependency (see also Appendix 2). For an example see figure 5.4. \\
+dependency (see also Appendix 2). For an example see figure 5.4. 
 The correction factor has to be multiplied with A$_{{\rm m}}$. The daytime temperature can be
 calculated as:
 
-\begin{displaymath}
+\begin{equation}
 T _{day} ~=~{\frac{T _{\max } ~ +~  T }{2}} ~~~~~~~~ where ~~~ T~=~{\frac{T _{\max } ~+~ T _{\min } }{2}}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.32)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where T$_{{\rm day}}$ : Average daytime temperature        [\degrees C]\\
-T : (Average) daily temperature        [\degrees C]\\
-T$_{{\rm max}}$ : Maximum daily temperature        [\degrees C]\\
-T$_{{\rm min}}$  : Minimum daily temperature        [\degrees C]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+T$_{{\rm day}}$ &:& Average daytime temperature    &    [\degrees C]\\
+T &:& (Average) daily temperature    &    [\degrees C]\\
+T$_{{\rm max}}$ &:& Maximum daily temperature   &     [\degrees C]\\
+T$_{{\rm min}}$  &:& Minimum daily temperature  &      [\degrees C]\\
+\end{tabularx}
 
 
 \begin{figure}[htbp]
+%figure 5.4
+\caption{Re\-duc\-tion fac\-tor of the ma\-xi\-mum leaf CO$_{{\rm 2}}$ assimila\-tion as a function of
+average tempera\-ture.}
 \begin{forcewidth}{8.44cm}
  \begin{center}\InputPS{\FigDir/TMPFTB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-Fig. 5.4 
-\testlastline
-
-\begin{indenting}{2.54cm}
-Re\-duc\-tion fac\-tor of the ma\-xi\-mum leaf CO$_{{\rm 2}}$ assimila\-tion as a function of
-average tempera\-ture.
-\end{indenting}
-
-
-
-{\bf {\it Nighttime temperature\/}}\\
+\subsubsection{Nighttime temperature}
 The gross CO$_{{\rm 2}}$ assimilation rate cannot exceed the maximum CO$_{{\rm 2}}$ assimilation rate. It
 should also be noted that assimilation is an enzymatic process and such processes are
 temperature dependent (Downes, 1970). However, there seems to be a consider\-able
@@ -935,111 +869,81 @@ As a measure for quantifying the effect of low minimum temperature, the seven da
 running average of minimum tempera\-ture is used as the independent variable in the
 AFGEN table (see also Appendix 2).
 
-\begin{displaymath}
+\begin{equation}
 T _{low} ~=~\begin{array}{c}{i=7}  \\
 \sum  \\
 {i=1}\end{array}{\frac{\, T _{\min ,i} }{7}}
-\end{displaymath}
+\end{equation}
+
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+T$_{{\rm min}}$  &:& Daily minimum temperature   &     [\degrees C]\\
+T$_{{\rm low}}$ &:& Seven day running average of minimum tempera\-ture    &    [\degrees C]\\
+i &:& Day    &    [-]
+\end{tabularx}
 
 
-\strut\hfill (5.33)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where T$_{{\rm min}}$  : Daily minimum temperature        [\degrees C]\\
-T$_{{\rm low}}$ : Seven day running average of minimum tempera\-ture        [\degrees C]\\
-i : Day        [-]
-\end{tabbing}
-
-
-
-\selectlanguage{UKenglish}{\bf {\it Photosynthesis in terms of CH$_{{\rm 2}}$O\/}}\\
+\subsubsection{Photosynthesis in terms of CH$_{{\rm 2}}$O}
 In the photosynthesis process, CO$_{{\rm 2}}$ is reduced to carbohydrates (CH$_{{\rm 2}}$O) using the energy
 supplied by the absorbed light. The overall chemical reaction of this complex process is:
 
-\begin{displaymath}
+\begin{equation}
+% equation 5.34
 6\, CO _{2} ~+~ 6\, H _{2} O ~\,\begin{array}{c}{light}  \\
 {--->}\end{array} \, ~C _{6} H _{12} O _{6} ~+~ 6\, O _{2}
-\end{displaymath}
-
- 
-\strut\hfill (5.34)
-
-
+\end{equation}
 
 or in simplified form:
 
-\begin{displaymath}
+\begin{equation}
+% equation 5.35
 CO _{2} ~+~ H _{2} O~\,\begin{array}{c}{light}  \\
 {--->}\end{array} \, ~ CH _{2} O ~+~ O _{2}
-\end{displaymath}
-
- 
-\strut\hfill (5.35)
-
+\end{equation}
 
 
 For each kg of CO$_{{\rm 2}}$ absorbed, 30/44 kg of CH$_{{\rm 2}}$O is formed, the numerical values
 representing the molecular weights of CH$_{{\rm 2}}$O and CO$_{{\rm 2}}$ respectively.
 
-\begin{displaymath}
+\begin{equation}
+% equation 5.36
 R _{d}^{1} ~=~ A _{d}^{1} \,\,{\frac{30}{44}}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.36)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$^{{\rm 1}}$$_{{\rm d}}$ : Gross daily CH$_{{\rm 2}}$O assimilation rate        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-   (not corrected for water stress)\\
-A$^{{\rm 1}}$$_{{\rm d}}$ : Gross daily CO$_{{\rm 2}}$ assimilation rate (see eq. 5.11)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-   (corrected for low minimum temperature)
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$^{{\rm 1}}$$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate 
+   (not corrected for water stress) &   [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+A$^{{\rm 1}}$$_{{\rm d}}$ &:& Gross daily CO$_{{\rm 2}}$ assimilation rate 
+   (see eq. 5.11) (corrected for low minimum temperature)   &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\   
+\end{tabularx}
  
 As mentioned earlier, the gross daily CO$_{{\rm 2}}$ assimilation rate, A$^{{\rm 1}}$$_{{\rm d}}$, can be calculated by
 multiply\-ing the total hourly instantaneous assimilation rate (eq. 5.31) with the day length
 (eq. 4.25). 
 
-{\bf {\it Transpiration\/}}\\
+\subsubsection{Transpiration}
 The calculated daily assimilation in CH$_{{\rm 2}}$O per ha will be reduced when water stress
 occurs. In the model the effects of water stress on assimilation are related to the ratio of
-actual transpiration and potential transpiration (van Keulen \& Seligman, 1987).\\
+actual transpiration and potential transpiration (van Keulen \& Seligman, 1987).
 The gross assimilation rate, corrected for water stress, can be calculated as.
 
-\begin{displaymath}
+\begin{equation}
 R _{d} ~=~ R _{d}^{1} \,\,{\frac{T _{a} }{T _{p} }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.37)
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$^{{\rm 1}}$$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate
+   (not corrected for water stress)   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+T$_{{\rm a}}$ &:& Actual transpiration   &     [cm d$^{{\rm -1}}$]\\
+T$_{{\rm p}}$ &:& Potential transpiration   &     [cm d$^{{\rm -1}}$]\\
+\end{tabularx}
 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$_{{\rm d}}$ : Gross daily CH$_{{\rm 2}}$O assimilation rate        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$^{{\rm 1}}$$_{{\rm d}}$ : Gross daily CH$_{{\rm 2}}$O assimilation rate\\
-   (not corrected for water stress)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-T$_{{\rm a}}$ : Actual transpiration        [cm d$^{{\rm -1}}$]\\
-T$_{{\rm p}}$ : Potential transpiration        [cm d$^{{\rm -1}}$]
-\end{tabbing}
-
- 
 In \S 6.1 the calculation of the potential, T$_{{\rm p}}$, and actual the transpiration, T$_{{\rm a}}$, will be ex\-plained.
 
-
-
-
-\subsection{Maintenance respiration  }
+\subsection{Maintenance respiration}
 
 Some of the carbohydrates formed are respired to provide energy for maintaining the
 existing biostructures. The maintenance processes include resynthesis of degraded proteins
@@ -1049,51 +953,43 @@ Vries, 1975), probably due to a higher enzyme turnover and higher transport cost
 
 Maintenance respiration provides the energy for living organisms to maintain their
 biochemical and physiological status. Through the reaction which is the reverse of CO$_{{\rm 2}}$
-reduction in the CO$_{{\rm 2}}$ assimila\-tion, the radiation energy which was fixed in the photosyn\-thetic process is released in a suitable form (ATP and NADPH):
+reduction in the CO$_{{\rm 2}}$ assimila\-tion, the radiation energy which was fixed in the
+photosyn\-thetic process is released in a suitable form (ATP and NADPH):
 
-\begin{displaymath}
+\begin{equation}
+% eq 5.38
 CH _{2} O ~+~ O _{2} ~--->~ CO _{2} ~+~ H _{2} O ~+~ energy
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.38)
- 
 This maintenance respiration consumes roughly 15 - 30\% of the carbohy\-drates produced
 by a crop in a growing season (Penning de Vries {\it et al.\/}, 1979). This indicates the
 importance of accurate quantification of this process in the model.
 
-
-{\bf {\it Maintenance respiration as a function of the weight of dry matter\/}}\\
+\subsubsection{Maintenance respiration as a function of the weight of dry matter}
 The maintenance costs may be estimated on the basis of the quantities of proteins and
-minerals present in the biomass and on crop metabolic activity, as presented by the Wit {\it et
+minerals present in the biomass and on crop metabolic activity, as presented by De Wit {\it et
 al.\/} (1978). This method, however, requires information on the nitrogen and mineral
-contents of the vegetation.\\
+contents of the vegetation.
 Based on the results of this analysis, typical values for the maintenance coefficients of
-various plant organs have been derived by Penning de Vries \& van Laar (1982). \\
+various plant organs have been derived by Penning de Vries \& van Laar (1982).
 In the model, these coefficients are used to calculate the maintenance requirements of the
-crop. According to this approach the maintenance requirements are approxi\-mately propor\-tional to the dry weights of the plant organs to be maintained: 
+crop. According to this approach the maintenance requirements are approxi\-mately 
+propor\-tional to the dry weights of the plant organs to be maintained: 
 
-\begin{displaymath}
+\begin{equation}
 R _{m,r} ~ = ~\begin{array}{c} {i=1}  \\
 \sum  \\
 {i=4}\end{array} \, c _{m,i} \, W _{i}
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.39)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$_{{\rm m,r}}$ : Maintenance respiration rate at reference \\
-   temperature of 25 \degrees C        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-c$_{{\rm m,i}}$ : Maintenance coefficient of organ i        [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-W$_{{\rm i}}$ : Dry matter weight organ i (see eq. 5.49)        [kg ha$^{{\rm -1}}$]\\
-i : Leaves (lv), storage organs (so), stems (st) or roots (rt) 
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$_{{\rm m,r}}$ &:& Maintenance respiration rate at reference 
+   temperature of 25 \degrees C &   [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+c$_{{\rm m,i}}$ &:& Maintenance coefficient of organ i  & [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+W$_{{\rm i}}$ &:& Dry matter weight organ i (see eq. 5.49)   &     [kg ha$^{{\rm -1}}$]\\
+i &:& Leaves (lv), storage organs (so), stems (st) or roots (rt)\\ 
+\end{tabularx}
  
 The maintenance coefficient of organ i, {\bf c$_{{\rm m,i}}$}, is crop dependent and should be provided by
 the user. Acronyms used in the model: {\bf RML} (lv), {\bf RMO} (so), {\bf RMS} (st) and {\bf RMR} (rt).
@@ -1106,40 +1002,22 @@ weight of organ i (dead and alive). Integration of the net increase of dry matte
 differ\-enc\-es in the mainte\-nance coefficients. However, in the model nitrogen contents are
 not simulated.
 
-
-
-{\bf {\it Dependency of the maintenance respiration on development stage\/}}\\
+\subsubsection{Dependency of the maintenance respiration on development stage}
 The calculated maintenance respiration rate (eq. 5.39) has to be corrected for senescence.
 This correction factor is crop specific and is defined as a function of development stage
 (see figure 5.5). An AFGEN table (acronym: {\bf RFSETB}) with the development stage as
 independent variable, is used to describe this dependency. The maintenance respiration
-should be multiplied with this factor\\
+should be multiplied with this factor.
+
 \begin{figure}[htbp]
+%figure 5.5
+\caption{Reduc\-tion factor for senescence as a function of development stage}
 \begin{forcewidth}{8.44cm}
  \begin{center}\InputPS{\FigDir/RFSETB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Fig. 5.5
-\testlastline
-
-\begin{indenting}{2.54cm}
-Reduc\-tion factor for senescence as a function of development stage
-\end{indenting}
- {\bf {\it Dependency of the maintenance respiration on temperature\/}}\\
+\subsubsection{Dependency of the maintenance respiration on temperature}
 Higher temperatures accelerate the turnover rates in plant tissue and hence the costs of
 mainten\-ance. An increase in temperature of 10\degrees C increases maintenance respira\-tion by a
 factor of about 2 (Kase \& Catsky, 1984; Penning de Vries \& van Laar, 1982). However,
@@ -1148,26 +1026,22 @@ Q$_{{\rm 10}}$ is defined as the relative increase of the respiration rate per 1
 increase. Q$_{{\rm 10}}$ should be provided by the user. The rate of the maintenance respiration at a
 certain temperature, can be calculated with:
 
-\begin{displaymath}
+\begin{equation}
+% eq 5.40
 R _{m,T} ~=~ R _{m,r} \, Q _{10}^{~~{\frac{T-T _{r} }{10}} }
-\end{displaymath}
+\end{equation}
 
  
-\strut\hfill (5.40)\\
-\strut\hfill 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$_{{\rm m,T}}$ : Maintenance respiration rate at temperature T        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm m,r}}$ : Maintenance respiration rate at reference \\
-   temperature of 25 \degrees C (see eq. 5.39)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-Q$_{{\rm 10}}$ : Relative increase of the respiration rate\\
-   per 10\degrees C temperature increase        [-]\\
-T : Average daily temperature         [\degrees C]\\
-T$_{{\rm r}}$ : Reference temperature {\small [=25 \degrees C in the model]}        [\degrees C]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$_{{\rm m,T}}$ : Maintenance respiration rate at temperature T &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm m,r}}$ : Maintenance respiration rate at reference 
+   temperature of 25 \degrees C (see eq. 5.39)   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+Q$_{{\rm 10}}$ : Relative increase of the respiration rate
+   per 10\degrees C temperature increase    &    [-]\\
+T : Average daily temperature    &     [\degrees C]\\
+T$_{{\rm r}}$ : Reference temperature {\small [=25 \degrees C in the model]}    &    [\degrees C]\\
+\end{tabularx}
 
  
 For tropical species, the reference temperature may be 10\degrees C higher than for species from
@@ -1175,19 +1049,17 @@ temperate climates. The maintenance requirements of a crop are likely to be adap
 the higher growth temperatures. However, in WOFOST 6.0 the reference temperature is
 fixed at 25\degrees C for all crops.
 
-
-
 As stated before, maintenance respiration rate depends on the amount of dry matter in the
 various organs, the relative maintenance rate per organ and the temperature. It cannot
 exceed the actual gross assimilation rate. It is assumed that the vegetation will not be
-'self-consuming' in terms of carbohydrates. Actual gross assimilation rate minus mainten\-ance respiration rate results in the amount of assimilates available for conversion into
-structural material. When the crop ages, its metabolic activity and therefore its mainten\-ance require\-ments decreases. This effect could be accounted for by relating the mainten\-ance coefficients to the N content of the tissues (van Keulen \& Seligman, 1987).
+'self-consuming' in terms of carbohydrates. Actual gross assimilation rate minus 
+mainten\-ance respiration rate results in the amount of assimilates available for conversion into
+structural material. When the crop ages, its metabolic activity and therefore its
+mainten\-ance require\-ments decreases. This effect could be accounted for by relating 
+the mainten\-ance coefficients to the N content of the tissues (van Keulen \& Seligman, 1987).
 However, N contents are not simulated in the model. 
 
-
-
-
-\subsection{Growth respiration  }
+\subsection{Growth respiration}
 
 The primary assimilates in excess of the maintenance costs, are for conversion into
 structural plant material. In this conversion process of the glucose molecules, CO$_{{\rm 2}}$ and
