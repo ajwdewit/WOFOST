@@ -1,13 +1,6 @@
-% This file was created by the WP2LaTeX program version: 3.51 
-\documentclass[11pt]{article}
-\usepackage{wp2latex}
-\usepackage{epsfig}
-\usepackage[USenglish]{babel}
 
-\newcommand{\FigDir}{.}
-
-\begin{document}
-{\bf {\large PREFACE}}
+\chapter*{PREFACE}
+\addcontentsline{toc}{chapter}{PREFACE}
 
 The documentation of WOFOST version 6.0 is based on the work of the following
 researchers of DLO-CABO, Theoretical Production Ecolgy and SC-DLO: C.T. de
@@ -15,10 +8,13 @@ Wit, C.A. van Diepen, C.J.T. Spitters, F.W.T. Penning de Vries, H. van Keulen, N
 Seligman, J. Goudriaan, D.W.G. van Kraalingen, C. Rappoldt, H.F.M. ten Berge, R.
 Rabbinge, H.H. van Laar, S.A. Ward, D.M. Jansen, A. Bakema and J. Wolf.
 \newpage
-{\bf {\large INTRODUCTION}}
+
+\chapter*{INTRODUCTION}
+\addcontentsline{toc}{chapter}{INTRODUCTION}
 
 The Directorate General for Agriculture of the EC requires timely forecasting of
-agricultural production to support the Common Agricultural Policy (CAP). Integra\-tion of Community statistics has until now been performed by the Statistical Office of
+agricultural production to support the Common Agricultural Policy (CAP). 
+Integra\-tion of Community statistics has until now been performed by the Statistical Office of
 the European Community (O.S.C.E. or Eurostat) in Luxembourg. Prediction of yields
 by Eurostat is based on statistical methods, using historical data. Time trends and
 weather indicators are also taken into account. The Institute for Remote Sensing
@@ -29,8 +25,8 @@ project, an Advanced System of Information on Agriculture is being developed. Th
 methods are being investigated by JRC: conventional surveys, remote sensing and
 agro-meteorological modelling.
 
-\bigskip
-At the request of the JRC, the DLO Winand Staring Centre (SC-DLO) in co-operation with the DLO Centre for Agrobiological Research (CABO-DLO) in
+At the request of the JRC, the DLO Winand Staring Centre (SC-DLO) in co-operation with the 
+DLO Centre for Agrobiological Research (CABO-DLO) in
 Wageningen, The Nether\-lands, has executed the project:"Development, validation of
 crop specific agrometeorological simulation models". The objective, as described in
 the contract was "to develop, validate and test new or already existing agro-meteoro\-logical simulation models for 10-day routine quantitative forecasting of national and
@@ -42,7 +38,6 @@ sunflower, tobacco and cotton."  The Winand Staring Centre (SC-DLO) and the DLO
 Centre for Agrobiological Research (CABO-DLO) have adapted the already existing
 WOFOST crop growth model for this purpose.
 
-\bigskip
 WOFOST is the acronym for WOrld FOod STudies. It is the name of a model for
 simulating the growth of crops. It was developed by the Centre for World Food
 Studies in Wageningen, The Netherlands, in cooperation with the Agricultural
@@ -54,54 +49,57 @@ species, soil type, hydrologic conditions and weather during the growing season.
 principle the model is applicable anywhere where crops are produced although the
 model has been developed primarily for agriculture in the tropics.
 
-\bigskip
 The WOFOST simulation model is a tool for analysing the growth and production of
 crops under a wide range of weather and soil conditions. Such analysis is important,
 first to assess to what extend the crop production is limited by factors of light,
 moisture and macro-nutrients, and second, to estimate what improvements are
 possible.
 
-{\bf 1 CROP GROWTH} 
+\chapter{CROP GROWTH} 
 
-{\bf 1.1 Systems, models and simulation }
+\section{Systems, models and simulation}
 
-{\bf {\it Definitions\/}}\\
-System analysis and simulation has been used by enigineers for more than 30 years.
-Their successes inspired biologist and agronomist to apply similar thechniques in their
-disciplines. The approach is characterized by the terms: systems, models and simula\-tion (de Wit, 1982). A system is a limited part of reality that contains interrelated
+\subsection{Definitions}
+System analysis and simulation has been used by engineers for more than 30 years.
+Their successes inspired biologist and agronomist to apply similar techniques in their
+disciplines. The approach is characterized by the terms: systems, models and 
+simula\-tion (de Wit, 1982). A system is a limited part of reality that contains interrelated
 elements. A model is a simplified representation of a system and simulation is may be
 defined as the art of building mathemati\-cal models and the study of their properties
 in reference to those of the system.
 
 Although any model should have definite goals, be lucid and achieve its objective, in
-practise it seems that goals are too often described in such broad terms that sufficient
+practice it seems that goals are too often described in such broad terms that sufficient
 lucidity  is reached only for the initiated, and that the models achieve less than
 expected by the biologist. For these reasons the word 'art' rather than science is used
 in the definition (de Wit, 1982).
 
-\bigskip
-{\bf {\it Descriptive models\/}}\\
-As described by Penning de Vries et al. (1989), a crop model is a simple representa\-tion of a crop. It is used to study the crop growth and to compute growth responses
+\subsection{Descriptive models}
+As described by Penning de Vries et al. (1989), a crop model is a simple representa\-tion of a 
+crop. It is used to study the crop growth and to compute growth responses
 to the environment. Crop models in common use can be distin\-guished as descriptive
 and explanatory models. A descriptive model defines the behavior of a system in a
 simple manner. The model reflects little or none of the mechanisms that are the
-cause of the behavior. Creating and using this type of model is relatively straightfor\-ward. They often consists of one ore more mathematical equations. Those equations
+cause of the behavior. Creating and using this type of model is relatively straightfor\-ward. 
+They often consists of one ore more mathematical equations. Those equations
 have a limited validity. They can only be used for a specific cultivar and or soil type.
 Descriptive models are therefore of value only for situations where interpolation
 between observations is sought and there is no attempt to quantify the processes
 involved.
 
-\bigskip
-{\bf {\it Explanatory model\/}}\\
+\subsection{Explanatory model}
 An explanatory model consists of a quantitative description of the mechanisms and
 processes that cause the behaviour of a system. These descriptions are explicit
-statements of the scientific theory and hypothesed. To create an explanatory model,
-the system is analyzed and its processes and mechanisms are quantified seperately.
+statements of the scientific theory and hypotheses. To create an explanatory model,
+the system is analyzed and its processes and mechanisms are quantified separately.
 The model is built by integrating these descriptions for the entire system. An
 explanatory crop growth model contains descriptions of distinct processes such as
-photosynthesis, leaf area expansion and tiller induction. Crop growth is a conse\-quence of these underlying processes.\\
+photosynthesis, leaf area expansion and tiller induction. Crop growth is a conse\-quence 
+of these underlying processes.
+
 If all the elements, composing the model are well understood it may not be necessary
-to evaluate the model by comparing its results with those of the real system. Explana\-tory models in biology are so rudimentary, however, that proof of their usefulness is
+to evaluate the model by comparing its results with those of the real system. 
+Explana\-tory models in biology are so rudimentary, however, that proof of their usefulness is
 necessary. Good agreement between predictions and observations is still more the
 exception than the rule, and even when there is good agreement there is room for
 doubt (Rabbinge \& de Wit, 1989). If there are discrepancies between the model and
@@ -109,15 +107,15 @@ the real system, the model may be adjusted by tuning variables to obtain better
 agreement. The explanatory model can thus be degenerated to a descriptive model. It
 might then be better to use statistically efficient models designed for this purpose,
 such as multivariate regression models used by Thompson (1969), Pitter (1977) and
-Bridge (1976).\\
-The appropiate approach in explanatory modelling is heuristic, by way of gradual
+Bridge (1976).
+
+The appropriate approach in explanatory modelling is heuristic, by way of gradual
 improvement. If unacceptable discrepancies between model and system are observed,
 it may be possible to judge which aspects are then to be studied experimentally on
 the level of used for explanation. Explanatory models can thus be used to guide
 research.
 
-\bigskip
-{\bf {\it Levels of crop production\/}}\\
+\subsection{Levels of crop production}
 De Wit proposed a classification of systems growth-limiting factors (de Wit \&
 Penning de Vries, 1982; Penning de Vries \& van Laar, 1982). Four levels of plant
 production are distinguished. The crop production systems at any of these levels can
@@ -137,10 +135,10 @@ growing season. This situation occurs in semi-arid regions when fertilizers are 
 or in other climates when light soils are intensively used.
 
 {\it Production level 3\/}\\
-The crop growth is limited by the availabilty of nitrogen for at least a part of the
-growing season and by water availabilty or poor weather conditions for the remainder
+The crop growth is limited by the availability of nitrogen for at least a part of the
+growing season and by water availability or poor weather conditions for the remainder
 of the growth period. This situation is quite common all over the world. It should be
-noted that in the natural evironment even nitrogen-efficient plant cannot always
+noted that in the natural environment even nitrogen-efficient plant cannot always
 absorb sufficient nitrogen.
 
 {\it Production level 4\/}\\
@@ -149,11 +147,7 @@ nutrients for at least a part of the growing season. Dry matter production amoun
 10-50 kg ha$^{{\rm -1}}$d$^{{\rm -1}}$ and the growing season often lasts less then hundred days. This
 situation is quiet common in cases where the soil is heavily exploited and no fertiliz\-ers are used. 
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-{\bf {\it Application of crop growth models\/}}\\
+\section{Application of crop growth models}
 Crop growth simulation models can be applied in the domain of potential crop
 production and production with a temporary water shortage but ample nutrients
 (production levels 1 and 2). These domains include predicting short term yield,
@@ -163,18 +157,17 @@ Vries, 1989). Applying models can lead to more effective use of existing knowled
 for extension, agronomic and cropping systems research and breeding and to more
 efficient experimentation. Whisler et al. (1986) presented an overview of crop models
 and their application. \\
-Crop yields can be predicted some time before harvest by using expeted weather
+Crop yields can be predicted some time before harvest by using expected weather
 data. This might be important for cash-crops, where trade and planning post harvest
 activities start early.\\
 Van Keulen \& Wolf (1986) have used a crop growth model to estimate yield levels of
 various food crops on a regional scale where there were no or insufficient external
 inputs to ensure potential growth.
 
-\bigskip
-{\bf {\it The WOFOST crop growth model\/}}\\
+\subsection{The WOFOST crop growth model}
 The crop growth simulation model WOFOST version 6.0 can be used for the same
-purpose as the preceding versions of WOFOST decribed by Wolf et al. and by
-Rappoldt (1986): the assesment of agricultural production potentials and of the
+purpose as the preceding versions of WOFOST described by Wolf et al. and by
+Rappoldt (1986): the assessment of agricultural production potentials and of the
 constraining growth factors as influenced by environmental conditions, reclamation
 measures and management. The model can be considered as a system approach for
 analyzing the bio-physical aspects of the production of annual crops, grown in
@@ -183,31 +176,31 @@ yields for two well defined production situations. The first one is the potentia
 production situation, production level 1 and the second is the water limited situation,
 production level 2.
 
-\bigskip
-{\bf {\it Processed described in WOFOST\/}}\\
+\subsection{Processed described in WOFOST}
 A Crop Growth Simulation model basically is a set of equations describing physical
 processes. Sunlight is the driving force for crop growth. The intensity of radiation, the
 interception of light and the efficiency of energy use in the plant are the main factors
 which influ\-ence the photosynthesis. The environmental temperature plays also an
 important role. It influences both the photosynthetic rate and growth rate. The
-assimilates which are not used for the maintenance are partioned over the roots,
+assimilates which are not used for the maintenance are partitioned over the roots,
 stems, leaves and storage organs.Partitioning of the assimilates is dependent on the
 development stage which on its turn is related to the temperature sum. Structural
 biomass cannot be mobilized for either maintenance or growth processes elsewhere in
 the plant.\\
 Water shortage leads to stomatal closure and simultaneous reduction of assimilation
 and transpiration. The ratio of the actual transpiration rate and the potential rate\\
-provides the link between the carbon and the waterbalance. The extent to which the
+provides the link between the carbon and the water balance. The extent to which the
 potential photosynthesis is realized, depends on the availability of water.
 
-\bigskip
-\bigskip
 A System Description provides information on these processes and how they are
-described in the simulation model. Into more detail a system description will consid\-er:\\
-$\bullet$ Functionality\\
-$\bullet$ Processes\\
-$\bullet$ Data\\
-$\bullet$ Implemention
+described in the simulation model. Into more detail a system description will 
+consider:
+\begin{itemize}
+\item Functionality
+\item Processes
+\item Data
+\item Implementation
+\end{itemize}
 
 {\it 1. Functionality\/}\\
 The System Description describes the functions to be performed by the program.
@@ -231,20 +224,14 @@ description of the implementation of the processes is also part of the user manu
 This means a description of the subroutines in relation to the described processes and
 a calling structure of these subroutines.  
 
-This implies that a System description does not describe: \\
-$\bullet$ the actual implementation of the equations in the model (code);
-
-\zerotestlastline
-\begin{indenting}{1.27cm}
-A model has to be implemented in a certain computer language which has its
+This implies that a System description does not describe:
+\begin{itemize}
+\item the actual implementation of the equations in the model (code);
+\item A model has to be implemented in a certain computer language which has its
 own rules. These rules will not be described. In the source code of the model 
 (files with the extension .FOR) the actual implementation of all the equtions
 can be found.
-\end{indenting}
-$\bullet$ the different formats in which input can be delivered to the model;
-
-\zerotestlastline
-\begin{indenting}{1.27cm}
+\item the different formats in which input can be delivered to the model;\\
 A lot of input parameters are needed for the model to run. Values for
 meteorological parameters, crop parameters, soil parameters and model
 parameters need to be specified to run the model. This is done with the help
@@ -252,21 +239,17 @@ of input files. An extensive description of the input files is provided in the u
 manual of the model (Guiking, 1993). In the description of the different
 processes input parameters will be pointed out by telling that these input
 parameters are station, crop or soil specific.   
-\end{indenting}
-$\bullet$ information on the different output files that can be generated;
-
-\zerotestlastline
-\begin{indenting}{1.27cm}
-Different types of output files can be created accordig to the whishes of the
+\item information on the different output files that can be generated;\\
+Different types of output files can be created according to the whishes of the
 user. An extensive description of the output files is provided in the user
-manual of the model (Guiking, 1993). 
-\end{indenting}
-$\bullet$ the user interface. \\
-\hspace*{1.28cm}WOFOST offers the possibility to make a interactive run specification. This is
+manual of the model (Guiking, 1993).
+\item the user interface. \\
+WOFOST offers the possibility to make a interactive run specification. This is
 also described in the user manual (Guiking, 1993).
 
-\bigskip
-\bigskip
+\item 
+\end{itemize}
+
 {\bf 1.2 Functional description of WOFOST Version 6.0}
 
 Crop growth is often described by an empirical model, consisting of a regression
@@ -277,12 +260,12 @@ the basis of extensive sets of experimental data. The predictions are restricted
 same environment on which the regression is based. These empirical, descriptive
 models, however, give little insight into the causes of the observed variation in yields. 
 
-\bigskip
 WOFOST Version 6.0 is a mechanistic model that explains crop growth on the basis
 of the underlying processes, such as photosynthesis and respiration, and how these
 processes are influenced by environmental conditions. The predictive ability of
 mechanistic models does not always live up to expectation. It should be realized,
-however, that each parameter estimate and process formulation has its own inaccura\-cy, and that these errors accumulate in the prediction of final yield. However, yield
+however, that each parameter estimate and process formulation has its own inaccura\-cy, 
+and that these errors accumulate in the prediction of final yield. However, yield
 prediction is a secondary aim of these models. Their primary aim is to improve
 insight into the studied system by integrating the present knowl\-edge quantitatively in
 terms of a simulation model. By studying the behavior of the model, better insight
@@ -290,7 +273,8 @@ into the real system is gained.
 
 Crop growth can be simulated for one crop for a number of growth seasons. Only
 one growth season can be simulated for one calendar year.  The model explains crop
-growth on the basis of the underly\-ing processes, such as photosynthesis and respira\-tion, and how these processes are influenced by environmental conditions. \\
+growth on the basis of the underly\-ing processes, such as photosynthesis and respira\-tion, 
+and how these processes are influenced by environmental conditions. \\
 Dry matter accumulation of a crop can thus be calculated as a function of irradiation,
 temperature and crop characteristics.
 
@@ -299,111 +283,50 @@ deter\-mine when and to what degree a crop is exposed to water stress. This can 
 done with the aid of a water balance, which compares for a given period of time,
 incoming water in the rooted surface soil with outgoing water and quantifies the
 difference between the two as a change in the amount of soil moisture stored.\\
-Meteorological data (rain, windspeed, global radiation, sunshine duartion, etc.) are
+Meteorological data (rain, wind speed, global radiation, sunshine duration, etc.) are
 needed as input for the soil water balance. These data are often measured on a daily
 basis. This is the reason why the time set for simulation is set to one day. \\
+
 \begin{figure}[htbp]
- \begin{center}\epsfig{file=\FigDir/DAGLOOP.eps,width=7.04cm} \end{center}
-\end{figure}
-\begin{figure}[htbp]
- \begin{center}\epsfig{file=\FigDir/JAARLOOP.eps,width=7.04cm} \end{center}
+% figure 1.1
+\caption{Daily calculations}
+\label{fig:dayloop}
+ \begin{center}\InputPS{file=\FigDir/DAGLOOP.eps,width=7.04cm} \end{center}
 \end{figure}
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-Figure 1.1 Daily calulations\> \> \> \> \> \> \> \> Fig\-ure 1.2  Yearly calculations
-\end{tabbing}
+\begin{figure}[htbp]
+% figure 1.2
+\caption{Yearly calculations}
+\label{fig:yearloop}
+ \begin{center}\InputPS{file=\FigDir/JAARLOOP.eps,width=7.04cm} \end{center}
+\end{figure}
 
- \bigskip
 The influence of nutrients (nitrogen, phosphate and potassium) on the yield and the
 yield statistics are calculated on a yearly basis. 
 
-Figure 1.1 presents this loop over days for one growth season, whereas figure 1.2
-depicts the loop over years for one simulation run.
+Figure \ref{fig:dayloop} presents this loop over days for one growth season, 
+whereas figure \ref{fig:yearloop} depicts the loop over years for one simulation run.
 
-Another important feature of the crop growth simulation model is the comparisson of
+Another important feature of the crop growth simulation model is the comparison of
 the potential production with the water limited production. The potential production
 assumes that the soil moisture content is always at field capacity.
 
 \begin{figure}[htbp]
- \begin{center}\epsfig{file=\FigDir/WEERLOOP.eps,width=7.73cm} \end{center}
+% \begin{center}\InputPS{file=\FigDir/WEERLOOP.eps,width=7.73cm} \end{center}
 \end{figure}
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \begin{figure}[htbp]
- \begin{center}\epsfig{file=\FigDir/CROPLOOP.eps,width=9.29cm} \end{center}
+ \begin{center}\InputPS{file=\FigDir/CROPLOOP.eps,width=9.29cm} \end{center}
 \end{figure}
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
 \begin{figure}[htbp]
- \begin{center}\epsfig{file=\FigDir/SOILLOOP.eps,width=9.29cm} \end{center}
+ \begin{center}\InputPS{file=\FigDir/SOILLOOP.eps,width=9.29cm} \end{center}
 \end{figure}
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-\bigskip
- 
-
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-The model can
-be used to
-simulate pro\-duction and
-water use in
-order to survey
-and evaluate
-new sites, crops
-or cultivars, husbandry and management techniques before embarking on a large
-program. The model can also esthablish the impact of year-to-year weather variability
+The model can be used to simulate pro\-duction and water use in order to survey
+and evaluate new sites, crops or cultivars, husbandry and management techniques 
+before embarking on a large
+program. The model can also establish the impact of year-to-year weather variability
 on the crop much faster than with more conventional methods. 
 
 This manual covers the processes of crop growth and water movement as they are
@@ -415,20 +338,15 @@ Chapter 3 discusses the calculation and conversion of meteorological data like:
 calculation of potential evapo(trans)piration, calculation of day length and solar
 elevation and deriving daily rainfall data from long term monthly rainfall data.\\
 Chapter 4 discusses how the most important crop growth processes are simulated
-like: daily assimilation, maitenance respiration, growth respiration, partitioning of
+like: daily assimilation, maintenance respiration, growth respiration, partitioning of
 assimilates, senes\-cence and death. Chapter 5 discusses the soil water balance
 calculations. These calculations keep track of the water in the soil. The soil moisture
 content can be calculated from this. 
 
-
-\newpage
 van Diepen, C.A., Rappoldt, C., Wolf, J., van Keulen, H. 1988. {\it Crop growth simula\-tion model \/}
-\testlastline
 
-\begin{indenting}{2.54cm}
 {\it WOFOST version 4.1, documentation\/}. SOW-88-01. Centre for World
 Food Studies, Wage\-ningen, The Netherlands.
-\end{indenting}
-van Diepen, C.A., Wolf, J., van Keulen, H., Rappoldt C.,. 1989. {\it WOFOST: a simula\-tion model of crop production. \/}Soil use and management, Volume 5, Number 1,
-March.
-\end{document}
+
+van Diepen, C.A., Wolf, J., van Keulen, H., Rappoldt C.,. 1989. {\it WOFOST: a simula\-tion 
+model of crop production. \/}Soil use and management, Volume 5, Number 1, March.

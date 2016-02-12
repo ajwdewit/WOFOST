@@ -772,7 +772,7 @@ A$_{{\rm C}}$ &:& Total inst. gross assimila\-tion rate for
 A$_{{\rm C,l}}$ &:& Total inst. gross canopy assimila\-tion rate 
    per unit leaf area &  [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
 LAI &:& Total leaf area of the crop (see \S 5.4.5)  & [ha ha$^{{\rm -1}}$]\\
-\end{tabbing}
+\end{tabularx}
 
 Note that the green parts of the stems and the storage organs (like panicles) may absorb a
 substan\-tial amount of radiation. Therefore, the green area index of these organs is added
@@ -1030,7 +1030,6 @@ certain temperature, can be calculated with:
 % eq 5.40
 R _{m,T} ~=~ R _{m,r} \, Q _{10}^{~~{\frac{T-T _{r} }{10}} }
 \end{equation}
-
  
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
@@ -1064,13 +1063,15 @@ However, N contents are not simulated in the model.
 The primary assimilates in excess of the maintenance costs, are for conversion into
 structural plant material. In this conversion process of the glucose molecules, CO$_{{\rm 2}}$ and
 H$_{{\rm 2}}$O are released. This is a partial combustion of glucose to provide energy required in
-the various biochemical pathways. Hence, biosynthesis of the various structural com\-pounds can be considered a process of cut and paste, the scraps representing the weight
-lost in growth respiration.\\
- Each structural compound is formed along a distinct, non crop-specific pathway.
+the various biochemical pathways. Hence, biosynthesis of the various structural com\-pounds can 
+be considered a process of cut and paste, the scraps representing the weight
+lost in growth respiration.
+Each structural compound is formed along a distinct, non crop-specific pathway.
 Following these reactions, the weight of glucose required to produce a unit of the
 compound can be calculated (Penning de Vries {\it et al.\/}, 1974). The transport costs of the
 molecules are included. Two active passages of membranes are assumed. Each active
-passage requires 1 ATP, which is provided by respiring $^{{\rm 1}}$/$_{{\rm 3}}$$_{{\rm 8}}$ molecule of glucose. \\
+passage requires 1 ATP, which is provided by respiring $^{{\rm 1}}$/$_{{\rm 3}}$$_{{\rm 8}}$ molecule of glucose.
+
 The assimilates required to produce a unit weight of a certain plant organ can now be
 calculated from its chemical composition and the assimilate requirements of the various
 chemical com\-pounds. Storage organs (grains, tubers, etc.) vary to much in composition
@@ -1081,89 +1082,71 @@ At higher temperatures the conversion processes are accelerated, but the pathway
 identical (Spitters {\it et al.\/} 1989). Hence, the assimilate requirements do not vary with
 temperature. The growth respiration rate can then be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 R _{g} ~=~ R _{d} ~-~ R _{m,T} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.41)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$_{{\rm g}}$ : Growth respiration rate        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm d}}$ : Actual daily CH$_{{\rm 2}}$O assimilation rate (see eq. 5.37)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm m,T}}$ : Maintenance respiration rate at \\
-   temperature T (see eq. 5.40)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]
-\end{tabbing}
-
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$_{{\rm g}}$ &:& Growth respiration rate   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm d}}$ &:& Actual daily CH$_{{\rm 2}}$O assimilation rate (see eq. 5.37)   &   
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm m,T}}$ &:& Maintenance respiration rate at 
+    temperature T (see eq. 5.40)   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+\end{tabularx}
 
 \subsection{Dry matter partitioning  }
 
 As explained, conver\-sion into dry matter costs energy, therefore a conversion factor is
 defined. This factor depends on the conversion efficiency of assimi\-lates and on the
 partition\-ing factors of the different organs. The dry matter is multiplied with this overall
-conver\-sion efficiency factor to calculate the dry matter increase. The conver\-sion effi\-ciency of carbohy\-drates into structural plant material is calculated as a weighted average
+conver\-sion efficiency factor to calculate the dry matter increase. The conver\-sion 
+efficiency of carbohydrates into structural plant material is calculated as a weighted average
 of the efficiencies for the various plant organs.
 
-\begin{displaymath}
+\begin{equation}
 C _{e} ~={\frac{~1}{\begin{array}{c}{i=3}  \\
 \sum  \\
 {i=1}\end{array} \,{\frac{pc _{i} }{C _{e,i} }} \, {\rm \Bullet{0.75ex}}\, (1-pc _{rt} )\, +\,{\frac{ pc _{rt} }{C _{e,rt} }} }}
-\end{displaymath}
+\end{equation}
 
-
-
-
-
-\strut\hfill (5.42)\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where C$_{{\rm e}}$ : Conversion efficiency factor of assimilates, total crop        [kg kg$^{{\rm -1}}$]\\
-C$_{{\rm e,i}}$ : Conversion efficiency factor of the assimilates \\
-   of a specified organ        [kg kg$^{{\rm -1}}$]\\
-pc$_{{\rm i}}$ : Partitioning factor of organ i        [kg kg$^{{\rm -1}}$]\\
-i : Leaves (lv), storage organs (so), stems (st)\\
-rt : roots
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+C$_{{\rm e}}$ &:& Conversion efficiency factor of assimilates, total crop  &   
+    [kg kg$^{{\rm -1}}$]\\
+C$_{{\rm e,i}}$ &:& Conversion efficiency factor of the assimilates 
+    of a specified organ  &      [kg kg$^{{\rm -1}}$]\\
+pc$_{{\rm i}}$ &:& Partitioning factor of organ i   &
+     [kg kg$^{{\rm -1}}$]\\
+i &:& Leaves (lv), storage organs (so), stems (st)\\
+rt &:& roots\\
+\end{tabularx}
 
 The conversion efficiency factor for the assimilates of a specified organ, {\bf C$_{{\rm e,i}}$}, is crop
 specific and should be given by the user. Acronyms used in the model: {\bf CVL} (lv), {\bf CVO}
 (so), {\bf CVR} (rt) and {\bf CVS} (st).
 
-
-
 The dry matter growth rate of the total crop can be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 \Delta W~=~ C _{e} \, {\rm \Bullet{0.75ex}}\, R _{g} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.43)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$W : Dry matter growth rate total crop        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-C$_{{\rm e}}$ : Conversion efficiency factor of assimilates, \\
-   total crop (see eq. 5.42)        [kg kg$^{{\rm -1}}$] \\
-R$_{{\rm g}}$ : Growth respiration rate (see 5.41)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$W &:& Dry matter growth rate total crop   &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+C$_{{\rm e}}$ &:& Conversion efficiency factor of assimilates,
+    total crop (see eq. 5.42)    &    [kg kg$^{{\rm -1}}$] \\
+R$_{{\rm g}}$ &:& Growth respiration rate (see 5.41)   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+\end{tabularx}
 
 The pattern of dry matter distribution over the various plant organs is closely related to
-the development stage of the crop. Development is defined as progression in the success\-ive {\nobreak}phenological stages. It is characterized by the formation rate of the various vegetative
-and reproductive organs and their order of appearance.\\
+the development stage of the crop. Development is defined as progression in the success\-ive 
+phenological stages. It is characterized by the formation rate of the various vegetative
+and reproductive organs and their order of appearance.
+
 The amount of the absorbed CH$_{{\rm 2}}$O that remains after correction and reduction of the
 gross CO$_{{\rm 2}}$ assimilation rate is the so called dry matter. Growth, in fact is the increase in
 biomass ignoring its water content. The dry matter is partitioned over the 4 parts of the
@@ -1171,140 +1154,99 @@ plant. In the model, total dry matter growth is parti\-tioned according to fixed
 factors, defined as a function of develop\-ment stage. Dry matter is first partitioned
 between shoots and roots. 
 
-\begin{eqnarray*}
-\Delta W _{rt} ~=~ pc _{rt} \,\,\Delta W   \nonumber  \\
-\Delta W _{sh} ~=~ (\, 1\, -\, pc _{rt} \, )\,\Delta W
-\end{eqnarray*}
+\begin{align}
+% eqn 5.45a,b
+\Delta W _{rt} ~=~ pc _{rt} \,\,\Delta W   \subeqn  \\
+\Delta W _{sh} ~=~ (\, 1\, -\, pc _{rt} \, )\,\Delta W \subeqn
+\end{align}
 
  
-\strut\hfill (5.44a)\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-   \`(5.44b)
-\end{tabbing}
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$W : Dry matter growth rate total crop        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$W$_{{\rm rt}}$ : Dry matter growth rate roots        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$W$_{{\rm sh}}$ : Dry matter growth rate shoots        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-pc$_{{\rm rt}}$ : Parti\-tioning factor of roots        [kg kg$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$W &:& Dry matter growth rate total crop   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$W$_{{\rm rt}}$ &:& Dry matter growth rate roots    &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$W$_{{\rm sh}}$ &:& Dry matter growth rate shoots    &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+pc$_{{\rm rt}}$ &:& Parti\-tioning factor of roots    &
+    [kg kg$^{{\rm -1}}$]\\
+\end{tabularx}
 
 The growth rate of leaves, stems and storage organs is simply the product of the dry
 matter growth rate of the shoots and the fraction allocated to these organs.
 
-\begin{displaymath}
+\begin{equation}
 \Delta W _{i} ~=~ pc _{i} \, {\rm \Bullet{0.75ex}}\, \Delta W _{sh} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.45)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$W$_{{\rm i}}$ : Dry matter growth rate of organ i        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$W$_{{\rm sh}}$ : Dry matter growth rate of shoots        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-pc$_{{\rm i}}$ : Partitioning factor of organ i        [kg kg$^{{\rm -1}}$]\\
-i : Leaves (lv), storage organs (so), stems (st)
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$W$_{{\rm i}}$ &:& Dry matter growth rate of organ i &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$W$_{{\rm sh}}$ &:& Dry matter growth rate of shoots   &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+pc$_{{\rm i}}$ &:& Partitioning factor of organ i    &
+    [kg kg$^{{\rm -1}}$]\\
+i &:& Leaves (lv), storage organs (so), stems (st)
+\end{tabularx}
 
- The partitioning factors, {\bf pc$_{{\rm i}}$}, are a function of development stage and are crop specific. In
+The partitioning factors, {\bf pc$_{{\rm i}}$}, are a function of development stage and are crop specific. In
 the model, the dependency is described using AFGEN tables with the development stage
 as the independent variable (see Appendix 2). Acronyms used in the model: {\bf FLTB} (lv),
 {\bf FOTB} (so), {\bf FRTB} (rt) and {\bf FSTB} (st).
 
-
-
 At any development stage the following relation must be valid, if not, the simulation will
 be stopped (see also fig. 5.6):
 
-\begin{displaymath}
+\begin{equation}
 \, pc _{lv} \, +\, pc _{st} \, +\, pc _{so} \, =\, 1
-\end{displaymath}
+\end{equation}
 
-
-\strut\hfill (5.46)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where pc$_{{\rm i}}$ : Partitioning factor of organ i        [kg kg$^{{\rm -1}}$]\\
-i : Leaves (lv), storage organs(so), stems (st)
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+pc$_{{\rm i}}$ &:& Partitioning factor of organ i   &
+     [kg kg$^{{\rm -1}}$]\\
+i &:& Leaves (lv), storage organs(so), stems (st)
+\end{tabularx}
 
  
 \begin{figure}[htbp]
+% fig 5.6
+\caption{Parti\-tioning factors of the differ\-ent organs as a function of de\-velop\-ment stage}
+\label{fig:partitioning}
 \begin{forcewidth}{12.06cm}
  \begin{center}\InputPS{\FigDir/FRTB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-Fig. 5.6
-\testlastline
-
-\begin{indenting}{2.54cm}
-Parti\-tioning factors of the differ\-ent organs as a function of de\-velop\-ment
-stage
-\end{indenting}
-
-
-
 The actual gross CO$_{{\rm 2}}$ assimilation rate has to be identical to the amount of structural plant
 material produced plus the amounts used for maintenance respiration and conversion (see
 figure 5.1). The carbon balance has to be zero. 
 
-\begin{displaymath}
+\begin{equation}
 0~=~{\frac{R _{d} ~-~ R _{m\, ,\, T} ~-~ R _{g} \, (pc _{rt} \, +\, (pc _{lv} \, +\, pc _{st} \, +\, pc _{so} )\, {\rm \Bullet{0.75ex}}\, (1\, -\, pc _{rt} ))}{R}} _{d} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.47)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where R$_{{\rm g}}$ : Growth respiration rate (see eq. 5.41)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm d}}$ : Actual daily CH$_{{\rm 2}}$O assimilation rate (see eq. 5.37)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm m,T}}$ : Maintenance respiration rate (see eq. 5.40)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-pc$_{{\rm i}}$ : Partitioning factor of organ i        [kg kg$^{{\rm -1}}$]\\
-i : Leaves (lv), storage organs (so), stems (st), roots (rt)
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+R$_{{\rm g}}$ &:& Growth respiration rate (see eq. 5.41)   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm d}}$ &:& Actual daily CH$_{{\rm 2}}$O assimilation rate (see eq. 5.37)   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm m,T}}$ &:& Maintenance respiration rate (see eq. 5.40)   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+pc$_{{\rm i}}$ &:& Partitioning factor of organ i    &
+     [kg kg$^{{\rm -1}}$]\\
+i &:& Leaves (lv), storage organs (so), stems (st), roots (rt)\\
+\end{tabularx}
 
 As mentioned earlier, it is assumed that maintenance respiration can not exceed the actual
 gross assimilation rate. However, in case the daily CH$_{{\rm 2}}$O assimilation rate comes close to
 zero, this might happen and therefore simulation should be stopped. Introducing a
 division by R$_{{\rm d}}$ in the carbon check (eq. 5.47) will identify the occur\-rence of such an
-event.\\
-It should be mentioned that in subsequent versions of the WOFOST model, the carbon
+event.It should be mentioned that in subsequent versions of the WOFOST model, the carbon
 balance check will be simplified.
-
-
-
 
 \subsection{Growth and leaf senescence  }
 
@@ -1312,21 +1254,19 @@ As is explained in paragraph 5.4.4, the growth rate of a certain plant organ is 
 multi\-plying the growth rate of either shoot or root by the fraction allocated to that organ.
 Its total dry biomass (dead and alive) is obtained by integrating this growth rate over
 time. Taking the death rate of the different organs into account, the integration of the net
-increase of dry matter, $\Delta$Wn$_{{\rm i}}$, (see eq. 5.48) over the previous time steps yields the living
-dry matter weight of organ i (see eq 5.49).
+increase of dry matter, $\Delta$Wn$_{{\rm i}}$, (see eq. 5.48) over the previous time steps 
+yields the living dry matter weight of organ i (see eq 5.49).
 
 This approach of the partitioning of dry mat\-ter is descriptive, as the distribution keys are
 defined as a function of the development stage of the crop only. The influence of
 environmental factors could be included by applying modification factors to these keys,
 depending on temperature, water and nutrient status of the crop, and its reserve level
-(Loomis {\it et al.\/}, 1979; van Keulen \& Seligman, 1987). In the WOFOST model, however,
+(Loomis {\it et al.}, 1979; van Keulen \& Seligman, 1987). In the WOFOST model, however,
 this is not applied. Some more attention is paid to the crop growth by introducing a death
 rate for leaves, roots and stems. Death rate is a function of the development stage of the
 plant and is crop and organ specific.
 
-
-
-{\bf {\it Growth and growth rate\/}}\\
+\subsubsection{Growth and growth rate}
 In the model, the death rate of the storage organs is considered to be zero. For the roots
 and the stems increase in living biomass can be easily determined as the growth rate
 minus death rate. This yields the net growth rate (eq. 5.48). The death rate is crop
@@ -1338,102 +1278,73 @@ AFGEN table with the development stage as the independent variable (see also App
 LAI), water stress and also due to exceedance of the life span should be accounted for.
 
 
-
-
-
-
-
- \begin{figure}[htbp]
+\begin{figure}[htbp]
+%Fig. 5.7
+\caption{Death rate of roots and stems as a function of development rate}
+\label{fig:DeathRoots}
 \begin{forcewidth}{10.05cm}
  \begin{center}\InputPS{\FigDir/RDRRTB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
 
+The net growth rate of the stems and roots can described by:
 
-
-
-
-
-
-
-
-
-
-
-
-Fig. 5.7
-\testlastline
-
-\begin{indenting}{2.54cm}
-Death rate of roots and stems as a function of development rate
-\end{indenting}
-
-
-
-The net {\nobreak}growth rate of the stems and roots can described by:
-
-\begin{displaymath}
+\begin{equation}
 \Delta Wn _{i~} =~\,\,\Delta W _{i~} -~ {\rm \dag } _{i} \,\, W _{i} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.48)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$Wn$_{{\rm i}}$ : Net dry matter growth rate of organ i        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$W$_{{\rm i}}$ : Dry matter growth rate of organ i (see eq. 5.45)        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-W$_{{\rm i}}$ : Dry matter weight organ i        [kg ha$^{{\rm -1}}$]\\
-\dag $_{{\rm i}}$ : Death rate organ i        [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-i : Stems (st), roots (rt)
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$Wn$_{{\rm i}}$ &:& Net dry matter growth rate of organ i   &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$W$_{{\rm i}}$ &:& Dry matter growth rate of organ i (see eq. 5.45)   &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+W$_{{\rm i}}$ &:& Dry matter weight organ i  &
+    [kg ha$^{{\rm -1}}$]\\
+\dag $_{{\rm i}}$ &:& Death rate organ i   &
+    [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+i &:& Stems (st), roots (rt)\\
+\end{tabularx}
 
- 
 The death rates of stems and roots are crop specific and should be provided by the user.
 A dependency of the development stage is assumed. AFGEN tables (acronym: {\bf RDR\-RTB}
 (rt), {\bf RDRSTB} (st)) with the development stage as the independent variable are used to
 describe this dependency.
 
-
-
 Although the process which describes the death rate of leaves is more complicated than
 the calculation of the death rate of stems and roots, the calculation to establish the total
 dry weight of living leaves is the same as the computation of the dry matter weight of
 stems and roots. The total dry matter weight of living leaves, stems and roots can be
-found by integration over time of the net dry matter growth, $\Delta$Wn$_{{\rm i}}$, yields the dry matter.
+found by integration over time of the net dry matter growth, $\Delta$Wn$_{{\rm i}}$, yields 
+the dry matter.
 
-\begin{displaymath}
+\begin{equation}
 W _{t,i} ~=~W _{t-1\, ,\, i} ~+~\Delta Wn _{i} \,\Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.49)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where W$_{{\rm i,t}}$ : Dry matter weight organ i at time step t        [kg ha$^{{\rm -1}}$]\\
-$\Delta$Wn$_{{\rm i}}$ : Net dry matter growth rate of organ i        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$t : Times step        [d]\\
-i : Stems (st), roots (rt), leaves (lv)
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+W$_{{\rm i,t}}$ &:& Dry matter weight organ i at time step t   &
+     [kg ha$^{{\rm -1}}$]\\
+$\Delta$Wn$_{{\rm i}}$ &:& Net dry matter growth rate of organ i   &
+     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$t &:& Times step   &
+     [d]\\
+i &:& Stems (st), roots (rt), leaves (lv)\\
+\end{tabularx}
 
- The equation 5.49 is recursive. In the model, the initial values of the dry weight of the
+The equation 5.49 is recursive. In the model, the initial values of the dry weight of the
 various organs are calculated. An initial value for the total dry weight of the crop
 (acronym: {\bf TDWI}) should be provided by the user. This value is multiplied by the
 partioning factors, pc$_{{\rm i}}$, at emergence, yielding the initial values of dry weight of the
 various organs.
 
-
-
-{\it {\bf Growth of leaves}\/}\\
+\subsubsection{Growth of leaves}
 The area of green leaves is the major determinant for light absorption and photosyn\-thesis
 of the crop. Under optimal conditions, light intensity and temperature are the environ\-mental factors influencing the rate of leaf area expansion. Light intensity determines the
-rate of photosynthesis and hence the supply of assimilates to the leaves. \\
+rate of photosynthesis and hence the supply of assimilates to the leaves.
+
 Temperature affects the rates of cell division and extension (Ng \& Loomis, 1984; Sheehy
 {\it et al.\/}, 1980; Acock {\it et al.\/}, 1978). During the early stages of crop growth, temperature is
 the overriding factor. The rate of leaf appearance and final leaf size are constrained by
@@ -1445,66 +1356,50 @@ D$_{{\rm s,t}}$ $<$ 0.3 and LAI $<$ 0.75 (see also eq. 5.4). In the model, howev
 the exponen\-tial growth rate of the leaf area index is valid until the source-limited increase
 of the leaf area index equals the exponential growth rate.
 
-
-
 The growth rate of the leaf area index per time step in the early, exponential growth
 stage, can be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 L _{Exp,t} ~=~LAI _{{t~RL~T}_{e}}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.50)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where L$_{{\rm Exp,t}}$ : Growth rate of the leaf area index at time step t\\
-   during exponential growth stage        [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-LAI$_{{\rm t}}$ : Leaf area index at time step t         [ha ha$^{{\rm -1}}$]\\
-RL : Maximum relative increase of leaf area index         [\degrees C$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-T$_{{\rm e}}$ : Daily effective temperature (see 5.2c)        [\degrees C]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
+    during exponential growth stage   &    [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+LAI$_{{\rm t}}$ &:& Leaf area index at time step t    &
+    [ha ha$^{{\rm -1}}$]\\
+RL &:& Maximum relative increase of leaf area index   &
+    [\degrees C$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+T$_{{\rm e}}$ &:& Daily effective temperature (see 5.2c)   &
+    [\degrees C]\\
+\end{tabularx}
 
 In theory, the maximum relative increase of the leaf area index, {\bf RL}, is a function of
 effective temperature. For a relative wide range of temperatures {\bf RL} responds more or
 less linearly to tempera\-ture (Hunt {\it et al.\/}, 1985; Causton \& Venus, 1981; van Dobben,
-1962). In the model however, a fixed value per crop type is assumed (acronym: \\
+1962). In the model however, a fixed value per crop type is assumed (acronym: 
 {\bf R\-GRLAI}). This value should be given by the user.
 
-
-
-
- The accumulated leaf area index at time step t during the exponential growth stage can be
+The accumulated leaf area index at time step t during the exponential growth stage can be
 described as:
 
-\begin{displaymath}
+\begin{equation}
 LAI _{t~} =~LAI _{t-1} ~+~L _{Exp\, ,\, t} ~\Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.51)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where L$_{{\rm Exp,t}}$ : Growth rate of the leaf area index at time step t\\
-   during exponential growth stage        [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-LAI$_{{\rm t}}$ : Leaf area index at time step t         [ha ha$^{{\rm -1}}$]\\
-$\Delta$t : Time step        [d]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
+    during exponential growth stage    &    [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+LAI$_{{\rm t}}$ &:& Leaf area index at time step t   &
+    [ha ha$^{{\rm -1}}$]\\
+$\Delta$t &:& Time step   &    [d]
+\end{tabularx}
 
 The equation 5.51 is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by setting the starting
 value equal to the leaf area index at emergence (acronym: {\bf LAIEM}). The leaf area index
 at emergence is crop specific and should be provided by the user.
-
-
 
 During the development of the crop, leaf area expansion is increasingly restricted by
 assimilate supply (i.e. source limited increase). Branching and tillering generate an
@@ -1512,33 +1407,27 @@ increasing number of sites per plant, where leaf initiation can take place. As m
 earlier, in the model it is assumed that the exponential growth rate of leaf area index will
 continue until it equals the source limited growth rate of the leaf area index.
 
-
-
 The growth rate of the leaf area index at time step t during the source limited growth 
 stage can be described by:
 
-\begin{displaymath}
+\begin{equation}
 L _{Sc,t} ~=~\Delta Wn _{lv} ~S _{la} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.52)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where L$_{{\rm Sc,t}}$ : Growth rate of the leaf area index at time step t\\
-   during the source limited growth stage         [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$Wn$_{{\rm lv}}$ : Net dry matter growth of leaves at time step t        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm la}}$ : Specific leaf area at time step t        [ha kg$^{{\rm -1}}$]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+L$_{{\rm Sc,t}}$ &:& Growth rate of the leaf area index at time step t
+    during the source limited growth stage    &
+    [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$Wn$_{{\rm lv}}$ &:& Net dry matter growth of leaves at time step t    &
+    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm la}}$ &:& Specific leaf area at time step t   &
+    [ha kg$^{{\rm -1}}$]\\
+\end{tabularx}
  
 The net dry matter growth of leaves, $\Delta$Wn$_{{\rm lv}}$, can be found by subtracting the weight of
 leaves which died during the current time step from the dry matter growth of leaves,
 $\Delta$W$_{{\rm lv}}$. This process will be described later in more detail in this paragraph.
-
 
 The specific leaf area, {\bf S$_{{\rm la}}$} (acronym: {\bf SLATB}), is defined as the increase of the leaf area
 of the crop per kg weight increase of the living leaves. S$_{{\rm la}}$ is crop specific and a function
@@ -1546,40 +1435,32 @@ of the development stage (see figure 8). In the model this dependency is describ
 an AFGEN table with the development stage as the independent variable (see also
 Appendix 2).
 
-
-
- The accumulated leaf area index at time step t during the source limited growth stage can
+The accumulated leaf area index at time step t during the source limited growth stage can
 be described as:
 
-\begin{displaymath}
+\begin{equation}
 LAI _{t~} =~LAI _{t-1} ~+~L _{Sc\, ,\, t} ~\Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.53)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where L$_{{\rm Sc,t}}$ : Growth rate of the leaf area index at time step t\\
-   during the source limited growth stage        [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-LAI$_{{\rm t}}$ : Leaf area index at time step t         [ha ha$^{{\rm -1}}$]\\
-$\Delta$t : Time step        [d]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+L$_{{\rm Sc,t}}$ &:& Growth rate of the leaf area index at time step t
+    during the source limited growth stage     &   [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+LAI$_{{\rm t}}$ &:& Leaf area index at time step t     &
+    [ha ha$^{{\rm -1}}$]\\
+$\Delta$t &:& Time step    &    [d]\\
+\end{tabularx}
  
 The equation 5.53 is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by setting the starting
 value equal to the leaf area index at emergence (acronym: {\bf LAIEM}). The leaf area index
 at emergence is crop specific and should be provided by the user.
 
-
-
 In the model, however, the accumulated leaf area cannot be calculated directly. The leaf
 area index has to be corrected for leaf senescence which occurred during the current time
 step. The leaf senescence can be caused by physiologi\-cal ageing, water stress and/or high
 leaf area index (i.e. mutual shading). Later in this text, more attention will be paid to
-these effects.\\
+these effects.
+
 In order to correct for leaf senescence, the specific leaf area of each time step, S$_{{\rm la}}$, the
 growth of the dry matter weight of leaves per time step, $\Delta$W$_{{\rm lv}}$ and the physiological age,
 P$_{{\rm age}}$ (see eq. 5.57), have to be stored in three different arrays. These arrays are organized
@@ -1588,123 +1469,73 @@ step) and the last element of the arrays represents the oldest age class (or tim
 should be clear that the position of an element in the arrays represents its age class, in
 time steps. The dry matter weight of the leaves, which have died during the current time
 step, has to be. subtract\-ed from the growth of dry matter weight per time step. One array
-contains thus the net dry matter growth of the leaves per time step, $\Delta$Wn$_{{\rm lv}}$. The procedure
-which describes this process will be explained later in this text. \\
+contains thus the net dry matter growth of the leaves per time step, $\Delta$Wn$_{{\rm lv}}$. 
+The procedure which describes this process will be explained later in this text. 
+
 After the correction for leaf senescence, the accumulat\-ed leaf area can be established. The
 net dry matter weight of the leaves, $\Delta$Wn$_{{\rm lv,}}$  in the remaining and new leaf classes is
 multiplied with the specific leaf areas (see eq. 5.52) to get the growth rate of the leaf area
 index of the living leaves per age class. Multiplication with $\Delta$t and summa\-tion over the
 classes (eq. 5.53) yields the total leaf area index. The green area index of the stems and
 the storage organs is added to this amount. The total dry matter weight of living leaves
-can be found in a similar way by using equation 5.49. \\
+can be found in a similar way by using equation 5.49.
+
 \begin{figure}[htbp]
+%Fig. 5.8   
+\caption{Spe\-cific leaf area as a function of develop\-ment stage}
+\label{fig:SpecificLeafArea}
 \begin{forcewidth}{10.05cm}
  \begin{center}\InputPS{\FigDir/SLATB.eps} \end{center}
 \end{forcewidth}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-Fig. 5.8   Spe\-cific leaf area as a function of develop\-ment stage
-\end{tabbing}
-
-
-
 As is men\-tioned earlier, the green area index of the stems and storage or\-gans, may absorb
 a substan\-tial amount of radiation. Therefore it should be added to the total leaf area
 index. The green area index of these organs can be calculated by:
 
-\begin{displaymath}
+\begin{equation}
 GAI  _{i} ~=~SS _{i} W _{i} 
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.54)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where GAI$_{{\rm i}}$ : Green area index of organ i         [ha ha$^{{\rm -1}}$]\\
-SS$_{{\rm i}}$ : Specific green area of organ i        [ha kg$^{{\rm -1}}$]\\
-W$_{{\rm i}}$ : Dry matter organ i (see eq. 5.49)        [kg ha$_{{\rm -1}}$]\\
-i : Stems (st), storage organs (so)
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+GAI$_{{\rm i}}$ &:& Green area index of organ i    &
+    [ha ha$^{{\rm -1}}$]\\
+SS$_{{\rm i}}$ &:& Specific green area of organ i    &
+    [ha kg$^{{\rm -1}}$]\\
+W$_{{\rm i}}$ &:& Dry matter organ i (see eq. 5.49)    &
+    [kg ha$_{{\rm -1}}$]\\
+i &:& Stems (st), storage organs (so)\\
+\end{tabularx}
 
 The specific green area of stems (acronym: {\bf SSA}) and storage organs (acronym: {\bf SPA}) are
 crop specific and should be provided by the user. The specific storage organ area is also
 known as the specific pod area.
 
-
-
-
-
-
-
-
 Special attention should be paid to the fact that during the exponential growth stage, the
 specific leaf is not established. Therefore, during this period, for each time step, the
 specific leaf area has to be calculated according to:
 
-\begin{displaymath}
+\begin{equation}
 S _{\exp ,\, t} ~=~L _{\frac{\exp ,\, t}{\Delta W _{lv} }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.55)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where S$_{{\rm exp,t}}$ : Specific leaf area at time step t during the \\
-   exponential growth stage         [ha kg$^{{\rm -1}}$]\\
-$\Delta$W$_{{\rm lv}}$ : Dry matter increase of leaves (see eq. 5.45)        [kg ha$_{{\rm -1}}$ d$^{{\rm -1}}$]\\
-L$_{{\rm Exp,t}}$ : Growth rate of the leaf area index at time step t\\
-   during exponential growth stage (see eq. 5.51)        [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+S$_{{\rm exp,t}}$ &:& Specific leaf area at time step t during the 
+    exponential growth stage    &     [ha kg$^{{\rm -1}}$]\\
+$\Delta$W$_{{\rm lv}}$ &:& Dry matter increase of leaves (see eq. 5.45)   &
+    [kg ha$_{{\rm -1}}$ d$^{{\rm -1}}$]\\
+L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t\\
+   during exponential growth stage (see eq. 5.51)   &
+        [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+\end{tabularx}
 
  
 In de model, it is assumed that senescence does not occur during the exponential growing
 stage. This means that $\Delta$W$_{{\rm lv}}$ can be used in stead of the net dry matter growth, $\Delta$Wn$_{{\rm lv}}$.
 
-
-
-{\bf {\it Leaf senescence\/}}\\
+\subsubsection{Leaf senescence}
 As stated before, leaf senescence is more complicated. Senescence refers to the loss of
 capacity to carry out essential physio\-logical processes and to the loss of living biomass.
 The fundamental processes involve physiological ageing and protein breakdown. These
@@ -1712,59 +1543,42 @@ processes are difficult to quantify. Leaves are assumed to die when they have co
 their life cycle. The dying rate may be accelerated as a result of drought stress or of
 mutual shading.
 
-
-
-{\it Physiologic ageing\/}\\
+\subsubsection{Physiologic ageing}
 Leaves die due to exceedance of the life span for leaves (i.e. physiologic ageing). Life
 span is defined as the maximum time in days a leaf can live at a constant temper\-ature of
 35\degrees C. Life span is crop specific. The concept of lifespan is compatible with a definition
 in terms of temperature sum as given by Gallagher (1979).\\
 The physiologic ageing factor per time step can be calculat\-ed as:
 
-\begin{displaymath}
+\begin{equation}
 f _{rai} ~=~{\frac{ T~-~T _{b\, ,\, age} }{35~-~ T _{b\, ,\, age} }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.56)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where f$_{{\rm rai}}$ : Physiologic ageing factor for leaf age increase        [-]\\
-T : Daily (average) temperature        [\degrees C]\\
-T$_{{\rm b,age}}$ : Lower threshold temperature for physiologic ageing        [\degrees C]
-\end{tabbing}
-
-
-
-
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+f$_{{\rm rai}}$ &:& Physiologic ageing factor for leaf age increase   &
+    [-]\\
+T &:& Daily (average) temperature   &
+    [\degrees C]\\
+T$_{{\rm b,age}}$ &:& Lower threshold temperature for physiologic ageing   &
+    [\degrees C]\\
+\end{tabularx}
 
 The lower threshold temperature for physiologic ageing, {\bf T$_{{\rm b,age}}$} (acronym: {\bf TBASE}), is
 crop specific and should be provided by the user. The integral of the physiologic ageing
 factor over time yields the physiologic age. 
 
-\begin{displaymath}
+\begin{equation}
 P _{age,\, t} ~=~ P _{age,\, t-1} ~+~f _{rai} \Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.57)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where P$_{{\rm age,t}}$ : Physiologic age at time step t        [d]\\
-f$_{{\rm rai}}$ : Physiologic ageing factor for leaf age increase        [-]\\
-$\Delta$t : time step        [d]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+P$_{{\rm age,t}}$ &:& Physiologic age at time step t & [d]\\
+f$_{{\rm rai}}$ &:& Physiologic ageing factor for leaf age increase & [-]\\
+$\Delta$t &:& time step & [d]\\
+\end{tabularx}
 
- 
 Leaves may attain the age defined by the crop specific life span (acronym: {\bf SPAN}).
 However, as is men\-tioned earlier, they can not exceed it. In the model the ages of the
 leaf classes are checked. The first class younger than the defined life span becomes the
@@ -1773,119 +1587,90 @@ daily shifting from one leaf class to the next (Johnson \& Thornley, 1983). In t
 the life time of leaves is the maximum number of days that a leaf class contributes to the
 LAI and to photosyn\-the\-sis.
 
-
-
 {\it Death rate due to water stress\/}\\
 The potential death rate of leaves due to water stress can be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 \Delta W _{d}^{1} ~=~ W _{lv} \, (\, 1\, -\,{\frac{T _{a} }{T _{p} }} \, )\, {\rm \dag } _{\max ,lv} 
-\end{displaymath}
+\end{equation}
 
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ &:& Potential death rate of leaves due to water stress   &
+    [kg  ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+\dag $_{{\rm max,lv}}$ &:& Maximum relative death rate of leaves due to
+    water stress   &     [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+W$_{{\rm lv}}$ &:& Dry matter weight of the leaves (see eq. 5.49)  &
+    [kg ha$^{{\rm -1}}$]\\
+T$_{{\rm a}}$ &:& Actual transpiration (see \S 5.1)    &
+    [cm d$^{{\rm -1}}$]\\
+T$_{{\rm p}}$ &:& Potential transpiration (see \S 5.1)   &
+    [cm d$^{{\rm -1}}$]\\
+\end{tabularx}
  
-\strut\hfill (5.58)
+The maximum relative death rate of leaves due to water stress, {\bf \dag $_{{\rm max,lv}}$} 
+(acronym: {\bf PERDL}) is crop specific and should be provided by the user.
 
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ : Potential death rate of leaves due to water stress         [kg  ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-\dag $_{{\rm max,lv}}$ : Maximum relative death rate of leaves due to\\
-   water stress        [kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-W$_{{\rm lv}}$ : Dry matter weight of the leaves (see eq. 5.49)        [kg ha$^{{\rm -1}}$]\\
-T$_{{\rm a}}$ : Actual transpiration (see \S 5.1)        [cm d$^{{\rm -1}}$]\\
-T$_{{\rm p}}$ : Potential transpiration (see \S 5.1)        [cm d$^{{\rm -1}}$]
-\end{tabbing}
-
- 
-The maximum relative death rate of leaves due to water stress, {\bf \dag $_{{\rm max,lv}}$} (acronym: {\bf PERDL})\\
-is crop specific and should be provided by the user.
-
-
-
-{\it Death rate due to high leaf area index\/}\\
+{\it Death rate due to high leaf area index}\\
 Leaf senescence also occurs due to high leaf area index (i.e. mutual shading). A relative
 death rate due to self$-$shading is defined which increases linear\-ly from zero at a certain,
 critical leaf area index, to its maximum value at twice this critical leaf area index. Typical
 values for the maximum relative death rate and the critical LAI are 0.03 d$^{{\rm -1}}$ and 4 ha ha$^{{\rm -}{1}}$,
 respectively (Spitters {\it et al.\/} 1989).
 
+The potential death rate of leaves due to high LAI can be calculated as:
 
-
-
- The potential death rate of leaves due to high LAI can be calculated as:
-
-\begin{displaymath}
+\begin{equation}
 \Delta W _{d}^{2} ~=~ W _{lv} \, {\rm \Bullet{0.75ex}}\, 0.03\,{\frac{ LAI ~-~ LAI _{c} }{LAI _{c} }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.59)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$W$^{{\rm 2}}$$_{{\rm d}}$ : Potential death rate of leaves due to high LAI        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-W$_{{\rm lv}}$ : Dry matter weight of the leaves        [kg ha$^{{\rm -1}}$]\\
-LAI : Leaf area index        [ha ha$^{{\rm -1}}$]\\
-LAI$_{{\rm c}}$ : Critical leaf area index        [ha ha$^{{\rm -1}}$]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$W$^{{\rm 2}}$$_{{\rm d}}$ &:& Potential death rate of leaves due to 
+    high LAI   &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+W$_{{\rm lv}}$ &:& Dry matter weight of the leaves  &  [kg ha$^{{\rm -1}}$]\\
+LAI &:& Leaf area index   &    [ha ha$^{{\rm -1}}$]\\
+LAI$_{{\rm c}}$ &:& Critical leaf area index   &     [ha ha$^{{\rm -1}}$]\\
+\end{tabularx}
 
 The critical leaf area index, LAI$_{{\rm c}}$,  can be computed by:
 
-\begin{displaymath}
+\begin{equation}
 LAI _{c} ~=~{\frac{3.2}{\kappa  _{df} }}
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.60)
-
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where LAI$_{{\rm c}}$ : Critical leaf area index        [ha ha$^{{\rm -1}}$]\\
-$\kappa$$_{{\rm df}}$ : Extinction coefficient for the diffuse radiation flux        [-]
-\end{tabbing}
-
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+LAI$_{{\rm c}}$ &:& Critical leaf area index    &    [ha ha$^{{\rm -1}}$]\\
+$\kappa$$_{{\rm df}}$ &:& Extinction coefficient for 
+    the diffuse radiation flux   &    [-]\\
+\end{tabularx}
 
 The last term of the right hand side of the equation 5.59 must be between 0 and 0.03. A 
 value lower than 0 will be set to 0 and a value higher than 0.03 will be set to 0.03. In the
-model, the highest value of the two calculated potential death rates of leaves, $\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ and
-$\Delta$W$^{{\rm 2}}$$_{{\rm d}}$, is selected for further calculations of the reduction of dry matter weight increase,
+model, the highest value of the two calculated potential death rates of leaves, 
+$\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ and $\Delta$W$^{{\rm 2}}$$_{{\rm d}}$, is selected 
+for further calculations of the reduction of dry matter weight increase,
 per time step of the leaf classes, as is will be explained now. 
-
-
 
 The weight of leaves which have died during the current time step, can be calculated by
 multiplying the death rate (due to water stress and/or high LAI), with the time step.
 
-\begin{displaymath}
+\begin{equation}
 W _{d~} =~ \max (\Delta W _{d}^{1} \, ,\,\Delta W _{d}^{2} )\,\Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.61)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where W$_{{\rm d}}$ : Weight of leaves that have died during \\
-   current time step        [kg ha$^{{\rm -1}}$]\\
-$\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ : Potential death rate of leaves due to water stress         [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$W$^{{\rm 2}}$$_{{\rm d}}$ : Potential death rate of leaves due to high LAI        [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-$\Delta$t : Time step        [d]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+W$_{{\rm d}}$ &:& Weight of leaves that have died during 
+    current time step    &    [kg ha$^{{\rm -1}}$]\\
+$\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ &:& Potential death rate of leaves due 
+    to water stress   &      [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$W$^{{\rm 2}}$$_{{\rm d}}$ &:& Potential death rate of leaves due to 
+    high LAI   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+$\Delta$t &:& Time step    &    [d]\\
+\end{tabularx}
 
- 
 The weight of the leaves which have died, W$_{{\rm d}}$, is subtracted from the weight of the oldest
 leaf class. If there is only one class the result should be positive. When more leaf classes
 exist, the oldest leaf class may be emptied completely, the remainder is subtracted from
@@ -1893,14 +1678,11 @@ the next leaf class. Emptying the oldest leaf class goes on, until the original 
 dissipated complete\-ly and the remaining amount of leaves remains positive. All leaves are
 shifted every time step (daily) to the next class.
 
-
-\section{ Root growth  }
-
+\section{Root growth}
 
 Subroutine {\bf ROOTD} calculates the vertical extension of roots. The rate of vertical root
 extension is equal to the maximum daily increase, unless maximum rooting depth is
 reached.
-
 
 Transpiration by the vegetation must be balanced by water uptake from the soil. Water
 uptake depends on the difference in potential between the water in the plant and in the
@@ -1908,79 +1690,55 @@ soil. The resistance of transport of moisture from the soil to the atmo\-sphere 
 important role. Numerous experimental and theoretical studies have been conducted to
 determine the relative importance of the various components of the total resistance
 (Newman, 1969a, 1969b; Andrews \& Newman, 1969; Cowan, 1965; Slatyer \& Gardner
-1965; Gardner, 1960).\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-The general consensus is that the major resistance to moisture transport is:           
-\end{tabbing}
-$\bullet$ in the plant in case the soil moisture potential is low.\\
-$\bullet$ in the soil in case the soil moisture potential is high.
+1965; Gardner, 1960).
 
-
+The general consensus is that the major resistance to moisture transport is:
+\begin{itemize}
+\item in the plant in case the soil moisture potential is low.
+\item in the soil in case the soil moisture potential is high.
+\end{itemize}
 
 In the model, root growth is implemented in a straightforward way. One needs to specify
-the following parameters:
-
-{\bf crop specific} \\
-$\bullet$ Initial rooting depth, {\bf RD$_{{\rm i}}$} (acronym: {\bf RDI})\\
-$\bullet$ Maximum rooting depth determined by the crop, {\bf RD$_{{\rm crop}}$} (acronym: {\bf RDMCR})\\
-$\bullet$ Maximum daily increase in rooting depth, {\bf RR$_{{\rm max}}$} (acronym: {\bf RRI})
-
-{\bf soil specific}\\
-$\bullet$ Maximum rooting depth determined by the soil, {\bf RD$_{{\rm soil}}$} (acronym: {\bf RDMSOL})
-
-
+the following crop and soil specific parameters:
+\begin{itemize}
+\item Initial rooting depth, {\bf RD$_{{\rm i}}$} (acronym: {\bf RDI})\\
+\item Maximum rooting depth determined by the crop, {\bf RD$_{{\rm crop}}$} (acronym: {\bf RDMCR})\\
+\item Maximum daily increase in rooting depth, {\bf RR$_{{\rm max}}$} (acronym: {\bf RRI})
+\item Maximum rooting depth determined by the soil, {\bf RD$_{{\rm soil}}$} (acronym: {\bf RDMSOL})
+\end{itemize}
 
 The daily increase of the rooting depth is a function of development stage and is crop
 specific. The root growth can be calculated as:
 
-\begin{displaymath}
+\begin{equation}
 \Delta RD~=~RR _{\max } \, {\rm \Bullet{0.75ex}}\, \Delta t
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.62)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where $\Delta$RD : Increase of the rooting depth         [cm]\\
-RR$_{{\rm max}}$ : Maximum daily increase in rooting depth         [cm d$^{{\rm -}{1}}$]\\
-$\Delta$t : Time step         [d]
-\end{tabbing}
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+$\Delta$RD &:& Increase of the rooting depth   &   [cm]\\
+RR$_{{\rm max}}$ &:& Maximum daily increase in rooting depth  &  [cm d$^{{\rm -}{1}}$]\\
+$\Delta$t &:& Time step   &  [d]\\
+\end{tabularx}
 
-
-
-
-
- In the model it is assumed that the extension growth of the roots continues until the
+In the model it is assumed that the extension growth of the roots continues until the
 maximum rooting depth is reached. The rooting depth can be established by:
 
-\begin{displaymath}
+\begin{equation}
 RD _{t~} =~RD _{t-1} ~+~\Delta RD
-\end{displaymath}
+\end{equation}
 
- 
-\strut\hfill (5.63)
-\nwln
-\begin{tabbing}
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
-\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
-where RD$_{{\rm t}}$ : Rooting depth at time step t        [cm]\\
-$\Delta$RD : Increase of the rooting depth         [cm]
-\end{tabbing}
-
+Where:\\
+\begin{tabularx}{\textwidth}{llXr}
+RD$_{{\rm t}}$ &:& Rooting depth at time step t   &  [cm]\\
+$\Delta$RD &:& Increase of the rooting depth    & [cm]\\
+\end{tabularx}
 
 In the model, the maximum rooting depth is established by taking the lowest value of the\\
 maximum rooting depth determined by the crop, RD$_{{\rm crop}}$, the maximum rooting depth
 determined by the soil, RD$_{{\rm soil}}$, and the depth the roots would reach in the potential
 production situation. It is assumed that the maximum rooting depth is always equal or
 higher than the initial rooting depth.
-
 
 In theory, extension growth of the roots ceases when no more assimilates are available,
 when an impermeable layer in the profile is reached, when the root tip reaches a soil
@@ -1993,13 +1751,8 @@ root tip comes within ten centime\-ters of the groundwater table and the crop ca
 airducts. The user should provide information if the crop can produce airducts (acronym:
 {\bf IAIRDU}) or not.
 
-
 For the calculation of potential crop growth, water delivery is assumed to be optimal; the
 soil moisture content is always at field capacity.
-
-
-
-\newpage
 
 \section{Crop variables  }
 
@@ -2007,18 +1760,17 @@ The crop species are characterized by a set of parameters and functions. In the 
 sub sections the estimated values, derived from experimental data, found in litera\-ture will
 be discussed in some detail.
 
-
-
-
 \subsection{ Distribution and absorption of light in the canopy  } 
 
 The radiation flux, incident on a leaf, is partly absorbed and partly scattered. Scatter\-ing
 consists of reflection and transmission. Species differ in the optical properties of their
 leaves. In the model, a value of 0.20 is used for the scattering coefficient of individual 
-leaves for PAR. \\
+leaves for PAR.
+
 The light distribution within the canopy is characterized by the extinction coefficient ($\kappa$).
 As a reference, the situation is considered where the leaves show a spherical angle
-distribution (i.e. as if they were placed on the surface area of a sphere), and are distrib\-uted randomly within the canopy volume. Assuming the above scattering coefficient of
+distribution (i.e. as if they were placed on the surface area of a sphere), and are 
+distrib\-uted randomly within the canopy volume. Assuming the above scattering coefficient of
 0.20, the theoretical value of the extinction coefficient for the diffuse radiation flux is
 0.72 (Goudriaan, 1977). Actual values, however, can deviate substan\-tially from this
 theoretical value. Crops with more erect leaves have lower $\kappa$ values, whereas crops with
@@ -2030,21 +1782,21 @@ However, especially in dicotyledons, new leaves are formed, preferably in gaps w
 canopy, thus increasing the value of $\kappa$. In the model, an actual value for the extinction
 coefficient for diffuse radiation is used. The ratio between this actual value and the above
 theoretical value is used as a cluster factor. The various extinction coefficients and the
-fraction sunlit leaf area are multiplied by this factor.\\
+fraction sunlit leaf area are multiplied by this factor.
+
 Light absorption by organs other than leaves results in a calculated extinction coefficient
-which is too high, if the measured extinction is related to leaf area only. If light absorp\-tion and assimilation by these organs are important, as for ears and panicles in cereals,
+which is too high, if the measured extinction is related to leaf area only. If light 
+absorp\-tion and assimilation by these organs are important, as for ears and panicles in cereals,
 these processes should be accounted for explicitly in the model; e.g. by treating them as
 light competing assimilators. This is also necessary for other factors, such as foliar
 diseases, that affect the photosynthetic capacity of the leaves and are distributed
-{\nobreak}non$-$uniformly over canopy depth. \\
+non$-$uniformly over canopy depth.
+
 Typical values of $\kappa$ are 0.4 to 0.7 for monocotyledons and 0.65 to 1.1 for broad leaved
-{\nobreak}dicotyledons (Monteith, 1969). The extinction coefficient can be estimated from measure\-ments of PAR above and below a canopy with a known LAI, making sure that PAR is
+dicotyledons (Monteith, 1969). The extinction coefficient can be estimated from 
+measure\-ments of PAR above and below a canopy with a known LAI, making sure that PAR is
 measured rather than total global radiation. The extinction coefficient for total radiation is
 about $\frac{2}{3}$ that of PAR. 
-
-
-
-
 
 The extinction coefficient has to be measured under a uniform overcast sky. Direct
 radiation has to be avoided as the solar elevation determines the extinction coeffi\-cient for
@@ -2058,13 +1810,11 @@ below the canopy using a lightbar. From the LAI and the measured light extinctio
 extinction coefficient for the diffuse flux can be calculated. When global radiation is
 measured the extinction coefficient for the diffuse flux will be about $\frac{2}{3}$ of the extinction
 coefficient calculated for global radia\-tion, because absorption of near the infrared
-radiation by the canopy is less efficient.\\
+radiation by the canopy is less efficient.
+
 An important factor which may confound the interpretation of measurements, is the light
 absorption by other organs than leaves. In the calculation of the extinction coefficient for
 diffuse light, from measurements, this effect should be accounted for.
-
-
-
 
 \subsection{Photosynthesis-light response of individual leaves  } 
 
@@ -2072,10 +1822,11 @@ The response of leaf photosynthesis to light intensity is characterized by its s
 light intensity ($\epsilon$) and its maximum rate at light saturation (A$_{{\rm m}}$). With respect to the
 photosynthetic pathway, three groups of species can be identified: C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species and
 CAM plants. Lists of C$_{{\rm 4}}$ species have been published by Downton (1975) and
-{\nobreak}Raghavendra \& Das (1978).   
+Raghavendra \& Das (1978).   
 
 At a leaf temperature of 20\degrees C, both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species have an initial light use efficiency
-of approximately 12.5 $\mu$g CO$_{{\rm 2}}$ J$^{{\rm -1}}$ absorbed PAR or 0.45 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ (J m$^{{\rm 2}}$ S$^{{\rm -}{1}}$)$^{{\rm -}{1}}$
+of approximately 12.5 $\mu$g CO$_{{\rm 2}}$ J$^{{\rm -1}}$ absorbed PAR or 0.45 kg 
+CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ (J m$^{{\rm 2}}$ S$^{{\rm -}{1}}$)$^{{\rm -}{1}}$
 (Ehleringer \& Pearcy, 1983). In C$_{{\rm 3}}$ species, $\epsilon$ decreases with increasing temperature due
 to accelerated photo-respiration. This temperature effect is relatively small: $\epsilon$ changes by
 about 1\% with each change of 1\degrees C in temperature (Farquhar {\it et al.\/}, 1980; Ehleringer,
@@ -2085,64 +1836,73 @@ is hardly any variation in (Ehleringer \& Pearcy, 1983). However, when $\epsilon
 unit of incident PAR, instead of per unit of absorbed PAR, apparent differences may
 occur, due to differences in the absorption coefficient of the leaves (Hunt {\it et al.\/}, 1985).
 Yellowing of leaves results in increased reflection and transmission and, therefore, in an
-apparent decrease of $\epsilon$.  \\
+apparent decrease of $\epsilon$.  
+
 Measured values of the gross assimilation rate of leaves at light saturation (A$_{{\rm m}}$) show a
 large variation. The main sources of variation are differences in measurement conditions
 of temperature and ambient CO$_{{\rm 2}}$ concentration, differences in physiologi\-cal and anatomi\-cal proper\-ties of the leaves as a result of differences in leaf age and pre$-$treatment, and
 variation among species and cultivars.
 
-
-
 The influence of temperature on the rate of leaf photosynthesis is described in the model
 by multiplying the value of A$_{{\rm m}}$ by a temperature$-$dependent factor. The relationship
 between temperature and Am is based on Versteeg \& van Keulen (1986). Various
-reaction types are distinguished according to crop species and habitat.  \\
+reaction types are distinguished according to crop species and habitat.
+
 The photosynthetic capacity of the leaves is affected by the preceding conditions of
 radiation and temperature to which they were exposed: leaves adapt their photosyn\-thetic
 capacity to the environment. Therefore, A$_{{\rm m}}$ shows a seasonal course, which correlates
 with the time course of radiation and temperature (Parsons \& Robson, 1981). This
 adaptation may be mimicked by using a seven$-$day running average of the value of A$_{{\rm m}}$
 which has been adjusted for the environmental conditions (Schapendonk \& Gaastra, 1984;
-Acock {\it et al.\/}, 1978). A consequence of this adaptation is that the photosynthetic character\-istics of leaves of plants grown in climate rooms, are not representative for plants grown
-in the field.   \\
+Acock {\it et al.\/}, 1978). A consequence of this adaptation is that the photosynthetic 
+character\-istics of leaves of plants grown in climate rooms, are not representative for plants grown
+in the field.
+
 The photosynthetic capacity of a leaf is also affected by its age: A$_{{\rm m}}$ reaches a maximum
 shortly after full expansion of the leaf, followed by a gradual decline with ageing
 (Rawson {\it et al.\/}, 1983; Dwyer \& Stewart, 1986). Differences in photosynthetic capacity of
 the leaves are closely related to their nitrogen content, whether these variations are due to
 age, growing conditions or fertilizer application (van Keulen \& Seligman, 1987). Leaves
-lower in the canopy have a lower {\nobreak}photosynthetic capacity because they are older and are
+lower in the canopy have a lower photosynthetic capacity because they are older and are
 adapted to lower radiation levels (Acock {\it et al.\/}, 1978; Williams, 1985). They also have
 lower nitrogen concentrations. The value of A$_{{\rm m}}$ used in the model, refers to the
-{\nobreak}photosynthetic capacity of full$-$grown leaves at the top of the canopy, as these leaves
-absorb most of the radiation. Effects of canopy senes\-cence are introduced by a multiplica\-tion factor which is a function of development stage.
+photosynthetic capacity of full$-$grown leaves at the top of the canopy, as these leaves
+absorb most of the radiation. Effects of canopy senes\-cence are introduced by a multiplica\-tion 
+factor which is a function of development stage.
 
-The photosynthetic capacity of leaves varies with crop species and cultivar. The coeffi\-cient of variation in A$_{{\rm m}}$ among genotypes within a species is of the order of 5$-$10\%
+The photosynthetic capacity of leaves varies with crop species and cultivar. The coeffi\-cient of
+variation in A$_{{\rm m}}$ among genotypes within a species is of the order of 5$-$10\%
 (Spitters \& Kramer, 1986). Species can be grouped according to C$_{{\rm 3}}$ and C$_{{\rm 4}}$ types.
-Characteristic values range from 15$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ for C$_{{\rm 3}}$ species and from 40-90
-kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$ species, depending on leaf N concentration and temperature
-(Spitters {\it et al.\/}, 1986). Other values mentioned, range from 10$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ for
-C$_{{\rm 3}}$ species and from 10-90 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$ species (Goudriaan, 1982; van Keulen \&
+Characteristic values range from 15$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ 
+for C$_{{\rm 3}}$ species and from 40-90
+kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$ species, depending on leaf 
+N concentration and temperature (Spitters {\it et al.\/}, 1986). Other values mentioned, 
+range from 10$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ for
+C$_{{\rm 3}}$ species and from 10-90 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ 
+for C$_{{\rm 4}}$ species (Goudriaan, 1982; van Keulen \&
 Seligman, 1987). Species from ruderal habitats show higher values than species from
 shaded habitats. In the model, estimates of A$_{{\rm m}}$ must be used, which are found by fitting
 the exponential function [equation 5.23] to data of gross photosynthesis of individual
 leaves. Such estimates may deviate from the measured values of photosynthetic efficiency
 at low light and photosynthesis at light saturation. If no firmly based value of A$_{{\rm m}}$ is
-available, a value of 40 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -}{1}}$ for C$_{{\rm 3}}$ species and 70 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$
+available, a value of 40 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -}{1}}$ for C$_{{\rm 3}}$ 
+species and 70 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$
 species is, in general, a reasonable estimate.
 
 \subsection{Respiration} 
 
 Respiration is usually measured as CO$_{{\rm 2}}$ evolution in the absence of light energy. This
 dark respiration can be partitioned into growth and maintenance respiration; estimation
-procedures being reviewed by Amthor (1984). Standard values for maintenance coeffi\-cients are 0.03 for leaves, 0.015 for stems and 0.01 for roots (Spitters {\it et al.\/}, 1989). For
+procedures being reviewed by Amthor (1984). Standard values for maintenance coeffi\-cients are 
+0.03 for leaves, 0.015 for stems and 0.01 for roots (Spitters {\it et al.\/}, 1989). For
 tropical crops lower values are used: 0.02 for the leaves and 0.01 for the other plant
 organs (Penning de Vries {\it et al.\/}, 1989). As mentioned previously, these coefficients are
 affected by temperature, nitrogen content and mineral content of the plant tissue, and by
-the metabolic activity of the crop.   \\
+the metabolic activity of the crop.
+
 Measured rates of dark respiration of full$-$grown leaves, showed a large variation among
 species and among cultivars (M.J. de Kock, AB-DLO, Wageningen, unpubl.). The
 maintenance coefficients applied in the model are not based on conclusive evidence. This
 introduces a significant uncertainty in simulating the rate of crop growth, especially when
 the standing biomass is large compared to the current rate of photosynthesis, as at the end
 of the growth period.   
-
