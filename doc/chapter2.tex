@@ -4,7 +4,6 @@ The processes which characterize crop growth, have to be ordered in a rational w
 simulate crop growth. This manual describes these processes as they are imple\-ment\-ed in
 WOFOST 6.0. The subroutines are presented in relation to the described process\-es. 
 
-\bigskip
 This chapter provides some basic information on the development of WOFOST (\S 2.1),
 the applications of WOFOST (\S 2.2) and on the function\-ality of WOFOST (\S 2.3). Chapter
 3 provides information on the structure of the Euler integra\-tion which is used to integrate
@@ -15,7 +14,6 @@ senes\-cence and death. Chapter 6 discusses the soil water balance calcula\-tion
 calculations are used to keep track of the water in the soil. The soil moisture content can
 be calculated from this.
 
-\bigskip
 It should be mentioned that two versions of WOFOST 6.0 exist. One is the version
 currently implemented in the CGMS system of the Joint Research Centre of the EC, at
 Ispra, Italy. The other version is a more general version. In Appendix 5 the differences
@@ -23,38 +21,34 @@ between these two versions will be briefly explained. However, the processes whi
 describe the crop growth do not differ in both versions. They will be explained in the
 following text.
 
-\bigskip
-\bigskip
-
 \section{\index{WOFOST}Development of WOFOST  }
 
 WOFOST originated in the framework of an interdisciplinary study on the potential world
 food production by the Centre for World Food Studies (CWFS) in coopera\-tion with the
 Wageningen Agricultu\-ral Univer\-sity, Depart\-ment of Theoretical Production Ecology
 (WAU-TPE) and the DLO-Centre for Agrobiolo\-gi\-cal Re\-search (CABO-DLO, currently
-AB-DLO), Wagenin\-gen, the Nether\-lands. After cessa\-tion of the CWFS in 1988, the deve\-lopment of the model has been carried out at the DLO-Winand Staring Centre (SC-DLO)
+AB-DLO), Wagenin\-gen, the Nether\-lands. After cessa\-tion of the CWFS in 1988, the 
+deve\-lopment of the model has been carried out at the DLO-Winand Staring Centre (SC-DLO)
 in cooperation with AB-DLO and WAU-TPE.
 
-\bigskip
-WOFOST is a member of the family of models developed in {\nobreak}Wageningen by the school
+WOFOST is a member of the family of models developed in Wageningen by the school
 of C.T. de Wit. Related models are the successive SUCROS models (Simple and
 Universal Crop Simu\-lator) (Spitters {\it et al\/}., 1989; Van Laar {\it et al\/}., 1992), Arid Crop (Van
 Keulen, 1975; Van Keulen {\it et al.\/}, 1981), Spring wheat (Van Keulen and Seligman, 1987;
 Stol et al., 1993), MACROS (Penning de Vries et al., 1989) and ORYZA1 (Kropff et al.,
-1993). The first WOFOST model has been documented by Wolf {\it et al\/}. (1986). \\
- All these Wageningen models follow the hierarchical distinc\-tion between potential and
-limited production, and share similar crop growth submodels, with light interception and
-CO$_{{\rm 2}}$ assimilation as growth driving processes, and crop {\nobreak}phenological development as
-growth controlling process. How\-ever, the submodels describing the soil water balance and
-the crop nutrient uptake vary much in approach and level of {\nobreak}detail.
+1993). The first WOFOST model has been documented by Wolf {\it et al\/}. (1986).
 
-\bigskip
+All these Wageningen models follow the hierarchical distinc\-tion between potential and
+limited production, and share similar crop growth submodels, with light interception and
+CO$_{{\rm 2}}$ assimilation as growth driving processes, and crop phenological development as
+growth controlling process. How\-ever, the submodels describing the soil water balance and
+the crop nutrient uptake vary much in approach and level of detail.
+
 The development of WOFOST has been connected to the need for its application in
 several studies. Although most of these studies did not have the specific purpose to
 develop the model as such, efforts were made to maintain parts of the software developed
 as options in the subsequent model versions.
 
-\bigskip
 WOFOST was originally developed as a crop growth simulation model for the assessment
 of the yield potential of various annual crops in tropi\-cal countries (Van Keulen and Wolf,
 1986; Van Diepen {\it et al.\/}, 1988; Van Keulen and Van Diepen, 1990). At first it was tried
@@ -62,13 +56,10 @@ to keep the need for input data as low as possible, by using average input value
 However, it soon became clear that the variability of the environmental condi\-tions
 determining crop growth, both in space and time, had to be taken into account. The use
 of long term mean monthly weather data, mean sowing dates, and averaged soil data as
-model input may lead to a false impression of the agro-{\nobreak}ecologic potential of a region.
+model input may lead to a false impression of the agroecologic potential of a region.
 This implies that original rather than averaged data must be used as model input and that,
 if needed, averaging can be done only {\it after\/} the simula\-tion. In other words: calculate first
 and average later (De Wit and Van Keulen, 1987; Nonhebel, 1994).
-
-\bigskip
-\bigskip
 
 \section{\index{WOFOST}Applications of WOFOST  }
 
