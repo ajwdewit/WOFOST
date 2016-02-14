@@ -26,7 +26,7 @@ quantification of an energy balance. The energy dissipation, required for evapor
 leads to cooling of the evaporating surface which reduces the vapor gradient. Hence, a
 driving force is required to maintain the corresponding surface temperature, and thus,
 maintain the vapor pres\-sure gradient. The energy for this driving force is supplied by the
-net solar radiation received by the canopy and or soil.\\
+net solar radiation received by the canopy and or soil.
 Net radiation is the balance between incoming (short-wave) radiation from the sun and
 radiation losses due to reflection and outgoing (long-wave) radiation. Heat supplied by
 moving air is another source of energy, but this is usually negligible, except in situations
@@ -40,16 +40,17 @@ terms. He calculated evaporation from free-water surfaces, wet bare soil and low
 swards for 10-day periods. There is ongoing discussion in the literature whether his
 formulae are also applicable if daily values are used. If used with daily values, 24 hour
 average values should be used. For large day/night differences (e.g. in wind speed),
-Dooren\-bos \& Kassam (1979) suggested the use of correction factors.\\
-The value calculated according to the Penman equations is the potential evapo\-{\nobreak}transpiration, i.e. without limitations with respect to the supply of liquid water to the
+Dooren\-bos \& Kassam (1979) suggested the use of correction factors.
+
+The value calculated according to the Penman equations is the potential evapotranspiration, i.e. without limitations with respect to the supply of liquid water to the
 evaporating surface. This ET0 (Penman) value is often used as a reference value, to
 which actual crop water demand is related. To translate ET0 into crop water require\-ments,
- so called crop factors can be used (e.g. Doorenbos \& Pruitt, 1977; Feddes {\it et al.\/},
+ so called crop factors can be used (e.g. Doorenbos \& Pruitt, 1977; Feddes {\it et al.},
 1978). See also \S 6.1.
 
 The Penman formula (equation 4.1) consists of two segments. The first part, the radiative
 term, calculates the net absorbed radiation. The second part, the aerodynamic term,
-calculates the evapora\-tive demand of the atmo\-sphere (Choisnel {\it et al\/}., 1992; Fr\`{e}re and
+calculates the evapora\-tive demand of the atmo\-sphere (Choisnel {\it et al}., 1992; Fr\`{e}re and
 Popov, 1979; Penman, 1956, 1948). The resulting equations are used to calculate the
 potential evapora\-tion rates from a water surface, from bare soil surfaces and the potential
 evapotranspira\-tion rate from a crop canopy.
@@ -232,22 +233,25 @@ n &:& Bright sunshine hours per day  & [hr]\\
 D &:& Astronomical day length (see e.q. 4.25)  & [hr]
 \end{tabularx}
 
-t should be mentioned that the empirical constants A and B of the \AA ngstr\"{o}m formula can be found with linear regression by comparing the incoming global radiation with the
+t should be mentioned that the empirical constants A and B of the \AA ngstr\"{o}m formula 
+can be found with linear regression by comparing the incoming global radiation with the
 relative sunshine duration n/D, taking into consideration the daily extra-terrestrial
 radiation. A is the intercept and B the slope of the regression. It should also be mentioned
 that the regression constants A and B have a physical meaning. A can be considered as
 the fraction of extra terrestrial radiation on overcast days. The sum of A and B can be
 considered as the fraction of radiation received on clear days.\\
 For several regions in Europe the \AA ngstr\"{o}m constants have been established by Supit
-(1994). Indicative values for empirical constants in the \AA ngstr\"{o}m formula are depicted in Table \ref{tab:angstAB}.
+(1994). Indicative values for empirical constants in the \AA ngstr\"{o}m formula are 
+depicted in Table \ref{tab:angstAB}.
 
 \begin{table}
+\centering
 \caption{Indicative values for empirical constants in the \AA ngstr\"{o}m formula in
 relation to latitude and climate used by the FAO (Fr\`{e}re \& Popov, 1979)}
 \label{tab:angstAB}
 \begin{tabular}{lcc}
 \hline
-Zone &   A &  B                \\
+Zone &   A &  B  \\
 \hline
 Cold and temperate zones   &  0.18 &  0.55\\
 Dry tropical zones  &   0.25  & 0.45\\
@@ -260,10 +264,10 @@ It should be clear that the constants {\bf A} and {\bf B} (acronym: {\bf COEFA} 
 provided by the user. However, in case these constants are not available, in the JRC
 version of WOFOST 6.0 (in subrou\-tine {\bf METEO}), the following approximation is used:
 
-\begin{eqnarray*}
- A~=~0.4885~-~0.0052 \, LAT \\
- B~=~0.1563~+~0.0074 \, LAT 
-\end{eqnarray*}
+\begin{align*}
+ A &=~0.4885~-~0.0052 \, LAT \\
+ B &=~0.1563~+~0.0074 \, LAT 
+\end{align*}
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
@@ -425,7 +429,7 @@ e$_{{\rm s}}$ &:& Saturated vapor pressure (see eq. \ref{eqSVP})  & [kPa]\\
 e$_{{\rm a}}$ &:& Actual vapor pressure  & [kPa]\\
 {\it factor\/} &:& Empirical constant  & [-]\\
 BU &:& Coefficient in wind function (see eq. \ref{eqBU})  & [-]\\
-u(2) &:& Mean windspeed at 2 m height  & [m s$^{{\rm -1}}$]
+u(2) &:& Mean windspeed at 2 m height  & [m s$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The following values for {\it factor\/} are assumed (Fr\`{e}re, 1979). For crop canopies {\it factor\/} =
@@ -462,7 +466,7 @@ diffuse radiation.
 
 Day length is a function of the angle of the sun above the horizon (solar elevation). Solar
 elevation is the angle between the sun rays and the earth's surface. Solar elevation is
-determined by latitude, the day and the hour on a certain day. \\
+determined by latitude, the day and the hour on a certain day.
 The dependency on the hour of a certain day is simple to explain. The sun rises and the
 sun sets every day. Just before sun rise and just after sun set the solar elevation is zero. At the equator on days that the sun is in zenith (the point in the sky directly overhead) at 12 o'clock solar time it holds that:
 
@@ -482,14 +486,16 @@ every 24 hours at a speed of 15\degrees  per hour (= 360/24).
 To explain the dependency of solar elevation on latitude and day number first the situation
 is regarded when the sun is in zenith. This is at 12 o'clock solar time (not to be mixed up
 with noon). The solar declination, the place were the sun is in zenith at 12 o'clock solar
-time, changes every day. On the 21$^{\rm st}$ of June the sun stands perpen\-dicular above the northern tropic of Cancer (+23.45\degrees N) and on the 22$^{\rm nd}$ of December the sun stands perpendicular above the tropic of Capricorn (-23.45\degrees S). In figure \ref{fig:solardecl} the situation is depicted for 22$^{\rm nd}$ of December when the sun reaches its highest point at the tropic of Capricorn at the southern hemisphere. On the northern hemisphere this results in the shortest day of the year. \\
+time, changes every day. On the 21$^{\rm st}$ of June the sun stands perpen\-dicular above the northern tropic of Cancer (+23.45\degrees N) and on the 22$^{\rm nd}$ of December the sun stands perpendicular above the tropic of Capricorn (-23.45\degrees S). In figure \ref{fig:solardecl} the situation is depicted for 22$^{\rm nd}$ of December when the sun reaches its highest point at the tropic of Capricorn at the southern hemisphere. On the northern hemisphere this results in the shortest day of the year.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
+\centering
+\includegraphics[width=93mm]{\FigDir/AARDE3.pdf}
 \caption{Solar declination}
 \label{fig:solardecl}
-\begin{forcewidth}{9.33cm}
- \begin{center}\InputPS{\FigDir/AARDE3.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{9.33cm}
+% \begin{center}\InputPS{\FigDir/AARDE3.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 The solar {\nobreak}declination during the year can be approached by a cosine function. (Note a shift of ten days).
@@ -506,12 +512,14 @@ t$_{{\rm d}}$ &:& Number of the day since 1 January   & [-]\\
 
 The distance of the sun to the earth is considered to be infinite, therefore declination can be considered equal for all places on earth. The orbit of the earth around the sun is a non concentric ellipse (see figure \ref{fig:orbit}), therefore the solar radiation received at the top of the atmosphere during the year is not constant. At the first of January the earth is closest to the sun, radiation at the top of the atmosphere will then be higher as during other days. \\
 
-\begin{figure}[htbp]
+\begin{figure}p]
+\centering
+\includegraphics[width=80mm]{\FigDir/ELIPS.pdf}
 \caption{Orbit of the earth around the sun}
 \label{fig:orbit}
-\begin{forcewidth}{7.77cm}
- \begin{center}\InputPS{\FigDir/ELIPS.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{7.77cm}
+%% \begin{center}\InputPS{\FigDir/ELIPS.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 The average solar radiation at the top of the atmosphere is estimated at 1370 W m$^{\rm -2}$. A daily solar radiation constant can than be calculated as a cosine times the average solar radiation at the top of the atmosphere multiplied by correction factor to correct for the elliptical orbit of the earth around the sun. This correction factor is estimated to be 0.033.
@@ -528,8 +536,7 @@ S$_{{\rm c}}$ &:& Average solar radiation at the top of atmosphere (1370 J m$^{{
 t$_{{\rm d}}$ &:& Number of day since 1 January  & [-]\\
 \end{tabularx}
 
-Note that during the winter in Europe the solar radiation at the top of the atmo\-sphere is at its maximum!\\
-The height of the sun at any moment throughout the day and at any place and date can be
+Note that during the winter in Europe the solar radiation at the top of the atmo\-sphere is at its maximum! The height of the sun at any moment throughout the day and at any place and date can be
 calculated with (subroutine {\bf TOTASS}):
 
 \begin{equation}
@@ -652,7 +659,7 @@ $\int$sin$\beta$  &:& Integral of solar height   & [s]\\
 Relationships between the share of the diffuse flux in the global irradiance (S$_{{\rm df}}$/S$_{{\rm g}}$) and the atmospheric transmission (S$_{{\rm g}}$/S$_{{\rm o}}$) are found in several research reports concerning the use
 of solar energy in solar collectors. The relation is characterized by an approximately
 linear trend for transmissions ranging between 0.35 and 0.75. At low transmissions,
-nearly all of the incoming radiation is diffuse so that the curve bends off.\\
+nearly all of the incoming radiation is diffuse so that the curve bends off.
 There is some variation among published relations, arising from differences in atmos\-pheric conditions, especially relative sunshine duration, water content of the atmosphere,
 and cloud type, but also lack of fit of the presented regression equation from the data and
 differences in the method of measuring the diffuse radiation.

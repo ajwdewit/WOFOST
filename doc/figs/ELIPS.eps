@@ -1,0 +1,68 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: D:\UserData\projects\WOFOST\wofost_60_docs\ELIPS.eps
+%%Creator: Rasters - (c) 2000-2009 by Jaroslav Fojtik
+%%BoundingBox: 43 118 462 342
+%%Pages: 1
+%%DocumentFonts:
+%%EndComments
+%%EndProlog
+
+%%Page: 1 1
+/$F2psDict 200 dict def
+$F2psDict begin
+$F2psDict /mtrx matrix put
+
+
+/DrawEllipse {
+	/endangle exch def
+	/startangle exch def
+	/yrad exch def
+	/xrad exch def
+	/y exch def
+	/x exch def
+	/savematrix mtrx currentmatrix def
+	x y translate xrad yrad scale 0 0 1 startangle endangle arc
+	savematrix setmatrix
+	} def
+
+
+% remember original state
+/origstate save def
+
+% build a temporary dictionary
+20 dict begin
+% 
+0 0 0 setrgbcolor
+[]0 setdash
+0.12 setlinewidth
+newpath
+400.79 232.66 21.95 21.95 0 360 DrawEllipse closepath
+gsave clip newpath 0 setlinewidth
+
+0 0 0 setrgbcolor
+[0.5 15.5] 0 setdash
+ 378.85 16.0 422.74 {210.72 moveto 0 43.89 rlineto 8.00 -51.89 rmoveto 0 51.89 rlineto}for
+stroke grestore
+stroke
+newpath
+252.65 229.99 209.47 112.41 0 360 DrawEllipse closepath
+stroke
+newpath
+127.57 319.43 10.47 10.53 0 360 DrawEllipse closepath
+gsave clip newpath 0 setlinewidth
+
+0 0 0 setrgbcolor
+[0.5 1.5] 0 setdash
+ 117.10 2.0 138.04 {308.91 moveto 0 21.05 rlineto 1.00 -22.05 rmoveto 0 22.05 rlineto}for
+stroke grestore
+stroke
+% stop using temporary dictionary
+end
+
+% restore original state
+origstate restore
+
+end  %finish global function dictionary
+showpage
+
+%%Trailer

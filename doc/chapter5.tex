@@ -21,10 +21,14 @@ is lost as growth respir\-ation. The growth rate is thus obtained as:
  
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-$\Delta$W &:& Growth rate    &   [kg Dry Matter ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-A  &:& Gross assimilation   rate &  [kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm m}}$  &:& Maintenance respiration rate    &  [kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-C$_{{\rm e}}$ &:& Conversion efficiency off assimilates total crop   &   [kg Dry Matter kg$^{{\rm -1}}$ CH$_{{\rm 2}}$O]\\
+$\Delta$W &:& Growth rate    &   
+    [kg Dry Matter ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+A  &:& Gross assimilation   rate &  
+    [kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm m}}$  &:& Maintenance respiration rate    &  
+    [kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+C$_{{\rm e}}$ &:& Conversion efficiency off assimilates total crop   &   
+    [kg Dry Matter kg$^{{\rm -1}}$ CH$_{{\rm 2}}$O]\\
 \end{tabularx}
 
 The dry matter produced is partitioned amongst the various plant organs such as roots,
@@ -57,7 +61,7 @@ processes are treated in the following sections.
 \begin{figure}[htbp]
 \caption{Crop growth pro\-cesses. {\small T$_{{\rm a}}$ and T$_{{\rm p}}$ are actual and potential 
 transpiration rate.} (deKoning, 1993)}
- \begin{center}\InputPS{\FigDir/ASIMTREE.eps} \end{center}
+% \begin{center}\InputPS{\FigDir/ASIMTREE.eps} \end{center}
 \end{figure}
 
 \section{Phenological development of a crop}
@@ -87,10 +91,12 @@ tempera\-ture, beyond which the phenological activity does not increase anymore,
 crop specific. An example of this effective daily tempera\-ture as a function of daily
 average temperature is depicted in figure 5.2.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 % fig 5.2
-\caption{Effective temperature from sowing to emergence}
- \begin{center}\InputPS{\FigDir/TEFFMAX.eps} \end{center}
+\centering
+\includegraphics[width=120mm]{\FigDir/TEFFMAX.pdf}
+\caption{Effective temperature from sowing to emergence} 
+% \begin{center}\InputPS{\FigDir/TEFFMAX.eps} \end{center}
 \end{figure}
 
 The following relationship can be defined for the effective temperature sum:
@@ -103,10 +109,12 @@ T_{e} &= T _{\max ,e} & T _{b} T \ge  T _{\max \, ,\, e}
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-T$_{{\rm e}}$ &:& Effective daily tempera\-ture & [\degrees C]\\
+T$_{{\rm e}}$ &:& Effective daily tempera\-ture & 
+    [\degrees C]\\
 T$_{{\rm max,e}}$ &:& Maximum temperature beyond which phenological 
-   activity does not increase    &    [\degrees C]\\
-T$_{{\rm b}}$ &:& Base temperature below which phenological development stops & [\degrees C]\\
+    activity does not increase    &    [\degrees C]\\
+T$_{{\rm b}}$ &:& Base temperature below which phenological development stops & 
+    [\degrees C]\\
 T  &:& (Average) daily temperature & [\degrees C]
 \end{tabularx}
 
@@ -809,15 +817,16 @@ the development stage and is crop specific. An AFGEN table with the development 
 as the independent variable is used to describe this dependency (see also \S 5.2.2). For an
 example see figure 5.3.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 % figure 5.3
+\centering
+\includegraphics[width=85mm]{\FigDir/AMAXTB.pdf}
 \caption{Maximum leaf CO$_{{\rm 2}}$ assimilation the rate as a function of develop\-ment of
 the development stage.}
-\begin{forcewidth}{8.44cm}
- \begin{center}\InputPS{\FigDir/AMAXTB.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{8.44cm}
+%% \begin{center}\InputPS{\FigDir/AMAXTB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
-
 
 \subsubsection{Daytime temperature}
 The maximum leaf CO$_{{\rm 2}}$ assimilation rate, A$_{{\rm m}}$, has to be corrected for sub-optimal average
@@ -841,13 +850,16 @@ T$_{{\rm min}}$  &:& Minimum daily temperature  &      [\degrees C]\\
 \end{tabularx}
 
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 %figure 5.4
+\centering
+\includegraphics[width=140mm]{\FigDir/TMPFTB.pdf}
 \caption{Re\-duc\-tion fac\-tor of the ma\-xi\-mum leaf CO$_{{\rm 2}}$ assimila\-tion as a function of
 average tempera\-ture.}
-\begin{forcewidth}{8.44cm}
- \begin{center}\InputPS{\FigDir/TMPFTB.eps} \end{center}
-\end{forcewidth}
+\label{fig:TMPFTB}
+%\begin{forcewidth}{8.44cm}
+%% \begin{center}\InputPS{\FigDir/TMPFTB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 
@@ -1011,10 +1023,13 @@ should be multiplied with this factor.
 
 \begin{figure}[htbp]
 %figure 5.5
+\centering
+\includegraphics[width=85mm]{\FigDir/TMPFTB.pdf}
 \caption{Reduc\-tion factor for senescence as a function of development stage}
-\begin{forcewidth}{8.44cm}
- \begin{center}\InputPS{\FigDir/RFSETB.eps} \end{center}
-\end{forcewidth}
+\label{fig:TMPFTB}
+%\begin{forcewidth}{8.44cm}
+% \begin{center}\InputPS{\FigDir/RFSETB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 \subsubsection{Dependency of the maintenance respiration on temperature}
@@ -1211,13 +1226,15 @@ i &:& Leaves (lv), storage organs(so), stems (st)
 \end{tabularx}
 
  
-\begin{figure}[htbp]
+\begin{figure}[p]
 % fig 5.6
+\centering
+\includegraphics[width=120mm]{\FigDir/FRTB.pdf}
 \caption{Parti\-tioning factors of the differ\-ent organs as a function of de\-velop\-ment stage}
 \label{fig:partitioning}
-\begin{forcewidth}{12.06cm}
- \begin{center}\InputPS{\FigDir/FRTB.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{12.06cm}
+% \begin{center}\InputPS{\FigDir/FRTB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 The actual gross CO$_{{\rm 2}}$ assimilation rate has to be identical to the amount of structural plant
@@ -1278,13 +1295,15 @@ AFGEN table with the development stage as the independent variable (see also App
 LAI), water stress and also due to exceedance of the life span should be accounted for.
 
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 %Fig. 5.7
+\centering
+\includegraphics[width=100mm]{\FigDir/RDRRTB.pdf}
 \caption{Death rate of roots and stems as a function of development rate}
 \label{fig:DeathRoots}
-\begin{forcewidth}{10.05cm}
- \begin{center}\InputPS{\FigDir/RDRRTB.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{10.05cm}
+% \begin{center}\InputPS{\FigDir/RDRRTB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 
@@ -1480,13 +1499,15 @@ classes (eq. 5.53) yields the total leaf area index. The green area index of the
 the storage organs is added to this amount. The total dry matter weight of living leaves
 can be found in a similar way by using equation 5.49.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
 %Fig. 5.8   
+\centering
+\includegraphics[width=120mm]{\FigDir/SLATB.pdf}
 \caption{Spe\-cific leaf area as a function of develop\-ment stage}
 \label{fig:SpecificLeafArea}
-\begin{forcewidth}{10.05cm}
- \begin{center}\InputPS{\FigDir/SLATB.eps} \end{center}
-\end{forcewidth}
+%\begin{forcewidth}{10.05cm}
+% \begin{center}\InputPS{\FigDir/SLATB.eps} \end{center}
+%\end{forcewidth}
 \end{figure}
 
 As is men\-tioned earlier, the green area index of the stems and storage or\-gans, may absorb
@@ -1526,7 +1547,7 @@ S$_{{\rm exp,t}}$ &:& Specific leaf area at time step t during the
     exponential growth stage    &     [ha kg$^{{\rm -1}}$]\\
 $\Delta$W$_{{\rm lv}}$ &:& Dry matter increase of leaves (see eq. 5.45)   &
     [kg ha$_{{\rm -1}}$ d$^{{\rm -1}}$]\\
-L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t\\
+L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
    during exponential growth stage (see eq. 5.51)   &
         [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
 \end{tabularx}
@@ -1547,7 +1568,7 @@ mutual shading.
 Leaves die due to exceedance of the life span for leaves (i.e. physiologic ageing). Life
 span is defined as the maximum time in days a leaf can live at a constant temper\-ature of
 35\degrees C. Life span is crop specific. The concept of lifespan is compatible with a definition
-in terms of temperature sum as given by Gallagher (1979).\\
+in terms of temperature sum as given by Gallagher (1979).
 The physiologic ageing factor per time step can be calculat\-ed as:
 
 \begin{equation}

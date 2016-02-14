@@ -156,10 +156,11 @@ and combining with other models to create links with other sciences (Penning de
 Vries, 1989). Applying models can lead to more effective use of existing knowledge
 for extension, agronomic and cropping systems research and breeding and to more
 efficient experimentation. Whisler et al. (1986) presented an overview of crop models
-and their application. \\
+and their application.
+
 Crop yields can be predicted some time before harvest by using expected weather
 data. This might be important for cash-crops, where trade and planning post harvest
-activities start early.\\
+activities start early.
 Van Keulen \& Wolf (1986) have used a crop growth model to estimate yield levels of
 various food crops on a regional scale where there were no or insufficient external
 inputs to ensure potential growth.
@@ -186,9 +187,10 @@ assimilates which are not used for the maintenance are partitioned over the root
 stems, leaves and storage organs.Partitioning of the assimilates is dependent on the
 development stage which on its turn is related to the temperature sum. Structural
 biomass cannot be mobilized for either maintenance or growth processes elsewhere in
-the plant.\\
+the plant.
+
 Water shortage leads to stomatal closure and simultaneous reduction of assimilation
-and transpiration. The ratio of the actual transpiration rate and the potential rate\\
+and transpiration. The ratio of the actual transpiration rate and the potential rate
 provides the link between the carbon and the water balance. The extent to which the
 potential photosynthesis is realized, depends on the availability of water.
 
@@ -202,11 +204,11 @@ consider:
 \item Implementation
 \end{itemize}
 
-{\it 1. Functionality\/}\\
+{\it 1. Functionality}\\
 The System Description describes the functions to be performed by the program.
 What should the program be able to do. 
 
-{\it 2. Processes\/}\\
+{\it 2. Processes}\\
 Functionalities can be translated to processes. One function can be described with
 one or more processes. Processes described in a simulation model will have a
 scientific basis.\\
@@ -214,11 +216,11 @@ These processes can be described using equations. These equations will be descri
 in a System Description, with their scientific background which explains the use of the
 equations. 
 
-{\it 3. Data\/}\\
+{\it 3. Data}\\
 A System Description describes the data needed as input to the equations as
 described in the description of the processes. 
 
-{\it 4. Implementation\/}\\
+{\it 4. Implementation}\\
 The processes have to be ordered in a rational way to simulate crop growth. The
 description of the implementation of the processes is also part of the user manual.
 This means a description of the subroutines in relation to the described processes and
@@ -250,7 +252,7 @@ also described in the user manual (Guiking, 1993).
 \item 
 \end{itemize}
 
-{\bf 1.2 Functional description of WOFOST Version 6.0}
+\section{Functional description of WOFOST Version 6.0}
 
 Crop growth is often described by an empirical model, consisting of a regression
 equation (e.g. a logistic function). Sometimes, environmental variables, such as
@@ -289,38 +291,46 @@ basis. This is the reason why the time set for simulation is set to one day. \\
 
 \begin{figure}[htbp]
 % figure 1.1
+\centering
+\includegraphics[width=70mm]{\FigDir/DAGLOOP.pdf}
 \caption{Daily calculations}
 \label{fig:dayloop}
- \begin{center}\InputPS{file=\FigDir/DAGLOOP.eps,width=7.04cm} \end{center}
+% \begin{center}\InputPS{file=\FigDir/DAGLOOP.eps,width=7.04cm} \end{center}
 \end{figure}
 
 \begin{figure}[htbp]
 % figure 1.2
+\centering
+\includegraphics[width=70mm]{\FigDir/JAARLOOP.pdf}
 \caption{Yearly calculations}
 \label{fig:yearloop}
- \begin{center}\InputPS{file=\FigDir/JAARLOOP.eps,width=7.04cm} \end{center}
+% \begin{center}\InputPS{file=\FigDir/JAARLOOP.eps,width=7.04cm} \end{center}
 \end{figure}
 
 The influence of nutrients (nitrogen, phosphate and potassium) on the yield and the
 yield statistics are calculated on a yearly basis. 
-
 Figure \ref{fig:dayloop} presents this loop over days for one growth season, 
 whereas figure \ref{fig:yearloop} depicts the loop over years for one simulation run.
-
 Another important feature of the crop growth simulation model is the comparison of
 the potential production with the water limited production. The potential production
 assumes that the soil moisture content is always at field capacity.
 
 \begin{figure}[htbp]
+\centering
+\includegraphics[width=77mm]{\FigDir/WEERLOOP.pdf}
 % \begin{center}\InputPS{file=\FigDir/WEERLOOP.eps,width=7.73cm} \end{center}
 \end{figure}
 
 \begin{figure}[htbp]
- \begin{center}\InputPS{file=\FigDir/CROPLOOP.eps,width=9.29cm} \end{center}
+\centering
+\includegraphics[width=93mm]{\FigDir/CROPLOOP.pdf}
+% \begin{center}\InputPS{file=\FigDir/CROPLOOP.eps,width=9.29cm} \end{center}
 \end{figure}
 
 \begin{figure}[htbp]
- \begin{center}\InputPS{file=\FigDir/SOILLOOP.eps,width=9.29cm} \end{center}
+\centering
+\includegraphics[width=93mm]{\FigDir/SOILLOOP.pdf}
+% \begin{center}\InputPS{file=\FigDir/SOILLOOP.eps,width=9.29cm} \end{center}
 \end{figure}
 
 The model can be used to simulate pro\-duction and water use in order to survey
