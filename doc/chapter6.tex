@@ -42,7 +42,7 @@ The actual soil moisture content can be established according to (Driessen, 1986
 % equations 6.1a-b
 \theta_{t~}   = {\frac{IN _{up} ~+~(IN _{low} ~-~T _{a} )}{RD}} \Delta t \subeqn  \\
 where IN_{up} = P~+~I _{e} ~-~E _{s} ~+~SS _{t} \, /\Delta t-~SR  \subeqn  \\
-and IN_{low} = CR~-~Perc \subeqn \\
+and IN_{low} = CR~-~Perc \subeqn
 \end{align}
 
 Where:\\
@@ -92,7 +92,7 @@ made available.So, actually three water balance subroutines can be distinguished
 \item Water limited production, without groundwater influence [WATFD, \S  6.3]\\
 \item Water limited production, with groundwater influence [WATGW, \S  6.4]
 \end{itemize}
- 
+
 The actual transpiration rate of a canopy, used in the calculations of potential and water
 limited production, is calculated in the same way for all options. The calculation method
 will therefore be treated separately in \S 6.1. 
@@ -282,8 +282,6 @@ $\theta_{{\rm wp}}$ &:& Soil moisture content at wilting
 $\theta_{{\rm ws}}$ &:& Critical soil moisture & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\ 
 \end{tabularx}
 
-
-
 The critical soil moisture content is defined as the quantity of stored soil moisture below
 which water uptake is impaired and the crop begins to close its stomata. It is not a fixed
 value. Restriction of water uptake due to water stress starts at a higher water content
@@ -291,220 +289,171 @@ when the potential transpiration rate is higher (Denmead \& Shaw, 1962). The cri
 moisture content can be calculated as (van Diepen {\it et al\/}., 1988):
 
 \begin{equation}
-\theta  _{ws} ~=~ (1\, -\, p )\, (\theta  _{fc} \, -\, \theta  _{wp} )\, +\, \theta  _{wp} 
+% eq 6.9
+\theta_{ws} ~=~ (1\, -\, p )\, (\theta  _{fc} \, -\, \theta  _{wp} )\, +\, \theta  _{wp} 
 \end{equation}
 
- 
-\strut\hfill (6.9)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
- $\theta$$_{{\rm ws}}$ &:& Critical soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- p &:& Soil water depletion fraction as a function \\
-      of pot. evapotranspiration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+$\theta$$_{{\rm ws}}$ &:& Critical soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+p &:& Soil water depletion fraction as a function 
+     of pot. evapotranspiration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
 
-
-
-
-
-
-
-
-The soil moisture content at field capacity, {\bf $\theta$$_{{\rm fc}}$} (acronym: {\bf SMFCF}), and the soil moisture
-content at wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}), are soil specific and should be given by
-the user. The soil water depletion fraction, p, is a function of the potential evapotranspir\-ation rate (for a closed canopy) and the crop group number. It is established in subroutine
-{\bf SWEAF}. In literature, instead of the term soil water depletion fraction, also the expres\-sion easily available water is used. Easily available water is defined as the amount of
-water between $\theta$$_{{\rm fc}}$ and $\theta$$_{{\rm wp}}$ which can be extracted from the root zone without reducing the
+The soil moisture content at field capacity, {\bf $\theta$$_{{\rm fc}}$} (acronym: {\bf SMFCF}), 
+and the soil moisturecontent at wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}), 
+are soil specific and should be given by the user. The soil water depletion fraction, p, is 
+a function of the potential evapotranspir\-ation rate (for a closed canopy) and the crop group 
+number. It is established in subroutine
+{\bf SWEAF}. In literature, instead of the term soil water depletion fraction, also the 
+expres\-sion easily available water is used. Easily available water is defined as the amount of
+water between $\theta$$_{{\rm fc}}$ and $\theta$$_{{\rm wp}}$ which can be extracted from the root 
+zone without reducing the
 transpiration. Indicative p-values for the most important crops at different values of ET0
 are presented in Table 6.1. The crop group number ranges from 1 (drought-sensitive) to 5
 (drought-resistent). An example of a classification of the different crop groups is
 presented in Table 6.2.
 
+\begin{table}
+% Table 6.1
+\caption{Soil water depletion fraction (p) as a function of potential evapotranspira\-tion 
+of a closed crop canopy for different crop groups (Doorenbos {\it et al\/}.,1978).}
+\label{tbl:soilwatdeplfraction}
+\begin{tabularx}{\textwidth}{Xrrrrrrrrr}
+\hline
+\multicolumn{10}{c}{Crop ET0 in cm d-1}\\
+\hline
+group$^{\rm *}$ & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 & 0.8 & 0.9 & 1.0\\
+1 & 0.45 & 0.38 & 0.30 & 0.25 & 0.23 & 0.20 & 0.18 & 0.16 & 0.15\\
+2 & 0.60 & 0.50 & 0.43 & 0.35 & 0.30 & 0.28 & 0.25 & 0.23 & 0.20\\
+3 & 0.75 & 0.65 & 0.55 & 0.45 & 0.40 & 0.38 & 0.33 & 0.30 & 0.25\\
+4 & 0.85 & 0.75 & 0.65 & 0.55 & 0.50 & 0.48 & 0.43 & 0.38 & 0.35\\
+5 & 0.92 & 0.85 & 0.75 & 0.65 & 0.60 & 0.55 & 0.50 & 0.48 & 0.45\\
+\hline 
+\end{tabularx} 
+\end{table}
 
-Table 6.1
-\testlastline
 
-\begin{indenting}{2.54cm}
-Soil water depletion fraction (p) as a function of potential evapotranspira\-tion of a closed crop canopy for different crop groups (Doorenbos {\it et al\/}.,
-1978).
-\end{indenting}
-\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-\nwln
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
-Crop   ET0 in cm d-1\\
-group$^{{\rm *}}$   0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.91.0
+\begin{table}
+% Table 6.2
+\caption{Example of crops in the different crop groups (Doorenbos {\it et al\/}., 1978).}
+\label{tbl:ExampleCropGroups}
+\begin{tabularx}{\textwidth}{lX}
+\hline
+Group no & Representative crop types\\
+\hline
+1 & leaf vegetables, strawberry\\     
+1-2 & cabbage, onion\\
+2 & clover, carrot, early tobacco\\     
+2-3 & banana, pepper\\
+3 & grape, pea, potato\\
+3-4 & bean, sunflower, tomato, water melon, grass\\
+4 & citrus, groundnut, pineapple\\
+4-5 & alfalfa cotton, tobacco, cassava, sweet potato, grains\\
+5 & olive, safflower, sorghum, soybean, sugarcane\\
+\hline
 \end{tabularx}
-\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-\nwln
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
-1   0.45 0.38 0.30 0.25 0.23 0.20 0.18 0.160.15\\
-2   0.60 0.50 0.43 0.35 0.30 0.28 0.25 0.230.20\\
-3   0.75 0.65 0.55 0.45 0.40 0.38 0.33 0.300.25\\
-4   0.85 0.75 0.65 0.55 0.50 0.48 0.43 0.380.35\\
-5   0.92 0.85 0.75 0.65 0.60 0.55 0.50 0.480.45
-\end{tabularx}
-\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-
-
-
-Where:\\
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
-Table 6.2  Example of crops in the different crop groups (Doorenbos {\it et al\/}., 1978).
-\end{tabularx}
-\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(0010)\nwln
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
-1  leaf vegetables, strawberry     1-2  cabbage, onion\\
-2  clover, carrot, early tobacco     2-3  banana, pepper\\
-3  grape, pea, potato     3-4  bean, sunflower, tomato, water melon, grass\\
-4  citrus, groundnut, pineapple     4-5  alfalfa cotton, tobacco, cassava, sweet potato, grains
-\end{tabularx}
-5  olive, safflower, sorghum, soybean, sugarcane\\
-\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-
+\end{table}
 
 The soil water depletion fraction for very high values of potential evapotranspir\-ation of a
 closed canopy can be as low as 0.10. For very low values of potential evapotranspiration
-of a closed canopy this fraction can be as high as 0.96 
-
-
+of a closed canopy this fraction can be as high as 0.96.
 Note that it is possible that the reduction factor R$_{{\rm ws}}$ (eq. 6.8) might obtain values higher
 than unity and lower than zero for certain values of p and $\theta$$_{{\rm t}}$. Since this does not make
 any sense, in the model the highest possible value for R$_{{\rm ws}}$ is set to unity and the lowest
 possible value is set to zero.
-
- An empirical formula can be used to calculate the fraction of easily available soil water,
+An empirical formula can be used to calculate the fraction of easily available soil water,
 yielding identical values as the ones given in the Table 6.1 (van Diepen {\it et al\/}., 1988).
 
 \begin{equation}
+% eq 6.10
 p~={\frac{~1}{ \alpha _{p} ~+~ \beta _{p} ~ET0}} ~-~ 0.10\, (\, 5~-~No _{cg} \, )
 \end{equation}
 
- 
-\strut\hfill (6.10)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where p &:& Fraction of easily available soil water  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+p &:& Fraction of easily available soil water  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\alpha$$_{{\rm p}}$ &:& Regression constant {\small (=0.76 van Diepen et al., 1988)}  & [-]\\
 $\beta$$_{{\rm p}}$ &:& Regression constant {\small (=1.5 van Diepen et al., 1988)}  & [d cm-$^{{\rm 1}}$]\\
 ET0 &:& Potential evapotranspiration rate  & [cm d$^{{\rm -1}}$]\\
-No$_{{\rm cg}}$ &:& Crop Group number {\small (=1 to 5, Doorenbos et al., 1978)}  & [-]
+No$_{{\rm cg}}$ &:& Crop Group number {\small (=1 to 5, Doorenbos et al., 1978)}  & [-]\\
 \end{tabularx}
-
  
 Note that crop group number, {\bf No$_{{\rm cg}}$} (acronym: {\bf DEPNR}) is input in the model and should
 be provided by the user.
-
-
 
 For crop group 1 and 2 this estimate is not very accurate and an additional correction is
 applied to reproduce the table values correctly (van Diepen {\it et al\/}., 1988):
 
 \begin{equation}
+%eq 6.11
 p~=~p~+~{\frac{ET0 ~-~ 0.6}{No _{cg} \, (\, No _{cg} ~+~3\, )}}
 \end{equation}
 
- 
-\strut\hfill (6.11)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
 where p &:& Fraction of easily available soil water  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 ET0 &:& Potential evapotranspiration rate  & [cm d$^{{\rm -1}}$]\\
-No$_{{\rm cg}}$ &:& Crop Group number {\small (=1 to 5, Doorenbos et al., 1978)}  & [-]
+No$_{{\rm cg}}$ &:& Crop Group number {\small (=1 to 5, Doorenbos et al., 1978)}  & [-]\\
 \end{tabularx}
 
-
-
-{\bf {\it Reduction of the transpiration due to oxygen stress\/}}\\
+\subsection{Reduction of the transpiration due to oxygen stress}
 The transpiration rate of the plants can also be reduced when the rootzone is completely
 saturated. Root systems which have been developed in aerobic soils do not have airducts
 and degenerate within several days when anaerobic conditions (waterlogging) are imposed
 (Penning de Vries {\it et al\/}., 1989). Flooding quickly depletes the O$_{{\rm 2}}$ in the soil and root cells
 disintegrate when their metabolic activities are hampered by oxygen depletion. For
 detailed information on the physiological effects of excess water on a crop see Jackson
-and Drew (1984).\\
+and Drew (1984).
+
 Reduction in transpiration occurs when the actual soil moisture content exceeds the
 critical soil moisture content for aeration. The critical soil moisture content for aeration
 can be calculated as:
 
 \begin{equation}
-\theta  _{air} ~=~ \theta _{\max } ~-~\theta  _{c} 
+% eq 6.12
+\theta_{air} ~=~ \theta_{\max} ~-~\theta_{c} 
 \end{equation}
 
- 
-\strut\hfill (6.12)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
- $\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm c}}$ &:& Critical air content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+$\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm c}}$ &:& Critical air content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
 
-
-The soil porosity, {\bf $\theta$$_{{\rm max}}$} (acronym: {\bf SMO}) and the critical soil air content, {\bf $\theta$$_{{\rm c}}$} (acronym:
-{\bf CRAIRC}), are soil specific and should be provided by the user. 
-
+The soil porosity, {\bf $\theta$$_{{\rm max}}$} (acronym: {\bf SMO}) and the critical soil air 
+content, {\bf $\theta$$_{{\rm c}}$} (acronym:{\bf CRAIRC}), are soil specific and should 
+be provided by the user. 
 
 In the model, maximum reduction is reached after four successive days of anaerobic
 conditions. In reality however, this period depends on the development stage and on the
 species. If at the fifth successive day oxygen shortage occurs the reduction remains the
 same as on the fourth day. The reduction factor for the transpiration rate due to oxygen
-shortage {\nobreak}can be calculated as (van Diepen, personal communication):
+shortage can be calculated as (van Diepen, personal communication):
 
-\begin{eqnarray*}
-R _{os,\max } ~=~{\frac{ \theta  _{\max } ~-~ \theta  _{t} }{\theta _{\max } ~-~ \theta  _{air} }} \nonumber  \\
-~ \nonumber  \\
-R _{os} ~=~ 1~-~{\frac{No _{d} }{4}} \, (\, 1\, -\, R _{os,\max } \, )~~~~~~~~No _{d} ~\le ~ 4
-\end{eqnarray*}
-
- 
-\strut\hfill (6.13a)
-
-
-\strut\hfill (6.13b)
-
+\begin{align}
+% eq 6.13a-b
+R_{os,\max } &= \frac{ \theta  _{\max } ~-~ \theta  _{t} }{\theta _{\max } ~-~ \theta  _{air} } \subeqn  \\
+R_{os} &= 1 - \frac{No _{d} }{4} \, (\, 1\, -\, R _{os,\max } \, ) ~~~ with~~ No_{d} ~\le ~ 4 \subeqn
+\end{align}
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
  R$_{{\rm os,max}}$ &:& Maximum reduction factor due to oxygen shortage & [-]\\
  R$_{{\rm os}}$ &:& Reduction factor due to oxygen shortage & [-]\\
  $\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
  $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
  $\theta$$_{{\rm t}}$ &:& Actual soil moisture content (see eq. 6.34) & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- No$_{{\rm d}}$ &:& Number of successive days with oxygen stress & [-]
+ No$_{{\rm d}}$ &:& Number of successive days with oxygen stress & [-]\\
 \end{tabularx}
-
-
 
 For crops which roots develop airducts, like for example rice, and for crops grown on
 perfectly drained land, the reduction factor for oxygen shortage equals unity. If this ratio
 is less then unity, the actual transpiration rate is reduced proportionally. \\
+
 Usually, in freely draining soils oxygen stress does not play any role. It may occur when
 the critical soil moisture content for aeration is greater than the soil moisture content at
 field capacity and when the subsoil is very slowly permeable. In case of groundwater
@@ -512,132 +461,112 @@ influence, oxygen shortage may occur regularly. However, the process of transpir
 reduction due oxygen shortage is poorly parametrized and therefore values for the
 reduction factor are rather speculative. 
 
-
-
-{\bf {\it Actual transpiration\/}}\\
+\subsection{Actual transpiration}
 As a result of water excess and/or water shortage the actual transpiration rate can be
 calculated as:
 
 \begin{equation}
-T _{a~} =  R _{ws} \,\, R _{os} \,\, T _{m} 
+%eq 6.14
+T_{a~} = R_{ws} \,\, R_{os} \,\, T_{m} 
 \end{equation}
 
- 
-\strut\hfill (6.14)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
  T$_{{\rm a}}$ &:& Actual transpiration rate & [cm d$^{{\rm -1}}$]\\
  T$_{{\rm m}}$ &:& Maximum transpiration rate (see eq. 6.4) & [cm d$^{{\rm -1}}$]\\
  R$_{{\rm os}}$ &:& Reduction factor due to oxygen reduction & [-]\\
- R$_{{\rm ws}}$ &:& Reduction factor due to water shortage (see eq. 6.8) & [-]
+ R$_{{\rm ws}}$ &:& Reduction factor due to water shortage (see eq. 6.8) & [-]\\
 \end{tabularx}
  
-\section{Soil water balance calculations, potential pro\-duction  }
+\section{Soil water balance calculations, potential production}
 
-In the subroutine {\bf WATPP}, the variables of the soil water balance in the potential produc\-tion situation are calculated. The purpose is to quantify the crop water requirements for
-continuous growth without drought stress. It is assumed that the soil is permanent\-ly at
+In the subroutine {\bf WATPP}, the variables of the soil water balance in the potential 
+production situation are calculated. The purpose is to quantify the crop water requirements for
+continuous growth without drought stress. It is assumed that the soil is permanently at
 field capacity.
 
 \begin{equation}
+% eq 6.15
 \theta  _{t} ~ =~\theta  _{fc} 
 \end{equation}
 
- 
-\strut\hfill (6.15)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
  $\theta$$_{{\rm t}}$ &:& Actual soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+ $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
-
  
 Rainfall, irrigation, capillary rise and drainage are not taken into account. This does not
 mean that these processes will not occur. The result of these processes will be a soil
-moisture content at field capacity level. The only two processes to consider are evapora\-tion of the surface and the transpiration of the crops. In the previous paragraph the
+moisture content at field capacity level. The only two processes to consider are evapora\-tion of 
+the surface and the transpiration of the crops. In the previous paragraph the
 calculation of these processes is described in detail.
 
-
-
-The evaporation rate is calculated for two situations:\\
-$\bullet$ Airducts are present in the roots. This means that the crop tolerates waterlog\-ging. This
+The evaporation rate is calculated for two situations:
+\begin{itemize}
+\item Airducts are present in the roots. This means that the crop tolerates waterlog\-ging. This
 is the case for example with rice. The evaporation rate is then calculated as the evapora\-tion rate from a shaded water surface:
 
 \begin{equation}
+%eq 6.16
 E _{w} ~=~ E _{w, \max } 
 \end{equation}
 
- 
-\strut\hfill (6.16)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
- E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface & [cm d$^{{\rm -1}}$]\\
- E$_{{\rm w,max}}$ &:& Maximum evaporation rate from shaded \\
-    water surface (see eq. 6.6) & [cm d$^{{\rm -1}}$]
+    E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface & [cm d$^{{\rm -1}}$]\\
+    E$_{{\rm w,max}}$ &:& Maximum evaporation rate from shaded 
+    water surface (see eq. 6.6) & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
- 
-$\bullet$ Airducts are absent in the roots. This means that the crop does not tolerate water
-logging. This is the case for most crops. The evaporation rate is then calculated as the
-evaporation rate from a soil surface (van Diepen, personal communication):  
+\item Airducts are absent in the roots. This means that the crop does not tolerate water
+    logging. This is the case for most crops. The evaporation rate is then calculated as the
+    evaporation rate from a soil surface (van Diepen, personal communication):  
+    
+    \begin{equation}
+    % eq 6.17
+    E _{s~} =~ E _{s,\max } {\frac{ \theta  _{fc} ~-~ {{\frac{\theta  _{wp} }{3}}} }{\theta  _{\max } ~-~{{\frac{\theta  _{wp} }{3}}} }}
+    \end{equation}
+    
+    Where:\\
+    \begin{tabularx}{\textwidth}{llXr}
+        E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface & [cm d$^{{\rm -1}}$]\\
+        E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded \\
+        soil surface (see eq. 6.7) & [cm d$^{{\rm -1}}$]\\
+        $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+        $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+        $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+    \end{tabularx}
 
-\begin{equation}
-E _{s~} =~ E _{s,\max } {\frac{ \theta  _{fc} ~-~ {{\frac{\theta  _{wp} }{3}}} }{\theta  _{\max } ~-~{{\frac{\theta  _{wp} }{3}}} }}
-\end{equation}
+\end{itemize}
 
 
-\strut\hfill (6.17)
+\section{System without groundwater influence}
 
-
-
-Where:\\
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
- E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface & [cm d$^{{\rm -1}}$]\\
- E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded \\
-    soil surface (see eq. 6.7) & [cm d$^{{\rm -1}}$]\\
- $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
-\end{tabularx}
-\newpage
-
-\section{System without groundwater influence  }
-
-In the subroutine {\bf WATFD}, the variables of the soil water balance in the actual water-limited produc\-tion situation are calculated for freely draining soil. No influence from
+In the subroutine {\bf WATFD}, the variables of the soil water balance in the actual 
+water-limited produc\-tion situation are calculated for freely draining soil. No influence from
 groundwater is assumed. The purpose is to quantify the crop water requirements for
 continuous growth with either drought stress or water excess, and to quantify a possible
-reduction of t  he crop transpiration rate, leading to a reduced growth.
+reduction of the crop transpiration rate, leading to a reduced growth.
 
-
-
-
-\subsection{The soil water submodel  }
+\subsection{The soil water submodel}
 
 For the rooted zone the water balance equation is solved every daily time step. At the
 upper boundary, processes comprise the infiltration of water from precipitation or
 irrigation, evaporation from the soil surface and uptake of water and transpiration by the
 crop. If rainfall intensity exceeds the infiltration and surface storage capacity of the soil,
 water runs off. Water can be stored in the soil till the field capacity is reached. Additional
-water percolates beyond the lower boundary of the rooting zone.\\
+water percolates beyond the lower boundary of the rooting zone.
 The flow rates are limited by the maximum percolation rate of the root zone and the
 maximum percolation rate of the water to the subsoil.
 
 The textural profile of the soil is conceived homogeneous. Initially the soil profile
-consists of three layers (zones):\\
-$\bullet$ the rooted zone between soil surface and actual rooting depth\\
-$\bullet$ the lower zone between actual rooting depth and maximum rooting depth\\
-$\bullet$ the subsoil below maximum rooting depth
+consists of three layers (zones):
+\begin{itemize}
+\item the rooted zone between soil surface and actual rooting depth\\
+\item the lower zone between actual rooting depth and maximum rooting depth\\
+\item the subsoil below maximum rooting depth
+\end{itemize}
 
 The extension of the root zone from initial rooting depth to maximum rooting depth is
 described in \S 4.5. Its effect on the soil moisture content is accounted for in this soil water
