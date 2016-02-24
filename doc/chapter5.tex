@@ -58,9 +58,12 @@ Elaborate calculations of rates of change are performed in specific subroutines 
 rate and {\bf EVTRA} for the evapotranspiration rates. All the equations used to describe these
 processes are treated in the following sections.
 
-\begin{figure}[htbp]
-\caption{Crop growth pro\-cesses. {\small T$_{{\rm a}}$ and T$_{{\rm p}}$ are actual and potential 
-transpiration rate.} (deKoning, 1993)}
+\begin{figure}[p]
+\centering
+\includegraphics{\FigDir/ASIMTREE.pdf}
+\caption{Crop growth processes. \small T$_{{\rm a}}$ and T$_{{\rm p}}$ are actual and potential 
+transpiration rate. (deKoning, 1993)}
+\label{fig:CropGrowthProcesses}
 % \begin{center}\InputPS{\FigDir/ASIMTREE.eps} \end{center}
 \end{figure}
 
@@ -1048,13 +1051,15 @@ R _{m,T} ~=~ R _{m,r} \, Q _{10}^{~~{\frac{T-T _{r} }{10}} }
  
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-R$_{{\rm m,T}}$ : Maintenance respiration rate at temperature T &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-R$_{{\rm m,r}}$ : Maintenance respiration rate at reference 
-   temperature of 25 \degrees C (see eq. 5.39)   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
-Q$_{{\rm 10}}$ : Relative increase of the respiration rate
-   per 10\degrees C temperature increase    &    [-]\\
-T : Average daily temperature    &     [\degrees C]\\
-T$_{{\rm r}}$ : Reference temperature {\small [=25 \degrees C in the model]}    &    [\degrees C]\\
+R$_{{\rm m,T}}$ &:& Maintenance respiration rate at 
+    temperature T &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+R$_{{\rm m,r}}$ &:& Maintenance respiration rate at reference 
+    temperature of 25 \degrees C (see eq. 5.39)   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
+Q$_{{\rm 10}}$ &:& Relative increase of the respiration rate
+    per 10\degrees C temperature increase    &    [-]\\
+T &:& Average daily temperature    &     [\degrees C]\\
+T$_{{\rm r}}$ &:& Reference temperature {\small [=25 \degrees C in 
+    the model]}    &    [\degrees C]\\
 \end{tabularx}
 
  
@@ -1242,7 +1247,7 @@ material produced plus the amounts used for maintenance respiration and conversi
 figure 5.1). The carbon balance has to be zero. 
 
 \begin{equation}
-0~=~{\frac{R _{d} ~-~ R _{m\, ,\, T} ~-~ R _{g} \, (pc _{rt} \, +\, (pc _{lv} \, +\, pc _{st} \, +\, pc _{so} )\, {\rm \Bullet{0.75ex}}\, (1\, -\, pc _{rt} ))}{R}} _{d} 
+0~=~{\frac{R _{d} ~-~ R _{m\, ,\, T} ~-~ R _{g} \, (pc _{rt} \, +\, (pc _{lv} \, +\, pc _{st} \, +\, pc _{so} )\, {\rm \Bullet{0.75ex}}\, (1\, -\, pc _{rt} ))}{R_{d}}}  
 \end{equation}
 
 Where:\\
