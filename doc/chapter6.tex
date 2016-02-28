@@ -582,36 +582,28 @@ As mentioned earlier, no groundwater influence is assumed, therefore capillary r
 accounted for. Only downward flow, evaporation from the soil surface and transpiration
 are included in the calcula\-tions. 
 
-\newpage
-
 \subsection{Elements of the water balance  }
 
 
+\subsubsection{Initial soil water content and initial soil water amount}
 
-{\it {\bf Initial soil water content and initial soil water amount}\/}\\
 The initial value of the actual soil moisture content in the rooted part of the soil can be
 calculated as:
 
 \begin{equation}
-\theta  _{t} ~ =~\theta  _{wp} ~+~{\frac{W _{av} }{RD}}
+% eq 6.18
+\theta_{t} ~ =~\theta_{wp} ~+~{\frac{W_{av}}{RD}}
 \end{equation}
-
- 
-\strut\hfill (6.18)
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
- $\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted zone  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- W$_{{\rm av}}$ &:& Initial amount of available soil moisture\\
+$\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted z
+    one  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting   & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+W$_{{\rm av}}$ &:& Initial amount of available soil moisture 
     in excess of $\theta$$_{{\rm wp}}$ & [cm]\\
- RD &:& Actual rooting depth (see \S 5.5) & [cm]
+RD &:& Actual rooting depth (see \S 5.5) & [cm]\\
 \end{tabularx}
-
-
 
 It should be mentioned that the initial actual soil moisture content, $\theta$$_{{\rm t}}$, cannot be lower
 than the soil moisture content at wilting point. In case the crop cannot develop airducts,
@@ -620,36 +612,25 @@ capacity. If the crop can develop airducts the initial soil moisture content can
 the soil porosity. {\bf W$_{{\rm av}}$} (acronym: {\bf WAV}), the initial amount of available soil moisture in
 excess of $\theta$$_{{\rm wp}}$ should be provided by the user. 
 
-
-
 Multiplying the actual soil moisture content with the rooting depth yields the initial
 amount of water in the rooted zone. The initial amount of soil moisture in the lower zone,
 the zone between the rooted zone and the maximum rooting depth, can be calculated as:
 
 \begin{equation}
-W  _{lz} ~ =~ W _{av} ~+~ RD _{\max } ~\theta _{wp} ~-~RD~\theta _{t} 
+% eq 6.19
+W_{lz} ~ =~ W _{av} ~+~ RD_{\max } ~\theta_{wp} ~-~RD~\theta_{t} 
 \end{equation}
 
- 
-\strut\hfill (6.19)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
  W$_{{\rm lz}}$ &:& Amount of soil moisture in the lower zone & [cm]\\
  W$_{{\rm av}}$ &:& Initial amount of available soil moisture \\
     in excess of $\theta$$_{{\rm wp}}$ & [cm]\\
  RD$_{{\rm max}}$ &:& Maximum rooting depth & [cm]\\
  RD &:& Actual rooting depth & [cm]\\
  $\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted zone  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+ $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
-
-
-
-
-
 
 The soil moisture content of the lower zone is also limited by the field capacity in case
 the crop cannot develop airducts, else the soil moisture content is limited by the soil
@@ -657,39 +638,36 @@ porosity. In the model, initially, the variable D$_{{\rm slr}}$, days since last
 actual soil moisture content is halfway between the field capacity and wilting point a
 value of five days is assumed. 
 
-
-
-{\it {\bf Evaporation}\/}\\
+\subsubsection{Evaporation}
 The evaporation depends on the amount of available water in the soil and the infiltration
 capacity of the soil. If the water layer on the surface, the so called surface storage, 
-exceeds 1 cm, the actual {\nobreak}evaporation rate from the soil is set to zero and the actual
+exceeds 1 cm, the actual evaporation rate from the soil is set to zero and the actual
 evaporation rate from the surface water is equal to the maximum evaporation from a
-shaded water surface.\\
+shaded water surface.
+
 If the surface storage is less than 1 cm and the infiltration rate of the previous day
 exceeds 1 cm d$^{{\rm -1}}$, the actual evaporation rate from the surface water is set to zero and the
 actual evaporation rate from the soil is equal to the maximum evaporation from a shaded
 soil surface. All water on the surface can infiltrate within one day. The value of the
-variable days since last rain, D$_{{\rm slr}}$, is reset to unity.\\
+variable days since last rain, D$_{{\rm slr}}$, is reset to unity.
+
 If the infiltration rate is less than 1 cm d$^{{\rm -1}}$, the amount of infiltrated water is consid\-ered
 too small to justify a reset of the parameter D$_{{\rm slr}}$ and the evaporation rate decreases as the
 top soil starts drying. The reduction of the evaporation is thought to be proportional to the
 square root of time (Stroosnijder, 1987, 1982). The evaporation can be calculated as:
 
 \begin{equation}
+% eq 6.20
 E _{s} ~=~ E _{s,\max } ( \sqrt{D _{slr} } ~-~ \sqrt{D _{slr} \, -\, 1} )
 \end{equation}
 
- 
-\strut\hfill (6.20)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
 E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface  & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded soil\\
    surface (see eq. 6.7)  & [cm d$^{{\rm -1}}$]\\
-D$_{{\rm slr}}$ &:& Days since last rain  & [d]
+D$_{{\rm slr}}$ &:& Days since last rain  & [d]\\
 \end{tabularx}
-
-
 
 When a small amount of water has infiltrated, or rather wetted the soil surface, this
 amount can be evaporated the same day, irrespective of D$_{{\rm slr}}$. Therefore, the actual
@@ -698,9 +676,7 @@ corrected for this amount of water infiltrating the soil. This amount should be 
 the actual evaporation rate. However, it should be noted that the actual evaporation never
 can exceed the maximum evaporation rate.
 
-
-
-{\it {\bf Precipitation}\/}\\
+\subsubsection{Precipitation}
 Not all the precipitation will reach the surface. A fraction will be intercepted by leaves,
 stems, etc. From the amount of precipitation which reaches the soil surface, not all will
 infiltrate. A part runs off. Runoff from a field can be 0-20 percent, and even higher on
@@ -712,41 +688,15 @@ figure 6.2 and equation 6.26. Note that the non infiltrating fraction refers to 
 Irrigation water is assumed to infiltrate freely. However, the irrigation option is not
 implemented in WOFOST 6.0.
 
-\begin{figure}[htbp]
-\begin{forcewidth}{11.06cm}
- \begin{center}INputPS{\FigDir/RED.eps} \end{center}
-\end{forcewidth}
+\begin{figure}[p]
+% Fig. 6.2 
+\centering
+\includegraphics[width=110mm]{\FigDir/RED.pdf}
+\caption{Reduction factor of the non infiltrating fraction as a function of rainfall.}
+\label{fig:CropGrowthProcesses}
 \end{figure}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Fig. 6.2 
-\testlastline
-
-\begin{indenting}{2.54cm}
-Reduction factor of the non infiltrating fraction as a function of rainfall.
-\end{indenting}
-
-
-
-{\bf {\it Percolation\/}}\\
+    
+\subsubsection{Percolation}
 If the soil moisture content of the root zone is above field capacity, water percolates to
 the lower part of the potentially rootable zone and to the subsoil. In the model, a clear
 distinction is made between percolation from the actual rootzone to the so-called lower
@@ -754,43 +704,35 @@ zone, and percolation from the lower zone to the subsoil. The former is called P
 the latter is called Loss. The percolation rate from the rooted zone can be calculated as:
 
 \begin{equation}
+% eq 6.21
 Perc  ~=~{\frac{W _{rz} \, -\, W _{rz,\, fc} }{\Delta t}} ~-~ T _{a} ~-~ E _{s} 
 \end{equation}
 
- 
-\strut\hfill (6.21)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where Perc &:& Percolation rate from the root zone to the lower zone  & [cm d$^{{\rm -1}}$]\\
+Perc &:& Percolation rate from the root zone to the lower zone  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm rz}}$ &:& Amount of soil moisture in the root zone (see eq. 6.33a)  & [cm]\\
-W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the root\\
+W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the root
    zone (see eq. 6.22)  & [cm]\\
 $\Delta$t &:& Time step  & [d]\\
 T$_{{\rm a}}$ &:& Actual transpiration rate (see eq. 6.14)  & [cm d$^{{\rm -1}}$]\\
-E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface \\
-  (see eq. 6.7  and 6.20)  & [cm d$^{{\rm -1}}$]
+E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface 
+  (see eq. 6.7  and 6.20)  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
- The equilibrium amount of soil moisture in the root zone can be calculated as the soil
+
+The equilibrium amount of soil moisture in the root zone can be calculated as the soil
 moisture content at field capacity times the depth of the rooting zone:
 
 \begin{equation}
+%eq 6.22
 W _{rz,\, fc} ~=~ \theta  _{fc} \,\, RD
 \end{equation}
 
- 
-\strut\hfill (6.22)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the root zone  & [cm]\\
+W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the root zone  & [cm]\\
 $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-RD &:& Actual rooting depth  & [cm]
+RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
 
 
@@ -799,9 +741,7 @@ The percolation rate is limited by the conduc\-tivity of the wet soil (acronym: 
 same way as the infiltration is limited. The conductivity is soil specific and should be
 given by the user. Note that the percolation from the root zone to the lower zone can be
 limited by the up take capacity of the lower zone. Therefore, the value calculated with 
-equation 6.21 is p reliminary. The capacity should first be checked.
-
-
+equation 6.21 is preliminary. The capacity should first be checked.
 
 The percolation from the lower zone to the subsoil, the so-called Loss, should take the
 amount of water in the lower zone into account. If the amount of water in the lower zone
@@ -810,25 +750,19 @@ be retained and the percolation rate will be reduced. The loss of water from the
 of the maximum root zone can be calculated as:
 
 \begin{equation}
+% eq 6.23
 Loss ~=~{\frac{W _{lz} \, -\, W _{lz,\, fc} }{\Delta t}} ~+~ Perc
 \end{equation}
 
- 
-\strut\hfill (6.23)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where Loss &:& Percolation rate from the lower zone to the subsoil   & [cm d$^{{\rm -1}}$]\\
+Loss &:& Percolation rate from the lower zone to the subsoil   & [cm d$^{{\rm -1}}$]\\
 Perc &:& Percolation rate from root zone to lower zone (see eq. 6.21)  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm lz}}$ &:& Amount of soil moisture in the lower zone (see eq. 6.33b)  & [cm]\\
 W$_{{\rm lz,fc}}$ &:& Equilibrium amount of soil moisture in the\\
    lower zone (see eq. 6.24)  & [cm]\\
-$\Delta$t &:& Time step   
+$\Delta$t &:& Time step   & [d]\\
 \end{tabularx}
-
 
 The loss of water from the potentially rootable zone, is also limited by the maximum
 percolation rate of the subsoil. This maximum percolation rate (acronym: {\bf KSUB}) is soil
@@ -837,29 +771,24 @@ the lower zone can be calculated as the soil moisture content at field capacity 
 depth of the root zone:
 
 \begin{equation}
-W _{lz,\, fc} ~=~ \theta  _{fc} \,\, (RD _{\max} ~-~RD)
+% eq 6.24
+W_{lz,\, fc} = \theta_{fc} \,\, (RD_{\max} ~-~RD)
 \end{equation}
 
- 
-\strut\hfill (6.24)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the lower zone  & [cm]\\
+W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the lower zone  & [cm]\\
 $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 RD$_{{\rm max}}$ &:& Maximum rooting depth  & [cm]\\
-RD &:& Actual rooting depth  & [cm]
+RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
- For rice an addi\-tional limit of five percent of the saturated soil conductivity is set to
+
+For rice an addi\-tional limit of five percent of the saturated soil conductivity is set to
 account for the effect of puddling (a rather arbitrary value, which may be easily changed
 in the program). The saturated soil conductivity (acronym: {\bf K0}) is soil specific. In the
 model, K0 is calculated using equating 6.67 with pF= -1.0 (i.e. a hydraulic head of 0.1
 cm) The percolation rate from the lower zone to the sub soil is not to exceed this value
 (van Diepen {\it et al\/}., 1988). 
-
-
 
 As mentioned before, the value calculated with equation 6.21, should be regarded as
 preliminary. The storage capacity of the receiving layer may become limiting. The
@@ -867,323 +796,241 @@ storage capacity of the lower zone, also called the uptake capacity, is the amou
 plus the loss (van Diepen {\it et al\/}., 1988). The storage capacity can de defined as:
 
 \begin{equation}
+% eq 6.25
 UP  ~=~{\frac{(\, RD _{\max } \, -\, RD\, )\, \theta  _{\max } ~-~ W _{lz} }{\Delta t}} ~+~ Loss
 \end{equation}
 
- 
-\strut\hfill (6.25)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where UP &:& Uptake capacity of lower zone  & [cm d$^{{\rm -1}}$]\\
+UP &:& Uptake capacity of lower zone  & [cm d$^{{\rm -1}}$]\\
 RD$_{{\rm max}}$ &:& Maximum rooting depth  & [cm]\\
 RD &:& Actual rooting depth  & [cm]\\
 W$_{{\rm lz}}$ &:& Amount of soil moisture in lower zone  & [cm]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity (maximum soil moisture)  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\Delta$t &:& Time step  & [d]\\
-Loss &:& Percolation rate from the lower zone to the subsoil   & [cm d$^{{\rm -1}}$]
+Loss &:& Percolation rate from the lower zone to the subsoil   & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
- 
 The percolation to the lower part of the potentially rootable zone can not exceed the
 uptake capacity of the lower zone. Therefore the percolation rate is equal to the minimum
 of the calculated percolation rate (eq. 6.21) and the uptake.
 
-
-
-{\it {\bf Preliminary infiltration}\/}\\
+\subsubsection{Preliminary infiltration}
 The infiltration rate depends on the amount of available water and the infiltration capacity
 of the soil. If the actual surface storage is less then or equal to 0.1 cm, the preliminary
 infiltration capacity is simply described as:
 
 \begin{equation}
+% eq 6.26
 IN_{p} =~ (\, 1\, -\, F _{I} \, C _{I} \, )\, P~+~ I _{e~} +~ SS _{\frac{t}{ \Delta t}} 
 \end{equation}
 
- 
-\strut\hfill (6.26)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
+IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
 F$_{{\rm I}}$ &:& Maximum fraction of rain not infiltrating during time step t  & [-]\\
-C$_{{\rm I}}$ &:& Reduction factor applied to F$_{{\rm I}}$ as a function of the \\
+C$_{{\rm I}}$ &:& Reduction factor applied to F$_{{\rm I}}$ as a function of the 
    precipitation intensity  & [-]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
 I$_{{\rm e}}$ &:& Effective irrigation  & [cm d$^{{\rm -1}}$]\\
 SS$_{{\rm t}}$ &:& Surface storage at time step t (see eq. 6.29)  & [cm]\\
-$\Delta$t &:& Time step  & [d]
+$\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
 
-The maximum fraction of rain not infiltrating during time step t, {\bf F$_{{\rm I}}$} (acronym: {\bf NOTINF})
-can be either set to a fixed value or be made variable by multiplying F$_{{\rm I}}$ with a precipita\-tion dependent reduction factor {\bf C$_{{\rm I}}$} (acronym: {\bf NINFTB}). If the fraction is variable, it
-means that it is maximum for high rainfall amounts, and that it will be reduced for low
-rainfall. The user should provide F$_{{\rm I}}$. Values of the C$_{{\rm I}}$ table are included in the model and
+The maximum fraction of rain not infiltrating during time step t, {\bf F$_{{\rm I}}$} 
+(acronym: {\bf NOTINF})
+can be either set to a fixed value or be made variable by multiplying F$_{{\rm I}}$ 
+with a precipita\-tion dependent reduction factor {\bf C$_{{\rm I}}$} (acronym: {\bf NINFTB}). 
+If the fraction is variable, it means that it is maximum for high rainfall amounts, and 
+that it will be reduced for low rainfall. The user should provide F$_{{\rm I}}$. 
+Values of the C$_{{\rm I}}$ table are included in the model and
 are assumed to be fixed. The infiltration rate calculated is preliminary, as the storage
 capacity of the soil is not yet taken into account. 
 
-
-If the actual surface storage is more than 0.1 cm, the available water which can potential\-ly infiltrate, is equal to the amount of water, present on the surface, that is supplied via
+If the actual surface storage is more than 0.1 cm, the available water which can 
+potential\-ly infiltrate, is equal to the amount of water, present on the surface, that is supplied via
 rainfall and irrigation and depleted via evaporation from the water surface:
 
 \begin{equation}
+% eq 6.27
 IN_{p} ~=~P~+~I _{e} ~-~ E _{w~} +~ SS _{\frac{t}{\Delta t}} 
 \end{equation}
 
- 
-\strut\hfill (6.27)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
+IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
 I$_{{\rm e}}$ &:& Effective irrigation  & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface  & [cm d$^{{\rm -1}}$]\\
 SS$_{{\rm t}}$ &:& Surface storage at time step t (see eq. 6.29)  & [cm]\\
-$\Delta$t &:& Time step  & [d]
+$\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
-
  
 However, the infiltration rate is hampered by the conductivity of the soil. The calculated
 infiltration rate cannot exceed the conductivity of the soil, which is used as an infiltration
 limit. The conductivity of the soil (acronym: {\bf SOPE}) is soil specific and should be given
 by the user.
 
-
-
-{\bf {\it Adjusted infiltration\/}}\\
+\subsubsection{Adjusted infiltration}
 The total loss of water from the root zone can now be calculated as the sum of the
-{\nobreak}transpiration, the evaporation and the perco\-lation. The sum of this loss and the available
+transpiration, the evaporation and the perco\-lation. The sum of this loss and the available
 pore space in the root zone define the maximum infiltra\-tion rate. The preliminary
 infiltration rate cannot exceed this value. The maximum possible infiltration rate is given
 by:
 
 \begin{equation}
+% eq 6.28
 IN_{\max } ~=~{\frac{(\, \theta  _{\max } \, -\, \theta  _{t} \, )\, RD}{\Delta t}} ~+~ T _{a} ~+~ E _{s} ~+~ Perc
 \end{equation}
 
- 
-\strut\hfill (6.28)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where IN$_{{\rm max}}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
+IN$_{{\rm max}}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity (maximum soil moisture)  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\theta$$_{{\rm t}}$ &:& Actual soil moisture content  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 RD &:& Actual rooting depth  & [cm]\\
 $\Delta$t &:& Time step  & [d]\\
 T$_{{\rm a}}$ &:& Actual transpiration rate   & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface  & [cm d$^{{\rm -1}}$]\\
-Perc &:& Percolation rate from root zone to lower zone  & [cm d$^{{\rm -1}}$]
+Perc &:& Percolation rate from root zone to lower zone  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
- {\bf {\it Surface runoff\/}}\\
+
+\subsubsection{Surface runoff}
+
 Surface runoff is also taken into account by defining a maximum value for the surface
 storage. If the surface storage exceeds the maximum value for surface storage the
 exceeding amount of water will run off. The surface storage at time step t can be
 calculated as:
 
 \begin{equation}
+% eq 6.29
 SS_{t} ~=~ SS _{t-1} ~+~ (\, P ~+~ I _{e} ~-~ E _{w} ~-~ IN\, )\, \Delta t
 \end{equation}
 
- 
-\strut\hfill (6.29)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where SS$_{{\rm t}}$ &:& Surface storage at time step t  & [cm d$^{{\rm -1}}$]\\
+SS$_{{\rm t}}$ &:& Surface storage at time step t  & [cm d$^{{\rm -1}}$]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
 I$_{{\rm e}}$ &:& Effective irrigation rate  & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface  & [cm d$^{{\rm -1}}$]\\
-IN &:& Infiltration rate (adjusted)  & [cm d$^{{\rm -1}}$]
+IN &:& Infiltration rate (adjusted)  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
-
-
 
 The surface runoff can be calculated as:
 
 \begin{equation}
+%6.30
 SR _{t} ~=~ SS _{t} ~-~ \min \, (\, SS _{t} \, ,\, SS _{\max } )
 \end{equation}
 
- 
-\strut\hfill (6.30)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where SR$_{{\rm t}}$ &:& Surface runoff at time step t  & [cm]\\
+SR$_{{\rm t}}$ &:& Surface runoff at time step t  & [cm]\\
 SS$_{{\rm t}}$ &:& Surface storage at time step t  & [cm]\\
-SS$_{{\rm max}}$ &:& Maximum surface storage  & [cm]
+SS$_{{\rm max}}$ &:& Maximum surface storage  & [cm]\\
 \end{tabularx}
-
  
-{\bf SS$_{{\rm max}}$} (acronym: {\bf SSMAX}) is an environmental specific variable and should be provided
-by the user.
+{\bf SS$_{{\rm max}}$} (acronym: {\bf SSMAX}) is an environmental specific variable 
+and should be provided by the user.
 
-
-
-{\bf {\it Rates of change and root extension\/}}\\
+\subsubsection{Rates of change and root extension}
 The rates of change in the amounts of water in the root zone and the lower zone are
 calculated straightforward from the flows found above:
 
-\begin{eqnarray*}
-\Delta W _{rz} ~=~ (IN ~-~ T _{a} ~-~ E _{s} ~-~ Perc)\,\Delta \, t  \nonumber  \\
-~ \nonumber  \\
-\Delta W _{lz} ~=~ (Perc ~-~ Loss)\,\Delta \, t
-\end{eqnarray*}
+\begin{align}
+% eq 6.31a-b
+\Delta W _{rz} &=~ (IN ~-~ T _{a} ~-~ E _{s} ~-~ Perc)\,\Delta \, t  \subeqn  \\
+\Delta W _{lz} &=~ (Perc ~-~ Loss)\,\Delta \, t \subeqn
+\end{align}
 
- 
-\strut\hfill (6.31a)
-
-\strut\hfill (6.31b)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\Delta$W$_{{\rm rz}}$ &:& Change of the amount of soil moisture in the root zone  & [cm]\\
+$\Delta$W$_{{\rm rz}}$ &:& Change of the amount of soil moisture in the root zone  & [cm]\\
 $\Delta$W$_{{\rm lz}}$ &:& Change of the amount of soil moisture in the lower zone  & [cm]\\
 T$_{{\rm a}}$ &:& Actual transpiration rate   & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface  & [cm d$^{{\rm -1}}$]\\
 IN &:& Infiltration rate  & [cm d$^{{\rm -1}}$]\\
 Perc &:& Percolation rate from root zone to lower zone  & [cm d$^{{\rm -1}}$]\\
 Loss &:& Percolation rate from lower zone to sub soil  & [cm d$^{{\rm -1}}$]\\
-$\Delta$t &:& Time step  & [d]
+$\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
 
-
-
- Due to extension of the roots into the lower zone, extra soil moisture becomes available.
+Due to extension of the roots into the lower zone, extra soil moisture becomes available.
 The amount of the extra soil moisture in the new rootzone and the amount of water in the
 reduced lower zone can be calculated as:
 
 \begin{equation}
+% eq 6.32
 -\, \Delta W _{rz} ~=~\Delta W _{lz} ~=~ W _{lz} \,{\frac{ RD _{t} \, -\, RD _{t-1} }{RD _{\max } \, -\, RD _{t-1} }}
 \end{equation}
 
- 
-\strut\hfill (6.32)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where RD$_{{\rm t}}$ &:& Rooting depth at time step t  & [cm]\\
+RD$_{{\rm t}}$ &:& Rooting depth at time step t  & [cm]\\
 RD$_{{\rm t-1}}$ &:& Rooting depth at time step t-1  & [cm]\\
 RD$_{{\rm max}}$ &:& Maximum rooting depth  & [cm]\\
 W$_{{\rm lz}}$ &:& Amount of soil moisture in the lower zone (see eq. 6.33b)  & [cm]\\
 $\Delta$W$_{{\rm rz}}$ &:& Change of the amount of soil moisture in the root zone  & [cm]\\
-$\Delta$W$_{{\rm lz}}$ &:& Change of the amount of soil moisture in the lower zone  & [cm]
+$\Delta$W$_{{\rm lz}}$ &:& Change of the amount of soil moisture in the lower zone  & [cm]\\
 \end{tabularx}
-
-
 
 With equation 6.31 the actual amount of water in the root zone and in the lower zone can
 be calculated according to:
 
-\begin{eqnarray*}
- W _{rz,t} ~=~ W _{rz, t-1} ~+~ \Delta W _{rz} \nonumber  \\
-~ \nonumber  \\
-W _{lz,t} ~=~ W _{lz, t-1} ~\, +~ \Delta W _{lz}
-\end{eqnarray*}
+\begin{align}
+% eq 6.33a-b
+W _{rz,t} ~=~ W _{rz, t-1} ~+~ \Delta W _{rz} \subeqn  \\
+W _{lz,t} ~=~ W _{lz, t-1} ~\, +~ \Delta W _{lz} \subeqn
+\end{align}
 
- 
-\strut\hfill (6.33a)\\
-\strut\hfill \\
-\strut\hfill (6.33b)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
+W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
 W$_{{\rm lz,t}}$ &:& Amount of soil moisture in the lower zone at time step t  & [cm]\\
 W$_{{\rm rz,t-1}}$ &:& Amount of soil moisture in the root zone at time step t-1  & [cm]\\
 W$_{{\rm lz,t-1}}$ &:& Amount of soil moisture in the lower zone at time step t-1  & [cm]\\
-$\Delta$W$_{{\rm rz}}$ &:& Rate of change of the amount of soil moisture in the root \\
+$\Delta$W$_{{\rm rz}}$ &:& Rate of change of the amount of soil moisture in the root 
    zone  & [cm]\\
-$\Delta$W$_{{\rm lz}}$ &:& Rate of change of the amount of soil moisture in the \\
-   lower zone  & [cm]
+$\Delta$W$_{{\rm lz}}$ &:& Rate of change of the amount of soil moisture in the 
+   lower zone  & [cm]\\
 \end{tabularx}
 
-
-{\it {\bf Actual soil moisture content}\/}\\
+\subsubsection{Actual soil moisture content}
 The actual soil moisture content can now be calculated according to (see also eq. 6.1):
 
 \begin{equation}
+%eq 6.34
 \theta _{t} ~=~ W _{\frac{rz, t}{RD}} 
 \end{equation}
 
- 
-\strut\hfill (6.34)\\
-\strut\hfill 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\theta$$_{{\rm t}}$ &:& Actual soil moisture content at time step t  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm t}}$ &:& Actual soil moisture content at time step t  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
-RD &:& Actual rooting depth  & [cm]
+RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
 
 
-
-
-
-
-\newpage
 \section{System with groundwater influence  }
 
-In the subroutine {\bf WATGW} the variables of the soil water balance in the actual water-limited produc\-tion situation are calculated. Influence from groundwater is assumed. The
+In the subroutine {\bf WATGW} the variables of the soil water balance in the actual 
+water-limited produc\-tion situation are calculated. Influence from groundwater is assumed. The
 purpose is to quantify the crop water requirements for continuous growth with either
-drought stress or water excess, and to quantify a possible reduction of the crop transpira\-tion rate, leading to a reduced growth.
-
-
-
+drought stress or water excess, and to quantify a possible reduction of the crop transpira\-tion 
+rate, leading to a reduced growth.
 
 \subsection{Submodel with groundwater influence  }
 
 The textural profile of the soil is conceived as homogeneous. Three soil zones are
 distinguished in this system:\\
-$\bullet$
-\testlastline
 
-\begin{indenting}{1.27cm}
-the rooted zone between soil surface and actual rooting depth;
-\end{indenting}
-$\bullet$
-\testlastline
-
-\begin{indenting}{1.27cm}
-the zone between rooting depth and groundwater;
-\end{indenting}
-$\bullet$
-\testlastline
-
-\begin{indenting}{1.27cm}
-the soil below groundwater level to a reference depth of 1000 centimeters. This
-reference depth is used to calculate a system water balance. It is a formal system
-boundary.
-\end{indenting}
- 
+\begin{itemize}
+ \item the rooted zone between soil surface and actual rooting depth;
+ \item the zone between rooting depth and groundwater;
+ \item the soil below groundwater level to a reference depth of 1000 centimeters. This
+ reference depth is used to calculate a system water balance. It is a formal system
+ boundary.
+\end{itemize}
  
 The extension of the root zone from initial rooting depth is described in \S 4.5. Its effect
 on the soil moisture content is accounted for in this soil water balance calculation.\\
@@ -1197,7 +1044,7 @@ moisture content, because this variable influences uptake and crop transpiration
 the assimilation.
 
 The water balance is driven by rainfall, possibly buffered as surface storage and
-{\nobreak}evapotranspiration. The processes considered are infiltration, soil water retention, the
+evapotranspiration. The processes considered are infiltration, soil water retention, the
 steady state flow between the root zone and the groundwater table (capillary rise($\uparrow$) or
 percolation($\downarrow$)), and drainage rate. An irrigation term is included but not used. The
 resulting depth, moisture and air contents in the root zone are calculated. The calculation
@@ -1215,54 +1062,34 @@ system. The rate of capillary rise or percolation determine the change in ground
 level. The new groundwater level is thus estimated from the calculated capillary rise or
 percolation. The soil moisture profile in the soil between groundwater and rooted zone, is
 assumed to be again in equilibrium. (in fact a contradiction with capillary rise or
-percolation). \\
-Difficulty arises when the groundwater rises into the rooted zone. The following proce\-dure is then applied:\\
-$\bullet$
-\testlastline
+percolation).
 
-\begin{indenting}{1.27cm}
-To simplify the calculations, it is assumed that in the current time step the
-groundwater can rise at its highest level until the lower boundary of the rooted
-zone.
-\end{indenting}
-$\bullet$
-\testlastline
-
-\begin{indenting}{1.27cm}
-In the next time step the soil air content of the rooted zone is calculated. If the
-amount of water in the rooted zone increases, a subdivision is made between a
-lower, saturated, layer and the higher layer with the original air content and soil
-moisture content. The {\nobreak}groundwater table is situated at the boundary between these
-zones. The root zone may be completely filled. Then the groundwater level is
-zero.
-\end{indenting}
-$\bullet$ 
-\testlastline
-
-\begin{indenting}{1.27cm}
-Loss of water from the rooted zone implies a rise of the groundwater level. In
-case so much water is lost, the groundwater level may drop below the rooted
-zone. The increase of soil moisture in the zone between groundwater and root
-zone is considered as capillary rise.
-\end{indenting}
-
+Difficulty arises when the groundwater rises into the rooted zone. The following proce\-dure is 
+then applied:
+\begin{itemize}
+\item To simplify the calculations, it is assumed that in the current time step the
+  groundwater can rise at its highest level until the lower boundary of the rooted
+  zone.
+\item In the next time step the soil air content of the rooted zone is calculated. If the
+  amount of water in the rooted zone increases, a subdivision is made between a
+  lower, saturated, layer and the higher layer with the original air content and soil
+  moisture content. The {\nobreak}groundwater table is situated at the boundary between these
+  zones. The root zone may be completely filled. Then the groundwater level is
+  zero.
+\item Loss of water from the rooted zone implies a rise of the groundwater level. In
+  case so much water is lost, the groundwater level may drop below the rooted
+  zone. The increase of soil moisture in the zone between groundwater and root
+  zone is considered as capillary rise.
+\end{itemize}
  
 No capillary flow occurs if the groundwater table is within the root zone. The simulation
-stops if the following circumstances arise:\\
-$\bullet$
-\testlastline
-
-\begin{indenting}{1.27cm}
-In case waterlogging occurs (i.e. groundwater depth less then 10 cm) and the
-plants cannot form airducts.
-\end{indenting}
-$\bullet$
-\testlastline
-
-\begin{indenting}{1.27cm}
-In case the plants can form airducts but waterlogging prevails for more then ten
-consecutive days.
-\end{indenting}
+stops if the following circumstances arise:
+\begin{itemize}
+\item In case waterlogging occurs (i.e. groundwater depth less then 10 cm) and the
+  plants cannot form airducts.
+\item In case the plants can form airducts but waterlogging prevails for more then ten
+  consecutive days.
+\end{itemize}
 
 \subsection{Root extension and the actual soil moisture content  }
 
@@ -1276,139 +1103,109 @@ table is also established. The depth of the groundwater table is needed to calcu
 capillary rise (subroutine {\bf SUBSOL}). The effect of root extension will be explained at the
 end of this paragraph.
 
-
-{\bf {\it Initialization\/}}\\
+\subsubsection{Initialization}
 Some remarks have to be made on the initialization. The soil moisture content values at
 field capacity, wilting point and the soil porosity are derived from the water retention
-curve, $\theta$$_{{\rm log(}{\rm \Psi}{)}}$ (see eq. 6.38). An AFGEN table (acronym: {\bf SMTAB}) with the $^{{\rm 10}}$log of the
+curve, $\theta$$_{{\rm log(}{\rm \Psi}{)}}$ (see eq. 6.38). An AFGEN table (acronym: 
+{\bf SMTAB}) with the $^{{\rm 10}}$log of the
 matric head (pF) as the independent variable is used to describe this curve (see Appendix
 2). The water retention curve is soil specific and should be provided by the user. The soil
-moisture content at field capacity, {\bf $\theta$$_{{\rm fc}}$} (acronym: {\bf SMFCF}), the soil moisture content at
-wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}) and the soil porosity, {\bf $\theta$$_{{\rm max}}$} (acronym: {\bf SM0}) are
+moisture content at field capacity, {\bf $\theta$$_{{\rm fc}}$} (acronym: {\bf SMFCF}), 
+the soil moisture content at
+wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}) and the soil porosity, 
+{\bf $\theta$$_{{\rm max}}$} (acronym: {\bf SM0}) are
 established using the AFGEN tale mentioned above with a matric head of 200 cm, 16000
 cm and 0.1 cm respectively. In the model a pF table is constructed (acronym: {\bf PFTAB}).
 It is the inverse of the SMTAB table.
-
 
 First, the model calculates a table with values of the cumulative soil air volume above the
 ground\-water level at equilibrium. Under equilibrium conditions, the matric head values
 are numerically equal to the height at which they occur. With soil air volume, the
 cumulat\-ive amount of air as a function of height above groundwater under equilibrium
 conditions is meant (acronym: {\bf SDEFTB}). The values of the cumulative amount of air for
-the following values of height (matric head, also called soil suction): 0,2,4,8,16,32,64,12\-8,..,16384 cm are calculated and put into an AFGEN table. 
-
-
+the following values of height (matric head, also called soil suction): 0,2,4,8,16,32,64,
+12\-8,..,16384 cm are calculated and put into an AFGEN table. 
 
 To calculate the cumulative air amount, the soil air content has to be integrated over the
 intervals mentioned above. The three point Gaussian integration method is used in the
 model. The length of the integration interval is given by:
 
 \begin{equation}
+% eq 6.35
 \Delta  \psi ~=~ \psi _{1} ~-~ \psi _{0} 
 \end{equation}
 
- 
-\strut\hfill (6.35)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\Delta$$\psi$ &:& Height of interval matric head  & [cm]\\
+$\Delta$$\psi$ &:& Height of interval matric head  & [cm]\\
 $\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
-$\psi$$_{{\rm 1}}$ &:& Upper boundary interval matric head  & [cm]
+$\psi$$_{{\rm 1}}$ &:& Upper boundary interval matric head  & [cm]\\
 \end{tabularx}
-
-
 
 Within each interval, three points are selected and used by the Gaussian integration, to
 integrate over the interval are given by:
 
 \begin{equation}
- \Delta  \psi _{i} ~=~ (0.5 ~+~ p \sqrt{0.15} ) \Delta  \psi ~~~~~p~=~-1,0,1~~
+% eq 6.36
+ \Delta  \psi _{i} ~=~ (0.5 ~+~ p \sqrt{0.15} ) \Delta  \psi ~~~~~p~=~-1,0,1
 \end{equation}
 
- 
-\strut\hfill (6.36)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\psi$$_{{\rm i}}$ &:& Matric head   & [cm]\\
-p &:& Three points for Gaussian integration  & [-]
+$\psi$$_{{\rm i}}$ &:& Matric head   & [cm]\\
+p &:& Three points for Gaussian integration  & [-]\\
 \end{tabularx}
-
-
 
 The average air content for the selected matric head can be calculated as:
 
 \begin{equation}
+% eq 6.37
 \theta  _{air, \psi _{i} } ~=~ \theta _{\max } ~-~ \theta  _{\psi _{i} }
 \end{equation}
 
- 
-\strut\hfill (6.37)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\theta$$_{{\rm air,}{\rm \Psi}{i}}$ &:& Air content at selected matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm air,}{\rm \Psi}{i}}$ &:& Air content at selected matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-$\theta$$_{{\rm \Psi}{i}}$ &:& Actual soil moisture content as a function of matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+$\theta$$_{{\rm \Psi}{i}}$ &:& Actual soil moisture content as a function of matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
-
 
 The actual soil moisture content can be derived as a function of the selected matric head
 by using the soil specific water retention curve:
 
 \begin{equation}
-\theta  _{\psi _{i} } ~=~ \theta  _{{\rm log} (\psi _{0} \, +\, \Delta  \psi _{i} )}
+% eq 6.38
+\theta_{\psi _{i} } ~=~ \theta_{{\rm log} (\psi_{0} \, +\, \Delta  \psi_{i} )}
 \end{equation}
 
- 
-\strut\hfill (6.38)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where $\theta$$_{{\rm \Psi}{i}}$ &:& Actual soil moisture content as a function of matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$\theta$$_{{\rm \Psi}{i}}$ &:& Actual soil moisture content as a function of 
+    matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\Delta$$\psi$ &:& Height of interval matric head  & [cm]\\
-$\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]
+$\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
 \end{tabularx}
-
-
 
 Using the equations 6.35, 6.36, 6.37 and 6.38, the cumulative amount of air as a function
 of height above groundwater under equilibri\-um conditions can now be calculated as: 
 
 \begin{equation}
-A _{air} (h) ~=~\Delta  \psi \,{\frac{ \theta  _{air, -1} ~+~ 1.6\, \theta  _{air,0} ~+~ \theta  _{air,1} }{3.6}}
+% eq 6.39
+A_{air} (h) ~=~\Delta  \psi \,{\frac{ \theta_{air, -1} ~+~ 1.6\, \theta_{air,0} ~+~ \theta_{air,1} }{3.6}}
 \end{equation}
-
- 
-\strut\hfill (6.39)
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where A$_{{\rm air}}$(h) &:& Amount of air as a function of height (h) above\\
+A$_{{\rm air}}$(h) &:& Amount of air as a function of height (h) above
    groundwater table   & [cm]\\
 $\Delta$$\psi$ &:& Height of interval matric head  & [cm]\\
-$\theta$$_{{\rm air,p}}$ &:& Air content at selected matric head p=-1,0,1  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
+$\theta$$_{{\rm air,p}}$ &:& Air content at selected matric head 
+   p=-1,0,1  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]
 \end{tabularx}
-
-
 
 The AFGEN table, the matric head (or height above groundwater) as a function of the
 cumulative air amount, $\psi$(A$_{{\rm air}}$) (acronym: {\bf DEFDTB}), is also calculated in the model. It is
 the inverse of the table calculated above.
-
-
 
 With the use of equation 6.39, the soil air amount above the water table at equilibrium,
 the initial state variables of the water balance can be computed. These are, the equilibri\-um amount of moisture in the subsoil, in the root zone and above the drains up to the
@@ -1417,24 +1214,16 @@ the root zone and above the drains up to the surface has to be established. To e
 amount of air at a specific depth at equilibrium, the height of that specific level above soil
 water table is used. It is assumed that in the rootzone no gradient exists. 
 
-
-
-
-
-
-
-
-
-
-
 The equilibrium amount of moisture in the subsoil, the root zone and above the drains up
 to the surface can than be calculated as:
 
-\begin{eqnarray*}
- W _{ss,\, fc} ~=~ (\, D _{\max } ~-~ RD\, )\, \theta  _{\max } ~-~ A _{air} (h _{1} )~~\, ~~~~where~~h _{1} ~=~Z _{t~} -~RD  \nonumber  \\
-W _{rz,\, fc} ~=~ RD\, \theta  _{\max } ~+~A _{air} (h _{1} )~-~A _{air} (h _{2} )~~~~~~where~~h _{2} ~=~Z _{t} \nonumber  \\
-W _{dd,\, fc} ~=~ DD\, \theta  _{\max } ~-~A _{air} (h _{3} )~~\, ~~~~~~~~~~~~~where~~h _{3} ~=~DD
-\end{eqnarray*}
+\begin{align}
+W_{ss,\, fc} &=~ (\, D_{\max} ~-~ RD\, )\, \theta_{\max } ~-~ A_{air} (h_{1} )~~\, & 
+  where~~h_{1} ~=~Z _{t~} -~RD  \subeqn  \\
+W_{rz,\, fc} &=~ RD\, \theta_{\max } ~+~A_{air} (h_{1} )~-~A_{air} (h_{2} ) & 
+  where~~h_{2} ~=~Z _{t} \subeqn  \\
+W_{dd,\, fc} &=~ DD\, \theta_{\max } ~-~A _{air} (h_{3} )~~\, & where~~h_{3} ~=~DD \subeqn
+\end{align}
 
  
 \strut\hfill (6.40a)\\
@@ -1442,8 +1231,6 @@ W _{dd,\, fc} ~=~ DD\, \theta  _{\max } ~-~A _{air} (h _{3} )~~\, ~~~~~~~~~~~~~w
 \strut\hfill (6.40c)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
 
 where W$_{{\rm ss,fc}}$ &:& Equilibrium soil moisture amount below rooted zone  & [cm]\\
 W$_{{\rm rz,fc}}$ &:& Equilibrium soil moisture amount in rooted zone  & [cm]\\
@@ -1457,8 +1244,6 @@ DD &:& Drain depth  & [cm]\\
 Z$_{{\rm t}}$ &:& Depth of groundwater table at time step t  & [cm]
 \end{tabularx}
 
-
-
 In the model, the initial moisture content in the rooted zone is assumed to be equal to the
 equilibrium amount of moisture in the root zone if the groundwater level is within 100 cm
 from the root zone or even in the root zone. If the groundwater level is lower than 100
@@ -1467,24 +1252,16 @@ soil moisture at field capacity. The variable days since last rain, D$_{{\rm slr
 calculate the evaporation rate from a shaded soil (see eq. 6.20), is set to unity. In case the
 soil moisture is lower than pF 3.0, a value of five days is assumed.
 
-
-
-{\bf {\it Capillary rise and percolation\/}}\\
+\subsubsection{Capillary rise and percolation}
 If the groundwater level is within the root zone, capillary rise and percolation are set to
-zero and no capillary rise or percolation has to be calculated. \\
+zero and no capillary rise or percolation has to be calculated. 
 If the groundwater level is below the root zone, capillary rise and percolation are
 calculated. From the pF of the root zone, the height difference between the lower
 boundary of the root zone and the groundwater depth, and the table of the hydraulic
 conductivity, the capillary flow from groundwater to the root zone can be calculated. The
 pF can be derived via interpolation from the soil specific water retention curve. Capillary
-flow is calculated separately in the subroutine {\bf SUBSOL}. Because of its complex calcula\-tions this subroutine is discussed separately in \S 6.5. 
-
-
-
-
-
-
-
+flow is calculated separately in the subroutine {\bf SUBSOL}. Because of its complex 
+calculations this subroutine is discussed separately in \S 6.5. 
 
 For sandy soils, a shallow groundwater depth and a shallow root zone, the capillary flow
 may be so large that the system becomes unstable. Therefore, the calculated flow rate is
@@ -1493,23 +1270,17 @@ level. This maximum flow in a state of equilibrium with the ground- water level 
 calculated as:
 
 \begin{equation}
-CR _{\max } ~=~{\frac{ W _{rz,\, fc} ~-~ W _{rz} }{\Delta t}}
+% 6.41
+CR_{\max} ~=~{\frac{W_{rz,\, fc} ~-~ W_{rz} }{\Delta t}}
 \end{equation}
-
- 
-\strut\hfill (6.41)
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where CR$_{{\rm max}}$ &:& Maximum flow rate calculated at equilibrium  & [cm d$^{{\rm -1}}$]\\
-W$_{{\rm rz,fc}}$ &:& Equilibrium amount of water in the rooted\\
+CR$_{{\rm max}}$ &:& Maximum flow rate calculated at equilibrium  & [cm d$^{{\rm -1}}$]\\
+W$_{{\rm rz,fc}}$ &:& Equilibrium amount of water in the rooted
    zone (see eq. 6.40b)  & [cm]\\
 W$_{{\rm rz}}$ &:& Actual amount of water in the rooted zone (see eq. 6.55)  & [cm]\\
-$\Delta$t &:& Time step  & [d]
-
+$\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
 
 A positive flow rate is defined as capillary rise whereas a negative flow rate is considered
@@ -1517,144 +1288,108 @@ as percola\-tion. For rice crops the percolation is limited to 5\% of the estima
 specific hydraulic conductiv\-ity, to account for the effect of puddling. This is a rather
 arbitrary value.
 
- 
-
-{\bf {\it Drainage\/}}\\
+\subsubsection{Drainage}
 The drainage rate is calculated only if there is artificial drainage and if the ground- water
-level is above the drainage depth. For other cases the drainage depth is set to zero.\\
+level is above the drainage depth. For other cases the drainage depth is set to zero.
 The drainage rate depends on the amount of water that could drain, and on the capacity of
 the drainage system.
 
-The capacity of the drainage system is calculated first as (van Diepen {\it et al\/}., 1988):
+The capacity of the drainage system is calculated first as (van Diepen {\it et al}., 1988):
 
 \begin{equation}
+% eq 6.42
 DR _{\max } ~=~ 0.2\, K0
 \end{equation}
 
- 
-\strut\hfill (6.42)
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where DR$_{{\rm max}}$ &:& Maximum drainage rate, equal to the drainage capacity  & [cm d$^{{\rm -1}}$]\\
-K0 &:& Hydraulic conductivity at saturation   & [cm d$^{{\rm -1}}$]
+DR$_{{\rm max}}$ &:& Maximum drainage rate, equal to the drainage capacity  & [cm d$^{{\rm -1}}$]\\
+K0 &:& Hydraulic conductivity at saturation   & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
-
 
 The hydraulic conductivity at saturation, {\bf K0}  (acronym: {\bf K0}), is soil specific. In the
 model, K0 is calculated using equating 6.67 with pF= -1.0 (i.e. a matric head of 0.1
 cm). If the groundwater table is below the root zone the amount of water which can be
-drained is the amount of water between the drains and the root zone minus the equilibri\-um amount which corresponding with the groundwater level at drainage depth. In the
+drained is the amount of water between the drains and the root zone minus the equilibrium 
+amount which corresponding with the groundwater level at drainage depth. In the
 model it is assumed that the drainage rate is always positive or zero (in case RD $>$ DD
 and W$_{{\rm rz}}$ $<$ W$_{{\rm dd,fc}}$).
-
-
-
 
 The drain depth, {\bf DD} (acronym: {\bf DD}) should be given be the user. The drainage rate can
 be calculated as:
 
 \begin{equation}
+% eq 6.43
 DR ~=~{\frac{W _{rz} ~+~ (DD\, -\, RD)\, \theta _{\max } ~-~ W _{dd\, ,\, fc} }{\Delta t}}
 \end{equation}
 
- 
-\strut\hfill (6.43)
-
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
+DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm rz}}$ &:& Amount of water in the root zone (see eq. 6.55)  & [cm]\\
 DD &:& Drain depth  & [cm]\\
 RD &:& Actual rooting depth  & [cm]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 W$_{{\rm dd,fc}}$ &:& Amount of water above drains (see eq. 6.40c)  & [cm]\\
-$\Delta$t &:& Time step  & [d]
+$\Delta$t &:& Time step  & [d]\\ 
 \end{tabularx}
-
 
 For groundwater located within the root zone the amount of water which can be drained
 equals the water content of the root zone plus the water content of the (saturated) zone
 between the drains and the rootzone, minus the equilibrium amount of water above the
 drains. The drainage rate can be calculated as:
 
-\begin{eqnarray*}
-DR ~=~{\frac{A _{air} (h _{1} )~-~ A _{air} (h _{2} )}{\Delta t}} \nonumber  \\
-\, \nonumber  \\
-where ~~h _{1} ~=~DD -RD,~~h _{2} ~=~Z _{t~} -~RD
-\end{eqnarray*}
-
- 
-\strut\hfill (6.44)
-
-
+\begin{equation}
+% eq 6.44
+DR ~=~{\frac{A_{air} (h_{1} )~-~ A_{air} (h_{2} )}{\Delta t}}
+\end{equation}
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
-A$_{{\rm air}}$(h) &:& Amount of air as a function of height above groundwater \\
+DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
+h_{1} &:& DD - RD & [cm]\\
+h_{2} &:& Z_{t~} - RD & [cm]\\
+A$_{{\rm air}}$(h) &:& Amount of air as a function of height above groundwater
    table  (see eq. 6.39) & [cm]\\
 DD &:& Drain depth  & [cm]\\
 RD &:& Actual rooting depth  & [cm]\\
 Z$_{{\rm t}}$ &:& Depth of groundwater table at time step t  & [cm]\\
-$\Delta$t &:& Time step  & [d]
+$\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
-
 
 It should be noted that the drainage rate, calculated for both cases, cannot exceed the
 drainage capacity of the system (eq. 6.42)
 
+\subsubsection{Change of groundwater depth and adjustment of infiltration rate}
 
-
-{\bf {\it Change of groundwater depth and adjustment of infiltration rate\/}}\\
 In the following text, the change of the groundwater and the adjustment of the infiltration
-rate will be explained. Two different situations can be distinguished.\\
-$\bullet$
-\testlastline
+rate will be explained. Two different situations can be distinguished.
+\begin{itemize}
+\item Groundwater table below the rooted zone;
+\item Groundwater table within the rooted zone.
+\end{itemize}
 
-\begin{indenting}{1.27cm}
-Groundwater table below the rooted zone
-\end{indenting}
-\begin{tabularx}{\textwidth}{llXr}
-
-
-
-$\bullet$ Groundwater table within the rooted zone
-\end{tabularx}
 In case the groundwater table is within the rooted zone, the water table might drop below
 the rooted zone. In order to maintain a stable moisture content in the model, water is
 recovered from the subsoil. In the water balance of the rooted zone this amount of water
-is accounted for as capillary rise.\\
- {\it Groundwater table below rootzone\/}\\
+is accounted for as capillary rise.
+
+\subsubsection{Groundwater table below rootzone}
 Now the change in the groundwater depth and the infiltration rate can be adjusted. If the
 groundwater level is below the root zone the calculation is simple. From the drainage
 rate, the rate of capillary rise and/or percolation rate, the new air amount between root
 zone and groundwater can be found:
 
-\begin{eqnarray*}
- A _{new} ~=~ A _{air} (h) ~+~ (\, DR ~+~ CR ~-~ Perc\, )\, \Delta t  \nonumber  \\
-\, \nonumber  \\
-where~~ h~=~Z _{t~} -~ RD
-\end{eqnarray*}
-
- 
-\strut\hfill (6.45)
-
+\begin{align}
+% eq 6.45
+ A_{new} ~=~ A_{air} (h) ~+~ (\, DR ~+~ CR ~-~ Perc\, )\, \Delta t   \\
+where~~ 
+\end{align}
 
 Where:\\
 \begin{tabularx}{\textwidth}{llXr}
-
-
-
-where A$_{{\rm new}}$ &:& New air amount between root zone and groundwater level  & [cm]\\
+h &:& Z_{t~} - RD & [cm]\\
+A$_{{\rm new}}$ &:& New air amount between root zone and groundwater level  & [cm]\\
 A$_{{\rm air}}$(h) &:& Amount of air as a function of height above groundwater \\
    table  (see eq. 6.39) & [cm]\\
 RD &:& Actual rooting depth  & [cm]\\
@@ -1664,8 +1399,6 @@ CR &:& Rate of capillary rise (see \S 6.5)  & [cm d$^{{\rm -1}}$]\\
 Perc &:& Percolation rate  & [cm d$^{{\rm -1}}$]
 \end{tabularx}
 
-
-
 To simplify calculations, the groundwater is not allowed to enter the root zone in the
 current time step. This could happen in case the new air amount between ground-water
 and root zone, A$_{{\rm new}}$, assumes a negative value. The groundwater level is allowed to rise
@@ -1674,6 +1407,7 @@ groundwater may rise further. Therefore, the percolation rate is con\-strained t
 such an occasion. 
 
 \begin{equation}
+% eq 6.46
 Perc ~=~Perc ~+~{\frac{A _{new} }{\Delta t}}
 \end{equation}
 
