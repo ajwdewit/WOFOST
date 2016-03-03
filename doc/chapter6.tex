@@ -42,12 +42,12 @@ The actual soil moisture content can be established according to (Driessen, 1986
 \stepcounter{equation}
 \begin{align}
 % equations 6.1a-b
-\theta_{t~} &= {\frac{IN _{up} ~+~(IN _{low} ~-~T _{a} )}{RD}} \Delta t \subeqn  \\
-IN_{up} &= P~+~I _{e} ~-~E _{s} ~+~SS _{t} \, /\Delta t-~SR  \subeqn  \\
+\theta_{t~} &= {\frac{IN _{up} ~+~(IN _{low} ~-~T _{a} )}{RD}} \Delta t \subeqn \\[1em]
+IN_{up} &= P~+~I _{e} ~-~E _{s} ~+~SS _{t} \, /\Delta t-~SR  \subeqn  \\[1em]
 IN_{low} &= CR~-~Perc \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm t}}$ &:& Actual moisture content of the root zone at time step t   & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 IN$_{{\rm up}}$ &:& Rate of net influx through the upper root zone boundary  & [cm d$^{{\rm -1}}$]\\
@@ -160,7 +160,7 @@ soil evaporation E0$_{{\rm s}}$.
 ET0 ~=~ E0_{s} ~+~ T_{m} 
 \end{equation}
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 ET0 &:& Potential evapotranspiration rate (see \S 4.1.3) & [cm d$^{{\rm -1}}$]\\
 E0$_{{\rm s}}$ &:& Potential evaporation of a bare soil (see \S 4.1.3)  & [cm d$^{{\rm -1}}$]\\
@@ -177,10 +177,10 @@ area index (Goudriaan, 1977; Ritchie, 1972; 1971) can be estimated as:
 
 \begin{equation}
 % eq 6.3
-E0 _{s} ~=~ ET0 ~e ^{-\kappa_{gb} \, LAI}
+E0 _{s} ~=~ ET0 \cdot e^{-\kappa_{gb} \cdot LAI}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 E0$_{{\rm s}}$ &:& Potential bare soil evaporation  & [cm d$^{{\rm -1}}$]\\
  $\kappa$$_{{\rm gb}}$ &:& Extinction coefficient for global radiation  & [-]\\
@@ -194,7 +194,7 @@ The potential transpiration rate can be calculated by combining equations 6.2 an
 T _{m} ~=~ ET0\, (1~-~e ^{-\kappa _{gb} \, LAI} )
 \end{equation}
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 T$_{{\rm m}}$ &:& Maximum crop transpiration rate & [cm d$^{{\rm -1}}$]\\
 ET0 &:& Potential evapotranspiration rate & [cm d$^{{\rm -1}}$]\\
@@ -210,7 +210,7 @@ extinction coefficient of diffuse radiation:
 \kappa_{gb} ~=~ 0.75\, \kappa_{df} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\kappa_{{\rm gb}}$ &:& Extinction coefficient for global radiation & [-]\\
 $\kappa_{{\rm df}}$ &:& Extinction coefficient for diffuse light & [-]\\
@@ -224,7 +224,7 @@ way as equation 6.4:
 E _{w,\max } ~=~ E0 _{w} \,\,\, e ^{-\kappa  _{gb} LAI}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 E$_{{\rm w,max}}$ &:& Maximum evaporation rate from a shaded water surface & [cm d$^{{\rm -1}}$]\\
 E0$_{{\rm w}}$ &:& Potential evaporation rate from a water surface (see \S 4.1.3) & [cm d$^{{\rm -1}}$]\\
@@ -240,7 +240,7 @@ the same way as in equation 6.4 and 6.6:
 E_{s,\max } ~=~ E0 _{s} \,\,\, e ^{-\kappa  _{gb} LAI}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded 
     soil surface & [cm d$^{{\rm -1}}$]\\
@@ -273,7 +273,7 @@ al}., 1988):
 R_{ws} ~=~{\frac{\theta_{t} ~-~ \theta  _{wp} }{ \ _{ws} ~-~ \theta_{wp} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $R_{{\rm ws}}$ &:& Reduction factor for transpiration in case of
     water shortage & [-]\\
@@ -295,7 +295,7 @@ moisture content can be calculated as (van Diepen {\it et al\/}., 1988):
 \theta_{ws} ~=~ (1\, -\, p )\, (\theta  _{fc} \, -\, \theta  _{wp} )\, +\, \theta  _{wp} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm ws}}$ &:& Critical soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 p &:& Soil water depletion fraction as a function 
@@ -374,7 +374,7 @@ yielding identical values as the ones given in the Table 6.1 (van Diepen {\it et
 p~={\frac{~1}{ \alpha _{p} ~+~ \beta _{p} ~ET0}} ~-~ 0.10\, (\, 5~-~No _{cg} \, )
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 p &:& Fraction of easily available soil water  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\alpha$$_{{\rm p}}$ &:& Regression constant {\small (=0.76 van Diepen et al., 1988)}  & [-]\\
@@ -394,7 +394,7 @@ applied to reproduce the table values correctly (van Diepen {\it et al\/}., 1988
 p~=~p~+~{\frac{ET0 ~-~ 0.6}{No _{cg} \, (\, No _{cg} ~+~3\, )}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 where p &:& Fraction of easily available soil water  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 ET0 &:& Potential evapotranspiration rate  & [cm d$^{{\rm -1}}$]\\
@@ -419,7 +419,7 @@ can be calculated as:
 \theta_{air} ~=~ \theta_{\max} ~-~\theta_{c} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -443,7 +443,7 @@ R_{os,\max } &= \frac{ \theta  _{\max } ~-~ \theta  _{t} }{\theta _{\max } ~-~ \
 R_{os} &= 1 - \frac{No _{d} }{4} \, (\, 1\, -\, R _{os,\max } \, ) ~~~ with~~ No_{d} ~\le ~ 4 \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  R$_{{\rm os,max}}$ &:& Maximum reduction factor due to oxygen shortage & [-]\\
  R$_{{\rm os}}$ &:& Reduction factor due to oxygen shortage & [-]\\
@@ -473,7 +473,7 @@ calculated as:
 T_{a~} = R_{ws} \,\, R_{os} \,\, T_{m} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  T$_{{\rm a}}$ &:& Actual transpiration rate & [cm d$^{{\rm -1}}$]\\
  T$_{{\rm m}}$ &:& Maximum transpiration rate (see eq. 6.4) & [cm d$^{{\rm -1}}$]\\
@@ -493,7 +493,7 @@ field capacity.
 \theta  _{t} ~ =~\theta  _{fc} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  $\theta$$_{{\rm t}}$ &:& Actual soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
  $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -515,7 +515,7 @@ evaporation rate from a shaded water surface:
 E _{w} ~=~ E _{w, \max } 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
     E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface & [cm d$^{{\rm -1}}$]\\
     E$_{{\rm w,max}}$ &:& Maximum evaporation rate from shaded 
@@ -532,7 +532,7 @@ evaporation rate from a soil surface (van Diepen, personal communication):
 E _{s~} =~ E _{s,\max } {\frac{ \theta  _{fc} ~-~ {{\frac{\theta  _{wp} }{3}}} }{\theta  _{\max } ~-~{{\frac{\theta  _{wp} }{3}}} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
     E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface & [cm d$^{{\rm -1}}$]\\
     E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded
@@ -596,7 +596,7 @@ calculated as:
 \theta_{t} ~ =~\theta_{wp} ~+~{\frac{W_{av}}{RD}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted z
     one  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -622,7 +622,7 @@ the zone between the rooted zone and the maximum rooting depth, can be calculate
 W_{lz} ~ =~ W _{av} ~+~ RD_{\max } ~\theta_{wp} ~-~RD~\theta_{t} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  W$_{{\rm lz}}$ &:& Amount of soil moisture in the lower zone & [cm]\\
  W$_{{\rm av}}$ &:& Initial amount of available soil moisture 
@@ -662,7 +662,7 @@ square root of time (Stroosnijder, 1987, 1982). The evaporation can be calculate
 E _{s} ~=~ E _{s,\max } ( \sqrt{D _{slr} } ~-~ \sqrt{D _{slr} \, -\, 1} )
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface  & [cm d$^{{\rm -1}}$]\\
 E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded soil
@@ -709,7 +709,7 @@ the latter is called Loss. The percolation rate from the rooted zone can be calc
 Perc  ~=~{\frac{W _{rz} \, -\, W _{rz,\, fc} }{\Delta t}} ~-~ T _{a} ~-~ E _{s} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 Perc &:& Percolation rate from the root zone to the lower zone  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm rz}}$ &:& Amount of soil moisture in the root zone (see eq. 6.33a)  & [cm]\\
@@ -729,7 +729,7 @@ moisture content at field capacity times the depth of the rooting zone:
 W _{rz,\, fc} ~=~ \theta  _{fc} \,\, RD
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the root zone  & [cm]\\
 $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -755,7 +755,7 @@ of the maximum root zone can be calculated as:
 Loss ~=~{\frac{W _{lz} \, -\, W _{lz,\, fc} }{\Delta t}} ~+~ Perc
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 Loss &:& Percolation rate from the lower zone to the subsoil   & [cm d$^{{\rm -1}}$]\\
 Perc &:& Percolation rate from root zone to lower zone (see eq. 6.21)  & [cm d$^{{\rm -1}}$]\\
@@ -776,7 +776,7 @@ depth of the root zone:
 W_{lz,\, fc} = \theta_{fc} \,\, (RD_{\max} ~-~RD)
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm rz,fc}}$ &:& Equilibrium amount of soil moisture in the lower zone  & [cm]\\
 $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -801,7 +801,7 @@ plus the loss (van Diepen {\it et al\/}., 1988). The storage capacity can de def
 UP  ~=~{\frac{(\, RD _{\max } \, -\, RD\, )\, \theta  _{\max } ~-~ W _{lz} }{\Delta t}} ~+~ Loss
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 UP &:& Uptake capacity of lower zone  & [cm d$^{{\rm -1}}$]\\
 RD$_{{\rm max}}$ &:& Maximum rooting depth  & [cm]\\
@@ -826,7 +826,7 @@ infiltration capacity is simply described as:
 IN_{p} =~ (\, 1\, -\, F _{I} \, C _{I} \, )\, P~+~ I _{e~} +~ SS _{\frac{t}{ \Delta t}} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
 F$_{{\rm I}}$ &:& Maximum fraction of rain not infiltrating during time step t  & [-]\\
@@ -857,7 +857,7 @@ rainfall and irrigation and depleted via evaporation from the water surface:
 IN_{p} ~=~P~+~I _{e} ~-~ E _{w~} +~ SS _{\frac{t}{\Delta t}} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 IN$_{{\rm p}}$ &:& Preliminary infiltration rate  & [cm d$^{{\rm -1}}$]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
@@ -884,7 +884,7 @@ by:
 IN_{\max } ~=~{\frac{(\, \theta  _{\max } \, -\, \theta  _{t} \, )\, RD}{\Delta t}} ~+~ T _{a} ~+~ E _{s} ~+~ Perc
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 IN$_{{\rm max}}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity (maximum soil moisture)  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -908,7 +908,7 @@ calculated as:
 SS_{t} ~=~ SS _{t-1} ~+~ (\, P ~+~ I _{e} ~-~ E _{w} ~-~ IN\, )\, \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 SS$_{{\rm t}}$ &:& Surface storage at time step t  & [cm d$^{{\rm -1}}$]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
@@ -924,7 +924,7 @@ The surface runoff can be calculated as:
 SR _{t} ~=~ SS _{t} ~-~ \min \, (\, SS _{t} \, ,\, SS _{\max } )\\
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 SR$_{{\rm t}}$ &:& Surface runoff at time step t  & [cm]\\
 SS$_{{\rm t}}$ &:& Surface storage at time step t  & [cm]\\
@@ -945,7 +945,7 @@ calculated straightforward from the flows found above:
 \Delta W _{lz} &=~ (Perc ~-~ Loss)\,\Delta \, t \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W$_{{\rm rz}}$ &:& Change of the amount of soil moisture in the root zone  & [cm]\\
 $\Delta$W$_{{\rm lz}}$ &:& Change of the amount of soil moisture in the lower zone  & [cm]\\
@@ -966,7 +966,7 @@ reduced lower zone can be calculated as:
 \Delta W _{rz} ~=~\Delta W _{lz} ~=~ W _{lz} \,{\frac{ RD _{t} \, -\, RD _{t-1} }{RD _{\max } \, -\, RD _{t-1} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 RD$_{{\rm t}}$ &:& Rooting depth at time step t  & [cm]\\
 RD$_{{\rm t-1}}$ &:& Rooting depth at time step t-1  & [cm]\\
@@ -986,7 +986,7 @@ W _{rz,t} ~=~ W _{rz, t-1} ~+~ \Delta W _{rz} \subeqn  \\
 W _{lz,t} ~=~ W _{lz, t-1} ~\, +~ \Delta W _{lz} \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
 W$_{{\rm lz,t}}$ &:& Amount of soil moisture in the lower zone at time step t  & [cm]\\
@@ -1006,7 +1006,7 @@ The actual soil moisture content can now be calculated according to (see also eq
 \theta _{t} ~=~ W _{\frac{rz, t}{RD}} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm t}}$ &:& Actual soil moisture content at time step t  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
@@ -1138,7 +1138,7 @@ model. The length of the integration interval is given by:
 \Delta  \psi ~=~ \psi _{1} ~-~ \psi _{0} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$$\psi$ &:& Height of interval matric head  & [cm]\\
 $\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
@@ -1153,7 +1153,7 @@ integrate over the interval are given by:
  \Delta  \psi _{i} ~=~ (0.5 ~+~ p \sqrt{0.15} ) \Delta  \psi ~~~~~p~=~-1,0,1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\psi$$_{{\rm i}}$ &:& Matric head   & [cm]\\
 p &:& Three points for Gaussian integration  & [-]\\
@@ -1166,7 +1166,7 @@ The average air content for the selected matric head can be calculated as:
 \theta  _{air, \psi _{i} } ~=~ \theta _{\max } ~-~ \theta  _{\psi _{i} }
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm air,}{\rm \Psi}{i}}$ &:& Air content at selected matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -1181,7 +1181,7 @@ by using the soil specific water retention curve:
 \theta_{\psi _{i} } ~=~ \theta_{{\rm log} (\psi_{0} \, +\, \Delta  \psi_{i} )}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm \Psi}{i}}$ &:& Actual soil moisture content as a function of 
     matric head  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -1197,7 +1197,7 @@ of height above groundwater under equilibri\-um conditions can now be calculated
 A_{air} (h) ~=~\Delta  \psi \,{\frac{ \theta_{air, -1} ~+~ 1.6\, \theta_{air,0} ~+~ \theta_{air,1} }{3.6}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 A$_{{\rm air}}$(h) &:& Amount of air as a function of height (h) above
    groundwater table   & [cm]\\
@@ -1231,7 +1231,7 @@ W_{dd,\, fc} &=~ DD\, \theta_{\max } ~-~A _{air} (h_{3} )~~\,
    \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 h$_{1}$ &:& Z$_{t~}$ - RD & [cm]\\
 h$_{2}$ &:& Z$_{t}$  & [cm]\\
@@ -1279,7 +1279,7 @@ calculated as:
 CR_{\max} ~=~{\frac{W_{rz,\, fc} ~-~ W_{rz} }{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 CR$_{{\rm max}}$ &:& Maximum flow rate calculated at equilibrium  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm rz,fc}}$ &:& Equilibrium amount of water in the rooted
@@ -1306,7 +1306,7 @@ The capacity of the drainage system is calculated first as (van Diepen {\it et a
 DR _{\max } ~=~ 0.2\, K0
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 DR$_{{\rm max}}$ &:& Maximum drainage rate, equal to the drainage capacity  & [cm d$^{{\rm -1}}$]\\
 K0 &:& Hydraulic conductivity at saturation   & [cm d$^{{\rm -1}}$]\\
@@ -1328,7 +1328,7 @@ be calculated as:
 DR ~=~{\frac{W _{rz} ~+~ (DD\, -\, RD)\, \theta _{\max } ~-~ W _{dd\, ,\, fc} }{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
 W$_{{\rm rz}}$ &:& Amount of water in the root zone (see eq. 6.55)  & [cm]\\
@@ -1349,7 +1349,7 @@ drains. The drainage rate can be calculated as:
 DR ~=~{\frac{A_{air} (h_{1} )~-~ A_{air} (h_{2} )}{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 DR &:& Drainage rate  & [cm d$^{{\rm -1}}$]\\
 h$_{1}$ &:& DD - RD & [cm]\\
@@ -1390,7 +1390,7 @@ zone and groundwater can be found:
  A_{new} ~=~ A_{air} (h) ~+~ (\, DR ~+~ CR ~-~ Perc\, )\, \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 h &:& Z$_{t~}$ - RD & [cm]\\
 A$_{{\rm new}}$ &:& New air amount between root zone and groundwater level  & [cm]\\
@@ -1415,7 +1415,7 @@ such an occasion.
 Perc ~=~Perc ~+~{\frac{A _{new} }{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 Perc &:& Percolation rate   & [cm d$^{{\rm -1}}$]\\
 A$_{{\rm new}}$ &:& New air amount between root zone and groundwater table  & [cm]\\
@@ -1432,7 +1432,7 @@ The maximum possible infiltration equals the available soil air volume which is 
 % eq 6.47
 IN _{\max } ~=~{\frac{(\, \theta _{\max } ~-~ \theta _{t} ~-~ 0.0004\, )\, RD}{\Delta t}} ~+~ T _{a} ~+~ E _{s} ~+~ Perc ~-~ CR
 \end{equation}
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 IN$_{{\rm max}}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
 $\theta$$_{{\rm max}}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
@@ -1461,17 +1461,17 @@ value of the groundwater depth from the new value of the groundwater depth.
 
 \begin{equation}
 % eq 6.48
-\Delta Z~=~{\frac{\psi \, (A _{new} ) ~+~RD~-~Z _{t-1} }{\Delta t}}
+\Delta Z = {\frac{\psi (A_{new} ) + RD - Z_{t-1}}{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\Delta$Z &:& Change in groundwater level per time step  & [cm d$^{{\rm -1}}$]\\
+$\Delta Z$ &:& Change in groundwater level per time step  & [cm d$^{ -1}$]\\
 $\psi$() &:& Matric head as a function of the amount of air  & [cm]\\
-A$_{{\rm new}}$ &:& New air amount between root zone and groundwater
+$A_{new}$ &:& New air amount between root zone and groundwater
    level (see eq. 6.45)  & [cm]\\
-RD &:& Actual rooting depth  & [cm]\\
-Z$_{{\rm t-1}}$ &:& Depth of groundwater table at time step t-1  & [cm]
+$RD$ &:& Actual rooting depth  & [cm]\\
+$Z_{t-1}$ &:& Depth of groundwater table at time step t-1  & [cm]
 \end{tabularx}
 
 The initial depth of the groundwater table (acronym: {\bf ZTI}) should be provided by the
@@ -1491,16 +1491,16 @@ content and groundwater depth is (van Diepen {\it et al\/}., 1988):
 
 \begin{equation}
 % eq 6.49
-Z _{t} \, {\rm \cdot {0.75ex}}\, \theta _{air\, ,\, t} ~=~ RD\, {\rm \cdot {0.75ex}}\, \theta _{\max } ~-~ W _{t} 
+Z_{t} \cdot \theta_{air,t} = RD \cdot \theta_{max} - W_{t} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-Z$_{{\rm t}}$ &:& Depth of groundwater table at time step t  & [cm]\\
+$Z_{t}$ &:& Depth of groundwater table at time step t  & [cm]\\
 $\theta$$_{{\rm air,t}}$ &:& Air content above groundwater table  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-RD &:& Actual rooting depth  & [cm]\\
-$\theta$$_{{\rm max}}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-W$_{{\rm t}}$ &:& Amount of water in the root zone (see eq. 6.55)  & [cm]\\
+$RD$ &:& Actual rooting depth  & [cm]\\
+$\theta_{ma}$ &:& Soil porosity  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$W_{ t}$ &:& Amount of water in the root zone (see eq. 6.55)  & [cm]\\
 \end{tabularx}
 
 Both sides of the expression equal the amount of air in the root zone. Note that on the
@@ -1518,17 +1518,17 @@ maximum value the adjusted infiltration rate can reach is defined as:
 
 \begin{equation}
 % eq 6.50
-IN _{\max } ~=~{\frac{\theta _{air\, ,\, t} \, Z _{t} }{\Delta t}} ~+~ T _{a} ~+~ E _{s} ~+~ Perc
+IN_{max} = {\frac{\theta_{air,t} \cdot Z _{t}}{\Delta t}} + T_{a} + E_{s} + Perc
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-IN$_{{\rm max}}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
-Z$_{{\rm t}}$ &:& Depth of groundwater table at time step t  & [cm]\\
-$\theta$$_{{\rm air,t}}$ &:& Air content above groundwater table (see eq. 6.49)  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-T$_{{\rm a}}$ &:& Actual transpiration rate (see eq. 6.14)  & [cm d$^{{\rm -1}}$]\\
-E$_{{\rm s}}$ &:& Evaporation rate of a shaded soil surface (see eq. 6.20)  & [cm d$^{{\rm -1}}$]\\
-Perc &:& Percolation rate  & [cm d$^{{\rm -1}}$]\\
+$IN_{max}$ &:& Maximum infiltration rate  & [cm d$^{{\rm -1}}$]\\
+$Z_{t}$ &:& Depth of groundwater table at time step t  & [cm]\\
+$\theta_{air,t}$ &:& Air content above groundwater table (see eq. 6.49)  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$T_{a}$ &:& Actual transpiration rate (see eq. 6.14)  & [cm d$^{-1}$]\\
+$E_{s}$ &:& Evaporation rate of a shaded soil surface (see eq. 6.20)  & [cm d$^{{\rm -1}}$]\\
+$Perc$ &:& Percolation rate  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
 In the model, two different situations are distinguished. During the current time step the
@@ -1544,7 +1544,7 @@ amount of air. From these rates the change in groundwater depth follows.
 \Delta Z ~=~{\frac{T _{a} ~+~ E _{s} ~+~ Perc ~-~ IN }{\theta _{air\, ,\, t} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$Z &:& Change in groundwater level per time step  & [cm d$^{{\rm -1}}$]\\
 IN &:& Infiltration rate  & [cm d$^{{\rm -1}}$]\\
@@ -1562,17 +1562,17 @@ is too large to keep track of fluctuations of the groundwater level.)
 
 \begin{equation}
 % eq 6.51
-CR ~=~{\frac{ (\, \Delta Z\, \Delta t ~-~ (\, RD ~-~ Z _{t} \,\, ))\, \theta  _{air\, ,\, t} }{\Delta t}}
+CR = {\frac{ (\Delta Z \cdot \Delta t - (RD - Z_{t})) \cdot \theta_{air, t} }{\Delta t}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-CR &:& Rate of capillary rise  & [cm d$^{{\rm -1}}$]\\
-$\Delta$Z &:& Change in groundwater level per time step  & [cm d$^{{\rm -1}}$]\\
-Z$_{{\rm t}}$ &:& Depth of groundwater table at time step  & [cm d$^{{\rm -1}}$]\\
-$\Delta$t &:& Time step  & [d]\\
-RD &:& Actual rooting depth  & [cm]\\
-$\theta$$_{{\rm air,t}}$ &:& Air content above groundwater table  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+$CR$ &:& Rate of capillary rise  & [cm d$^{{\rm -1}}$]\\
+$\Delta Z$ &:& Change in groundwater level per time step  & [cm d$^{-1}$]\\ 
+$Z_{t}$ &:& Depth of groundwater table at time step  & [cm d$^{-1}$]\\
+$\Delta t$ &:& Time step  & [d]\\
+$RD$ &:& Actual rooting depth  & [cm]\\
+$\theta_{air,t}$ &:& Air content above groundwater table  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
 
 The equilibrium profile is assumed again. The new height of the root zone above the
@@ -1591,7 +1591,7 @@ way from the calculated flow rates:
 \Delta W ~=~ -\, T _{a} ~-~ E _{s} ~-~ Perc ~+~ CR ~+~ IN
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W &:& Rate of change in the amount of moisture in the root zone  & [cm d$^{{\rm -1}}$]\\
 T$_{{\rm a}}$ &:& Actual transpiration rate  & [cm d$^{{\rm -1}}$]\\
@@ -1610,7 +1610,7 @@ The extra soil moisture added to the rooted zone by root growth can be calculate
 \Delta W_{rz} ~=~(RD _{t} \, -\, RD _{t-1} )~\theta _{\max } ~-~({\rm A} _{air} (h _{1} )~-~A _{air} (h _{2} ))  
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 h$_{1}$ &:& Z$_{t~}$ - RD$_{t~}$ & [cm]\\
 h$_{2}$ &:& Z$_{t-1}$ - RD$_{t-1}$ & [cm]\\
@@ -1632,7 +1632,7 @@ according to:
 W_{rz,t} ~=~ W_{rz, t-1} ~+~ \Delta W_{rz} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
 W$_{{\rm rz,t-1}}$ &:& Amount of soil moisture in the root zone at time step t-1  & [cm]\\
@@ -1647,7 +1647,7 @@ The actual moisture content can now be calculated according to (see also eq. 6.1
 \theta_{t} ~=~ W _{\frac{rz, t}{RD}} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\theta$$_{{\rm t}}$ &:& Actual soil moisture content at time step t  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 W$_{{\rm rz,t}}$ &:& Amount of soil moisture in the root zone at time step t  & [cm]\\
@@ -1672,7 +1672,7 @@ FL _{p} =~({\frac{d \psi }{ d\,\, Z _{rd} }} ~-~ 1)~K
 \end{equation}
 
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 FL$_{{\rm p}}$ &:& Flow rate  & [cm d$^{{\rm -1}}$]\\
 Z$_{{\rm rd}}$ &:& Distance between root zone and groundwater table  & [cm]\\
@@ -1687,7 +1687,7 @@ Equation 6.57 can be rewritten according to:
 d\, Z _{rd} ~=~{\frac{K\,\, d \psi }{ K ~+~ FL _{p} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 Z$_{{\rm rd}}$ &:& Distance between root zone and groundwater table  & [cm]\\
 K &:& Hydraulic conductivity  & [cm d$^{{\rm -1}}$]\\
@@ -1714,10 +1714,10 @@ The matric head can be calculated from a pF curve using the following equation:
 
 \begin{equation}
 % eq 6.59
-\psi ~=~e ^{~pF\, {\rm \Bullet{0.75ex}}\, \ln (10)} 
+\psi ~=~e ^{pF \cdot \ln(10)} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\psi$ &:& Matric head  & [cm]\\
 pF &:& pF value  & [-]\\
@@ -1734,7 +1734,7 @@ be calculat\-ed as:
 FL~=~K\,{\frac{\psi }{D}} ~-~ 1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 FL &:& Flow rate  & [cm d$^{{\rm -1}}$]\\
 K  &:& Hydraulic conductivity  & [cm d$^{{\rm -1}}$]\\
@@ -1760,7 +1760,7 @@ becomes:
 d\, Z _{rd} ~=~ d\,\, pF\,\,{\frac{\ln (10)\, K\,\, 10^{\, pF} }{K~+~FL _{p} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 Z$_{{\rm rd}}$ &:& Distance between root zone and groundwater table  & [cm]\\
 K &:& Hydraulic conductivity  & [cm d$^{{\rm -1}}$]\\
@@ -1776,7 +1776,7 @@ mentioned above. The length of each integration interval can be expressed as:
 \Delta \psi ~=~ \psi _{1} ~-~ \psi _{0} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$$\psi$ &:& Length of the interval matric head  & [cm]\\
 $\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
@@ -1786,15 +1786,12 @@ $\psi$$_{{\rm 1}}$ &:& Upper boundary interval matric head  & [cm]\\
 According to Gaussian integration method, three distances within the length of the
 integration interval are selected. These distances are:
 
-\begin{align}
+\begin{equation}
 % eq 6.63
-\Delta \psi_{i} &=~ (\, 0.5 ~+~ p\, \sqrt{0.15} \, )\Delta \psi ~~~~ p~=~ -1,\, 0,\, 1~~~~ \Rightarrow \\
-\Delta \psi_{1} &=~ 0.1127017\,\Delta \psi \nonumber  \\
-\Delta \psi_{2} &=~ 0.5\,\Delta \psi \nonumber  \\
-\Delta \psi_{3} &=~ 0.8872983\,\Delta \psi
-\end{align}
+\Delta \psi_{i} = (0.5 + p \sqrt{0.15}) \Delta \psi ~~~~ for ~~~~ p = -1, 0, 1 
+\end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Psi$$_{{\rm i}}$ &:& Matric head  & [cm]\\
 p &:& Three points of the Gaussian integration\\
@@ -1808,7 +1805,7 @@ be calculated as:
 \psi ~=~ \psi _{0} ~+~\Delta \psi _{i} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\psi$ &:& Total selected matric head  & [cm]\\
 $\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
@@ -1822,7 +1819,7 @@ The selected matric head values can be expressed as pF-values according:
 pF ~=~\ ^{10} {\rm log} (\psi )
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 pF &:& pF-value  & [-]\\
 $\psi$ &:& Matric head  & [cm]\\
@@ -1836,17 +1833,18 @@ be calculated. The results are presented in Table 6.3.
 
 \begin{table}
 %Table 6.3
-\begin{tabular}{lrrr}
+\centering
+\caption{pF values of the selected matric heads per interval}
+\label{tab:Table6.3}
+\begin{tabular}{l|rrr}
 \hline
-\multicolumn{4}{c}{pF values}\\
+Interval & \multicolumn{3}{c}{pF values}\\
 \hline
 0, 45    & 0.705143  &  1.352183 &    1.601282    \\
 45, 170  &  1.771497 &  2.031409 &    2.192880    \\
 170, 330 &  2.274233 &  2.397940 &    2.494110    \\
 \hline
 \end{tabular}
-\caption{pF values of the selected matric heads per interval}
-\label{tab:Table6.3}
 \end{table}
 
 The pF-values for the full width integration intervals are included in the subroutine
@@ -1857,15 +1855,12 @@ For the last interval, as mentioned before, a logarithmic transformation is appl
 of matric head values, now three pF values are selected, using the Gaussian integration
 method.
 
-\begin{align}
+\begin{equation}
 % eq 6.66
-\Delta pF _{i} &=~ (\, 0.5 ~+~ p\, \sqrt{0.15} \, )\Delta pF ~~~~ p~=~ -1,\, 0,\, 1~~~~ \Rightarrow   \nonumber  \\
-\Delta pF _{1} &=~ 0.1127017\,\Delta pF  \nonumber  \\
-\Delta pF _{2} &=~ 0.5\,\Delta pF  \nonumber  \\
-\Delta pF _{3} &=~ 0.8872983\,\Delta pF
-\end{align}
+\Delta pF _{i} = (0.5 + p \cdot \sqrt{0.15})\Delta pF ~~~~ for ~~~~ p = -1, 0, 1
+\end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 pF$_{{\rm i}}$ &:& pF value  & [-]\\
 p &:& Three points of the Gaussian integration\\
@@ -1877,10 +1872,10 @@ computed using the following equation:
 
 \begin{equation}
 % eq 6.67
-K~=~e ^{\ln (10)\, K\, (pF)} 
+K = e^{\ln(10) \cdot K(pF)} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 K &:& Hydraulic conductivity  & [cm d$^{{\rm -1}}$]\\
 K(pF) &:& $^{{\rm 10}}$log of hydraulic conductivity as a function of pF  & [-]\\
@@ -1892,7 +1887,7 @@ The values of K, calculated with equation 6.67, are needed in the iteration loop
 calculate (K+FL$_{{\rm p}}$), the denominator of equation 6.58. In the model, the nominator of the
 right-hand side of equation 6.58 is integrated using the Gaussian integration. Therefore,
 the K values are multiplied by the size of the interval ($\Delta$$\Psi$) and by the weighing factor
-(see Appendix 1) . The results are put in a help array.
+(see Appendix 1). The results are put in a help array.
 
 \subsection{Iteration}
 In order to find the correct flow rate in the iteration process, an upper limit and a lower
@@ -1901,10 +1896,10 @@ limit of the flow rate is set to 1.27 cm d$^{{\rm -1}}$ and lower limit for the 
 
 \begin{equation}
 % eq 6.68
-FL _{l} ~=~ -\, e ^{\ln (10)\, K(pF)}
+FL_{l} = - e^{\ln(10) \cdot K(pF)}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 FL$_{{\rm l}}$ &:& Lower limit for the flow rate  & [cm d$^{{\rm -1}}$]\\
 K(pF) &:& Hydraulic conductivity as a function of the pF  & [-]\\

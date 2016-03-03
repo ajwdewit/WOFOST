@@ -18,8 +18,7 @@ is lost as growth respir\-ation. The growth rate is thus obtained as:
 \Delta W ~=~ C _{e} ~( A ~-~ R _{m} )
 \end{equation}
 
- 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W &:& Growth rate    &   
     [kg Dry Matter ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -79,7 +78,7 @@ model for crop growth. For many annual crops, the development stage can convenie
 be expressed in a dimensionless variable, having the value 0 at seedling emergence, 1 at
 flowering and 2 at maturity (van Heemst {\it et al.}, 1986a; 1986b). 
 
-\subsection{Crop emergence  }
+\subsection{Crop emergence}
 
 As start of the growing season the date of sowing or of emergence can be chosen. For a
 photosynthesis-driven model like WOFOST, the simulation of crop growth starts at
@@ -110,7 +109,7 @@ T_{e} &= T~-~ T _{b}  & T _{b} ~<~T ~ < ~T _{\max ,e} \nonumber  \\
 T_{e} &= T _{\max ,e} & T _{b} T \ge  T _{\max \, ,\, e}
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 T$_{{\rm e}}$ &:& Effective daily tempera\-ture & 
     [\degrees C]\\
@@ -127,7 +126,7 @@ should be provided by the user. The maximum temperature beyond which phenologica
 activity does not increase, {\bf T$_{{\rm max,e}}$} (acronym: {\bf TEFFMX}) is also crop specific and should be
 given by the user. Species originat\-ing from temperate regions show a base temperature of
 0$-$3\degrees C, while species of sub\-tropical and tropical origins have a base temperature of
-9$-$14\degrees C (Angus {\it et al.\/}, 1981). Within a species, cultivars may vary substantially in their
+9$-$14\degrees C (Angus {\it et al.}, 1981). Within a species, cultivars may vary substantially in their
 temperature requirements. The tempera\-ture sum, therefore, must be characterized for
 each cultivar or group of cultivars (maturity classes).   
 
@@ -169,10 +168,10 @@ ranges). The average temperature is the independent variable in the AFGEN table 
 Appendix 2). The development rate can thus be obtained by:
 
 \begin{equation}
-D _{r\, ,\, t} ~=~{\frac{DT _{s} }{\sum T _{i} }}
+D_{r,t} = {\frac{DT_{s}}{\sum T_{i}}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 D$_{{\rm r,t}}$ &:& Development rate at time step t  & [d$^{{\rm -1}}$]\\
 DT$_{{\rm s}}$ &:& Temperature dependent correction factor & [\degrees C]\\
@@ -186,10 +185,10 @@ The development stage at time step t is the integral of the development rate ove
 (i.e. time span from emergence to current time step) and can be calculated according to:
 
 \begin{equation}
-D _{s,t} ~=~ D _{s\, ,\, t-1} ~+~ D _{r\, ,\, t} \,\Delta t
+D_{s,t} ~=~ D_{s,t-1} + D_{r,t} \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 D$_{{\rm s,t}}$ &:& Development stage at time step t    &    [-]\\
 D$_{{\rm r,t}}$ &:& Development rate at time step t     &   [d$^{{\rm -1}}$]\\
@@ -197,14 +196,14 @@ $\Delta$t &:& Time step   &     [d]\\
 \end{tabularx}
 
 For certain species or cultivars, during the vegetative stage (i.e. D$_{{\rm s}}$ $<$ 1), the effect of
-day len\-gth should be taken into account. Approaches that describe such effects quantita\-tively are given amongst others by  Weir {\it et al.\/} (1984), Hadley {\it et al\/}. (1984) and Reinink {\it et al.\/} (1986). In the model, a reduction factor for the development rate as a function of the day length is intro\-duced. In case of photosensitivity, this reduction factor should be multiplied with equation 5.3 and can be calculated as:
+day length should be taken into account. Approaches that describe such effects quantita\-tively are given amongst others by  Weir {\it et al.} (1984), Hadley {\it et al}. (1984) and Reinink {\it et al.} (1986). In the model, a reduction factor for the development rate as a function of the day length is intro\-duced. In case of photosensitivity, this reduction factor should be multiplied with equation 5.3 and can be calculated as:
 
 \begin{equation}
 % eq 5.3
 f _{red} ~=~{\frac{D ~-~D _{c} }{D _{o} ~-~ D _{c} }} ~~~~~~~~~0~\le ~f _{red} ~\le ~1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 f$_{{\rm red}}$ &:& Development rate reduction factor as function of day length   &     [-]\\
 D &:& Present day length (see eq. 4.25)        [h]\\
@@ -228,8 +227,8 @@ provided by the user.
 Daily dry matter production is the most detailed part of the model. The following steps
 can be distinguished and will be described separately:
 \begin{itemize}
-\item Total daily gross CO2 assimilation rate of the canopy\`[\S 5.3.1]
-\item Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy \`[\S 5.3.2]
+\item Total daily gross CO2 assimilation rate of the canopy [\S 5.3.1]
+\item Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy [\S 5.3.2]
 \end{itemize}
  
 The daily rate of CO$_{{\rm 2}}$ assimilation of the crop is driven by the intercepted light and can
@@ -267,16 +266,16 @@ As is mentioned before, in order to integrate the gross instantaneous assimilati
 over the day, three points in time are selected to calculate the photosynthetically active
 radiation. In this particular case, the radiation is homogeneously distributed over the day
 according to the sine of the solar elevation, so the weighted average CO$_{{\rm 2}}$ assimilation rate
-can therfore be calculated for half a day only.
+can therefore be calculated for half a day only.
 
 The three points in time are selected from noon to sunset (this explains the use of the
 constants 0.5 and 12.00):
 
 \begin{equation}
-t _{h} ~=~ 12 ~+~ 0.5\, D\, (\, 0.5 ~+~ p\, \sqrt{0.15} \, ) ~p~=~-1,\, 0,\, 1
+t_{h} = 12 + 0.5 \cdot D \cdot (0.5 ~+~ p\, \sqrt{0.15}) ~~~ for ~~~ p = -1,0,1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 D &:& Day length (see eq. 4.25)    &    [h]\\
 t$_{{\rm h}}$ &:& Hour of the day  &      [h]\\
@@ -290,7 +289,7 @@ The incoming radiation and therefore gross assimilation rate, changes with solar
 \end{equation}
 
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\beta$ &:& Solar elevation   &    [degrees]\\
 $\sigma$ &:& Solar declination    &    [degrees]\\
@@ -310,12 +309,12 @@ height (see also eq. 4.28):
 I _{0} ~=~ 0.5\, S _{g,d} \,{\frac{\sin \beta \, (\, 1~+~0.4\, \sin \beta \, )}{\int \, \sin \beta _{m} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 S$_{{\rm g,d}}$ &:& Daily global radiation   &     [J m$^{{\rm -2}}$ d$^{{\rm -1}}$] \\
 $\beta$ &:& Solar elevation    &    [degrees]\\
-$\int$sin$\beta$$_{{\rm m}}$ &:& The corrected integral of solar height over the day 
+$\int \sin \beta_{{\rm m}}$ &:& The corrected integral of solar height over the day 
     for non homogeneous atmospheric transmission (eq. 4.28)   &     [s]\\
 \end{tabularx}
 
@@ -323,13 +322,13 @@ The calculated photosynthetically active radiation flux consists of a diffuse fl
 direct flux. The diffuse flux is the result of scattering of sun rays by clouds, aerosols and
 gases in the atmosphere. The proportion of diffuse light in the total incident light flux
 depends on the status of the atmosphere (see also eq. 4.31). This fraction is calculated
-from the atmospheric transmission using an empirical function (Spitters {\it et al.\/}, 1986).
+from the atmospheric transmission using an empirical function (Spitters {\it et al.}, 1986).
 
 \begin{equation}
-I _{0,df} ~=~ D _{p~} \sin \beta
+I_{0,df} ~=~ D _{p~} \sin \beta
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm 0,df}}$ &:& Diffuse part of the photosynthetically active radiation flux 
    at top of the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
@@ -342,15 +341,15 @@ The direct part can be easily obtained by subtracting the diffuse part from the
  photosynthetically radiation flux:
 
 \begin{equation}
-I _{0,dr} ~=~ I _{0} ~-~I _{0,df} 
+I_{0,dr} ~=~ I_{0} ~-~I_{0,df} 
 \end{equation}
-
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm 0,dr}}$ &:& Direct part of the photosynthetically active radiation flux 
    at top of the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux (see eq. 5.8)    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux (see eq. 5.8)    &  
+   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 I$_{{\rm 0,df}}$ &:& Diffuse part of the photosynthetically active radiation flux 
    at top of the canopy     &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 \end{tabularx}
@@ -363,11 +362,10 @@ weighted average of the three selected hours of the day. Multiply\-ing by the da
 results in the total daily gross rate of CO$_{{\rm 2}}$ assimilation. 
 
 \begin{equation}
-A _{d} ~=~D~{\frac{A _{C\, ,\, -1} ~+~ 1.6\, A _{C\, ,\, 0} ~+~ A _{C,\, 1} }{3.6}}
+A_{d} = D {\frac{A_{C,-1} ~+~ 1.6 A_{C,0} ~+~ A_{C,1} }{3.6}}
 \end{equation}
 
-
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 A$_{{\rm d}}$ &:& Total gross assimilation rate    &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
 D &:& Day length (see eq. 4.25)   &     [h]\\
@@ -375,7 +373,7 @@ A$_{{\rm C}}$ &:& Total inst. gross assimila\-tion rate for
    the whole canopy, p= -1,0,1 (see eq. 5.31)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
 \end{tabularx}
 
-\subsection{Total instantaneous gross CO$_{{\rm 2}}$ assimilation of the canopy  }  
+\subsection{Total instantaneous gross CO$_{2}$ assimilation of the canopy}  
 
 In the subroutine {\bf ASSIM}, the total instantaneous rate of CO$_{{\rm 2}}$ assimilation of the canopy is
 calculated from the incoming fluxes of diffuse and direct photosynthetic active radiation,
@@ -388,10 +386,10 @@ flux that is reflected by the whole canopy. According to Goudriaan (1977), the r
 coefficient of a green leaf canopy with a random spherical leaf angle equals:
 
 \begin{equation}
-\rho ~=~{\frac{1~-~ \sqrt{1~-~ \sigma } }{1~+~ \sqrt{1~-~ \sigma } }} \, {\rm \Bullet{0.75ex}}\,{\frac{2}{1~+~ 1.6\, \sin \beta }}
+\rho = {\frac{1- \sqrt{1-\sigma}}{1 + \sqrt{1-\sigma}}} \cdot {\frac{2}{1+1.6 \sin \beta }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\rho$ &:& Reflection coefficient of a green leaf canopy    &    [-]\\
 $\sigma$ &:& Scattering coefficient fraction (trans\-mission and reflection) 
@@ -408,15 +406,15 @@ the canopy. Radiation fluxes attenuate exponentially within a canopy with increa
 area from the top downwards:
 
 \begin{equation}
-I _{L~} =~ I _{0} \, (\, 1~-~\rho \, )\, e ^{- \kappa LAI _{L} }
+I_{L~} = I_{0} (1~-~\rho ) e^{-\kappa LAI_{L} }
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm L}}$   &:& Net photosynthetic active radiation flux at 
     depth L in the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 I$_{{\rm 0}}$   &:& Photosynthetically active radia\-tion flux (see eq. 5.8)  & 
-     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 LAI$_{{\rm L}}$ &:& Cumulative leaf area index (from top downwards) 
     relative depth L & [ha ha$^{{\rm -1}}$]\\
 $\rho$          &:& Reflection coefficient of the canopy   &     [-]\\
@@ -424,26 +422,25 @@ $\kappa$        &:& Extinction coefficient for photosynthetic active
     radiation flux   &     [-]\\
 \end{tabularx}
 
-
 The diffuse and the direct flux have different extinction coefficients, giving rise to
 different light profiles within the canopy for diffuse and direct radiation. Therefore three
 different radiation fluxes are distinguished:
 \begin{itemize}
-\item the diffuse flux, with extinction coefficient $\kappa$$_{{\rm df}}$;
-\item the total direct flux, with extinction coefficient $\kappa$$_{{\rm dr,t}}$;\
-\item the direct component of direct light, with extinction coefficient $\kappa$$_{{\rm dr,bl}}$.
+\item the diffuse flux, with extinction coefficient $\kappa_{df}$;
+\item the total direct flux, with extinction coefficient $\kappa_{dr,t}$;
+\item the direct component of direct light, with extinction coefficient $\kappa_{dr,bl}$.
 \end{itemize}
 
 Radiation becomes diffuse when sun rays are partly absorbed and partly scattered (i.e.
-reflected or transmitted) by a leaf. The subscript bl (black) is used, the leaves show
-neither transmis\-sion nor reflection. The extinction coefficient of 'black leaves'
-can be calculat\-ed as:
+reflected or transmitted) by a leaf. The subscript {\it bl} (black) is used, the leaves show
+neither transmission nor reflection. The extinction coefficient of 'black leaves'
+can be calculated as:
 
 \begin{equation}
-\kappa _{bl} ~=~{\frac{0.5}{\sin \beta }}
+\kappa_{bl} ~=~{\frac{0.5}{\sin \beta }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\kappa$$_{{\rm bl}}$ &:& Extinction coefficient for the direct radiation flux   &     [-]\\
 $\beta$ &:& Solar elevation    &    [degree]\\
@@ -453,10 +450,10 @@ For a spherical leaf area distribution (homogeneous, random), the extinction coe
 for the diffuse radiation flux equals:
 
 \begin{equation}
- \kappa _{df} ~=~ \kappa _{bl} \, \sqrt{1~-~ \sigma }
+ \kappa_{df} ~=~ \kappa_{bl} \, \sqrt{1~-~ \sigma }
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\kappa$$_{{\rm df}}$ &:& Extinction coefficient for the diffuse radiation flux    &    [-]\\
 $\sigma$ &:& Scattering coefficient fraction of single leaves for 
@@ -487,7 +484,7 @@ be calculated as:
 C _{f} ~=~{\frac{ \kappa _{df} }{0.8\, \sqrt{1 ~-~ \sigma } }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 C$_{{\rm f}}$ &:& Cluster factor    &    [-]\\
 $\kappa$$_{{\rm df}}$ &:& Extinction coefficient for diffuse radiation flux   &     [-]\\
@@ -501,7 +498,7 @@ The direct component can be calculated as (Goudriaan, 1977):
 \kappa _{dr,bl} ~=~{ C _{f} }\,{\frac{0.5}{\sin \beta }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\kappa$$_{{\rm dr,bl}}$ &:& Extinction coefficient for the direct component of direct light   &     [-] \\
 C$_{{\rm f}}$ &:& Cluster factor     &   [-]\\
@@ -514,13 +511,12 @@ The extinction coefficient for the total direct radiation flux can be calculated
 \kappa _{dr,t} ~=~ \kappa _{dr,bl} \sqrt{1~-~\sigma }
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\kappa$$_{{\rm dr,t}}$ : Extinction coefficient for total direct radiation flux   &    [-]\\
-$\kappa$$_{{\rm dr,bl}}$ : Extinction coefficient for the direct component of direct light  &   [-]\\
- $\sigma$ : Scattering coefficient     &    [-]\\
+$\kappa_{dr,t}$ &:& Extinction coefficient for total direct radiation flux   &    [-]\\
+$\kappa_{dr,bl}$ &:& Extinction coefficient for the direct component of direct light  &   [-]\\
+$\sigma$ &:& Scattering coefficient     &    [-]\\
 \end{tabularx}
-
 
 \subsubsection{Absorption}
 Three depths in the canopy are selected according to the Gaussian integration method (see
@@ -535,18 +531,16 @@ Canopy assimilation is calculated as a weighted average of the assimilation at t
 horizons within the canopy. The leaf area index of the selected horizons can be written as
 (Goudriaan, 1986):
 
-\begin{align}
+\begin{equation}
 % eq 5.19 a-d
-LAI_{L} &=~(\, 0.5~+~p\, \sqrt{0.15} \, )\, LAI~~~~p~=~-1,\, 0,\, 1~~ \Rightarrow   \subeqn  \\
-LAI_{1} &=~0.1127017\, LAI \subeqn  \\
-LAI_{2} &=~0.5\, LAI \subeqn  \\
-LAI_{3} &=~0.8872983\, LAI \subeqn
-\end{align}
+LAI_{L} = (0.5 + p \sqrt{0.15}) \cdot LAI~~~~for~~~~p = -1,0,1
+\end{equation}
 
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-LAI$_{{\rm L}}$ &:& Leaf area index at relative distance L in the canopy (L=0 at the top)    &    [ha ha$^{{\rm -1}}$]\\
+LAI$_{{\rm L}}$ &:& Leaf area index at relative distance L in the canopy 
+    (L=0 at the top)    &    [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The light absorbed at a certain depth in the canopy is obtained by taking the derivative of
@@ -554,10 +548,10 @@ equation 5.13 with respect to the cumulative leaf area index:
 
 \begin{equation}
 % eq 5.20
-I _{a,L} ~=~{\frac{-dI _{0\, ,\, L} }{dL}} ~=~ \kappa \, (\, 1~-~ \rho \, )\, I _{0} \, e ^{- \kappa \, LAI _{L} }
+I_{a,L} = {\frac{-dI _{0\, ,\, L} }{dL}} = \kappa (1 -  \rho) I_{0} \cdot e^{- \kappa LAI_{L}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm a,L}}$ &:& Amount absorbed of total radia\-tion flux\footnote{With the 'Total radiation flux' in this paragraph the total photosynthetically active radiation flux is meant.} at relative depth L    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 I$_{{\rm 0,L}}$ &:& Net photosynthetic active radiation at relative depth L in the canopy    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
@@ -570,20 +564,29 @@ $\rho$ &:& Reflection coefficient of the canopy (see eq. 5.12)   &     [-]\\
 If expressed for the different light components, the absorbed fluxes for the different
 components per unit leaf area at a certain depth in the canopy are:
 
+\stepcounter{equation}
 \begin{align}
 % equation 5.21a-c
-I _{a,df} &=~{\frac{-dI _{df,L} }{dL}} &=~ \kappa _{df} \, (\, 1~-~ \rho \, )\, I _{0,df} \, e ^{- \kappa _{df} \, LAI _{L} } \subeqn  \\
-I _{a,dr,t} &=~{\frac{-dI _{dr,t,L} }{dL}} &=~ \kappa _{dr,t} \, (\, 1~-~ \rho \, )\, I _{0,dr} \, e ^{- \kappa _{dr,t} \, LAI _{L} } \subeqn  \\
-I _{a,dr,dr} &=~{\frac{-dI _{dr,L} }{dL}} &=~ \kappa _{dr,bl} \, (\, 1~-~ \sigma \, )\, I _{0,dr} \, e ^{- \kappa _{dr,bl} \, LAI _{L} } \subeqn
+I_{a,df} &={\frac{-dI_{df,L}}{dL}} &
+         &= \kappa_{df} (1 - \rho)\, I_{0,df} \cdot e^{-\kappa_{df} \, LAI_{L}} \subeqn  \\
+I_{a,dr,t} &= {\frac{-dI_{dr,t,L}}{dL}} & 
+           &= \kappa_{dr,t} (1-\rho) I_{0,dr} \cdot e^{-\kappa_{dr,t} LAI_{L}} \subeqn  \\
+% TODO: check if below I_{a,dr,dr} should be changed to I_{a,dr,bl}
+I_{a,dr,dr} &= {\frac{-dI_{dr,L}}{dL}} &
+            &= \kappa_{dr,bl} (1-\sigma) I_{0,dr} \cdot e^{-\kappa_{dr,bl} LAI_{L}} \subeqn
 \end{align}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-I$_{{\rm a,.}}$ &:& Amount absorbed of specified radiation flux   &      [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm .,L}}$ &:& Net specified component of PAR flux at relative depth L    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux at top of the canopy (see eq. 5.8)   &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm a,.}}$ &:& Amount absorbed of specified radiation flux   &      
+    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm .,L}}$ &:& Net specified component of PAR flux at relative depth L    &    
+    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+I$_{{\rm 0}}$ &:& Photosynthetically active radia\-tion flux at top of the canopy
+    (see eq. 5.8)   &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 L &:& Relative depth in the canopy   &     [-]\\
-$\kappa$$_{{\rm .}}$ &:& The extinction coefficient for specified radiation (see eq. 5.15, 5.17 and 5.18)    &    [-]\\
+$\kappa$$_{{\rm .}}$ &:& The extinction coefficient for specified radiation 
+    (see eq. 5.15, 5.17 and 5.18)    &    [-]\\
 $\rho$ &:& Reflection coefficient of the canopy (see eq. 5.12)   &     [-]\\
 $\sigma$ &:& Scattering coefficient    &    [-]\\
 bl &:& Black &\\
@@ -602,10 +605,10 @@ of the total radiation minus the absorbed flux of the direct component of the di
 radiation.
 
 \begin{equation}
-I _{a,sh} ~=~ I _{a,df} ~+~ (I _{a,dr,t} ~-~ I _{a,dr,dr} )
+I _{a,sh} ~=~ I _{a,df} ~+~ (I_{a,dr,t} ~-~ I_{a,dr,dr} )
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm a,sh}}$ &:& Absorbed amount of the total radiation flux by shaded leaves    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 I$_{{\rm a,df}}$ &:& Absorbed amount of the diffuse radiation flux   &     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
@@ -620,15 +623,20 @@ of light into an assimilation-light response function of individual leaves. Sati
 results can be acquired with (Peat, 1970):
 
 \begin{equation}
-A _{L} ~=~ A _{m} \, (\, 1~-~ e ^{{\frac{ - \epsilon\, I _{a} }{ A _{m} }} } )
+A_{L} = A_{m} (1-\exp({{-\epsilon I_{a}}/{A_{m}}}))
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-A$_{{\rm L}}$ &:& Inst.\footnote{ Inst. = Instantaneous} gross assimilation rate at relative depth L (per unit leaf area)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-$\epsilon$ &:& Initial light use efficiency   &   [(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$])\\
-I$_{{\rm a}}$ &:& Absorbed amount of the total radiation flux     &   [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+A$_{{\rm L}}$ &:& Inst.\footnote{ Inst. = Instantaneous} gross assimilation 
+     rate at relative depth L (per unit leaf area)    &    
+     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation    & 
+     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+$\epsilon$ &:& Initial light use efficiency   &   [(kg ha$^{{\rm -1}}$ 
+     h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$])\\
+I$_{{\rm a}}$ &:& Absorbed amount of the total radiation flux     &   
+     [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The instantaneous gross assimilation rate at light saturation, {\bf A$_{{\rm m}}$} (acronym: {\bf AMAXTB}) is
@@ -641,10 +649,10 @@ assumed, that the initial light use efficiency is always higher than 2.0 [kg ha$
 Introducing the absorbed amount of radiation by shaded leaves (eq. 5.22) into equation 5.23 yields:
 
 \begin{equation}
-A _{sh} ~=~ A _{m} \, (\, 1~-~ e ^{{\frac{ - \epsilon\, I _{a,sh} }{ A _{m} }} } )
+A_{sh} = A_{m} \big(1-\exp({{-\epsilon I_{a,sh} }/{A_m}} ) \big)
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  & 
     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
@@ -662,10 +670,10 @@ illumination intensity (Spitters, 1986). The direct flux is absorbed by a leaf p
 to the direct beam with an intensity of: 
 
 \begin{equation}
-I _{a,dr,sl} ~=~{\frac{(1~-~ \sigma )\, I _{0,dr} }{\sin \beta }}
+I_{a,dr,sl} = {\frac{(1-\sigma) I_{0,dr}}{\sin \beta }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 I$_{{\rm a,dr,sl}}$ &:& Absorbed amount of the direct radiation flux by leaves
    perpendicular to the direct beam    &    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
@@ -685,17 +693,24 @@ Integration over the sine of incidence for the sunlit leaves yields (Goudriaan, 
 communication):
 
 \begin{equation}
-A _{sl} ~=~ A _{m} \, (\, 1~-\, (\, A _{m} ~-~A _{sh} \, )\, {{\frac{ 1~-~e ^{{\frac{{{-I _{a,dr,sl} \, \epsilon }}}{A}} _{m} } }{\epsilon\, I _{a,dr,sl} }} })
+A_{sl} = A_{m} \bigg( 
+   1-(A_{m} - A_{sh})  {\frac{1~- \exp({{-I _{a,dr,sl} \, \epsilon}}/{A_m}) }
+                             {\epsilon\, I _{a,dr,sl} }}
+   \bigg)
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-A$_{{\rm sl}}$ &:& Inst. gross assimilation rate for sunlit leaves  &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sl}}$ &:& Inst. gross assimilation rate for sunlit leaves  &
+    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  &
+    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm m}}$ &:& Inst. gross assimilation rate at light saturation &
+    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
 I$_{{\rm a,dr,sl}}$ &:& Absorbed amount of the direct radiation flux by leaves
-   perpendicular to the direct beam  &  [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-$\epsilon$ &:& Initial light use efficiency  &   [(kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)]\\
+    perpendicular to the direct beam  &  [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+$\epsilon$ &:& Initial light use efficiency  &   [(kg ha$^{{\rm -1}}$ 
+    h$^{{\rm -1}}$)/(J m$^{{\rm -2}}$ s$^{{\rm -1}}$)]\\
 \end{tabularx}
 
 The assimilation rate per unit leaf area at a specific depth in the canopy is the sum of the
@@ -705,11 +720,10 @@ and shaded leaf area at that depth in the canopy.
 The fraction sunlit leaf area equals the fraction of the direct radiation reaching that layer:
 
 \begin{equation}
-f _{sl} ~=~  e ^{-\kappa _{dr,bl} \, LAI _{L} }
+f_{sl} =  e^{-\kappa_{dr,bl} \cdot LAI_{L}}
 \end{equation}
-
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 f$_{{\rm sl}}$ &:& Fraction sunlit leaf area   &     [-]\\
 $\kappa$$_{{\rm dr,bl}}$ &:& Extinction coefficient for the direct component of
@@ -717,38 +731,39 @@ $\kappa$$_{{\rm dr,bl}}$ &:& Extinction coefficient for the direct component of
 LAI$_{{\rm L}}$ &:& Cumulative leaf area index at relative depth L in canopy  &      [-]
 \end{tabularx}
 
-
 The total instantaneous assimilation rate at a relative depth L can be calculated as:
 
 \begin{equation}
-A _{T,L} ~=~ f _{sl} \, A _{sl} \, +\, (\, 1\, -\, f _{sl} \, )\, A _{sh} 
+A_{T,L} = f_{sl} A_{sl} + (1 - f_{sl}) A_{sh} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-A$_{{\rm T,L}}$ : Total inst. gross assimilation rate at a relative depth L   &
+A$_{{\rm T,L}}$ &:& Total inst. gross assimilation rate at a relative depth L   &
      [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sl}}$ : Inst. gross assimilation rate for sunlit leaves  & [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-A$_{{\rm sh}}$ : Inst. gross assimilation rate for shaded leaves  & [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
-f$_{{\rm sl}}$ : Fraction sunlit leaf area  &  [-]\\
+A$_{{\rm sl}}$ &:& Inst. gross assimilation rate for sunlit leaves  & 
+     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+A$_{{\rm sh}}$ &:& Inst. gross assimilation rate for shaded leaves  & 
+     [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+f$_{{\rm sl}}$ &:& Fraction sunlit leaf area  &  [-]\\
 \end{tabularx}
 
 The total instantaneous assimilation rate for the whole canopy per unit leaf area can be
-established using the Gaussian integration method, as a weighted average of the assimila\-tion at three levels within the canopy.
-
+established using the Gaussian integration method, as a weighted average of the assimilation 
+at three levels within the canopy.
 However, first the leaf area index of the levels selected have to be established:
 
 \begin{equation}
-LAI _{L} ~=~ (0.5~+~p \sqrt{(0.15)} ~)~LAI~~~~p=-1,0,1
+LAI_{L} = (0.5+p \sqrt{0.15})LAI~~~~for~~~~p=-1,0,1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 LAI$_{{\rm L}}$ &:& Leaf area index at relative depth L in canopy    &    [ha ha$^{{\rm -1}}$]\\
-LAI &:& Total leaf area of the crop    (see \S 5.4.5) &   [ha ha$^{{\rm -1}}$]\\
+LAI &:& Total leaf area of the crop (see \S 5.4.5) &   [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
-Introducing the values of the leaf area index of the three selected layers in the equations\\
+Introducing the values of the leaf area index of the three selected layers in the equations
 mentioned before, will yield the instantaneous assimilation at these horizons. The
 weighted average of these values yields the total instantaneous assimilation rate for the
 whole canopy per unit leaf area.
@@ -756,15 +771,16 @@ whole canopy per unit leaf area.
 The weighted average of the total instanta\-neous assimilation rates can be calculated as:
 
 \begin{equation}
-A _{C\, ,\, l} ~=~{\frac{(\, A _{T\, ,\, L\, ,\, -1} ~+~1.6\, A _{T\, ,\, L\, ,\, 0} ~+~A _{T\, ,\, L\, ,\, 1\, } )}{3.6}}
+A_{C,l} = {\frac{(A_{T,L,-1} + 1.6 A_{T,L,0} + A_{T,L,1})}{3.6}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 A$_{{\rm C,l}}$ &:& Total instantaneous canopy assimi\-la\-tion 
    rate (per unit leaf area)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
 A$_{{\rm T,L,p}}$ &:& Total instantaneous gross assimilation rate at relative 
-   depth L (see eq. 5.28) at p= -1,0,1 (see eq. 5.29)    &    [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
+   depth L (see eq. 5.28) at p= -1,0,1 (see eq. 5.29)    &    
+   [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
 \end{tabularx}
 
 This total instantaneous assimilation rate is calculated per unit leaf area and must
@@ -772,11 +788,10 @@ therefore be multiplied with the leaf area index to yield the total assimilation
 whole canopy:
 
 \begin{equation}
-A _{C} ~=~ A _{C\, ,\, l} \, {\rm \Bullet{0.75ex}}\, LAI
+A_{C} = A_{C,l} \cdot LAI
 \end{equation}
 
- 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 A$_{{\rm C}}$ &:& Total inst. gross assimila\-tion rate for
    the whole canopy  &  [kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$]\\
@@ -786,7 +801,7 @@ LAI &:& Total leaf area of the crop (see \S 5.4.5)  & [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
 Note that the green parts of the stems and the storage organs (like panicles) may absorb a
-substan\-tial amount of radiation. Therefore, the green area index of these organs is added
+substantial amount of radiation. Therefore, the green area index of these organs is added
 to the total leaf area. The green area index of the stems and storage organs can be
 calculated by multiplying the dry weight of the organ with respectively the specific stem
 area and the specific pod area (see also \S 5.4.5 and eq. 5.54). The specific stem area and
@@ -826,9 +841,6 @@ example see figure 5.3.
 \includegraphics[width=85mm]{\FigDir/AMAXTB.pdf}
 \caption{Maximum leaf CO$_{{\rm 2}}$ assimilation the rate as a function of develop\-ment of
 the development stage.}
-%\begin{forcewidth}{8.44cm}
-%% \begin{center}\InputPS{\FigDir/AMAXTB.eps} \end{center}
-%\end{forcewidth}
 \end{figure}
 
 \subsubsection{Daytime temperature}
@@ -841,10 +853,10 @@ The correction factor has to be multiplied with A$_{{\rm m}}$. The daytime tempe
 calculated as:
 
 \begin{equation}
-T _{day} ~=~{\frac{T _{\max } ~ +~  T }{2}} ~~~~~~~~ where ~~~ T~=~{\frac{T _{\max } ~+~ T _{\min } }{2}}
+T_{day} = {\frac{T_{\max} + T}{2}} ~~~~ where ~~~~ T = {\frac{T_{\max } + T_{\min}}{2}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 T$_{{\rm day}}$ &:& Average daytime temperature    &    [\degrees C]\\
 T &:& (Average) daily temperature    &    [\degrees C]\\
@@ -852,36 +864,34 @@ T$_{{\rm max}}$ &:& Maximum daily temperature   &     [\degrees C]\\
 T$_{{\rm min}}$  &:& Minimum daily temperature  &      [\degrees C]\\
 \end{tabularx}
 
-
 \begin{figure}[p]
 %figure 5.4
 \centering
 \includegraphics[width=140mm]{\FigDir/TMPFTB.pdf}
-\caption{Re\-duc\-tion fac\-tor of the ma\-xi\-mum leaf CO$_{{\rm 2}}$ assimila\-tion as a function of
-average tempera\-ture.}
+\caption{Reduction factor of the maximum leaf CO$_{{\rm 2}}$ assimilation as a function of
+average temperature.}
 \label{fig:TMPFTB}
-%\begin{forcewidth}{8.44cm}
-%% \begin{center}\InputPS{\FigDir/TMPFTB.eps} \end{center}
-%\end{forcewidth}
 \end{figure}
-
 
 \subsubsection{Nighttime temperature}
 The gross CO$_{{\rm 2}}$ assimilation rate cannot exceed the maximum CO$_{{\rm 2}}$ assimilation rate. It
 should also be noted that assimilation is an enzymatic process and such processes are
-temperature dependent (Downes, 1970). However, there seems to be a consider\-able
+temperature dependent (Downes, 1970). However, there seems to be a considerable
 adaption of the assimilation processes to fluctuating and varying temperatures (de Wit {\it et
-al.\/}, 1978). A wide temperature range for optimum photosynthetic perfor\-mance under field
-conditions is observed (Wardlaw, 1974). Low nighttime tempera\-tures also affect the
-assimilation. At night the assimilates, produced during daytime, are trans\-formed into
-structural biomass. This process is hampered by low temperature. If these low tempera\-tures prevail for a several days, the assimilates accumulate in the plant and the assimila\-tion rate diminishes and ultimately halts.\\
- In the model, this tempera\-ture effect is account\-ed for by introducing a correction factor,
+al.}, 1978). A wide temperature range for optimum photosynthetic performance under field
+conditions is observed (Wardlaw, 1974). Low nighttime temperatures also affect the
+assimilation. At night the assimilates, produced during daytime, are transformed into
+structural biomass. This process is hampered by low temperature. If these low tempera\-tures prevail 
+for a several days, the assimilates accumulate in the plant and the assimilation rate diminishes 
+and ultimately halts.
+
+In the model, this temperature effect is accounted for by introducing a correction factor,
 which should be multiplied with A$_{{\rm m}}$. This correction factor is a function of low minimum
-tempera\-ture and is crop specific. An AFGEN table (acronym: {\bf TMNFTB}) is used to
+temperature and is crop specific. An AFGEN table (acronym: {\bf TMNFTB}) is used to
 describe this dependency.
 
 As a measure for quantifying the effect of low minimum temperature, the seven day
-running average of minimum tempera\-ture is used as the independent variable in the
+running average of minimum temperature is used as the independent variable in the
 AFGEN table (see also Appendix 2).
 
 \begin{equation}
@@ -890,7 +900,7 @@ T _{low} ~=~\begin{array}{c}{i=7}  \\
 {i=1}\end{array}{\frac{\, T _{\min ,i} }{7}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 T$_{{\rm min}}$  &:& Daily minimum temperature   &     [\degrees C]\\
 T$_{{\rm low}}$ &:& Seven day running average of minimum tempera\-ture    &    [\degrees C]\\
@@ -916,7 +926,6 @@ CO _{2} ~+~ H _{2} O~\,\begin{array}{c}{light}  \\
 {--->}\end{array} \, ~ CH _{2} O ~+~ O _{2}
 \end{equation}
 
-
 For each kg of CO$_{{\rm 2}}$ absorbed, 30/44 kg of CH$_{{\rm 2}}$O is formed, the numerical values
 representing the molecular weights of CH$_{{\rm 2}}$O and CO$_{{\rm 2}}$ respectively.
 
@@ -925,7 +934,7 @@ representing the molecular weights of CH$_{{\rm 2}}$O and CO$_{{\rm 2}}$ respect
 R _{d}^{1} ~=~ A _{d}^{1} \,\,{\frac{30}{44}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$^{{\rm 1}}$$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate 
    (not corrected for water stress) &   [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -947,7 +956,7 @@ The gross assimilation rate, corrected for water stress, can be calculated as.
 R _{d} ~=~ R _{d}^{1} \,\,{\frac{T _{a} }{T _{p} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
 R$^{{\rm 1}}$$_{{\rm d}}$ &:& Gross daily CH$_{{\rm 2}}$O assimilation rate
@@ -956,7 +965,8 @@ T$_{{\rm a}}$ &:& Actual transpiration   &     [cm d$^{{\rm -1}}$]\\
 T$_{{\rm p}}$ &:& Potential transpiration   &     [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
-In \S 6.1 the calculation of the potential, T$_{{\rm p}}$, and actual the transpiration, T$_{{\rm a}}$, will be ex\-plained.
+In \S 6.1 the calculation of the potential, T$_{{\rm p}}$, and actual the transpiration, 
+T$_{{\rm a}}$, will be ex\-plained.
 
 \subsection{Maintenance respiration}
 
@@ -977,13 +987,13 @@ CH _{2} O ~+~ O _{2} ~--->~ CO _{2} ~+~ H _{2} O ~+~ energy
 \end{equation}
 
 This maintenance respiration consumes roughly 15 - 30\% of the carbohy\-drates produced
-by a crop in a growing season (Penning de Vries {\it et al.\/}, 1979). This indicates the
+by a crop in a growing season (Penning de Vries {\it et al.}, 1979). This indicates the
 importance of accurate quantification of this process in the model.
 
 \subsubsection{Maintenance respiration as a function of the weight of dry matter}
 The maintenance costs may be estimated on the basis of the quantities of proteins and
 minerals present in the biomass and on crop metabolic activity, as presented by De Wit {\it et
-al.\/} (1978). This method, however, requires information on the nitrogen and mineral
+al.} (1978). This method, however, requires information on the nitrogen and mineral
 contents of the vegetation.
 Based on the results of this analysis, typical values for the maintenance coefficients of
 various plant organs have been derived by Penning de Vries \& van Laar (1982).
@@ -997,7 +1007,7 @@ R _{m,r} ~ = ~\begin{array}{c} {i=1}  \\
 {i=4}\end{array} \, c _{m,i} \, W _{i}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$_{{\rm m,r}}$ &:& Maintenance respiration rate at reference 
    temperature of 25 \degrees C &   [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1030,9 +1040,6 @@ should be multiplied with this factor.
 \includegraphics[width=85mm]{\FigDir/TMPFTB.pdf}
 \caption{Reduc\-tion factor for senescence as a function of development stage}
 \label{fig:TMPFTB}
-%\begin{forcewidth}{8.44cm}
-% \begin{center}\InputPS{\FigDir/RFSETB.eps} \end{center}
-%\end{forcewidth}
 \end{figure}
 
 \subsubsection{Dependency of the maintenance respiration on temperature}
@@ -1049,7 +1056,7 @@ certain temperature, can be calculated with:
 R _{m,T} ~=~ R _{m,r} \, Q _{10}^{~~{\frac{T-T _{r} }{10}} }
 \end{equation}
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$_{{\rm m,T}}$ &:& Maintenance respiration rate at 
     temperature T &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1088,7 +1095,7 @@ be considered a process of cut and paste, the scraps representing the weight
 lost in growth respiration.
 Each structural compound is formed along a distinct, non crop-specific pathway.
 Following these reactions, the weight of glucose required to produce a unit of the
-compound can be calculated (Penning de Vries {\it et al.\/}, 1974). The transport costs of the
+compound can be calculated (Penning de Vries {\it et al.}, 1974). The transport costs of the
 molecules are included. Two active passages of membranes are assumed. Each active
 passage requires 1 ATP, which is provided by respiring $^{{\rm 1}}$/$_{{\rm 3}}$$_{{\rm 8}}$ molecule of glucose.
 
@@ -1099,14 +1106,14 @@ among species for one general value of their assimilate requirements to be given
 conversion efficiency represents the inverse of the assimilate require\-ment.
 
 At higher temperatures the conversion processes are accelerated, but the pathways are
-identical (Spitters {\it et al.\/} 1989). Hence, the assimilate requirements do not vary with
+identical (Spitters {\it et al.} 1989). Hence, the assimilate requirements do not vary with
 temperature. The growth respiration rate can then be calculated as:
 
 \begin{equation}
 R _{g} ~=~ R _{d} ~-~ R _{m,T} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$_{{\rm g}}$ &:& Growth respiration rate   &     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
 R$_{{\rm d}}$ &:& Actual daily CH$_{{\rm 2}}$O assimilation rate (see eq. 5.37)   &   
@@ -1125,12 +1132,16 @@ efficiency of carbohydrates into structural plant material is calculated as a we
 of the efficiencies for the various plant organs.
 
 \begin{equation}
-C _{e} ~={\frac{~1}{\begin{array}{c}{i=3}  \\
-\sum  \\
-{i=1}\end{array} \,{\frac{pc _{i} }{C _{e,i} }} \, {\rm \Bullet{0.75ex}}\, (1-pc _{rt} )\, +\,{\frac{ pc _{rt} }{C _{e,rt} }} }}
+C _{e} ~={\frac{~1}{
+        \begin{array}{c}
+        {i=3}  \\
+        \sum  \\
+        {i=1}
+        \end{array} {pc_{i}}/{C_{e,i}} \cdot (1-pc_{rt} ) + {pc_{rt}}/{C_{e,rt}} 
+        }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 C$_{{\rm e}}$ &:& Conversion efficiency factor of assimilates, total crop  &   
     [kg kg$^{{\rm -1}}$]\\
@@ -1149,10 +1160,10 @@ specific and should be given by the user. Acronyms used in the model: {\bf CVL} 
 The dry matter growth rate of the total crop can be calculated as:
 
 \begin{equation}
-\Delta W~=~ C _{e} \, {\rm \Bullet{0.75ex}}\, R _{g} 
+\Delta W~=~ C_{e} \cdot R_{g} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W &:& Dry matter growth rate total crop   &
     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1174,14 +1185,15 @@ plant. In the model, total dry matter growth is parti\-tioned according to fixed
 factors, defined as a function of develop\-ment stage. Dry matter is first partitioned
 between shoots and roots. 
 
+\stepcounter{equation}
 \begin{align}
 % eqn 5.45a,b
-\Delta W _{rt} ~=~ pc _{rt} \,\,\Delta W   \subeqn  \\
-\Delta W _{sh} ~=~ (\, 1\, -\, pc _{rt} \, )\,\Delta W \subeqn
+\Delta W_{rt} &= pc_{rt} \cdot \Delta W   \subeqn  \\
+\Delta W_{sh} &= (1 - pc_{rt}) \Delta W \subeqn
 \end{align}
 
  
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W &:& Dry matter growth rate total crop   &
      [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1197,10 +1209,10 @@ The growth rate of leaves, stems and storage organs is simply the product of the
 matter growth rate of the shoots and the fraction allocated to these organs.
 
 \begin{equation}
-\Delta W _{i} ~=~ pc _{i} \, {\rm \Bullet{0.75ex}}\, \Delta W _{sh} 
+\Delta W_{i} ~=~ pc_{i} \cdot \Delta W_{sh} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W$_{{\rm i}}$ &:& Dry matter growth rate of organ i &
     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1220,26 +1232,22 @@ At any development stage the following relation must be valid, if not, the simul
 be stopped (see also fig. 5.6):
 
 \begin{equation}
-\, pc _{lv} \, +\, pc _{st} \, +\, pc _{so} \, =\, 1
+pc_{lv} + pc_{st} + pc_{so} = 1
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 pc$_{{\rm i}}$ &:& Partitioning factor of organ i   &
      [kg kg$^{{\rm -1}}$]\\
 i &:& Leaves (lv), storage organs(so), stems (st)
 \end{tabularx}
 
- 
 \begin{figure}[p]
 % fig 5.6
 \centering
 \includegraphics[width=120mm]{\FigDir/FRTB.pdf}
 \caption{Parti\-tioning factors of the differ\-ent organs as a function of de\-velop\-ment stage}
 \label{fig:partitioning}
-%\begin{forcewidth}{12.06cm}
-% \begin{center}\InputPS{\FigDir/FRTB.eps} \end{center}
-%\end{forcewidth}
 \end{figure}
 
 The actual gross CO$_{{\rm 2}}$ assimilation rate has to be identical to the amount of structural plant
@@ -1247,10 +1255,14 @@ material produced plus the amounts used for maintenance respiration and conversi
 figure 5.1). The carbon balance has to be zero. 
 
 \begin{equation}
-0~=~{\frac{R _{d} ~-~ R _{m\, ,\, T} ~-~ R _{g} \, (pc _{rt} \, +\, (pc _{lv} \, +\, pc _{st} \, +\, pc _{so} )\, {\rm \Bullet{0.75ex}}\, (1\, -\, pc _{rt} ))}{R_{d}}}  
+0 = {\frac{R _{d} ~-~ R _{m\, ,\, T} ~-~ R _{g} \, (pc _{rt} \, +\, (pc _{lv} \, +\, pc _{st} \, +\, pc _{so} )\, {\rm \Bullet{0.75ex}}\, (1\, -\, pc _{rt} ))}{R_{d}}}  
 \end{equation}
 
-Where:\\
+\begin{equation}
+0 = {\frac{R_{d} - R_{m,T} - R_{g} \big( pc_{rt} + (pc_{lv} + pc_{st} + pc_{so}) \cdot (1 - pc_{rt}) \big) }{R_d}}  
+\end{equation}
+
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 R$_{{\rm g}}$ &:& Growth respiration rate (see eq. 5.41)   &
      [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1318,7 +1330,7 @@ The net growth rate of the stems and roots can described by:
 \Delta Wn _{i~} =~\,\,\Delta W _{i~} -~ {\rm \dag } _{i} \,\, W _{i} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$Wn$_{{\rm i}}$ &:& Net dry matter growth rate of organ i   &
     [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1347,7 +1359,7 @@ the dry matter.
 W _{t,i} ~=~W _{t-1\, ,\, i} ~+~\Delta Wn _{i} \,\Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm i,t}}$ &:& Dry matter weight organ i at time step t   &
      [kg ha$^{{\rm -1}}$]\\
@@ -1370,7 +1382,7 @@ of the crop. Under optimal conditions, light intensity and temperature are the e
 rate of photosynthesis and hence the supply of assimilates to the leaves.
 
 Temperature affects the rates of cell division and extension (Ng \& Loomis, 1984; Sheehy
-{\it et al.\/}, 1980; Acock {\it et al.\/}, 1978). During the early stages of crop growth, temperature is
+{\it et al.}, 1980; Acock {\it et al.}, 1978). During the early stages of crop growth, temperature is
 the overriding factor. The rate of leaf appearance and final leaf size are constrained by
 temperature through its effect on cell division and extension, rather than by the supply of
 assimilates (Hunt, 1982; Causton \& Venus, 1981; van Dobben, 1962). The growth curve
@@ -1387,7 +1399,7 @@ stage, can be calculated as:
 L _{Exp,t} ~=~LAI _{{t~RL~T}_{e}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
     during exponential growth stage   &    [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1401,7 +1413,7 @@ T$_{{\rm e}}$ &:& Daily effective temperature (see 5.2c)   &
 
 In theory, the maximum relative increase of the leaf area index, {\bf RL}, is a function of
 effective temperature. For a relative wide range of temperatures {\bf RL} responds more or
-less linearly to tempera\-ture (Hunt {\it et al.\/}, 1985; Causton \& Venus, 1981; van Dobben,
+less linearly to tempera\-ture (Hunt {\it et al.}, 1985; Causton \& Venus, 1981; van Dobben,
 1962). In the model however, a fixed value per crop type is assumed (acronym: 
 {\bf R\-GRLAI}). This value should be given by the user.
 
@@ -1412,7 +1424,7 @@ described as:
 LAI _{t~} =~LAI _{t-1} ~+~L _{Exp\, ,\, t} ~\Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
     during exponential growth stage    &    [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1438,7 +1450,7 @@ stage can be described by:
 L _{Sc,t} ~=~\Delta Wn _{lv} ~S _{la} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 L$_{{\rm Sc,t}}$ &:& Growth rate of the leaf area index at time step t
     during the source limited growth stage    &
@@ -1466,7 +1478,7 @@ be described as:
 LAI _{t~} =~LAI _{t-1} ~+~L _{Sc\, ,\, t} ~\Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 L$_{{\rm Sc,t}}$ &:& Growth rate of the leaf area index at time step t
     during the source limited growth stage     &   [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1520,10 +1532,10 @@ a substan\-tial amount of radiation. Therefore it should be added to the total l
 index. The green area index of these organs can be calculated by:
 
 \begin{equation}
-GAI  _{i} ~=~SS _{i} W _{i} 
+GAI_{i} ~=~SS _{i} W _{i} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 GAI$_{{\rm i}}$ &:& Green area index of organ i    &
     [ha ha$^{{\rm -1}}$]\\
@@ -1543,16 +1555,16 @@ specific leaf is not established. Therefore, during this period, for each time s
 specific leaf area has to be calculated according to:
 
 \begin{equation}
-S _{\exp ,\, t} ~=~L _{\frac{\exp ,\, t}{\Delta W _{lv} }}
+S_{\exp,t} ~=~ {\frac{L_{\exp,t}}{\Delta W_{lv} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 S$_{{\rm exp,t}}$ &:& Specific leaf area at time step t during the 
     exponential growth stage    &     [ha kg$^{{\rm -1}}$]\\
 $\Delta$W$_{{\rm lv}}$ &:& Dry matter increase of leaves (see eq. 5.45)   &
     [kg ha$_{{\rm -1}}$ d$^{{\rm -1}}$]\\
-L$_{{\rm Exp,t}}$ &:& Growth rate of the leaf area index at time step t
+L$_{{\rm \exp,t}}$ &:& Growth rate of the leaf area index at time step t
    during exponential growth stage (see eq. 5.51)   &
         [ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
 \end{tabularx}
@@ -1569,7 +1581,7 @@ processes are difficult to quantify. Leaves are assumed to die when they have co
 their life cycle. The dying rate may be accelerated as a result of drought stress or of
 mutual shading.
 
-\subsubsection{Physiologic ageing}
+{\it physiologic ageing}\\
 Leaves die due to exceedance of the life span for leaves (i.e. physiologic ageing). Life
 span is defined as the maximum time in days a leaf can live at a constant temper\-ature of
 35\degrees C. Life span is crop specific. The concept of lifespan is compatible with a definition
@@ -1580,7 +1592,7 @@ The physiologic ageing factor per time step can be calculat\-ed as:
 f _{rai} ~=~{\frac{ T~-~T _{b\, ,\, age} }{35~-~ T _{b\, ,\, age} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 f$_{{\rm rai}}$ &:& Physiologic ageing factor for leaf age increase   &
     [-]\\
@@ -1595,10 +1607,10 @@ crop specific and should be provided by the user. The integral of the physiologi
 factor over time yields the physiologic age. 
 
 \begin{equation}
-P _{age,\, t} ~=~ P _{age,\, t-1} ~+~f _{rai} \Delta t
+P _{age,t} ~=~ P _{age,t-1} ~+~f_{rai} \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 P$_{{\rm age,t}}$ &:& Physiologic age at time step t & [d]\\
 f$_{{\rm rai}}$ &:& Physiologic ageing factor for leaf age increase & [-]\\
@@ -1613,14 +1625,14 @@ daily shifting from one leaf class to the next (Johnson \& Thornley, 1983). In t
 the life time of leaves is the maximum number of days that a leaf class contributes to the
 LAI and to photosyn\-the\-sis.
 
-{\it Death rate due to water stress\/}\\
+{\it Death rate due to water stress}\\
 The potential death rate of leaves due to water stress can be calculated as:
 
 \begin{equation}
-\Delta W _{d}^{1} ~=~ W _{lv} \, (\, 1\, -\,{\frac{T _{a} }{T _{p} }} \, )\, {\rm \dag } _{\max ,lv} 
+\Delta W_{d}^{1} ~=~ W_{lv} \, (\, 1\, -\,{\frac{T _{a} }{T _{p} }} \, )\, {\rm \dag } _{\max ,lv} 
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W$^{{\rm 1}}$$_{{\rm d}}$ &:& Potential death rate of leaves due to water stress   &
     [kg  ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1642,15 +1654,15 @@ Leaf senescence also occurs due to high leaf area index (i.e. mutual shading). A
 death rate due to self$-$shading is defined which increases linear\-ly from zero at a certain,
 critical leaf area index, to its maximum value at twice this critical leaf area index. Typical
 values for the maximum relative death rate and the critical LAI are 0.03 d$^{{\rm -1}}$ and 4 ha ha$^{{\rm -}{1}}$,
-respectively (Spitters {\it et al.\/} 1989).
+respectively (Spitters {\it et al.} 1989).
 
 The potential death rate of leaves due to high LAI can be calculated as:
 
 \begin{equation}
-\Delta W _{d}^{2} ~=~ W _{lv} \, {\rm \Bullet{0.75ex}}\, 0.03\,{\frac{ LAI ~-~ LAI _{c} }{LAI _{c} }}
+\Delta W_{d}^{2} ~=~ W_{lv} \cdot 0.03 \cdot {\frac{LAI - LAI_c}{LAI_c}}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$W$^{{\rm 2}}$$_{{\rm d}}$ &:& Potential death rate of leaves due to 
     high LAI   &    [kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$]\\
@@ -1662,10 +1674,10 @@ LAI$_{{\rm c}}$ &:& Critical leaf area index   &     [ha ha$^{{\rm -1}}$]\\
 The critical leaf area index, LAI$_{{\rm c}}$,  can be computed by:
 
 \begin{equation}
-LAI _{c} ~=~{\frac{3.2}{\kappa  _{df} }}
+LAI_{c} = {\frac{3.2}{\kappa_{df} }}
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 LAI$_{{\rm c}}$ &:& Critical leaf area index    &    [ha ha$^{{\rm -1}}$]\\
 $\kappa$$_{{\rm df}}$ &:& Extinction coefficient for 
@@ -1683,10 +1695,10 @@ The weight of leaves which have died during the current time step, can be calcul
 multiplying the death rate (due to water stress and/or high LAI), with the time step.
 
 \begin{equation}
-W _{d~} =~ \max (\Delta W _{d}^{1} \, ,\,\Delta W _{d}^{2} )\,\Delta t
+W_{d} = \max(\Delta W_{d}^{1} , \Delta W_{d}^{2})\cdot \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 W$_{{\rm d}}$ &:& Weight of leaves that have died during 
     current time step    &    [kg ha$^{{\rm -1}}$]\\
@@ -1727,20 +1739,20 @@ The general consensus is that the major resistance to moisture transport is:
 In the model, root growth is implemented in a straightforward way. One needs to specify
 the following crop and soil specific parameters:
 \begin{itemize}
-\item Initial rooting depth, {\bf RD$_{{\rm i}}$} (acronym: {\bf RDI})\\
-\item Maximum rooting depth determined by the crop, {\bf RD$_{{\rm crop}}$} (acronym: {\bf RDMCR})\\
-\item Maximum daily increase in rooting depth, {\bf RR$_{{\rm max}}$} (acronym: {\bf RRI})
-\item Maximum rooting depth determined by the soil, {\bf RD$_{{\rm soil}}$} (acronym: {\bf RDMSOL})
+\item Initial rooting depth, {\bf RD$_{{\rm i}}$} (acronym: {\bf RDI});
+\item Maximum rooting depth determined by the crop, {\bf RD$_{{\rm crop}}$} (acronym: {\bf RDMCR});
+\item Maximum daily increase in rooting depth, {\bf RR$_{{\rm max}}$} (acronym: {\bf RRI});
+\item Maximum rooting depth determined by the soil, {\bf RD$_{{\rm soil}}$} (acronym: {\bf RDMSOL}).
 \end{itemize}
 
 The daily increase of the rooting depth is a function of development stage and is crop
 specific. The root growth can be calculated as:
 
 \begin{equation}
-\Delta RD~=~RR _{\max } \, {\rm \Bullet{0.75ex}}\, \Delta t
+\Delta RD~=~RR_{\max} \cdot \Delta t
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 $\Delta$RD &:& Increase of the rooting depth   &   [cm]\\
 RR$_{{\rm max}}$ &:& Maximum daily increase in rooting depth  &  [cm d$^{{\rm -}{1}}$]\\
@@ -1754,7 +1766,7 @@ maximum rooting depth is reached. The rooting depth can be established by:
 RD _{t~} =~RD _{t-1} ~+~\Delta RD
 \end{equation}
 
-Where:\\
+Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 RD$_{{\rm t}}$ &:& Rooting depth at time step t   &  [cm]\\
 $\Delta$RD &:& Increase of the rooting depth    & [cm]\\
@@ -1768,7 +1780,7 @@ higher than the initial rooting depth.
 
 In theory, extension growth of the roots ceases when no more assimilates are available,
 when an impermeable layer in the profile is reached, when the root tip reaches a soil
-compartment with a moisture content at or below wilting point (Salim {\it et al.\/}, 1965) or
+compartment with a moisture content at or below wilting point (Salim {\it et al.}, 1965) or
 when the root tip reaches the groundwa\-ter table. This last situation only occurs in case
 the crop cannot form airducts. In the model, however, only the following situations are
 distinguished. The root extension stops when no more assimilates are available, but then
@@ -1780,15 +1792,15 @@ airducts. The user should provide information if the crop can produce airducts (
 For the calculation of potential crop growth, water delivery is assumed to be optimal; the
 soil moisture content is always at field capacity.
 
-\section{Crop variables  }
+\section{Crop variables}
 
 The crop species are characterized by a set of parameters and functions. In the following
 sub sections the estimated values, derived from experimental data, found in litera\-ture will
 be discussed in some detail.
 
-\subsection{ Distribution and absorption of light in the canopy  } 
+\subsection{Distribution and absorption of light in the canopy} 
 
-The radiation flux, incident on a leaf, is partly absorbed and partly scattered. Scatter\-ing
+The radiation flux, incident on a leaf, is partly absorbed and partly scattered. Scattering
 consists of reflection and transmission. Species differ in the optical properties of their
 leaves. In the model, a value of 0.20 is used for the scattering coefficient of individual 
 leaves for PAR.
@@ -1800,7 +1812,9 @@ distrib\-uted randomly within the canopy volume. Assuming the above scattering c
 0.20, the theoretical value of the extinction coefficient for the diffuse radiation flux is
 0.72 (Goudriaan, 1977). Actual values, however, can deviate substan\-tially from this
 theoretical value. Crops with more erect leaves have lower $\kappa$ values, whereas crops with
-more prostrate leaves show higher values of $\kappa$. In the model, a spherical leaf angle
+more prostrate leaves show higher values of $\kappa$. 
+
+In the model, a spherical leaf angle
 distribution is assumed. Alternative distributions can easily be implemented using the
 procedure described by Goudriaan (1988). A clustered distribution of leaves increases
 mutual shading, resulting in reduced light absorption and hence a lower value for $\kappa$.
@@ -1835,14 +1849,14 @@ elevation. Light extinction can be measured by comparing radiation intensity abo
 below the canopy using a lightbar. From the LAI and the measured light extinction, the
 extinction coefficient for the diffuse flux can be calculated. When global radiation is
 measured the extinction coefficient for the diffuse flux will be about $\frac{2}{3}$ of the extinction
-coefficient calculated for global radia\-tion, because absorption of near the infrared
+coefficient calculated for global radiation, because absorption of near the infrared
 radiation by the canopy is less efficient.
 
 An important factor which may confound the interpretation of measurements, is the light
 absorption by other organs than leaves. In the calculation of the extinction coefficient for
 diffuse light, from measurements, this effect should be accounted for.
 
-\subsection{Photosynthesis-light response of individual leaves  } 
+\subsection{Photosynthesis-light response of individual leaves} 
 
 The response of leaf photosynthesis to light intensity is characterized by its slope at low
 light intensity ($\epsilon$) and its maximum rate at light saturation (A$_{{\rm m}}$). With respect to the
@@ -1855,12 +1869,12 @@ of approximately 12.5 $\mu$g CO$_{{\rm 2}}$ J$^{{\rm -1}}$ absorbed PAR or 0.45 
 CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ (J m$^{{\rm 2}}$ S$^{{\rm -}{1}}$)$^{{\rm -}{1}}$
 (Ehleringer \& Pearcy, 1983). In C$_{{\rm 3}}$ species, $\epsilon$ decreases with increasing temperature due
 to accelerated photo-respiration. This temperature effect is relatively small: $\epsilon$ changes by
-about 1\% with each change of 1\degrees C in temperature (Farquhar {\it et al.\/}, 1980; Ehleringer,
+about 1\% with each change of 1\degrees C in temperature (Farquhar {\it et al.}, 1980; Ehleringer,
 1978; Leverenz \& \"{O}quist, 1987). In C$_{{\rm 4}}$ species, $\epsilon$ is not affected by temperature because
 photo-respiration is suppressed in the C$_{{\rm 4}}$ pathway. Among both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species, there
 is hardly any variation in (Ehleringer \& Pearcy, 1983). However, when $\epsilon$ is expressed per
 unit of incident PAR, instead of per unit of absorbed PAR, apparent differences may
-occur, due to differences in the absorption coefficient of the leaves (Hunt {\it et al.\/}, 1985).
+occur, due to differences in the absorption coefficient of the leaves (Hunt {\it et al.}, 1985).
 Yellowing of leaves results in increased reflection and transmission and, therefore, in an
 apparent decrease of $\epsilon$.  
 
@@ -1880,17 +1894,17 @@ capacity to the environment. Therefore, A$_{{\rm m}}$ shows a seasonal course, w
 with the time course of radiation and temperature (Parsons \& Robson, 1981). This
 adaptation may be mimicked by using a seven$-$day running average of the value of A$_{{\rm m}}$
 which has been adjusted for the environmental conditions (Schapendonk \& Gaastra, 1984;
-Acock {\it et al.\/}, 1978). A consequence of this adaptation is that the photosynthetic 
+Acock {\it et al.}, 1978). A consequence of this adaptation is that the photosynthetic 
 character\-istics of leaves of plants grown in climate rooms, are not representative for plants grown
 in the field.
 
 The photosynthetic capacity of a leaf is also affected by its age: A$_{{\rm m}}$ reaches a maximum
 shortly after full expansion of the leaf, followed by a gradual decline with ageing
-(Rawson {\it et al.\/}, 1983; Dwyer \& Stewart, 1986). Differences in photosynthetic capacity of
+(Rawson {\it et al.}, 1983; Dwyer \& Stewart, 1986). Differences in photosynthetic capacity of
 the leaves are closely related to their nitrogen content, whether these variations are due to
 age, growing conditions or fertilizer application (van Keulen \& Seligman, 1987). Leaves
 lower in the canopy have a lower photosynthetic capacity because they are older and are
-adapted to lower radiation levels (Acock {\it et al.\/}, 1978; Williams, 1985). They also have
+adapted to lower radiation levels (Acock {\it et al.}, 1978; Williams, 1985). They also have
 lower nitrogen concentrations. The value of A$_{{\rm m}}$ used in the model, refers to the
 photosynthetic capacity of full$-$grown leaves at the top of the canopy, as these leaves
 absorb most of the radiation. Effects of canopy senes\-cence are introduced by a multiplica\-tion 
@@ -1902,7 +1916,7 @@ variation in A$_{{\rm m}}$ among genotypes within a species is of the order of 5
 Characteristic values range from 15$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ 
 for C$_{{\rm 3}}$ species and from 40-90
 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ for C$_{{\rm 4}}$ species, depending on leaf 
-N concentration and temperature (Spitters {\it et al.\/}, 1986). Other values mentioned, 
+N concentration and temperature (Spitters {\it et al.}, 1986). Other values mentioned, 
 range from 10$-$50 kg CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ for
 C$_{{\rm 3}}$ species and from 10-90 kg CO$_{{\rm 2}}$ ha$^{{\rm -1}}$ h$^{{\rm -1}}$ 
 for C$_{{\rm 4}}$ species (Goudriaan, 1982; van Keulen \&
@@ -1920,9 +1934,9 @@ species is, in general, a reasonable estimate.
 Respiration is usually measured as CO$_{{\rm 2}}$ evolution in the absence of light energy. This
 dark respiration can be partitioned into growth and maintenance respiration; estimation
 procedures being reviewed by Amthor (1984). Standard values for maintenance coeffi\-cients are 
-0.03 for leaves, 0.015 for stems and 0.01 for roots (Spitters {\it et al.\/}, 1989). For
+0.03 for leaves, 0.015 for stems and 0.01 for roots (Spitters {\it et al.}, 1989). For
 tropical crops lower values are used: 0.02 for the leaves and 0.01 for the other plant
-organs (Penning de Vries {\it et al.\/}, 1989). As mentioned previously, these coefficients are
+organs (Penning de Vries {\it et al.}, 1989). As mentioned previously, these coefficients are
 affected by temperature, nitrogen content and mineral content of the plant tissue, and by
 the metabolic activity of the crop.
 
