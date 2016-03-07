@@ -8,20 +8,23 @@ FORTRAN version of the WOrld FOod STudies (WOFOST) crop simulation model.
 
 After cloning this repository you will find the following folder structure::
 
-     wofost71/
-             |-bin/             : Location of executable and 'direct.dat'
-             |-cropd/           : Crop data files
-             |-doc/             : Documentation (this file)
-             |-meteo/
-                    |-cabowe/   : Daily weather files
-                    |-climd/    : Climatic data
-             |-output/          : WOFOST output will end up here
-             |-runio/           : Configuration files for WOFOST runs
-             |-soild/           : Soil data
-             |-sources/         : Make scripts and top-level source code
-                      |-cabowe/ : Source code for CABO weather system
-                      |-ttutil/ : Source code for TTUTIL library
-                      |-w60lib/ : Source code of WOFOST model
+     <top_wofost_dir>
+         |-bin/             : Location of executable and 'direct.ini'
+         |-cropd/           : Crop data files
+         |-doc/             : Documentation in LaTeX format
+         |-meteo/
+                |-cabowe/   : Daily weather files
+                |-climd/    : Climatic data <obsoleted since wofost 7.1.7>
+         |-output/          : WOFOST output will end up here
+         |-runio/           : Configuration files for WOFOST runs
+         |-soild/           : Soil data
+         |-sources/         : Make scripts and top-level source code
+                  |-cabowe/ : Source code for CABO weather system
+                  |-ttutil/ : Source code for TTUTIL library
+                  |-w60lib/ : Source code of WOFOST model
+
+Note that the <top_wofost_dir> is typically 'WOFOST-master'. However, depending
+on the branch that you check out, this could be another name.
 
 WOFOST comes with a set of example files for different crop types and soil
 types. Moreover, example weather files are including from weather station 
