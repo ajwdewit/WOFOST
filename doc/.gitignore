@@ -24,3 +24,5 @@
 *.tex~
 *.lst
 *.pdf
+*.txss
+main_html/*

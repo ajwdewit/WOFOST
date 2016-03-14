@@ -197,14 +197,14 @@ processes are organized in the WOFOST model.
 % \begin{center}\epsfig{file=\FigDir/DAGLOOP.eps,width=8.04cm} \end{center}
 \end{figure}
 
-{\bf {\it Timer}}\\
+\subsection{Timer}
 In the WOFOST model, the Euler integration method is used to integrate the plant growth
 processes over the growing period (i.e. all the time step executed). Therefore, the model
 has to update the time and the time related variables each time the daily calcula\-tions are
 performed. The subroutine TIMER takes care of this process, it controls the Euler
 integration. The Euler integration method itself, is explained in chapter three.
 
-{\bf {\it Weather}}\\
+\subsection{Weather}
 The meteorological parameters which are used by the WOFOST model are: maxi\-mum
 temperature, minimum temperature, global radiation, windspeed, vapor pressure,
 evapotranspiration and rainfall. In the WOFOST model, the Penman method is used to
@@ -232,7 +232,7 @@ Actual rainfall data are used as input in both versions. In the general version 
 is also possible to use generated rainfall. For more informa\-tion about the differences
 between these versions, one should consult Appendix 5.
 
-{\bf {\it Crop growth}}\\
+\subsection{Crop growth}
 Crop growth depends on the daily net assimilation, which on its turn depends on the
 intercepted light. The intercepted light is determined by the level of incoming radiation
 and the leaf area of the crop. From the absorbed radiation and the photosynthetic
@@ -252,7 +252,7 @@ potential transpiration rate.} (de Koning, 1993)}
 % \begin{center}\epsfig{file=\FigDir/ASIMTREE.eps,width=\textwidth} \end{center}
 \end{figure}
 
-{\bf {\it Water balance}}\\
+\subsection{Water balance}
 A crop growth simulation model also has to keep track of the soil moisture content to
 deter\-mine when and to what degree a crop is exposed to water stress. This can be done
 with the aid of a water balance, which com\-pares for a given period of time, incoming
@@ -296,7 +296,7 @@ ranges as depending on the actual uptakes of nitrogen, phosphorus and potassium,
 respectively. In step four these yield ranges are combined in pairs, and the yields
 estimated for pairs of nutrients are averaged to obtain an ultimate yield estimate.
 
-In the general WOF\-OST version, statis\-tics and the nutrient limited production are
+In the general WOFOST version, statis\-tics and the nutrient limited production are
 included. In the JRC version of WOFOST 6.0 however, these features are omitted. See
 Appendix 5.
 

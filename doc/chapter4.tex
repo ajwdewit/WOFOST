@@ -35,7 +35,7 @@ incoming radiation is dissipated in photosynthesis, which is, therefore, disrega
 Respiration yields an insignificant amount of energy. To simplify the treatment of
 evapotranspiration, it is considered to be governed by two factors: radiation and evaporative demand.
 
-Penman (1948) was the first to describe evapotranspiration in physi\-cal mathematical
+Penman (1948) was the first to describe evapotranspiration in physical mathematical
 terms. He calculated evaporation from free-water surfaces, wet bare soil and low grass
 swards for 10-day periods. There is ongoing discussion in the literature whether his
 formulae are also applicable if daily values are used. If used with daily values, 24 hour
@@ -46,9 +46,9 @@ The value calculated according to the Penman equations is the potential evapotra
 evaporating surface. This ET0 (Penman) value is often used as a reference value, to
 which actual crop water demand is related. To translate ET0 into crop water require\-ments,
  so called crop factors can be used (e.g. Doorenbos \& Pruitt, 1977; Feddes {\it et al.},
-1978). See also \S 6.1.
+1978). See also \S \ref{sec:evapotranspiration}.
 
-The Penman formula (equation 4.1) consists of two segments. The first part, the radiative
+The Penman formula (equation\ref{eq:ET0}) consists of two segments. The first part, the radiative
 term, calculates the net absorbed radiation. The second part, the aerodynamic term,
 calculates the evapora\-tive demand of the atmo\-sphere (Choisnel {\it et al}., 1992; Fr\`{e}re and
 Popov, 1979; Penman, 1956, 1948). The resulting equations are used to calculate the
@@ -57,7 +57,7 @@ evapotranspira\-tion rate from a crop canopy.
 
 
 \begin{equation}
-\label{eqET0}
+\label{eq:ET0}
 ET0 ~=~ W ~R _{na} ~+~(1\, -\, W) ~E _{a} 
 \end{equation}
 
@@ -72,8 +72,8 @@ EA&: &  Evaporative demand in equivalent evaporation & [mm d$^{{\rm -1}}$] \\
 \subsection{Preparatory calculations}
 
 The average temperature is calculated as the average of the minimum and the maximum
-tempera\-ture. This average temperature \={T} is equal to the so called air temperature (T) used
-in the model calcula\-tions. The maxi\-mum and minimum temperature are measured daily
+temperature. This average temperature \={T} is equal to the so called air temperature (T) used
+in the model calculations. The maximum and minimum temperature are measured daily
 values.
 
 \begin{equation}
@@ -103,15 +103,16 @@ T$_{{\rm min}}$& :& Minimum temperature  &[\degrees C]
 \end{tabularx}
 
 
-As will be explained later in \S 4.1.3, the evaporative demand, EA, depends on the 
-winds\-peed and the difference between saturated and actual vapor pressure. The windspeed
-dependency is incorporated in the evaporative demand as the windspeed  measured at a
-height of two meters, and multiplied by an empirical coefficient (see also eq. 4.17). This
-coeffi\-cient is tem\-per\-ature dependent and can be calculated as (Fr\`{e}re, 1979):
+As will be explained later in \S \ref{sec:penman}, the evaporative demand, EA, depends on the 
+windspeed and the difference between saturated and actual vapor pressure. The windspeed
+dependency is incorporated in the evaporative demand as the windspeed measured at a
+height of two meters, and multiplied by an empirical coefficient (see also eq. 
+\ref{eq:EvapDemand}). This
+coefficient is temperature dependent and can be calculated as (Fr\`{e}re, 1979):
 
 \begin{align}
-\label{eqBU}
-BU &= 0.54 ~+ ~0.35\,{\frac{\Delta T\, -\, 12}{4}} & for~~~\Delta ~ T~\ge ~ 12 \degrees C \\[1em]
+\label{eq:BU}
+BU &= 0.54 ~+ ~0.35\,{\frac{\Delta T\, - 12}{4}} & for~~~\Delta ~ T~\ge ~ 12 \degrees C \\[1em]
 \nonumber
 BU &= 0.54 & for~~~\Delta ~ T~<~12 \degrees C
 \end{align}
@@ -137,7 +138,9 @@ T &:& Average daily temperature & [\degrees C]\\
 
 
 As the value of the latent heat varies only slightly over normal temperature ranges a
-single value for $\lambda$ may be taken. In the model for $\lambda$ a value of 2.45 MJ kg$^{{\rm -1}}$ is assumed (T=20\degrees C). The barometric pressure at sea level is used to calculate the psychrometric constant at sea level (Brunt, 1932).
+single value for $\lambda$ may be taken. In the model for $\lambda$ a value of 2.45 MJ 
+kg$^{{\rm -1}}$ is assumed (T=20\degrees C). The barometric pressure at sea level is 
+used to calculate the psychrometric constant at sea level (Brunt, 1932).
 
 \begin{equation}
 \gamma _{o} ~=~ {{\frac{\it C _{p} \, P _{o} }{{\it  \epsilon \, \lambda } }} }\, 10 ^{-3} ~=~ 0.00163\,{\it P} _{\frac{o}{\it \lambda}} 
@@ -145,15 +148,21 @@ single value for $\lambda$ may be taken. In the model for $\lambda$ a value of 2
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\gamma$$_{{\rm o}}$ & :& Psychrometric constant at sea level & [kPa \degrees C$^{{\rm -1}}$]\\
-C$_{{\rm p}}$ & :& Specific heat of moist air = 1.013 10$^{{\rm -3}}$ & [MJ kg$^{{\rm -1}}$ \degrees C$^{{\rm -1}}$]\\
+$\gamma$$_{{\rm o}}$ & :& Psychrometric constant at sea level & [kPa 
+    \degrees C$^{{\rm -1}}$]\\
+C$_{{\rm p}}$ & :& Specific heat of moist air = 1.013 10$^{{\rm -3}}$ & [MJ kg$^{{\rm -1}}$ 
+    \degrees C$^{{\rm -1}}$]\\
 P$_{{\rm o}}$ & :& Atmospheric pressure at sea level & [kPa]\\
 $\epsilon$ & :& Ratio molecule weight water vapor / dry air = 0.622 & []\\
 $\lambda$ & :& Latent Heat of vaporization & [MJ kg$^{{\rm -1}}$]\\
 \end{tabularx}
 
 
- In the model however, a fixed value of $\gamma$$_{{\rm o}}$ = 0.67 is assumed. This value can be obtained by using for P the atmospheric pressure at sea level, which is assumed to be 101.3 kPa and $\lambda$ = 2.45 MJ kg$^{{\rm -1}}$. It should be mentioned, that the barometric pressure changes with altitude, so does also the psychrometer constant. Therefore, the two following equations are used to correct for altitude difference.
+In the model however, a fixed value of $\gamma$$_{{\rm o}}$ = 0.67 is assumed. This 
+value can be obtained by using for P the atmospheric pressure at sea level, which is 
+assumed to be 101.3 kPa and $\lambda$ = 2.45 MJ kg$^{{\rm -1}}$. It should be mentioned, 
+that the barometric pressure changes with altitude, so does also the psychrometer constant. 
+Therefore, the two following equations are used to correct for altitude difference.
 
 \begin{equation}
 P~=~P _{o} \, e ^{{\frac{-0.034\, z}{T\, +\, 273}} }
@@ -168,7 +177,7 @@ z &:& Elevation  & [m]
 \end{tabularx}
 
 \begin{equation}
-\label{eqPsycho}
+\label{eq:Psycho}
 \gamma ~=~ \gamma _{o} \,{\frac{P}{P _{o} }}
 \end{equation}
 
@@ -184,7 +193,7 @@ The saturated vapor pressure is related to the mean daily air temperature and ma
 approxi\-mated with the equation of Goudriaan (1977). 
 
 \begin{equation}
-\label{eqSVP}
+\label{eq:SVP}
 e_{s} ~=~ 0.610588\, \cdot \, e ^{{\frac{17.32491\, T}{T\, +\, 238.102}} }
 \end{equation}
 
@@ -198,7 +207,7 @@ From this equation the derivate, i.e. the slope of the saturated vapor pressure-
 curve is established.
 
 \begin{equation}
-\label{eqSlopeSVP}
+\label{eq:SlopeSVP}
 \Delta ~=~{\frac{238.102 \cdot 17.32491 \cdot e_{s} }{(T + 238.102)^{2} }}
 \end{equation}
 
@@ -219,18 +228,19 @@ postulated by \AA ngstr\"{o}m (1924) can be used to estimate this parameter usin
 duration observations.
 
 \begin{equation}
-\label{eqGlobRad}
+\label{eq:GlobRad}
 S _{g,d} ~=~S _{o,d} \, (A\, +\, B\,{\frac{n}{D}} )
 \end{equation}
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 S$_{{\rm g,d}}$ &:& Incoming daily global solar radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. 4.27)  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. \ref{eq:Angot}) 
+    & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 A &:& Empirical constant  & [-]\\
 B &:& Empirical constant  & [-]\\
 n &:& Bright sunshine hours per day  & [hr]\\
-D &:& Astronomical day length (see e.q. 4.25)  & [hr]
+D &:& Astronomical day length (see e.q. \ref{eq:irrad_diffuse})  & [hr]
 \end{tabularx}
 
 It should be mentioned that the empirical constants A and B of the \AA ngstr\"{o}m formula 
@@ -239,7 +249,7 @@ relative sunshine duration n/D, taking into consideration the daily extra-terres
 radiation. A is the intercept and B the slope of the regression. It should also be mentioned
 that the regression constants A and B have a physical meaning. A can be considered as
 the fraction of extra terrestrial radiation on overcast days. The sum of A and B can be
-considered as the fraction of radiation received on clear days.\\
+considered as the fraction of radiation received on clear days.
 For several regions in Europe the \AA ngstr\"{o}m constants have been established by Supit
 (1994). Indicative values for empirical constants in the \AA ngstr\"{o}m formula are 
 depicted in Table \ref{tab:angstAB}.
@@ -262,7 +272,7 @@ Humid tropical zones  &   0.29 &  0.42\\
 
 It should be clear that the constants {\bf A} and {\bf B} (acronym: {\bf COEFA} and {\bf COEFB}) should be
 provided by the user. However, in case these constants are not available, in the JRC
-version of WOFOST 6.0 (in subrou\-tine {\bf METEO}), the following approximation is used:
+version of WOFOST 6.0 (in subroutine {\bf METEO}), the following approximation is used:
 
 \begin{align*}
  A &=~0.4885~-~0.0052 \, LAT \\
@@ -280,27 +290,31 @@ As an improvement, in future versions of WOFOST, the method developed by Supit
 (1994) will be introduced in the model. This method calculates the incoming global
 radiation as a function of cloud cover and sunshine duration. It can be considered as an
 extension of the formula developed by Hargreaves (1985). 
-Using this method, the accuracy of the results is slightly less in comparison to the results obtained with the \AA ngstr\"{o}m formula.
+Using this method, the accuracy of the results is slightly less in comparison to 
+the results obtained with the \AA ngstr\"{o}m formula.
 
 \begin{equation}
-S _{g,d} ~=~ c _{a} \, S _{o,d} \, (\sqrt{(T _{\max} ~-~T _{\min} )} ~+~ c _{b} \sqrt{(1-{Cloud/8})} ~) ~+~c _{c} 
+S _{g,d} ~=~ c _{a} \, S _{o,d} \, (\sqrt{(T _{\max} ~-~T _{\min} )} ~+~ 
+    c _{b} \sqrt{(1-{Cloud/8})} ~) ~+~c _{c} 
 \end{equation}
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 S$_{{\rm g,d}}$ &:& Incoming daily global solar radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. 4.27)  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. \ref{eq:Angot})  & 
+    [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 Cloud &:& Mean total cloud cover during daytime  & [octas]\\
 T$_{{\rm max}}$ &:& Maximum temperature  & [\degrees C]\\
 T$_{{\rm min}}$ &:& Minimum temperature  & [\degrees C]\\
 c$_{{\rm a}}$,c$_{{\rm b}}$,c$_{{\rm c}}$ &:& Empirical regression constants   & [-]
 \end{tabularx}
 
-For five regions in Europe the constants c$_{{\rm a}}$, c$_{{\rm b}}$ and c$_{{\rm c}}$ have been established (Supit, 1994).
+For five regions in Europe the constants c$_{{\rm a}}$, c$_{{\rm b}}$ and c$_{{\rm c}}$ 
+have been established (Supit, 1994).
 
 As a second improvement, the Hargreaves formula (1985) will be introduced in the
-model. In case no observa\-tions of either incoming radiation, sunshine duration and
-cloudco\-ver are available, this formula, will be used. The accuracy of this method is less
+model. In case no observations of either incoming radiation, sunshine duration and
+cloudcover are available, this formula, will be used. The accuracy of this method is less
 then the accuracy of the two earlier mentioned methods.
 
 \begin{equation}
@@ -310,17 +324,22 @@ S _{g,d} ~=~ c _{d} \, S _{o,d} \, \sqrt{(T _{\max} ~-~T _{\min} )} ~+~c _{e}
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 S$_{{\rm g,d}}$ &:& Incoming daily global solar radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. 4.27)  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. \ref{eq:Angot})  & 
+    [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 T$_{{\rm max}}$ &:& Maximum temperature  & [\degrees C]\\
 T$_{{\rm min}}$ &:& Minimum temperature  & [\degrees C]\\
 c$_{{\rm d}}$,c$_{{\rm e}}$  &:& Empirical regression constants  & [-]\\
 \end{tabularx}
 
-For six regions in Europe the constants c$_{{\rm d}}$ and c$_{{\rm e}}$ have been established (Supit, 1994). In section \ref{sec:daylength} it is explained how the daily extra-terrestrial radiation, S$_{{\rm o,d}}$, can be calculat\-ed.
+For six regions in Europe the constants c$_{{\rm d}}$ and c$_{{\rm e}}$ have been 
+established (Supit, 1994). In section \ref{sec:daylength} it is explained how the 
+daily extra-terrestrial radiation, S$_{{\rm o,d}}$, can be calculat\-ed.
 
 \subsection{Terms in the Penman formula  }
+\label{sec:penman}
 
-The temperature related weighing factor W in equation \ref{eqET0} is defined as (Fr\`{e}re andPopov, 1979; Penman, 1948, 1956).
+The temperature related weighing factor W in equation \ref{eq:ET0} is defined as 
+(Fr\`{e}re andPopov, 1979; Penman, 1948, 1956).
 
 \begin{equation}
 W ~=~{\frac{\Delta}{(\Delta ~+~ \gamma )}} 
@@ -328,8 +347,8 @@ W ~=~{\frac{\Delta}{(\Delta ~+~ \gamma )}}
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\Delta$ &:& Slope of the saturation vapor pressure curve (see eq. \ref{eqSlopeSVP})  & [kPa \degrees C$^{{\rm -1}}$]\\
-$\gamma$ &:& Psychrometric constant (see eq. \ref{eqPsycho})  & [kPa \degrees C$^{{\rm -1}}$]
+$\Delta$ &:& Slope of the saturation vapor pressure curve (see eq. \ref{eq:SlopeSVP})  & [kPa \degrees C$^{{\rm -1}}$]\\
+$\gamma$ &:& Psychrometric constant (see eq. \ref{eq:Psycho})  & [kPa \degrees C$^{{\rm -1}}$]
 \end{tabularx}
 
 To calculate net outgoing long wave radiation Penman (1956) used an equation which is
@@ -354,19 +373,20 @@ n/D &:& Relative sunshine duration & [-]\\
 The relative sunshine duration, n/D, is established in the model using:
 
 \begin{equation}
-{\frac{n}{D}} ~=~{\frac{T _{atm} ~-~A}{B}}
+{\frac{n}{D}} ~=~{\frac{T_{atm} ~-~A}{B}}
 \end{equation}
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 n/D &:& Relative sunshine duration  & [-]\\
-T$_{{\rm atm}}$ &:& Atmospheric transmission (see eq. 4.29)  & [-]\\
+T$_{{\rm atm}}$ &:& Atmospheric transmission (see eq. \ref{eq:Tatm})  & [-]\\
 A &:& Empirical constant in the \AA ngstr\"{o}m equation  & [-]\\
 B &:& Empirical constant in the \AA ngstr\"{o}m equation  & [-]\\
 \end{tabularx}
 
 
-The calculation of the atmospheric transmission, T$_{{\rm atm}}$, will be explained in 4.2.
+The calculation of the atmospheric transmission, T$_{{\rm atm}}$, will be explained in 
+\S \ref{sec:daylength}.
 
 Part of the actual received radiation is reflected by the surface. The fraction reflected
 (albedo) is different for a water surface, a soil surface and a crop canopy. The absorbed
@@ -375,7 +395,7 @@ absorbed radiation, which is divided by the latent heat of vaporization of water
 the amount of radiation in depth of evaporative water layer (mm d$^{{\rm -1}}$).
 
 \begin{equation}
-\label{eqAbsGlobRad}
+\label{eq:AbsGlobRad}
 R _{na} ~=~{\frac{(1\, -\, \alpha )\,\, R _{av} \, -\, R _{nl} \uparrow  }{\lambda}}
 \end{equation}
 
@@ -393,7 +413,7 @@ $\lambda$ &:& Latent heat  & [J kg$^{{\rm -1}}$]\\
 The soil's albedo depends on the surface color and on the moisture content. Albedo
 values for dry soil vary from 0.14 (clay) to 0.37 (dune sand). Ten Berge (1986) described
 the depen\-dence of the albedo value on soil moisture in relation to the average water
-content of the top soil layer. See Table \ref{tab:AlbedoSoils}. \\
+content of the top soil layer. See Table \ref{tab:AlbedoSoils}. 
 In WOFOST Version 6.0 the following values for the albedo are assumed: for bare soil
 0.15, for a canopy  0.25 and for a water surface a value of 0.05.
 
@@ -419,27 +439,27 @@ demand is somewhat higher than for soil or water surfaces due to a higher surfac
 roughness. This is reflected in a higher value for {\it factor} in the wind function.
 
 \begin{equation}
-\label{eqEvapDemand}
+\label{eq:EvapDemand}
 EA~=~0.26\, (e _{s} \, -\, e _{a} )\,\, (factor\, +\, BU\, u(2))
 \end{equation}
  
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 EA &:& Evaporative demand  & [mm d$^{{\rm -1}}$]\\
-e$_{{\rm s}}$ &:& Saturated vapor pressure (see eq. \ref{eqSVP})  & [kPa]\\
+e$_{{\rm s}}$ &:& Saturated vapor pressure (see eq. \ref{eq:SVP})  & [kPa]\\
 e$_{{\rm a}}$ &:& Actual vapor pressure  & [kPa]\\
 {\it factor} &:& Empirical constant  & [-]\\
-BU &:& Coefficient in wind function (see eq. \ref{eqBU})  & [-]\\
+BU &:& Coefficient in wind function (see eq. \ref{eq:BU})  & [-]\\
 u(2) &:& Mean windspeed at 2 m height  & [m s$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The following values for {\it factor} are assumed (Fr\`{e}re, 1979). For crop canopies {\it factor} =
 1.0 and for a free water a surface {\it factor} = 0.5.
 
-Substituting equations \ref{eqEvapDemand} and \ref{eqAbsGlobRad} in equation 4.1 yields
+Substituting equations \ref{eq:EvapDemand} and \ref{eq:AbsGlobRad} in equation \ref{eq:ET0} yields
 
 \begin{equation}
-\label{eqPenman}
+\label{eq:Penman}
 ET0 ~=~{\frac{(\Delta R _{na~} +~\gamma EA)}{\Delta ~+~\gamma }}
 \end{equation}
 
@@ -452,7 +472,7 @@ $\Delta$ &:& Slope of the saturation vapor pressure curve   & [kPa \degrees C$^{
 $\gamma$ &:& Psychrometric constant  & [kPa \degrees C$^{{\rm -1}}$]
 \end{tabularx}
 
-With the equations \ref{eqAbsGlobRad}, \ref{eqEvapDemand}, \ref{eqPenman} and the different values for factor and albedo, the evapo(transpi)ration from a wet bare soil surface E0$_{{\rm s}}$, a water surface, E0$_{{\rm w}}$, and a crop canopy, ET0, can be easily calculated.
+With the equations \ref{eq:AbsGlobRad}, \ref{eq:EvapDemand}, \ref{eq:Penman} and the different values for factor and albedo, the evapo(transpi)ration from a wet bare soil surface E0$_{{\rm s}}$, a water surface, E0$_{{\rm w}}$, and a crop canopy, ET0, can be easily calculated.
 
 Measured or estimated daily global irradiation (wavelength 300-3000 nm) is input in the
 model (R$_{{\rm av}}$=S$_{{\rm g,d}}$ is assumed). It should be mentioned that the dimension of E0$_{{\rm s}}$, E0$_{{\rm w}}$ and ET0 is mm d$^{{\rm -1}}$ in subroutine {\bf PENMAN}. However, in all the other routines the dimension of these variables is cm d$^{{\rm -1}}$. In the routine {\bf METEO} the dimension of E0$_{{\rm s}}$, E0$_{{\rm w}}$ and ET0 is changed to cm d$^{{\rm -1}}$.
@@ -469,7 +489,9 @@ Day length is a function of the angle of the sun above the horizon (solar elevat
 elevation is the angle between the sun rays and the earth's surface. Solar elevation is
 determined by latitude, the day and the hour on a certain day.
 The dependency on the hour of a certain day is simple to explain. The sun rises and the
-sun sets every day. Just before sun rise and just after sun set the solar elevation is zero. At the equator on days that the sun is in zenith (the point in the sky directly overhead) at 12 o'clock solar time it holds that:
+sun sets every day. Just before sun rise and just after sun set the solar elevation is zero. 
+At the equator on days that the sun is in zenith (the point in the sky directly overhead) at 
+12 o'clock solar time it holds that:
 
 \begin{equation}
 \sin \beta = \cos (15(t _{h} -12))
@@ -487,7 +509,12 @@ every 24 hours at a speed of 15\degrees per hour (= 360/24).
 To explain the dependency of solar elevation on latitude and day number first the situation
 is regarded when the sun is in zenith. This is at 12 o'clock solar time (not to be mixed up
 with noon). The solar declination, the place were the sun is in zenith at 12 o'clock solar
-time, changes every day. On the 21$^{\rm st}$ of June the sun stands perpen\-dicular above the northern tropic of Cancer (+23.45\degrees N) and on the 22$^{\rm nd}$ of December the sun stands perpendicular above the tropic of Capricorn (-23.45\degrees S). In figure \ref{fig:solardecl} the situation is depicted for 22$^{\rm nd}$ of December when the sun reaches its highest point at the tropic of Capricorn at the southern hemisphere. On the northern hemisphere this results in the shortest day of the year.
+time, changes every day. On the 21$^{\rm st}$ of June the sun stands perpen\-dicular above 
+the northern tropic of Cancer (+23.45\degrees N) and on the 22$^{\rm nd}$ of December the 
+stands perpendicular above the tropic of Capricorn (-23.45\degrees S). In figure 
+\ref{fig:solardecl} the situation is depicted for 22$^{\rm nd}$ of December when the sun 
+reaches its highest point at the tropic of Capricorn at the southern hemisphere. On the 
+northern hemisphere this results in the shortest day of the year.
 
 \begin{figure}[p]
 \centering
@@ -511,7 +538,12 @@ $\delta$ &:& Solar declination   & [de\-grees]\\
 t$_{{\rm d}}$ &:& Number of the day since 1 January   & [-]\\
 \end{tabularx}
 
-The distance of the sun to the earth is considered to be infinite, therefore declination can be considered equal for all places on earth. The orbit of the earth around the sun is a non concentric ellipse (see figure \ref{fig:orbit}), therefore the solar radiation received at the top of the atmosphere during the year is not constant. At the first of January the earth is closest to the sun, radiation at the top of the atmosphere will then be higher as during other days. \\
+The distance of the sun to the earth is considered to be infinite, therefore declination 
+can be considered equal for all places on earth. The orbit of the earth around the sun is a
+non concentric ellipse (see figure \ref{fig:orbit}), therefore the solar radiation received 
+at the top of the atmosphere during the year is not constant. At the first of January the 
+earth is closest to the sun, radiation at the top of the atmosphere will then be higher as 
+during other days.
 
 \begin{figure}p]
 \centering
@@ -537,7 +569,8 @@ S$_{{\rm c}}$ &:& Average solar radiation at the top of atmosphere (1370 J m$^{{
 t$_{{\rm d}}$ &:& Number of day since 1 January  & [-]\\
 \end{tabularx}
 
-Note that during the winter in Europe the solar radiation at the top of the atmo\-sphere is at its maximum! The height of the sun at any moment throughout the day and at any place and date can be
+Note that during the winter in Europe the solar radiation at the top of the atmo\-sphere is at 
+its maximum! The height of the sun at any moment throughout the day and at any place and date can be
 calculated with (subroutine {\bf TOTASS}):
 
 \begin{equation}
@@ -554,12 +587,17 @@ t$_{{\rm h}}$ &:& Hour of the day (solar time)  & [h]\\
 
 To compute day length for photoperiod-sensitive species, it must be realized that, even
 when the sun is still below the horizon the light level is high enough to trigger the
-photoperiodicity mechan\-ism. Photoperiodic day length is 0.5 h longer than the astronomi\-cal day length at the equator and about 0.8 h in temperate zones, depend\-ing on the date of the year. The light level to which photoperiodism is sensitive is quite low and not well
-quantified. Vergara \& Chang (1985) determined it to be 1.5-15 mW m$^{{\rm -2}}$ for rice crops; Salisbury (1981) determined the level to be higher. As a compromise a value of 50 mW
+photoperiodicity mechan\-ism. Photoperiodic day length is 0.5 h longer than the 
+astronomi\-cal day length at the equator and about 0.8 h in temperate zones, depending 
+on the date of the year. The light level to which photoperiodism is sensitive is quite low and not well
+quantified. Vergara \& Chang (1985) determined it to be 1.5-15 mW m$^{{\rm -2}}$ for 
+rice crops; Salisbury (1981) determined the level to be higher. As a compromise a value of 50 mW
 m$^{{\rm -2}}$ is used in the model, which corresponds with a sun angle of -4 degrees. The
 photosynthetic active period and the astro\-nomical day length can be calculated as:
 
 \begin{equation}
+% eq 4.25
+\label{eq:AstroDaylength}
 D ~=~ 12~+~{\frac{24}{180}} \, \arcsin \, (\,{\frac{-\sin {\frac{p}{180}} + sinLD}{cosLD}} )
 \end{equation}
 
@@ -571,14 +609,16 @@ cosLD &:& Amplitude of sine of solar height = cos$\delta$cos$\lambda$  & [-]\\
 p &:& correction constant  & [degrees]\\
 \end{tabularx}
 
-The correction constant for the photosynthetic day length is -4 degrees. For the astro\-nomical day length the correction constant is -0.833 degrees (i.e. solar height for which
+The correction constant for the photosynthetic day length is -4 degrees. For the astronomical 
+day length the correction constant is -0.833 degrees (i.e. solar height for which
 the upper edge of the solar disk appears on the horizon). However, in the model for the
-calculation of the astronomi\-cal day length, a correction constant of 0 degrees is used. 
+calculation of the astronomical day length, a correction constant of 0 degrees is used. 
 
-The calculation of the photoperi\-odic day length makes no sense when the sun is continu\-ous\-ly at higher inclinations, therefore this calculation method is limited to -66.5+4 and
+The calculation of the photoperiodic day length makes no sense when the sun is continuously 
+at higher inclinations, therefore this calculation method is limited to -66.5+4 and
 66.5-4 degrees of latitude.
 
- The integral of the solar height over the day can be obtained as twice the integral from
+The integral of the solar height over the day can be obtained as twice the integral from
 sunrise ($\beta$=0\degrees ) to 12 o'clock solar time ($\beta$ = 90\degrees  + $\delta$ - $\lambda$):
 
 \begin{equation}
@@ -594,9 +634,12 @@ $\beta$  &:& Solar elevation & [degrees]\\
 t$_{{\rm h}}$  &:& Hour of the day & [h]\\
 \end{tabularx}
 
-Multiplication of equation \ref{eq:SolarConst} with \ref{eq:IntgrlSolarHeigh} yields the daily extra-terrestrial radiation which is also known as the Angot radiation. Note that the dimension of the daily extra-terrestrial is radiation J m$^{{\rm -2}}$ d$^{{\rm -1}}$.
+Multiplication of equation \ref{eq:SolarConst} with \ref{eq:IntgrlSolarHeigh} yields the 
+daily extra-terrestrial radiation which is also known as the Angot radiation. Note that 
+the dimension of the daily extra-terrestrial is radiation J m$^{{\rm -2}}$ d$^{{\rm -1}}$.
 
 \begin{equation}
+% eq 4.27
 \label{eq:Angot}
 S_{o,d} = S _{c,d} ~ \int \sin \beta dt _{h} 
 \end{equation}
@@ -610,13 +653,16 @@ S$_{{\rm c,d}}$ &:& Solar constant at the top of the atmosphere
 t$_{{\rm d}}$ &:& Number of day since 1 January  & [-]\\
 \end{tabularx}
 
-In the model the integral of the effective solar height, a modification of equation 4.26 is
-also calculated. This modified integral takes the effect of the daily course in atmos\-pheric
+In the model the integral of the effective solar height, a modification of equation \ref{eq:Angot} is
+also calculated. This modified integral takes the effect of the daily course in atmospheric
 transmis\-sion into account. Transmission is lower near the margins of the day because of
 haze in the morning and clouds in the afternoon. Besides that, path length of solar
-radiation in the atmosphere is longer (Spitters {\it et al}., 1986). This modified integral can be calculated as:
+radiation in the atmosphere is longer (Spitters {\it et al}., 1986). This modified integral 
+can be calculated as:
 
 \begin{align}
+% eq 4.28
+\label{eq:IntSolarHeight}
 \int \sin \beta_{m} &= \int \sin \beta (1+csin \beta ) dt_{h}  \\
                     &= 3600 \cdot \left \{
                     \begin{tabular}{c}
@@ -632,23 +678,34 @@ radiation in the atmosphere is longer (Spitters {\it et al}., 1986). This modifi
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\int \sin \beta_{m}$  &:& Integral of effective solar height       & [s]\\
+$\int \sin \beta_{m}$  &:& Integral of effective solar height   & [s]\\
 D  &:& Day length       & [h]\\
-c  &:& Coefficient of regression on transmission on solar angle = 0.4       & [-]\\
-$\beta$  &:& Solar elevation        & [degrees]\\
-$\lambda$  &:& Latitude       & [degrees]\\
-$\delta$  &:& Solar declination       & [degrees]\\
-t$_{{\rm h}}$  &:& Hour of the day       & [h]\\
+c  &:& Coefficient of regression on transmission on solar angle = 0.4  & [-]\\
+$\beta$  &:& Solar elevation   & [degrees]\\
+$\lambda$  &:& Latitude   & [degrees]\\
+$\delta$  &:& Solar declination   & [degrees]\\
+t$_{{\rm h}}$  &:& Hour of the day  f & [h]\\
 \end{tabularx}
 
 A distinction is made between diffuse sky light, with incidence under various angles and
-direct sunlight with an angle of incidence equal to the solar declination. It is important to distin\-guish these fluxes because of the large difference in illumination intensity between shaded leaves and sunlit leaves and therefore the difference in the CO$_{{\rm 2}}$ assimila\-tion light response of single leaves, which is non-linear. Shaded leaves receive only diffuse radiation. Sunlit leaves receive both direct and diffuse radiation. The diffuse flux is the result of the scattering of sun rays by clouds, aerosols and gases in the atmo\-sphere. The propor\-tion of diffuse light in the total incident light flux depends on the status of the atmosphere, i.e. cloudi\-ness, concentra\-tion of aerosols. This fraction is calculated from the atmospheric transmis\-sion using an empirical function. This relationship is based on data from different meteorologi\-cal stations from a wide range of latitudes and longitudes (Spitters {\it et al}., 1986). 
+direct sunlight with an angle of incidence equal to the solar declination. It is important 
+to distin\-guish these fluxes because of the large difference in illumination intensity 
+between shaded leaves and sunlit leaves and therefore the difference in the CO$_{{\rm 2}}$ 
+assimila\-tion light response of single leaves, which is non-linear. Shaded leaves receive 
+only diffuse radiation. Sunlit leaves receive both direct and diffuse radiation. The 
+diffuse flux is the result of the scattering of sun rays by clouds, aerosols and gases in 
+the atmo\-sphere. The propor\-tion of diffuse light in the total incident light flux depends 
+on the status of the atmosphere, i.e. cloudi\-ness, concentra\-tion of aerosols. This 
+fraction is calculated from the atmospheric transmis\-sion using an empirical function. 
+This relationship is based on data from different meteorologi\-cal stations from a wide 
+range of latitudes and longitudes (Spitters {\it et al}., 1986). 
 
 The atmospheric transmission is the ratio between actual radiation and the quantity that
 would have reached the earth's surface in the absence of an atmosphere (i.e. Angot
 radiation). This ratio can be calculated as:
 
 \begin{equation}
+\label{eq:Tatm}
 T _{atm} ~=~ s _{\frac{g,d}{S _{c,d} \int \sin \beta }}
 \end{equation}
 
@@ -656,15 +713,19 @@ Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 T$_{{\rm atm}}$ &:& Atmospheric transmission  & [-]\\
 S$_{{\rm g,d}}$ &:& Daily global radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm c,d}}$ &:& Solar constant at the top of the atmosphere for a certain day (see eq.4.23 and 4.27)  & [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+S$_{{\rm c,d}}$ &:& Solar constant at the top of the atmosphere for a certain day 
+    (see eq. \ref{eq:SolarConst} and \ref{eq:Angot})  & [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 $\int \sin \beta$  &:& Integral of solar height   & [s]\\
 \end{tabularx}
 
-Relationships between the share of the diffuse flux in the global irradiance (S$_{{\rm df}}$/S$_{{\rm g}}$) and the atmospheric transmission (S$_{{\rm g}}$/S$_{{\rm o}}$) are found in several research reports concerning the use
+Relationships between the share of the diffuse flux in the global irradiance 
+(S$_{{\rm df}}$/S$_{{\rm g}}$) and the atmospheric transmission 
+(S$_{{\rm g}}$/S$_{{\rm o}}$) are found in several research reports concerning the use
 of solar energy in solar collectors. The relation is characterized by an approximately
 linear trend for transmissions ranging between 0.35 and 0.75. At low transmissions,
 nearly all of the incoming radiation is diffuse so that the curve bends off.
-There is some variation among published relations, arising from differences in atmos\-pheric conditions, especially relative sunshine duration, water content of the atmosphere,
+There is some variation among published relations, arising from differences in atmospheric 
+conditions, especially relative sunshine duration, water content of the atmosphere,
 and cloud type, but also lack of fit of the presented regression equation from the data and
 differences in the method of measuring the diffuse radiation.
 
@@ -672,6 +733,8 @@ The relation used in WOFOST Version 6.0 has been derived by de Jong (1980) and h
 been recommended by Spitters {\it et al}. (1986).
 
 \begin{align}
+% eq 4.30
+\label{eq:irrad_diffuse}
 {\frac{S _{df,d} }{S _{g, d} }} &= 1 & 
       for ~~ {\frac{S _{g,d} }{S _{o,d} }} \le 0.07 \nonumber \\
 {\frac{S _{df,d} }{S _{g,d} }} &= 1-2.3({\frac{S _{g,d} }{S _{o,d} }} -0.07) ^{2} & 
@@ -686,7 +749,8 @@ Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
 S$_{{\rm df,d}}$ &:& Daily diffuse radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 S$_{{\rm g,d}}$ &:& Daily global radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. \ref{eq:Angot})  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm o,d}}$ &:& Daily extra-terrestrial radiation (see eq. \ref{eq:Angot})  & 
+    [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The relationships are remarkably constant over climates and latitudes so that the presented
@@ -694,20 +758,25 @@ equations will be valid for a wide range of conditions (Spitters {\it et al}., 1
 
 Measured or estimated daily total solar irradiation (wavelength 300-3000 nm) is input for
 the model. Only half of this incoming radiation is photosynthetical active (PAR,
-Photosynthetical active radiation, wavelength 400 - 700 nm). The photosynthetical active
+Photosynthetically active radiation, wavelength 400 - 700 nm). The photosynthetically active
 diffuse radiation, perpendicular to the direction of the solar rays can be calculated as:
 
 \begin{equation}
+% eq 4.31
+\label{eq:PAR}
 D _{p} ~=~ S _{\frac{df,d}{S _{g,d} }} ~~ T _{atm} ~0.5S _{c,d} 
 \end{equation}
 
  
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-D$_{{\rm p}}$ &:& Diffuse irradiation perpendicular to the direction of light  & [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
-T$_{{\rm atm}}$ &:& Atmospheric transmission (see eq. 4.29)  & [-]\\
-S$_{{\rm c,d}}$ &:& Solar constant at the top of the atmosphere for a certain day  & [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+D$_{{\rm p}}$ &:& Diffuse irradiation perpendicular to the direction of light  & 
+    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
+T$_{{\rm atm}}$ &:& Atmospheric transmission (see eq. \ref{eq:Tatm})  & [-]\\
+S$_{{\rm c,d}}$ &:& Solar constant at the top of the atmosphere for a certain day  & 
+    [J m$^{{\rm -2}}$ s$^{{\rm -1}}$]\\
 S$_{{\rm g,d}}$ &:& Daily global radiation  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
-S$_{{\rm df,d}}$ &:& Daily diffuse radiation (see eq. 4.30)  & [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
+S$_{{\rm df,d}}$ &:& Daily diffuse radiation (see eq. \ref{eq:irrad_diffuse})  & 
+    [J m$^{{\rm -2}}$ d$^{{\rm -1}}$]\\
 \end{tabularx}
 
