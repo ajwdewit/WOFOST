@@ -20,7 +20,7 @@ The consequence is evident: this stomatal closure interferes with CO$_{{\rm 2}}$
 reduces assimilation and, consequently, dry matter production.
 
 A crop growth simulation model must therefore keep track of the soil moisture potential
-to determine when and to what degree a crop is exposed to water stress. This is common\-ly 
+to determine when and to what degree a crop is exposed to water stress. This is commonly 
 done with the aid of a water balance equation, which compares for a given period of
 time, incoming water in the rooted soil with outgoing water and quantifies the difference
 between the two as a change in the amount of soil moisture stored.
@@ -33,7 +33,7 @@ transpiration.
 %Fig. 6.1
 \centering
 \includegraphics[width=120mm]{\FigDir/WATBAL1.pdf}
-\caption{Sche\-matic repre\-senta\-tion of the differ\-ent compo\-nents of a soil water balance}
+\caption{Schematic representation of the different components of a soil water balance}
 \label{fig:WatBalSchematic}
 \end{figure}
 
@@ -49,10 +49,14 @@ IN_{low} &= CR~-~Perc \subeqn
 
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
-$\theta$$_{{\rm t}}$ &:& Actual moisture content of the root zone at time step t   & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
-IN$_{{\rm up}}$ &:& Rate of net influx through the upper root zone boundary  & [cm d$^{{\rm -1}}$]\\
-IN$_{{\rm lo}}$$_{{\rm w}}$ &:& Rate of net influx through the lower root zone boundary  & [cm d$^{{\rm -1}}$]\\
-T$_{{\rm a}}$ &:& Actual transpiration rate of crop   & [cm d$^{{\rm -1}}$]\\
+$\theta$$_{{\rm t}}$ &:& Actual moisture content of the root zone at time step t
+   & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+IN$_{{\rm up}}$ &:& Rate of net influx through the upper root zone boundary
+   & [cm d$^{{\rm -1}}$]\\
+IN$_{{\rm lo}}$$_{{\rm w}}$ &:& Rate of net influx through the lower root zone boundary
+   & [cm d$^{{\rm -1}}$]\\
+T$_{{\rm a}}$ &:& Actual transpiration rate of crop
+   & [cm d$^{{\rm -1}}$]\\
 RD &:& Actual rooting depth  & [cm]\\
 P &:& Precipitation intensity  & [cm d$^{{\rm -1}}$]\\
 I$_{{\rm e}}$ &:& Effective daily irrigation  & [cm d$^{{\rm -1}}$]\\
@@ -90,17 +94,17 @@ of WOFOST, the system with groundwater is not activated because of lack of suffi
 good data. However, the groundwater option can be easily applied whenever data are
 made available. So, actually three water balance subroutines can be distinguished:
 \begin{itemize}
-\item Potential production [WATPP, \S  6.2]
-\item Water limited production, without groundwater influence [WATFD, \S  6.3]
-\item Water limited production, with groundwater influence [WATGW, \S  6.4]
+\item Potential production [WATPP, \S \ref{sec:WATPP}]
+\item Water limited production, without groundwater influence [WATFD, \S \ref{WATFD}]
+\item Water limited production, with groundwater influence [WATGW, \S \ref{WATGW}]
 \end{itemize}
 
 The actual transpiration rate of a canopy, used in the calculations of potential and water
 limited production, is calculated in the same way for all options. The calculation method
-will therefore be treated separately in \S 6.1. 
+will therefore be treated separately in \S \ref{sec:evapotranspiration}. 
 
 The capillary rise in the system with groundwater influence is a complicated subject. It
-will be discussed separately in \S 6.5.
+will be discussed separately in \S \ref{sec:CapillaryFlow}.
 
 In the calculations for the water limited growth the water content of the root zone is the
 most important state variable. In- and outflow of water is calculated for each time step. It
@@ -113,12 +117,12 @@ further root growth and water below the potential rooting depth cannot be used b
 crop.
 
 The process of infiltration is not treated in a physical sense at all, because simulation of
-this process would require a much smaller time step (Rietveld, 1978; Stroosnijder {\it et al\/}.,
+this process would require a much smaller time step (Rietveld, 1978; Stroosnijder {\it et al}.,
 1972; van Keulen \& van Beek, 1971). Instead a predefined fraction of the rain is not
-infiltrating on the day of rainfall (van Diepen {\it et al\/}., 1988).
+infiltrating on the day of rainfall (van Diepen {\it et al}., 1988).
 
 Soil water content at saturation is equal to soil porosity. Field capacity is the volumetric
-water content of the soil after wetting and initial redistribution (Veihmeyer \& Hendrick\-son, 
+water content of the soil after wetting and initial redistribution (Veihmeyer \& Hendrickson, 
 1931). It is often treated as a soil characteristic (van Keulen, 1975; Driessen, 1986;
 Jansen \& Gosseye, 1986), although it also depends on boundary conditions. Field capacity
 is usually defined as the volumetric  water content at a soil moisture suction of 100 mbar
@@ -143,13 +147,13 @@ In the subroutine {\bf EVTRA} the following processes are calculated for a given
 \end{itemize}
 
 Transpiration, or the rate of water loss from the plants depends on the energy available
-for vaporization, on the difference in vapor pressure between the plant and the surround\-ing 
+for vaporization, on the difference in vapor pressure between the plant and the surrounding 
 air and on the resistance to water vapor diffusion from the stomatal cavity to the
 atmosphere (van Keulen \& Seligman, 1987). Potential transpiration is the water loss from
 a field crop which covers the soil completely and has an optimum supply of water from
 the soil. The method, introduced by Penman (1956, 1948) and for the present use,
-adapted according to Choisnel {\it et al\/}. (1992), is now used for daily totals of canopy
-transpiration and for daily totals of soil evaporation (Jarvis, 1981; Feddes {\it et al\/}., 1978;
+adapted according to Choisnel {\it et al}. (1992), is now used for daily totals of canopy
+transpiration and for daily totals of soil evaporation (Jarvis, 1981; Feddes {\it et al}., 1978;
 van Keulen, 1975)
 
 \subsection{Evaporation and transpiration}
@@ -168,7 +172,7 @@ E0$_{{\rm s}}$ &:& Potential evaporation of a bare soil (see \S 4.1.3)  & [cm d$
 T$_{{\rm m}}$ &:& Maximum crop transpiration rate (see eq. 6.4)  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
-For some crops the potential evapotranspiration can be higher than the Penman evapotran\-spiration. 
+For some crops the potential evapotranspiration can be higher than the Penman evapotranspiration. 
 Therefore, in the model a correction factor, a so called  crop coefficient
 (acronym: {\bf CFET}) is introduced to account for this effect. The Penman evapotranspiration
 should be multiplied by this crop coefficient (Feddes, 1978; Doorenbos \& Pruitt, 1977).
@@ -188,7 +192,8 @@ E0$_{{\rm s}}$ &:& Potential bare soil evaporation  & [cm d$^{{\rm -1}}$]\\
  LAI &:& Leaf area index  & [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
  
-The potential transpiration rate can be calculated by combining equations 6.2 and 6.3.
+The potential transpiration rate can be calculated by combining equations \ref{eq:6.2} and 
+\ref{eq:6.3}.
 
 \begin{equation}
 % eq 6.4
@@ -200,7 +205,7 @@ Where:\\[5pt]
 T$_{{\rm m}}$ &:& Maximum crop transpiration rate & [cm d$^{{\rm -1}}$]\\
 ET0 &:& Potential evapotranspiration rate & [cm d$^{{\rm -1}}$]\\
 $\kappa$$_{{\rm gb}}$ &:& Extinction coefficient for global radiation & [-]\\
-LAI &:& Leaf area index (see \S 5.4.5) & [ha ha$^{{\rm -1}}$]\\
+LAI &:& Leaf area index (see \S \ref{sec:5.4.5}) & [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The extinction coefficient for global radiation can be estimated as a factor times the
@@ -218,11 +223,11 @@ $\kappa_{{\rm df}}$ &:& Extinction coefficient for diffuse light & [-]\\
 \end{tabularx}
 
 The maximum evaporation rate from a shaded water surface can be calculated in the same
-way as equation 6.4: 
+way as equation \ref{eq:6.4}: 
 
 \begin{equation}
 % eq 6.6
-E _{w,\max } ~=~ E0 _{w} \,\,\, e ^{-\kappa  _{gb} LAI}
+E_{w,\max } ~=~ E0_{w} \cdot e^{-\kappa_{gb} LAI}
 \end{equation}
 
 Where:\\[5pt]
@@ -234,7 +239,7 @@ LAI &:& Leaf area index & [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
 The maximum evaporation rate from a shaded bare soil surface can also be calculated in
-the same way as in equation 6.4 and 6.6:
+the same way as in equation \ref{eq:6.4} and \ref{eq:6.6}:
 
 \begin{equation}
 % eq 6.7
@@ -254,18 +259,18 @@ LAI &:& Leaf area index & [ha ha$^{{\rm -1}}$]\\
 \subsection{Reduction of the transpiration due to water stress}
 
 For the potential run the actual transpiration rate is always equal to the maximum
-transpira\-tion rate, because sufficient water is available. The actual transpiration rate is
+transpiration rate, because sufficient water is available. The actual transpiration rate is
 calculated from the maximum transpiration rate, taking into account reductions for
 shortage or excess of water in the root zone. Water uptake by the roots depends on the
 difference in potential between the water in the plant and in the soil, and on the resistance
 to transport of moisture from the soil to the atmosphere (van Keulen \& Seligman, 1987).
-In contrast to Feddes {\it et al\/}. (1978) not soil water potential, but soil water content is
-chosen as the independent variable (Gollan {\it et al\/}., 1986; Schulze 1986).
+In contrast to Feddes {\it et al}. (1978) not soil water potential, but soil water content is
+chosen as the independent variable (Gollan {\it et al}., 1986; Schulze 1986).
 
 Up to a point, the water potential in the plant can be adapted in order to maintain
 potential transpiration. At what soil moisture content the transition from potential
 transpiration to a transpiration deficit takes place, is difficult to quantify. In the model,
-the actual transpira\-tion for the water limited run is obtained by multiplying the potential
+the actual transpiration for the water limited run is obtained by multiplying the potential
 transpiration with a reduction factor. This reduction factor is defined as (van Diepen {\it et
 al}., 1988):
 
@@ -289,11 +294,11 @@ The critical soil moisture content is defined as the quantity of stored soil moi
 which water uptake is impaired and the crop begins to close its stomata. It is not a fixed
 value. Restriction of water uptake due to water stress starts at a higher water content
 when the potential transpiration rate is higher (Denmead \& Shaw, 1962). The critical
-moisture content can be calculated as (van Diepen {\it et al\/}., 1988):
+moisture content can be calculated as (van Diepen {\it et al}., 1988):
 
 \begin{equation}
 % eq 6.9
-\theta_{ws} ~=~ (1\, -\, p )\, (\theta  _{fc} \, -\, \theta  _{wp} )\, +\, \theta  _{wp} 
+\theta_{ws} ~=~ (1\, -\, p )\, (\theta_{fc} \, -\, \theta_{wp} )\, +\, \theta_{wp} 
 \end{equation}
 
 Where:\\[5pt]
@@ -306,12 +311,12 @@ $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}
 \end{tabularx}
 
 The soil moisture content at field capacity, {\bf $\theta$$_{{\rm fc}}$} (acronym: {\bf SMFCF}), 
-and the soil moisturecontent at wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}), 
+and the soil moisture content at wilting point, {\bf $\theta$$_{{\rm wp}}$} (acronym: {\bf SMW}), 
 are soil specific and should be given by the user. The soil water depletion fraction, p, is 
-a function of the potential evapotranspir\-ation rate (for a closed canopy) and the crop group 
+a function of the potential evapotranspiration rate (for a closed canopy) and the crop group 
 number. It is established in subroutine
 {\bf SWEAF}. In literature, instead of the term soil water depletion fraction, also the 
-expres\-sion easily available water is used. Easily available water is defined as the amount of
+expression easily available water is used. Easily available water is defined as the amount of
 water between $\theta$$_{{\rm fc}}$ and $\theta$$_{{\rm wp}}$ which can be extracted from the root 
 zone without reducing the
 transpiration. Indicative p-values for the most important crops at different values of ET0
@@ -321,8 +326,8 @@ presented in Table 6.2.
 
 \begin{table}
 % Table 6.1
-\caption{Soil water depletion fraction (p) as a function of potential evapotranspira\-tion 
-of a closed crop canopy for different crop groups (Doorenbos {\it et al\/}.,1978).}
+\caption{Soil water depletion fraction (p) as a function of potential evapotranspiration 
+of a closed crop canopy for different crop groups (Doorenbos {\it et al}.,1978).}
 \label{tbl:soilwatdeplfraction}
 \begin{tabularx}{\textwidth}{Xrrrrrrrrr}
 \hline
@@ -341,7 +346,7 @@ group$^{\rm *}$ & 0.2 & 0.3 & 0.4 & 0.5 & 0.6 & 0.7 & 0.8 & 0.9 & 1.0\\
 
 \begin{table}
 % Table 6.2
-\caption{Example of crops in the different crop groups (Doorenbos {\it et al\/}., 1978).}
+\caption{Example of crops in the different crop groups (Doorenbos {\it et al}., 1978).}
 \label{tbl:ExampleCropGroups}
 \begin{tabularx}{\textwidth}{lX}
 \hline
@@ -360,7 +365,7 @@ Group no & Representative crop types\\
 \end{tabularx}
 \end{table}
 
-The soil water depletion fraction for very high values of potential evapotranspir\-ation of a
+The soil water depletion fraction for very high values of potential evapotranspiration of a
 closed canopy can be as low as 0.10. For very low values of potential evapotranspiration
 of a closed canopy this fraction can be as high as 0.96.
 Note that it is possible that the reduction factor R$_{{\rm ws}}$ (eq. 6.8) might obtain values higher
@@ -368,7 +373,8 @@ than unity and lower than zero for certain values of p and $\theta$$_{{\rm t}}$.
 any sense, in the model the highest possible value for R$_{{\rm ws}}$ is set to unity and the lowest
 possible value is set to zero.
 An empirical formula can be used to calculate the fraction of easily available soil water,
-yielding identical values as the ones given in the Table 6.1 (van Diepen {\it et al\/}., 1988).
+yielding identical values as the ones given in the Table \ref{tbl:soilwatdeplfraction} 
+(van Diepen {\it et al}., 1988).
 
 \begin{equation}
 % eq 6.10
@@ -388,7 +394,7 @@ Note that crop group number, {\bf No$_{{\rm cg}}$} (acronym: {\bf DEPNR}) is inp
 be provided by the user.
 
 For crop group 1 and 2 this estimate is not very accurate and an additional correction is
-applied to reproduce the table values correctly (van Diepen {\it et al\/}., 1988):
+applied to reproduce the table values correctly (van Diepen {\it et al}., 1988):
 
 \begin{equation}
 %eq 6.11
@@ -403,10 +409,10 @@ No$_{{\rm cg}}$ &:& Crop Group number {\small (=1 to 5, Doorenbos et al., 1978)}
 \end{tabularx}
 
 \subsection{Reduction of the transpiration due to oxygen stress}
-The transpiration rate of the plants can also be reduced when the rootzone is completely
+The transpiration rate of the plants can also be reduced when the root zone is completely
 saturated. Root systems which have been developed in aerobic soils do not have airducts
 and degenerate within several days when anaerobic conditions (waterlogging) are imposed
-(Penning de Vries {\it et al\/}., 1989). Flooding quickly depletes the O$_{{\rm 2}}$ in the soil and root cells
+(Penning de Vries {\it et al}., 1989). Flooding quickly depletes the O$_{{\rm 2}}$ in the soil and root cells
 disintegrate when their metabolic activities are hampered by oxygen depletion. For
 detailed information on the physiological effects of excess water on a crop see Jackson
 and Drew (1984).
@@ -448,15 +454,17 @@ Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  R$_{{\rm os,max}}$ &:& Maximum reduction factor due to oxygen shortage & [-]\\
  R$_{{\rm os}}$ &:& Reduction factor due to oxygen shortage & [-]\\
- $\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+ $\theta$$_{{\rm air}}$ &:& Critical soil moisture content for aeration 
+     & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
  $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm t}}$ &:& Actual soil moisture content (see eq. 6.34) & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+ $\theta$$_{{\rm t}}$ &:& Actual soil moisture content (see eq. \ref{eq:6.34}) 
+     & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
  No$_{{\rm d}}$ &:& Number of successive days with oxygen stress & [-]\\
 \end{tabularx}
 
 For crops which roots develop airducts, like for example rice, and for crops grown on
 perfectly drained land, the reduction factor for oxygen shortage equals unity. If this ratio
-is less then unity, the actual transpiration rate is reduced proportionally. \\
+is less then unity, the actual transpiration rate is reduced proportionally.
 
 Usually, in freely draining soils oxygen stress does not play any role. It may occur when
 the critical soil moisture content for aeration is greater than the soil moisture content at
@@ -477,12 +485,13 @@ T_{a~} = R_{ws} \,\, R_{os} \,\, T_{m}
 Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
  T$_{{\rm a}}$ &:& Actual transpiration rate & [cm d$^{{\rm -1}}$]\\
- T$_{{\rm m}}$ &:& Maximum transpiration rate (see eq. 6.4) & [cm d$^{{\rm -1}}$]\\
+ T$_{{\rm m}}$ &:& Maximum transpiration rate (see eq. \ref{eq:6.4}) & [cm d$^{{\rm -1}}$]\\
  R$_{{\rm os}}$ &:& Reduction factor due to oxygen reduction & [-]\\
- R$_{{\rm ws}}$ &:& Reduction factor due to water shortage (see eq. 6.8) & [-]\\
+ R$_{{\rm ws}}$ &:& Reduction factor due to water shortage (see eq. \ref{eq:6.8}) & [-]\\
 \end{tabularx}
  
 \section{Soil water balance calculations, potential production}
+\label{sec:WATPP}
 
 In the subroutine {\bf WATPP}, the variables of the soil water balance in the potential 
 production situation are calculated. The purpose is to quantify the crop water requirements for
@@ -502,12 +511,12 @@ Where:\\[5pt]
  
 Rainfall, irrigation, capillary rise and drainage are not taken into account. This does not
 mean that these processes will not occur. The result of these processes will be a soil
-moisture content at field capacity level. The only two processes to consider are evapora\-tion of 
+moisture content at field capacity level. The only two processes to consider are evaporation of 
 the surface and the transpiration of the crops. In the previous paragraph the
 calculation of these processes is described in detail.
 
 The evaporation rate is calculated for two situations. In the first situation
-Airducts are present in the roots. This means that the crop tolerates waterlog\-ging. This
+Airducts are present in the roots. This means that the crop tolerates waterlogging. This
 is the case for example with rice. The evaporation rate is then calculated as the 
 evaporation rate from a shaded water surface:
 
@@ -537,16 +546,17 @@ Where:\\[5pt]
 \begin{tabularx}{\textwidth}{llXr}
     E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface & [cm d$^{{\rm -1}}$]\\
     E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded
-    soil surface (see eq. 6.7) & [cm d$^{{\rm -1}}$]\\
+    soil surface (see eq. \ref{eq:6.7}) & [cm d$^{{\rm -1}}$]\\
     $\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
     $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
     $\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
 
 \section{System without groundwater influence}
+\label{sec:WATFD}
 
 In the subroutine {\bf WATFD}, the variables of the soil water balance in the actual 
-water-limited produc\-tion situation are calculated for freely draining soil. No influence from
+water-limited production situation are calculated for freely draining soil. No influence from
 groundwater is assumed. The purpose is to quantify the crop water requirements for
 continuous growth with either drought stress or water excess, and to quantify a possible
 reduction of the crop transpiration rate, leading to a reduced growth.
@@ -582,7 +592,7 @@ percolation and the loss of water beyond the maximum root zone.
 
 As mentioned earlier, no groundwater influence is assumed, therefore capillary rise is not
 accounted for. Only downward flow, evaporation from the soil surface and transpiration
-are included in the calcula\-tions. 
+are included in the calculations. 
 
 \subsection{Elements of the water balance  }
 
@@ -611,8 +621,8 @@ It should be mentioned that the initial actual soil moisture content, $\theta$$_
 than the soil moisture content at wilting point. In case the crop cannot develop airducts,
 the initial soil moisture content cannot be higher than the soil moisture content at field
 capacity. If the crop can develop airducts the initial soil moisture content cannot exceed
-the soil porosity. {\bf W$_{{\rm av}}$} (acronym: {\bf WAV}), the initial amount of available soil moisture in
-excess of $\theta$$_{{\rm wp}}$ should be provided by the user. 
+the soil porosity. {\bf W$_{{\rm av}}$} (acronym: {\bf WAV}), the initial amount of available 
+soil moisture in excess of $\theta$$_{{\rm wp}}$ should be provided by the user. 
 
 Multiplying the actual soil moisture content with the rooting depth yields the initial
 amount of water in the rooted zone. The initial amount of soil moisture in the lower zone,
@@ -630,8 +640,10 @@ Where:\\[5pt]
     in excess of $\theta$$_{{\rm wp}}$ & [cm]\\
  RD$_{{\rm max}}$ &:& Maximum rooting depth & [cm]\\
  RD &:& Actual rooting depth & [cm]\\
- $\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted zone  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
- $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point  & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+ $\theta$$_{{\rm t}}$ &:& Actual soil moisture content in rooted zone  
+     & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+ $\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point  
+     & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
 \end{tabularx}
 
 The soil moisture content of the lower zone is also limited by the field capacity in case
@@ -653,7 +665,7 @@ actual evaporation rate from the soil is equal to the maximum evaporation from a
 soil surface. All water on the surface can infiltrate within one day. The value of the
 variable days since last rain, D$_{{\rm slr}}$, is reset to unity.
 
-If the infiltration rate is less than 1 cm d$^{{\rm -1}}$, the amount of infiltrated water is consid\-ered
+If the infiltration rate is less than 1 cm d$^{{\rm -1}}$, the amount of infiltrated water is considered
 too small to justify a reset of the parameter D$_{{\rm slr}}$ and the evaporation rate decreases as the
 top soil starts drying. The reduction of the evaporation is thought to be proportional to the
 square root of time (Stroosnijder, 1987, 1982). The evaporation can be calculated as:
@@ -695,7 +707,7 @@ implemented in WOFOST 6.0.
 \centering
 \includegraphics[width=110mm]{\FigDir/RED.pdf}
 \caption{Reduction factor of the non infiltrating fraction as a function of rainfall.}
-\label{fig:CropGrowthProcesses}
+\label{fig:NonInfiltFrac}
 \end{figure}
     
 \subsubsection{Percolation}
@@ -739,7 +751,7 @@ RD &:& Actual rooting depth  & [cm]\\
 
 
 
-The percolation rate is limited by the conduc\-tivity of the wet soil (acronym: {\bf SOPE}) in the
+The percolation rate is limited by the conductivity of the wet soil (acronym: {\bf SOPE}) in the
 same way as the infiltration is limited. The conductivity is soil specific and should be
 given by the user. Note that the percolation from the root zone to the lower zone can be
 limited by the up take capacity of the lower zone. Therefore, the value calculated with 
@@ -785,17 +797,17 @@ RD$_{{\rm max}}$ &:& Maximum rooting depth  & [cm]\\
 RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
 
-For rice an addi\-tional limit of five percent of the saturated soil conductivity is set to
+For rice an additional limit of five percent of the saturated soil conductivity is set to
 account for the effect of puddling (a rather arbitrary value, which may be easily changed
 in the program). The saturated soil conductivity (acronym: {\bf K0}) is soil specific. In the
 model, K0 is calculated using equating 6.67 with pF= -1.0 (i.e. a hydraulic head of 0.1
 cm) The percolation rate from the lower zone to the sub soil is not to exceed this value
-(van Diepen {\it et al\/}., 1988). 
+(van Diepen {\it et al}., 1988). 
 
 As mentioned before, the value calculated with equation 6.21, should be regarded as
 preliminary. The storage capacity of the receiving layer may become limiting. The
 storage capacity of the lower zone, also called the uptake capacity, is the amount of air
-plus the loss (van Diepen {\it et al\/}., 1988). The storage capacity can de defined as:
+plus the loss (van Diepen {\it et al}., 1988). The storage capacity can de defined as:
 
 \begin{equation}
 % eq 6.25
@@ -842,7 +854,7 @@ $\Delta$t &:& Time step  & [d]\\
 The maximum fraction of rain not infiltrating during time step t, {\bf F$_{{\rm I}}$} 
 (acronym: {\bf NOTINF})
 can be either set to a fixed value or be made variable by multiplying F$_{{\rm I}}$ 
-with a precipita\-tion dependent reduction factor {\bf C$_{{\rm I}}$} (acronym: {\bf NINFTB}). 
+with a precipitation dependent reduction factor {\bf C$_{{\rm I}}$} (acronym: {\bf NINFTB}). 
 If the fraction is variable, it means that it is maximum for high rainfall amounts, and 
 that it will be reduced for low rainfall. The user should provide F$_{{\rm I}}$. 
 Values of the C$_{{\rm I}}$ table are included in the model and
@@ -850,7 +862,7 @@ are assumed to be fixed. The infiltration rate calculated is preliminary, as the
 capacity of the soil is not yet taken into account. 
 
 If the actual surface storage is more than 0.1 cm, the available water which can 
-potential\-ly infiltrate, is equal to the amount of water, present on the surface, that is supplied via
+potentially infiltrate, is equal to the amount of water, present on the surface, that is supplied via
 rainfall and irrigation and depleted via evaporation from the water surface:
 
 \begin{equation}
@@ -875,8 +887,8 @@ by the user.
 
 \subsubsection{Adjusted infiltration}
 The total loss of water from the root zone can now be calculated as the sum of the
-transpiration, the evaporation and the perco\-lation. The sum of this loss and the available
-pore space in the root zone define the maximum infiltra\-tion rate. The preliminary
+transpiration, the evaporation and the percolation. The sum of this loss and the available
+pore space in the root zone define the maximum infiltration rate. The preliminary
 infiltration rate cannot exceed this value. The maximum possible infiltration rate is given
 by:
 
@@ -1016,11 +1028,12 @@ RD &:& Actual rooting depth  & [cm]\\
 
 
 \section{System with groundwater influence  }
+\label{sec:WATGW}
 
 In the subroutine {\bf WATGW} the variables of the soil water balance in the actual 
-water-limited produc\-tion situation are calculated. Influence from groundwater is assumed. The
+water-limited production situation are calculated. Influence from groundwater is assumed. The
 purpose is to quantify the crop water requirements for continuous growth with either
-drought stress or water excess, and to quantify a possible reduction of the crop transpira\-tion 
+drought stress or water excess, and to quantify a possible reduction of the crop transpiration 
 rate, leading to a reduced growth.
 
 \subsection{Submodel with groundwater influence  }
@@ -1068,7 +1081,7 @@ percolation. The soil moisture profile in the soil between groundwater and roote
 assumed to be again in equilibrium. (in fact a contradiction with capillary rise or
 percolation).
 
-Difficulty arises when the groundwater rises into the rooted zone. The following proce\-dure is 
+Difficulty arises when the groundwater rises into the rooted zone. The following procedure is 
 then applied:
 \begin{itemize}
 \item To simplify the calculations, it is assumed that in the current time step the
@@ -1123,12 +1136,12 @@ cm and 0.1 cm respectively. In the model a pF table is constructed (acronym: {\b
 It is the inverse of the SMTAB table.
 
 First, the model calculates a table with values of the cumulative soil air volume above the
-ground\-water level at equilibrium. Under equilibrium conditions, the matric head values
+groundwater level at equilibrium. Under equilibrium conditions, the matric head values
 are numerically equal to the height at which they occur. With soil air volume, the
-cumulat\-ive amount of air as a function of height above groundwater under equilibrium
+cumulative amount of air as a function of height above groundwater under equilibrium
 conditions is meant (acronym: {\bf SDEFTB}). The values of the cumulative amount of air for
 the following values of height (matric head, also called soil suction): 0,2,4,8,16,32,64,
-12\-8,..,16384 cm are calculated and put into an AFGEN table. 
+128,..,16384 cm are calculated and put into an AFGEN table. 
 
 To calculate the cumulative air amount, the soil air content has to be integrated over the
 intervals mentioned above. The three point Gaussian integration method is used in the
@@ -1191,7 +1204,7 @@ $\psi$$_{{\rm 0}}$ &:& Lower boundary interval matric head  & [cm]\\
 \end{tabularx}
 
 Using the equations 6.35, 6.36, 6.37 and 6.38, the cumulative amount of air as a function
-of height above groundwater under equilibri\-um conditions can now be calculated as: 
+of height above groundwater under equilibrium conditions can now be calculated as: 
 
 \begin{equation}
 % eq 6.39
@@ -1212,7 +1225,7 @@ cumulative air amount, $\psi$(A$_{{\rm air}}$) (acronym: {\bf DEFDTB}), is also 
 the inverse of the table calculated above.
 
 With the use of equation 6.39, the soil air amount above the water table at equilibrium,
-the initial state variables of the water balance can be computed. These are, the equilibri\-um amount of moisture in the subsoil, in the root zone and above the drains up to the
+the initial state variables of the water balance can be computed. These are, the equilibrium amount of moisture in the subsoil, in the root zone and above the drains up to the
 surface. Before this can be done however, the soil air volume below the rooted zone, in
 the root zone and above the drains up to the surface has to be established. To estimate the
 amount of air at a specific depth at equilibrium, the height of that specific level above soil
@@ -1290,8 +1303,8 @@ $\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
 
 A positive flow rate is defined as capillary rise whereas a negative flow rate is considered
-as percola\-tion. For rice crops the percolation is limited to 5\% of the estimated soil
-specific hydraulic conductiv\-ity, to account for the effect of puddling. This is a rather
+as percolation. For rice crops the percolation is limited to 5\% of the estimated soil
+specific hydraulic conductivity, to account for the effect of puddling. This is a rather
 arbitrary value.
 
 \subsubsection{Drainage}
@@ -1408,7 +1421,7 @@ To simplify calculations, the groundwater is not allowed to enter the root zone 
 current time step. This could happen in case the new air amount between ground-water
 and root zone, A$_{{\rm new}}$, assumes a negative value. The groundwater level is allowed to rise
 maximally till the lower boundary of the root zone (A$_{{\rm new}}$=0). In the next time step the
-groundwater may rise further. Therefore, the percolation rate is con\-strained to prevent
+groundwater may rise further. Therefore, the percolation rate is constrained to prevent
 such an occasion. 
 
 \begin{equation}
@@ -1424,7 +1437,7 @@ $\Delta$t &:& Time step  & [d]\\
 \end{tabularx}
 
 The definitive value of the percolation is now known and used to constrain the rate of the
-maximum possible infiltra\-tion rate. This is done in order to prevent an over saturated root
+maximum possible infiltration rate. This is done in order to prevent an over saturated root
 zone.
 
 The maximum possible infiltration equals the available soil air volume which is given by:
@@ -1456,7 +1469,7 @@ The equilibrium profile is assumed and the new height of the root zone above the
 groundwater level (i.e. matric head at the root tip) can now be obtained from the relation
 between height above the groundwater table and the cumulative air amount $\psi$(A$_{{\rm air}}$), by
 introducing the new air amount between the root zone and the groundwater level, A$_{{\rm new}}$,
-into this relation. Adding the actual rooting depth, RD, yields the depth of the groundwa\-ter 
+into this relation. Adding the actual rooting depth, RD, yields the depth of the groundwater 
 table. The rate of change of the groundwater level is found by subtracting the old
 value of the groundwater depth from the new value of the groundwater depth. 
 
@@ -1480,7 +1493,7 @@ user.
 
 \subsubsection{Groundwater table within the rooted zone}
 When the groundwater enters the rooted zone, the air concentration in the root zone is
-calcu\-lated. The percolation is assumed to equal the maximum drainage rate. The root
+calculated. The percolation is assumed to equal the maximum drainage rate. The root
 zone is divided into a part saturated with water, and an unsaturated part. The initial air
 concentration is maintained in the unsaturated part. This implies that an increase of the
 water content leads to a shallower unsaturated part and hence to a rising groundwater
@@ -1488,7 +1501,7 @@ level.
 
 This rather artificial construction is necessary because of the inter-dependence of the
 water content and the groundwater depth. In this system the relation between water
-content and groundwater depth is (van Diepen {\it et al\/}., 1988):
+content and groundwater depth is (van Diepen {\it et al}., 1988):
 
 \begin{equation}
 % eq 6.49
@@ -1533,7 +1546,7 @@ $Perc$ &:& Percolation rate  & [cm d$^{{\rm -1}}$]\\
 \end{tabularx}
 
 In the model, two different situations are distinguished. During the current time step the
-ground\-water stays within the rootzone or the groundwater level drops below the root
+groundwater stays within the rootzone or the groundwater level drops below the root
 zone. When the groundwater table stays within the root zone, the change in the depth of
 the groundwater table can be established by using the rates of transpiration, evaporation,
 percolation and infiltration. Transpiration, evaporation and percolation cause an increase
@@ -1584,7 +1597,7 @@ and the rate of change of the groundwater depth can be found by subtracting the 
 of the groundwater depth from the new value of the groundwater depth (see eq. 6.48). 
 
 \subsubsection{Moisture amount}
-The rate of change in amount of moisture in the root zone is calculated in a straightfor\-ward 
+The rate of change in amount of moisture in the root zone is calculated in a straightforward 
 way from the calculated flow rates:
 
 \begin{equation}
@@ -1660,6 +1673,7 @@ days of water logging occur and the crop cannot develop airducts. Water logging 
 in the model as a groundwater depth of less than 10 cm.
 
 \section{Calculation of capillary flow  }
+\label{sec:CapillaryFlow}
 
 In subroutine {\bf SUBSOL} the capillary flow is calculated. The capillary rise is defined as
 the flow between the groundwater table and the root zone, whereas  percolation is defined
@@ -1727,8 +1741,8 @@ pF &:& pF value  & [-]\\
 The pF value in equation 6.59 is calculated using the AFGEN table PFTAB with the soil
 moisture content as the independent variable. The PFTAB table is constructed out of the
 SMTAB table. If the calculated matric head is smaller than or equal to zero the hydraulic
-conduc\-tivity is set equal to the saturated conductivity. For these conditions the flow can
-be calculat\-ed as:
+conductivity is set equal to the saturated conductivity. For these conditions the flow can
+be calculated as:
 
 \begin{equation}
 % eq 6.60

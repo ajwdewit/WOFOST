@@ -571,9 +571,10 @@ t$_{{\rm d}}$ &:& Number of day since 1 January  & [-]\\
 
 Note that during the winter in Europe the solar radiation at the top of the atmo\-sphere is at 
 its maximum! The height of the sun at any moment throughout the day and at any place and date can be
-calculated with (subroutine {\bf TOTASS}):
+calculated with (subroutine {\bf ASTRO}):
 
 \begin{equation}
+\label{eq:SolarElevation}
 \sin \beta = \sin \lambda \sin \delta + \cos \lambda \cos \delta \cos (2 \pi {\frac{(t _{h} +12)}{24}} )
 \end{equation}
 

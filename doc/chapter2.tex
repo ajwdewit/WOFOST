@@ -4,9 +4,9 @@ The processes which characterize crop growth, have to be ordered in a rational w
 simulate crop growth. This manual describes these processes as they are imple\-ment\-ed in
 WOFOST 6.0. The subroutines are presented in relation to the described process\-es. 
 
-This chapter provides some basic information on the development of WOFOST (\S 2.1),
-the applications of WOFOST (\S 2.2) and on the function\-ality of WOFOST (\S 2.3). Chapter
-3 provides information on the structure of the Euler integra\-tion which is used to integrate
+This chapter provides some basic information on the development of WOFOST (\S \ref{sec:2.1}),
+the applications of WOFOST (\S \ref{sec:2.2}) and on the function\-ality of WOFOST (\S \ref{sec:2.3}). 
+Chapter 3 provides information on the structure of the Euler integra\-tion which is used to integrate
 the variables over time. Chapter 4 discusses the calculation and conversion of meteorolog\-ical data like: calculation of potential evapo\-(trans)piration, calculation of day length and
 solar elevation. Chapter 5 discusses how the crop growth processes are simulated like:
 daily assimilation, mainte\-nance respiration, growth respira\-tion, parti\-tioning of assimilates,
@@ -22,6 +22,7 @@ describe the crop growth do not differ in both versions. They will be explained 
 following text.
 
 \section{\index{WOFOST}Development of WOFOST}
+\label{sec:2.1}
 
 WOFOST originated in the framework of an interdisciplinary study on the potential world
 food production by the Centre for World Food Studies (CWFS) in coopera\-tion with the
@@ -62,6 +63,7 @@ if needed, averaging can be done only {\it after} the simula\-tion. In other wor
 and average later (De Wit and Van Keulen, 1987; Nonhebel, 1994).
 
 \section{\index{WOFOST}Applications of WOFOST  }
+\label{sec:2.2}
 
 Over the last ten years, the successive WOFOST versions and their derivates have been
 used in many studies. WOFOST has been applied as a tool for the analysis of yield risk
@@ -164,6 +166,7 @@ of tropical rainforest by adapting WOFOST 4.1. De Ruijter {\it et al}. (1993) re
 WOFOST into a model simulating tulip growth.
 
 \section{Functionality  }
+\label{sec:2.3}
 
 Crop growth is often described by an empirical model, consisting of a regression equation
 (e.g. a logistic function). Sometimes, environmental variables, such as radiation and
@@ -186,8 +189,8 @@ conditions. Dry matter accumulation of a crop can thus be calculated as a functi
 of meteorological parameters such as irradiation, temperature, windspeed, etc. and crop
 characteristics. The meteorological data are often measured on a daily basis. This is the
 reason why the time step, $\Delta$t (or delt), for simulation is set to one day, which on its turn,
-means that crop growth is simulated on a daily basis. Figure 2.1 illustrates how the main
-processes are organized in the WOFOST model.
+means that crop growth is simulated on a daily basis. Figure \ref{fig:DailySimLoop} illustrates 
+how the main processes are organized in the WOFOST model.
 
 \begin{figure}[htbp]
 %Fig. 2.1
@@ -195,6 +198,7 @@ processes are organized in the WOFOST model.
 \includegraphics[width=80mm]{\FigDir/DAGLOOP.pdf}
 \caption{Daily calculations of the simulation of crop growth}
 % \begin{center}\epsfig{file=\FigDir/DAGLOOP.eps,width=8.04cm} \end{center}
+\label{fig:DailySimLoop}
 \end{figure}
 
 \subsection{Timer}
