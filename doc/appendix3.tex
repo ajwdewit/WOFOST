@@ -1,0 +1,221 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+
+
+\begin{document}
+\setcounter{page}{124}\pagenumpos{\pnbr}
+\section{  APPENDIX 3  }
+
+\bigskip
+{\bf {\large Input in the model}}
+
+{\bf Crop specific variables}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\uline{Acronym}\> \> \uline{Symbol}\> \uline{Description}\> \> \> \> \> \> \> \uline{Units}
+\end{tabbing}
+
+ \bigskip
+Initial values\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+LAIEM\> \> -\> leaf area index at emergence\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+TDWI\> \> W\> initial total dry weight of the crop\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ \\
+RGRLAI\> \> RL\> maximum relative increase in leaf area index\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$
+\end{tabbing}
+
+\bigskip
+Emergence\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+TBASEM\> \> T$_{{\rm b}}$\> lower threshold temperature below which phenological \\
+\>\> \> development stops\> \> \> \> \> \> \> \degrees C\\
+TSUMEM\> \> R\> threshold temperature sum from sowing to emergence\> \> \> \> \> \> \> \degrees C\\
+TEFFMX\> \> R\> maximum effective temperature for emergence\> \> \> \> \> \> \> \degrees C
+\end{tabbing}
+
+\bigskip
+Phenology\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+DLC\> \> D$_{{\rm c}}$\> critical day length for development (lower threshold)\> \> \> \> \> \> \> h\\
+DLO\> \> D$_{{\rm o}}$\> optimum day length for development\> \> \> \> \> \> \> h\\
+IDSL\> \> -\> indicates whether pre-anthesis development depends on temperature\\
+\>\> \> (0) temperature, (1) daylength, (2) temperature and daylength\\
+DTSMTB\> \> DT$_{{\rm s}}$\> daily increase in temperature sum as a function \\
+\>\> \> of temperature (AFGEN table)\> \> \> \> \> \> \> \degrees C\\
+TSUM1\> \> $\Sigma$T$_{{\rm i}}$\> threshold temperature sum from emergence to anthesis\> \> \> \> \> \> \> \degrees C\\
+TSUM2\> \> $\Sigma$T$_{{\rm i}}$\> threshold temperature sum from anthesis to maturity\> \> \> \> \> \> \> \degrees C\\
+DVSEND\> \> -\> development stage at harvest
+\end{tabbing}
+
+\bigskip
+Green Area\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+SLATB\> \> S$_{{\rm la}}$\> specific leaf area as a function of development stage (AFGEN table)\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SPA\> \> SS$_{{\rm so}}$\> specific pod area\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SPAN\> \> -\> life span of leaves growing at an average temperature of 35 \degrees C\> \> \> \> \> \> \> d\\
+SSA\> \> SS$_{{\rm st}}$\> specific stem area\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$
+\end{tabbing}
+
+\bigskip
+Assimilation\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+AMAXTB\> \> A$_{{\rm m}}$\> maximum CO2 assimilation rate as a function of\\
+\>\> \> development stage of the crop (AFGEN table)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$\\
+EFF\> \> $\epsilon$\> initial light use efficiency of CO2 assimilation of single leaves \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ J$^{{\rm -1}}$ m$^{{\rm 2}}$s\\
+KDIF\> \> $\kappa$$_{{\rm df}}$\> extinction coefficient for diffuse visible light\> \> \> \> \> \> \> -\\
+TMNFTB\> \> -\> correction factor of daily gross CO2 assimila\-tion rate as a\\
+\>\> \> function of T$_{{\rm low}}$ (AFGEN table)\> \> \> \> \> \> \> \degrees C\\
+TMPFTB\> \> -\> correction factor of maximum leaf CO2 assimila\-tion rate as a\\
+\>\> \> function of sub-optimum average day temperatu\-res, T$_{{\rm day}}$ (AFGEN table)\> \> \> \> \> \> \> \degrees C
+\end{tabbing}
+
+\bigskip
+Conversion of assimilates into biomass\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+CVL\> \> C$_{{\rm e,lv}}$\> efficiency conversion of assimilates into leaf dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVO\> \> C$_{{\rm e,so}}$\> efficiency conversion of assimilates into storage organ dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVR\> \> C$_{{\rm e,rt}}$\> efficiency conversion of assimilates into root dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVS\> \> C$_{{\rm e,st}}$\> efficiency conversion of assimilates into stem dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+Q10\> \> Q$_{{\rm 10}}$\> relative increase of the respiration rate per 10\degrees C\\
+\>\> \> temperature increase\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+ \uline{Acronym}\> \> \uline{Symbol}\> \uline{Description}\> \> \> \> \> \> \> \uline{Units}
+\end{tabbing}
+
+ \bigskip
+Maintenance respiration\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+FSETB\> \> -\> reduction factor for the maintenance respiration as a function \\
+\>\> \> of DVS (AFGEN table)\> \> \> \> \> \> \> -\\
+RML\> \> c$_{{\rm m,lv}}$\> maintenance respiration rate coefficient of leaves\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RMO\> \> c$_{{\rm m,so}}$\> maintenance respiration rate coefficient of storage organs\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RMS\> \> c$_{{\rm m,rt}}$\> maintenance respiration rate coefficient of stems\> \> \> \> \> \> \> d$^{{\rm -1}}$ \\
+RMR\> \> c$_{{\rm m,rt}}$\> maintenance respiration rate coefficient of roots\> \> \> \> \> \> \> d$^{{\rm -1}}$ 
+\end{tabbing}
+
+\bigskip
+Partitioning\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+FLTB\> \> pc$_{{\rm lv}}$\> fraction of above-ground dry-matter increase partitioned to leaves\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FOTB\> \> pc$_{{\rm so}}$\> fraction of above-ground dry-matter increase partitioned to storage\\
+\>\> \> organs as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FRTB\> \> pc$_{{\rm rt}}$\> fraction of total dry-matter increase partitioned to roots\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FSTB\> \> pc$_{{\rm st}}$\> fraction of above-ground dry-matter increase partitioned to stems\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+Death rate\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+PERDL\> \> \dag $_{{\rm max,lv}}$\> maximum relative death rate of leaves due to water stress\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RDRRTB\> \> \dag $_{{\rm rt}}$\> relative death rate of roots as a function of DVS (AFGEN table)\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RDRSTB\> \> \dag $_{{\rm st}}$\> relative death rate of stems as a function of DVS (AFGEN table)\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+TBASE\> \> T$_{{\rm b,age}}$\> lower threshold temperature for physiological ageing of leaves\> \> \> \> \> \> \> \degrees C 
+\end{tabbing}
+
+\bigskip
+Water use\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+CFET\> \> -\> correction factor for evapotranspiration\> \> \> \> \> \> \> -\\
+DEPNR\> \> No$_{{\rm cg}}$\> crop group number\> \> \> \> \> \> \> -\\
+IAIRDU\> \> -\> indicates presence (1) or absence (0) of airducts in the plant\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+Rooting\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+RDI\> \> RD$_{{\rm I}}$\> initial rooting depth\> \> \> \> \> \> \> cm\\
+RDMCR\> \> RD$_{{\rm crop}}$\> crop-dependent maximum rooting depth\> \> \> \> \> \> \> cm\\
+RDMSOL\> \> RD$_{{\rm soil}}$\> soil-dependent maximum rooting depth\> \> \> \> \> \> \> cm\\
+RRI\> \> RR$_{{\rm max}}$\> maximum daily increase of rooting depth\> \> \> \> \> \> \> cm d$^{{\rm -1}}$
+\end{tabbing}
+ 
+
+\bigskip
+{\bf Soil specific variables}
+
+Soil water retention\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+SMW\> \> $\theta$$_{{\rm wp}}$\> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> $\theta$$_{{\rm fc}}$\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM0\> \> $\theta$$_{{\rm max}}$\> soil porosity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+WAV\> \> W$_{{\rm av}}$\> initial available soil water amount in excess of $\theta$$_{{\rm wp}}$\> \> \> \> \> \> \> cm\\
+NOTINF\> \> F$_{{\rm I}}$\> maximum fraction of rain not infiltrating into the soil\> \> \> \> \> \> \> -\\
+CRAIRC\> \> $\theta$$_{{\rm c}}$\> critical soil air content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+CONTAB\> \> K(pF)\> $^{{\rm 10}}$log hydraulic conductivity as a function of the pF (AFGEN table)\> \> \> \> \> \> \> log(cm)
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+Percolation\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+K0\> \> K\> hydraulic conductivty\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+SOPE\> \> -\> maximum percolation rate rote zone\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+KSUB\> \> -\> maximum percolation rate subsoil\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+SSMAX\> \> SS$_{{\rm max}}$\> maximum surface storage capacity\> \> \> \> \> \> \> cm\\
+DD\> \> DD\> drainage depth\> \> \> \> \> \> \> cm\\
+ZTI\> \> -\> initial depth of the groundwater table\> \> \> \> \> \> \> cm
+\end{tabbing}
+
+\bigskip
+Soil workability\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+SPADS\> \> Sp$_{{\rm 1}}$\> first topsoil seepage parameter, deep seedbed\> \> \> \> \> \> \> -\\
+SPODS\> \> Sp$_{{\rm 2}}$\> second topsoil seepage parameter, deep seedbed\> \> \> \> \> \> \> -\\
+SPASS\> \> Sp$_{{\rm 1}}$\> first topsoil seepage parameter, shallow seedbed\> \> \> \> \> \> \> -\\
+SPOSS\> \> Sp$_{{\rm 2}}$\> second topsoil seepage parameter, shallow seedbed\> \> \> \> \> \> \> -\\
+IDESOW\> \> -\> earliest sowing date\> \> \> \> \> \> \> -\\
+IDLSOW\> \> -\> latest sowing date\> \> \> \> \> \> \> -
+\end{tabbing}
+\end{document}

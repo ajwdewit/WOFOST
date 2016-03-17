@@ -1,0 +1,1141 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+\usepackage[USenglish]{babel}
+
+
+\begin{document}
+\setcounter{page}{129}\pagenumpos{\pnbr}
+\section{  APPENDIX 5  }
+
+\bigskip
+{\bf {\large Versions of WO\-FOST 6.0}}
+
+Two versions of WOFOST 6.0 exist. One is the version currently implemented in the
+Crop Growth Monitoring System of the Joint Research Centre of the EC (Ispra, Italy) and
+a second one is a more general version. The main routine in the JRC version, SIMCRO,
+as well as the driving and organizing routines, are partly written in SQL. These SQL
+statements replace the data manipula\-tion routines in the general version, which are part of
+the TTUTIL FORTRAN library. The general version is completely written in FOR\-TRAN.
+
+Another important difference is the fact that the JRC version simulates crop growth on a
+continental scale, whereas the general version simulates crop growth for one station only.
+The grid which WOFOST JRC version uses, consists of 1350 cells of 50x50 kilometers
+and covers the whole of the EC. This means that the input data of the JRC ver\-{\nobreak}sion,
+weather-, plant-, and soil-data, refer to grid cells. This means, on its turn, that the input
+data first have to be manipulated to grid data before they can be used as input in the
+WOFOST model. The data manipulation of input and output is performed in ORACLE.
+This explains why SQL statements are used. The simulation results should also be
+interpreted on gridlevel. Bec\-ause of the use of SQL in the JRC version, and the different
+scale on which this version is used, it is clear that the main routine, the routines which
+handle and manipulate the data (meteorological, plant and soil) as well as the routines
+which organize the simulation, are different from the driving and organizing routines in
+the general version. See table A1 and table A2. 
+
+The routines which take care of the calculation of evapotranspiration and the simulation of
+crop growth, only differ in the way the input/output data are manipulat\-ed. The actual
+simulation calculations are the same in both versions. These routines are {\bf ASSIM},
+{\bf ASTRO}, {\bf CROPSI} (general version) or {\bf CRSIM} (JRC version), {\bf EVTRA}, {\bf PENMAN},
+{\bf ROOTD}, {\bf TOTASS}, {\bf SWEAF}, {\bf WATPP}, {\bf WATFD} and {\bf WATGW}. They are discussed in
+the chapters three, four and five. 
+
+It should be mentioned, that the JRC version does not contain a weather generator nor
+does it contain subrou\-tines which calculate the statistics of the potential produc\-tion or the
+water limited production. The subroutine which calculates the nutrient requirement and
+nutrient limited production is also omitted in the JRC version.
+
+Furthermore, it should be noted that the global radiation term, in the subroutine {\bf PEN\-MAN}, in both versions can be obtained, using the \AA ngstr\"{o}m equation. In the general
+version the empirical coefficients of this equation should be provided by the user.
+However, in the JRC version, these coefficients are estimated (subroutine {\bf METEO}). 
+
+In order to use the \AA ngstr\"{o}m equation, the sunshine duration should be known. If this
+parame\-ter is not available, in the subsequent JRC versions, the global radiation will be
+estimated using either the equation developed by Supit (1994) or the Hargreaves formula
+(1985). The method developed by Supit uses cloud cover and maximum and minimum
+temperature as input. The accuracy of the estimates is slightly less in comparison to the
+results obtained with the \AA ngstr\"{o}m formula. The Hargreaves formula uses maximum and
+minimum temperature only. The accuracy of this method is less then the accuracy of the
+two earlier mentioned methods.
+
+\bigskip
+{\large {\bf Functions and subroutines used in WOFOST 6.0 (JRC version)}}
+
+In table A1 the call structure of WOFOST 6.0 (JRC version) is depicted. Only the non
+standard subroutines are presented. The standard FORTRAN function such as SIN and
+COS have been omitted from the structure to make interpretation more easy. 
+
+The functionality of all subroutines and functions is briefly described. This description is
+split in two parts:\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+$\bullet$\> Non standard FORTRAN routines especially made for WOFOST 6.0;
+\end{tabbing}
+$\bullet$ 
+\testlastline
+
+\begin{indenting}{1.27cm}
+Non standard FORTRAN routines from the library TTUTIL (Rappoldt {\it et al.\/}
+1990);
+\end{indenting}
+
+Table A1 Call structure of subroutines and functions of WOFOST 6.0 (JRC version)
+
+\strut\hfill {\bf [ Run specification]}
+{\bf ...............................................................................................................................................................................................\-}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+SIMCRO\> ORA\_ERR\> \> CGM\_ORA\_ERR\\
+\>DLYLD\\
+\>DAYS\_BETWEEN\\
+\>PARAM\_CORRECT
+\end{tabbing}
+\strut\hfill {\bf [ Loop over years ]}\\
+ \GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>WOF60\> \> DCRPST\> \> DATES\> \> ERROR\\
+\>\> \> \> \> CGM\_ERROR\\
+\>\> \> \> \> ORA\_ERR
+\end{tabbing}
+\strut\hfill {\bf [ Loop over days ]}\\
+ \GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> \> WOFSIM\> \> TIMER\> \> ERROR\\
+\>\> \> \> \> METEO\> \> CGM\_ORA\_ERR\\
+\>\> \> \> \> \> \> PENMAN\\
+\>\> \> \> \> STDAY\> \> CGM\_ORA\_ERR\\
+\>\> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> CRSIM\> \> AFGEN\\
+\>\> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> ASTRO\\
+\>\> \> \> \> \> \> TOTASS\> \> ASSIM\\
+\>\> \> \> \> \> \> EVTRA\> \> SWEAF\> LIMIT\\
+\>\> \> \> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> CGM\_ERROR\\
+\>\> \> \> \> ROOTD\\
+\>\> \> \> \> CGM\_ERR\\
+\>\> \> \> \> WATPP\\
+\>\> \> \> \> WATFD\> \> LIMIT\\
+\>\> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> WATGW\> \> LIMIT\\
+\>\> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> \> SUBSOL\\
+\>\> \> \> \> DCRPST\\
+\>\> \> \> \> PRIWGW\> \> PAUZE
+\end{tabbing}
+\strut\hfill {\bf [ Loop over days ]}\\
+ \GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\\
+\strut\hfill {\bf [ Loop over years ]}\\
+ \GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\\
+\strut\hfill {\bf [ Run specification]}\\
+{\bf ...............................................................................................................................................................................................\-}\\
+ {\bf {\large WOFOST specific subroutines and functions (JRC version)}}
+
+AFGEN
+\testlastline
+
+\begin{indenting}{5.08cm}
+Function which is used for linear interpola\-tion in a one-di\-mensi\-onal array with paired data.
+\end{indenting}
+ASSIM
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates the gross CO$_{{\rm 2}}$ assimilation rate
+of a crop, using Gaussian integration over depth in the
+canopy. The assimilation rate is computed for given fluxes of
+photosyntheti\-cally active radiation, whereafter integration
+over depth takes place.
+\end{indenting}
+ASTRO
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates astronomic day length, diurnal
+radia\-tion characteristics such as atmospheric transmission,
+diffuse radiation etc.
+\end{indenting}
+CGM\_ERR
+\testlastline
+
+\begin{indenting}{5.08cm}
+Notifies user (at terminal) of an error during SQL, stops if
+error is fatal.
+\end{indenting}
+CRSIM
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which simulates the potential or water limited
+crop growth.
+\end{indenting}
+DATES
+\testlastline
+
+\begin{indenting}{5.08cm}
+Converts either a year and day number to a month num\-ber
+and a day number within that month (ACTI\-ON='TO\-{\nobreak}\_MONTHS') or the inverse, to a day number within in the
+year (ACTI\-{\nobreak}ON='TO\_YEAR'). Leap years are recognized.
+\end{indenting}
+DAYS\_BETWEEN
+\testlastline
+
+\begin{indenting}{5.08cm}
+Calculates the absolute number of days between date 1 and
+date 2.
+\end{indenting}
+DCRPST
+\testlastline
+
+\begin{indenting}{5.08cm}
+Calculates growth statistics for a period of one decade, (a
+month has three decades, days: 1-10, 11-20, 21-28, 29, 30,\-
+31).
+\end{indenting}
+DLYLD
+\testlastline
+
+\begin{indenting}{5.08cm}
+Deletes any record from SIM\_YIELD and CROP\_YIELD in
+the ORACLE database that have been filled during an unfin\-ished simulati\-on run.
+\end{indenting}
+EVTRA
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates for a given crop cover the maxi\-mum evaporation rate  from a shaded wet soil surfa\-ce and
+from a shaded water surface. It also calculates the maximum
+and actual crop transpiration rate.
+\end{indenting}
+METEO
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which provides the calling program with weat\-her
+data on grid. This includes rainfall and evapotranspi\-ra\-tion.
+\end{indenting}
+ORA\_ERR
+\testlastline
+
+\begin{indenting}{5.08cm}
+Notifies user (at terminal) of an error during SQL, skips "not
+found" warning.
+\end{indenting}
+PENMAN
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates the potential evapo(trans\-pi)ration
+rates from a free water surface, a bare soil surface and a
+crop canopy. The method developed by Penman is used.
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+PAUZE\> \> \> \> Wait for $<$return$>$ from keyboard.
+\end{tabbing}
+PARAM\_CORRECT
+\testlastline
+
+\begin{indenting}{5.08cm}
+Corrects the values of IENCHO, IDAYEN and IDUR\-MX,
+based on crop type.
+\end{indenting}
+PRIWGW
+\testlastline
+
+\begin{indenting}{5.08cm}
+Prints part of the standard output table, WOFOST.OUT
+showing variables of crop growth and waterbalance at inter\-val at a predefined print interval. The waterlimited produc\-tion is considered here without groundwater influence.
+\end{indenting}
+
+ \bigskip
+ ROOTD
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates the depth of the root for each
+day of the crop cycle.
+\end{indenting}
+SIMCRO
+\testlastline
+
+\begin{indenting}{5.08cm}
+Main procedure of the crop growth\-{\nobreak} simulati\-on model.
+\end{indenting}
+STDAY
+\testlastline
+
+\begin{indenting}{5.08cm}
+Determines the start day if a variable sowing date is chosen.
+\end{indenting}
+SUBSOL
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates the rate of capillary flow or
+perco\-lation between ground water table and root zone. The
+stationary flow is found by Gaussian integrati\-on. In an
+iteration loop the correct flow is found. The integrati\-on goes
+over four intervals at most.
+\end{indenting}
+SWEAF
+\testlastline
+
+\begin{indenting}{5.08cm}
+This function describes the relati\-onship given in tabular form
+by Dooren\-bos \& Kas\-sam (1979) and by Van Keulen \& Wolf
+(1986) of the fraction of easily available soil water between
+field capacity and wilting point as a function of the potential
+evapotranspirati\-on rate (for a closed canopy) in cm d$^{{\rm -1}}$ and
+the crop group number (from 1 (=drought-sensitive) to 5
+(=drought-resistent)).
+\end{indenting}
+TOTASS
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which calculates the daily gross CO$_{{\rm 2}}$ assimilati\-on
+by per\-forming a Gaussian integration over time. At three
+different times of the day, irradiance is computed and used
+to calculate the instantaneous canopy assimilati\-on, whereafter
+integration takes place. 
+\end{indenting}
+WATFD
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which keeps track of the soil water balance for
+freely draining soils in the water limited production situa\-tion.
+\end{indenting}
+WATGW
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which simulates the soil water balance is per\-formed for soils influenced by the presence of groun\-dwater.
+Two situati\-ons are distin\-guished: with or without artificial
+drainage. The soil water balance is calculated for a cropped
+field in the water-limited production situation.
+\end{indenting}
+WATPP
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which computes the variables of the soil water
+balan\-ce in the potential production situation. The purpose is
+to quantify the crop requirements for continuous growth
+without drought stress. It is assu\-med that the soil is per\-manently at field capacity.
+\end{indenting}
+WOF60
+\testlastline
+
+\begin{indenting}{5.08cm}
+Driving routine for the simulation routine WOFSIM. Takes
+care of run control, input/output options, the call of the
+potential and water limited run and the call of the years
+specific calculations.
+\end{indenting}
+WOFSIM
+\testlastline
+
+\begin{indenting}{5.08cm}
+This routine organizes the simulation of crop growth and of
+soil water balance conditions and the writing of reports by
+successive calls to the relevant weather, crop, soil water and
+printing subroutines in that order.
+\end{indenting}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\bf {\large Subroutines and functions from FORTRAN utility library TTUTIL}}
+
+ERROR
+\testlastline
+
+\begin{indenting}{5.08cm}
+Writes an error message to the screen and holds the screen
+until $<$RE\-TURN$>$ is pressed.\hfill  
+\end{indenting}
+LIMIT
+\testlastline
+
+\begin{indenting}{5.08cm}
+Returns value of X limited within a specified interval.\hfill  
+\end{indenting}
+TIMER
+\testlastline
+
+\begin{indenting}{5.08cm}
+Subroutine which updates the time (from the start of the
+simula\-tion) and related variables each time it is called with
+ITASK=2. It will set a flag to .TRUE. if the finish time of
+the simulation is reached (counted from start of simulation).
+The routine is initialized first by a call with ITASK=1. The
+first six arguments will then be made local. Leap years are
+handled correctly.\hfill  
+\end{indenting}
+
+\bigskip
+\bigskip
+\bigskip
+{\bf {\large Functions and subroutines used in WOFOST 6.0 (general version)}}
+
+In table A2 the call structure of WOFOST 6.0 general version is depicted. Only the non
+standard subroutines and functions are depicted. The standard FOR\-TRAN functions like
+SIN and COS have been omitted from the structure to make interpre\-tation more easy. The
+functionality of all subroutines and functions is described. This description is split in three
+parts:\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+$\bullet$\> Non standard FORTRAN routines especially made for WOFOST 6.0;
+\end{tabbing}
+$\bullet$ 
+\testlastline
+
+\begin{indenting}{1.27cm}
+Non standard FORTRAN routines from the library TTUTIL (Rappoldt {\it et al\/}.
+1990);
+\end{indenting}
+
+\bigskip
+Table A2 Call structure of subroutines and functions of WOFOST Version 6.0
+
+\strut\hfill {\bf [ Run specification ]}\\
+...............................................................................................................................................................................................\-\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+W60MAIN\> ILEN\\
+\>\> RDINIT\> \> RDDATA\> \> ILEN\\
+\>\> \> \> IFINDC\> \> ERROR\\
+\>\> \> \> UPPERC\\
+\>\> \> \> EXTENS\> \> ILEN\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> UPPERC\\
+\>\> \> \> RDINDX\> \> ILEN\\
+\>\> \> \> \> \> IFINDC\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> FOPENG\> \> ILEN\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> UPPERC\\
+\>\> \> \> \> \> \> \> LOWERC\\
+\>\> \> \> \> \> UPPERC\\
+\>\> \> \> ERROR\\
+\>\> \> \> FOPENG\\
+\>\> RDSCHA\> \> RDSCHA\\
+\>\> ERROR\\
+\>\> ENTDIN\> \> ILEN\\
+\>\> \> \> ISTART
+\end{tabbing}
+
+\bigskip
+\strut\hfill {\bf [ Loop over years ]}\\
+ \GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> WOF60\> \> ILEN\\
+\>\> \> \> ISTART\\
+\>\> \> \> ENTDIN\\
+\>\> \> \> LOWERC\\
+\>\> \> \> FOPENG\\
+\>\> \> \> ENTDCH\> \> ILEN\\
+\>\> \> \> \> \> ISTART\\
+\>\> \> \> RDSETS\> \> ILEN\\
+\>\> \> \> \> \> RDDATA\\
+\>\> \> \> \> \> AMBUSY\> \> IFINDC\\
+\>\> \> \> \> \> \> \> UPPERC\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> ERROR\\
+\>\> \> \> RDFROM\> \> RDDATA\\
+\>\> \> \> \> \> AMBUSY\\
+\>\> \> \> RDINIT\\
+\>\> \> \> RDSCHA\\
+\>\> \> \> RDSINT\> \> RDDATA\\
+\>\> \> \> RDSREA\> \> RDDATA\\
+\>\> \> \> MENU\> \> ISTART\\
+\>\> \> \> \> \> ILEN\\
+\>\> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> GETREC\\
+\>\> \> \> \> \> WORDS\\
+\>\> \> \> \> \> DECINT\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> ENTCHA\\
+\>\> \> \> MENMET\> \> ILEN\\
+\>\> \> \> \> \> WORDS\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> DECINT\\
+\>\> \> \> \> \> ENTDIN\\
+\>\> \> \> \> \> DECREA\> \> DECCHK\\
+\>\> \> \> DECINT\\
+\>\> \> \> MENRAN\> \> ILEN\\
+\>\> \> \> \> \> WORDS\\
+\>\> \> \> \> \> DECINT\\
+\>\> \> \> \> \> ENTDIN\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> UPPERC\\
+\>\> \> \> ENTDRE\> \> ILEN\\
+\>\> \> \> SELOUT\> \> ILEN\\
+\>\> \> \> \> \> ENTDCH\\
+\>\> \> \> \> \> UPPERC\\
+\>\> \> \> \> \> ENTDRE\\
+\>\> \> \> \> \> ENTDIN\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> LOWERC\\
+\>\> \> \> \> \> FOPENG\\
+\>\> \> \> PRHEAD\> \> ILEN\\
+\>\> \> \> PAUZE
+\end{tabbing}
+\strut\hfill {\bf [ Loop over days ]}\\
+ \GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> \> \> WOFSIM\> \> TIMER\> \> ERROR\\
+\>\> \> \> \> \> METEO\> \> CLIMRD\> FOPENG\\
+\>\> \> \> \> \> \> \> \> MOFLIP\\
+\>\> \> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> \> \> \> RNGEN \> RANDOM ERROR\\
+\>\> \> \> \> \> \> \> \> \> GAMMA2 RANDOM\\
+\>\> \> \> \> \> \> \> \> RNDIS\> RANDOM\\
+\>\> \> \> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> \> \> GAMMA2\\
+\>\> \> \> \> \> \> \> STINFO\\
+\>\> \> \> \> \> \> \> WEATHR\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> REPRD\> IFINDC\\
+\>\> \> \> \> \> \> \> \> LOWERC\\
+\>\> \> \> \> \> \> \> \> RDMINF\> ILEN\\
+\>\> \> \> \> \> \> \> \> \> LOWERC\\
+\>\> \> \> \> \> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> \> \> \> DATES\> ERROR\\
+\>\> \> \> \> \> \> \> \> CONVR2\> ERROR\\
+\>\> \> \> \> \> \> \> RNREAL\> FOPENG\\
+\>\> \> \> \> \> \> \> \> MOFLIP\\
+\>\> \> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> \> \> PENMAN\> LIMIT\> ERROR\\
+\>\> \> \> \> \> \> \> \> ASTRO\\
+\>\> \> \> \> \> STDAY\> \> RDINIT\\
+\>\> \> \> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> CROPSI\> \> RDINIT\\
+\>\> \> \> \> \> \> \> RDSINT\\
+\>\> \> \> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> \> \> RDAREA\> RDDATA\\
+\>\> \> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> \> ASTRO\\
+\>\> \> \> \> \> \> \> TOTASS\> ASSIM\\
+\>\> \> \> \> \> \> \> EVTRA\> SWEAF\> LIMIT\\
+\>\> \> \> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> ERROR\\
+\>\> \> \> \> \> ROOTD\\
+\>\> \> \> \> \> WATPP\> \> RDINIT\\
+\>\> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> WATFD\> \> RDINIT\\
+\>\> \> \> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> WATGW\> \> RDINIT\\
+\>\> \> \> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> \> \> RDAREA\\
+\>\> \> \> \> \> \> \> AFGEN\\
+\>\> \> \> \> \> \> \> LIMIT\\
+\>\> \> \> \> \> \> \> SUBSOL\> AFGEN\\
+\>\> \> \> \> \> PRIJRC\> \> ILEN\\
+\>\> \> \> \> \> \> \> LOWERC\\
+\>\> \> \> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> \> \> EXTENS\\
+\>\> \> \> \> \> \> \> ERROR\\
+\>\> \> \> \> \> PRIWPP\\
+\>\> \> \> \> \> PRIWFD\> \> PAUZE\\
+\>\> \> \> \> \> PRIWGW\> \> PAUZE
+\end{tabbing}
+\strut\hfill {\bf [ Loop over days ]}\\
+ \GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\GrBox(2020)\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> \> \> STATPP\> \> LOWERC\\
+\>\> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> PRHEAD\\
+\>\> \> \> STATWP\> \> LOWERC\\
+\>\> \> \> \> \> FOPENG\\
+\>\> \> \> \> \> PRHEAD\\
+\>\> \> \> NUTRIE\> \> RDINIT\\
+\>\> \> \> \> \> RDSREA\\
+\>\> \> \> \> \> AFGEN
+\end{tabbing}
+\strut\hfill {\bf [ Loop over years ]}\\
+ \GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\\
+\strut\hfill {\bf [ Run specification]}\\
+{\bf ...............................................................................................................................................................................................\-}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\bf {\large WOFOST specific subroutines and functions (general version)}}
+
+AFGEN
+\testlastline
+
+\begin{indenting}{2.54cm}
+Function which is used for linear interpola\-tion in a one-di\-mensi\-onal array
+with paired data.
+\end{indenting}
+ASSIM
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates the gross CO$_{{\rm 2}}$ assimilation rate of the whole crop,
+by performing a Gaussian integration over depth in the canopy (i.e. for
+different values of LAI). The assimilation rate is computed for given fluxes
+of photosynthetically active radiation, whereafter integra\-tion over depth
+takes place.
+\end{indenting}
+ASTRO
+\testlastline
+
+\begin{indenting}{2.54cm}
+This subroutine calculates astronomic day length, diurnal radiation charac\-teristics such as atmospheric transmission, diffuse radiation etc. 
+\end{indenting}
+CLIMRD
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine derives daily weather data from long term average monthly
+weather data (the so called WOFOST format)
+\end{indenting}
+CONVR2
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine converts weather data from 'repaired DBMETEO' data to
+appropriate units and vice versa. 
+\end{indenting}
+CROPSI
+\testlastline
+
+\begin{indenting}{2.54cm}
+In this subroutine the simulation of the potential or water limited crop
+growth is performed.
+\end{indenting}
+DATES
+\testlastline
+
+\begin{indenting}{2.54cm}
+Converts either year and day number to a month number and day number
+or vice versa.
+\end{indenting}
+EVTRA
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates for a given crop cover the maximum evaporation
+rate from a shaded wet soil surface and from a shaded water surface and
+the maximum and actual crop transpiration rate.
+\end{indenting}
+FOPENG
+\testlastline
+
+\begin{indenting}{2.54cm}
+Opens a sequential, formatted file after doing an inquiry about the exis\-tence. The FOPENG used in WOFOST Version 6.0 is different from the
+FOPENG routine available in the TTUTIL library.
+\end{indenting}
+GAMMA2
+\testlastline
+
+\begin{indenting}{2.54cm}
+Generates a gamma distributed pseudo random variate. The gamma distri\-bution has two parameters, ALFA and BETA. This generator works for
+0.0 $<$ ALFA $<$= 1.0 only. The algorithm used is derived from that of
+Berman (1971). The GAMMA2 used in WOFOST Version 6.0 is different
+from the GAMMA routine available in the TTUTIL library.
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+MENMET\> \> This routine provides input options for the weather data.\\
+MENRAN\> \> This routine provides input options for rainfall data (daily, monthly).\\
+MENU\> \> This routine provides input options for the crop, soil and weather data.
+\end{tabbing}
+METEO
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine gets meteorological data for the current day.
+\end{indenting}
+NUTRIE
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates nutrient requirements and nutrient limited yields
+according to the QUEFTS-system (Jansen et all., 1988, and Jansen and
+Wolf, 1988) and generates output.
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+PAUZE\> \> This routine waits for $<$RETURN$>$ from key board.
+\end{tabbing}
+PENMAN
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates the potential evapo(transpi)ration rates from a free
+water surface, a bare soil surface and a crop canopy in mm d$^{{\rm -1}}$. For these
+calculations the analysis by Penman is followed. (Frere and Popov, 1979;
+Penman, 1948, 1956 and 1963).
+\end{indenting}
+PRHEAD
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine prints the headers for the selected kind of output files to the
+output files.
+\end{indenting}
+PRIJRC
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine writes output to a file according to the specifications for the so
+called JRC-project.
+\end{indenting}
+PRIWFD
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine writes output to a file for the water limited production run
+(WATFD used as soil water balance routine).
+\end{indenting}
+PRIWGW
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine writes output to a file for the water limited production run
+(WATGW used as soil water balance routine).
+\end{indenting}
+PRIWPP
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine writes output to a file for the potential production run (WA\-TPP used as soil water balance routine).
+\end{indenting}
+RANDOM
+\testlastline
+
+\begin{indenting}{2.54cm}
+This function generates pseudo random numbers uniformly distributed
+between 0 and 1. The algorithm used is developed by Wichman and Hill
+(1982).
+\end{indenting}
+REPRD
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine reads daily weather data. This are the so called repaired
+DBMETEO daily weather data.
+\end{indenting}
+RNDIS
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates the daily rainfall by distributing the given monthly
+rainfall over a defined number of randomly chosen rainy days. Monthly
+rainfall and number of rainy days equal the given values. 
+\end{indenting}
+RNGEN
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine generates one year of daily rainfall data on the basis of the
+given long term average monthly rainfall and number of rainy days. The
+method follows the proposal of Shu Geng et al. (1986). The procedure is a
+combination of a Markov chain and a gamma distribution function.
+\end{indenting}
+RNREAL
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine reads rainfall data from an external file called RAFILE.
+Linked with TTUTIL.
+\end{indenting}
+ROOTD
+\testlastline
+
+\begin{indenting}{2.54cm}
+In this routine the depth of the root zone is calculated for each day of the
+crop cycle.
+\end{indenting}
+SELOUT
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine enables the user to select the kind of output files he requires.
+\end{indenting}
+STATPP
+\testlastline
+
+\begin{indenting}{2.54cm}
+Statistics of potential production. Subroutine for statistical treatment of
+yield variables, simulated in a series of simulation runs with WOFOST
+Version 6.0. The yield data refer to one crop and either a time series for
+one weather station (daily weather), or a series over different stations or
+station-years (mean monthly weather).
+\end{indenting}
+STATWP
+\testlastline
+
+\begin{indenting}{2.54cm}
+Statistics of production, limited by availability of water. Subroutine for
+statistical treatment of yield variable, simulated in a series of simulation
+runs with WOFOST Version 6.0, using the soil water balance model for
+free drainage. The yield data refer to one crop and either a time series for
+one weather station (daily weather), or a series over different stations or
+stations-years (mean monthly weather).
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+STDAY\> \> This routine calculates the start day if a variable sowing date is chosen.\\
+STINFO\> \> Find and loads station information in the program.
+\end{tabbing}
+SUBSOL
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates the rate of capillary flow or percolation between
+ground water table and root zone. The stationary flow is found by Gaussian
+integration. In an iteration loop the correct flow is found. The integration
+goes at most over four intervals.
+\end{indenting}
+SWEAF
+\testlastline
+
+\begin{indenting}{2.54cm}
+The fraction of easily available soil water between field capacity and
+wilting point is a function of the potential evapotranspiration rate (for a
+closed canopy) in cm d$^{{\rm -1}}$ and the crop group number (from 1 {\nobreak}(=drought-sensitive) to 5 (=drought-resistent)). This function describes this relation\-ship given in tabular form by Doorenbos \& Kassam (1979) and by Van
+Keulen \& Wolf (1986).
+\end{indenting}
+TOTASS
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine calculates the daily gross CO$_{{\rm 2}}$ assimilation by performing a
+Gaussian integration over time. At three different times of the day, irra\-diance is computed and used to calculate the instantaneous canopy assimila\-tion, whereafter integration takes place. 
+\end{indenting}
+W60MAIN
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine is the driving routine for running the WOFOST Version 6.0
+crop growth simulation model. The FSE system for reading data has been
+applied for the standard crop data, standard physical soil data, location-specific data on agro-hydrological conditions and run specific information
+on crop-calendar, weather data specification and kind of output. All data
+can be varied across successive model runs by specify\-ing them in a specific
+file called RERUNS.DAT.
+\end{indenting}
+WATFD
+\testlastline
+
+\begin{indenting}{2.54cm}
+This subroutine keeps track of the soil water balance for freely draining
+soils in the water limited production situation.
+\end{indenting}
+WATGW
+\testlastline
+
+\begin{indenting}{2.54cm}
+In this routine the simulation of soil water balance is performed for soils
+influenced by the presence of groundwater. Two situations are distin\-guished: with or without artificial drainage. The soil water balance is
+calculated for a cropped field in the water-limited production situa\-tion.
+\end{indenting}
+WATPP
+\testlastline
+
+\begin{indenting}{2.54cm}
+In this routine the variables of the soil water balance in the potential
+production situation are calculated. The purpose is to quantify the crop
+requirements for continuous growth without drought stress. It is as\-sumed
+that the soil is permanently at field capacity.
+\end{indenting}
+WEATHR
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine reads the daily weather data. The format developed by AB-DLO is used.
+\end{indenting}
+WOF60
+\testlastline
+
+\begin{indenting}{2.54cm}
+Driving routine for the simulation routine WOFSIM. Takes care of run
+control, input/output options, the call of the potential and water limited run
+and the call of the years specific calculations.
+\end{indenting}
+WOFSIM
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine organizes the simulation of crop growth and of soil water
+balance conditions, the generation of weather data and the writing of
+reports by successive calls to the relevant weather, crop, soil water and
+printing subroutines in that order.
+\end{indenting}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\bf {\large Subroutines and functions from FORTRAN utility library TT\-UTIL}}
+
+AMBUSY
+\testlastline
+
+\begin{indenting}{2.54cm}
+This routine stores and returns codes belonging to module names to find
+out whether or not other subroutines have been called.
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+DECCHK\> \> Checks if a certain string is a number.\\
+DECINT\> \> Decodes an integer number from a character string.\\
+DECREA\> \> Decodes a real number from a character string.
+\end{tabbing}
+ENTDCH
+\testlastline
+
+\begin{indenting}{2.54cm}
+Interactive entry of a character string with a default. Writes a text on the
+screen as a "question" and returns entered string to calling program.
+"Question" can be specified.
+\end{indenting}
+ENTDIN
+\testlastline
+
+\begin{indenting}{2.54cm}
+Interactive entry of an integer number with a default. Writes a text on the
+screen as a "question" and returns entered number to calling program.
+"Question" can be specified.
+\end{indenting}
+
+\bigskip
+ENTDRE
+\testlastline
+
+\begin{indenting}{2.54cm}
+Interactive entry of an real number with a default. Writes a text on the
+screen as a "question" and returns entered number to calling program.
+"Question" can be specified.
+\end{indenting}
+ERROR
+\testlastline
+
+\begin{indenting}{2.54cm}
+Writes an error message to the screen and holds the screen until $<$RE\-TURN$>$ is pressed.
+\end{indenting}
+EXTENS
+\testlastline
+
+\begin{indenting}{2.54cm}
+Changes extension of filename. Output filename is filled with characters of
+input filename and new extension until end is reached. Output filen\-ame is
+in uppercase characters. The old extension is the part of the filename that
+follows a dot (.). A dot before a bracket (]) is neglected (VAX). The input
+filename does not necessarily have an extension.
+\end{indenting}
+GETREC
+\testlastline
+
+\begin{indenting}{2.54cm}
+Reads records from an open file skipping comment lines. Comment lines
+have an asterisk (*) in their first or second column (with a space in the
+first).
+\end{indenting}
+IFINDC
+\testlastline
+
+\begin{indenting}{2.54cm}
+Finds number of name in a list with names. When name is not in the list a
+zero value is returned. Character strings should be of the same length.
+\end{indenting}
+ILEN
+\testlastline
+
+\begin{indenting}{2.54cm}
+Determines the significant length of a string. If the string is empty a zero is
+returned.
+\end{indenting}
+ISTART
+\testlastline
+
+\begin{indenting}{2.54cm}
+Determines the first significant character of a string. If the string cont\-ains
+no characters, a zero value is returned.
+\end{indenting}
+LIMIT
+\testlastline
+
+\begin{indenting}{2.54cm}
+Returns value of X limited within a specified interval.
+\end{indenting}
+LOWERC
+\testlastline
+
+\begin{indenting}{2.54cm}
+Converts a character string to lowercase characters.
+\end{indenting}
+MOFLIP
+\testlastline
+
+\begin{indenting}{2.54cm}
+Moves the file pointer across comment lines of data files and puts the file
+pointer at the first non-comment record. Comment lines have an asterisk
+(*) in their first or second column (with a space in the first).\hfill  
+\end{indenting}
+RDAREA
+\testlastline
+
+\begin{indenting}{2.54cm}
+Reads an array of real values from a data file, that should be initialized
+with RDINIT.
+\end{indenting}
+RDDATA
+\testlastline
+
+\begin{indenting}{2.54cm}
+This is the central subroutine of the complete set of RD* routines in the
+library TTUTIL. The simple routines RDSINT, RDSREA, RDAR\-EA,
+RDSETS and RDFROM form user interfaces. The actual work is done in
+this routine. That implies that the headers of all user interfaces also apply
+to this routine RDDATA. The ITASK values are:
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> ITASK = 1 $<$---- RDSETS\\
+\>\> ITASK = 2 $<$---- RDFROM\\
+\>\> ITASK = 3 $<$---- RDINIT\\
+\>\> ITASK = 4 $<$---- RDSINT, RDSREA and RDAREA.
+\end{tabbing}
+
+\zerotestlastline
+\begin{indenting}{2.54cm}
+Rerun and data files both are analyzed by routine RDINDX called for
+ITASK = 1 and 3.
+\end{indenting}
+RDINDX
+\testlastline
+
+\begin{indenting}{2.54cm}
+Produces an index of a data file. The index consists of a list of variable
+names and an integer array pointing to decode values on a direct access
+file. The direct access file is opened for reading at the end of the routine or
+deleted after errors.
+\end{indenting}
+RDINIT
+\testlastline
+
+\begin{indenting}{2.54cm}
+Initializes data file reading with the subroutines RDSINT, RDSREA and
+RDAREA. An index of the data file is stored as a local array containing
+variable names. The values are written to a temporary file. After a call to
+RDINIT the data file itself is closed again.
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+RDSCHA\> \> Reads a single character value from a data file.
+\end{tabbing}
+
+\bigskip
+RDSETS
+\testlastline
+
+\begin{indenting}{2.54cm}
+Initializes subroutine RDDATA for reading data from a so called "rerun
+file". It contains sets of variable names with associated values. The sets are
+used to replace corresponding data items in a normal data file analyzed
+with the routines RDINIT, RDSREA, RDS\-INT and RDAREA. This facility
+has a "global" character. A call to RDINIT does not disable the replace\-ment of values. So the sets in a rerun file may contain variable names
+occurring in different data files. Only a call to RDSETS with empty
+filename will deactivate the re\-placement of numbers. After a normal
+RDSETS call the 0-th set is activated meaning that data file values are
+used. With RDFROM the sets of the rerun are actually activated.
+\end{indenting}
+RDSINT
+\testlastline
+
+\begin{indenting}{2.54cm}
+Reads a single integer value from a data file. The reading should be
+initialized with RDINIT.
+\end{indenting}
+RDSREA
+\testlastline
+
+\begin{indenting}{2.54cm}
+Reads a single real value from a data file. The reading should be initialized
+with RDINIT.
+\end{indenting}
+TIMER
+\testlastline
+
+\begin{indenting}{2.54cm}
+This subroutine updates the time from the start of the simulation and
+related variables each time it is called with ITASK=2. It will set a flag to
+.TRUE. if the finish time of the simulation is reached (counted from start
+of simulation). The routine is initialized first by a call with ITASK\-=1. The
+first six arguments will then be made local. Leap years are handled correct\-ly.
+\end{indenting}
+UPPERC
+\testlastline
+
+\begin{indenting}{2.54cm}
+Converts a character string to uppercase characters.
+\end{indenting}
+WORDS
+\testlastline
+
+\begin{indenting}{2.54cm}
+Returns position and start and end of the (first) number of words to be
+found in a character string. Valid separators are all the characters present
+in a string containing the separator characters. 
+\end{indenting}
+\end{document}

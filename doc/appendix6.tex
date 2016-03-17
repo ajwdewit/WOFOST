@@ -1,0 +1,340 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+\usepackage[USenglish]{babel}
+
+
+\begin{document}
+\setcounter{page}{141}\pagenumpos{\pnbr}
+\section{  APPENDIX 6  }
+
+\bigskip
+{\bf {\large FORTRAN utility library: TTUTIL}}
+
+This appendix describes a number of FORTRAN subroutines and functions that make up
+the FORTRAN utility library TTUTIL. The model uses a number of the utilities offered
+by this library. The complete TTUTIL library is available for the user of the model,
+therefore, a brief description is included in this manual. For more detailed information
+reference is made to Rappoldt, C and D.W.G. van Kraalingen (1991).
+
+Many routines are utilities in the sense that they do not make use of any mathemati\-cal or
+numerical method, do not contain measured data and do not depend on assumptions
+concerning some described system. Utilities simply perform their task with respect to
+input, output, string handling, file handling etc. They are tools for writing reliable and
+readable FORTRAN programs. 
+
+Two groups of routines have a numerical character. These are the random number
+generators and the routines solving an initial value problem by means of the Runge-Kutta
+or Euler method. Further, a few utilities deal with often recurring calculations in
+numerical simulation models.
+
+In all subroutines and functions present in TTUTIL a conservative programming style is
+used. Nested constructions in single statements are omitted (they are not very clear
+anyway) and known compiler deficiencies are taken into account. All subrou\-tines and
+functions run on an Atari ST computer with the Prospero compiler, on an IBM PC with
+the Microsoft compiler, on an Apple MacIntosh with the Absoft compiler and on the
+VAX using the VAX-FORTRAN compiler. A few changes have to be made before using
+the library on an Atari ST.
+
+\bigskip
+{\bf The structure of the library TTUTIL}
+
+Table A3 gives a classification of the TTUTIL routines. The first eight groups list
+generally applicable subroutines and functions. The next four groups are related to
+simulation models, to a smaller or larger extent. The last group consists of two simple
+routines for manipulating a VT100 screen. Closely related routines have names beginning
+with the same acronym. For instance, the "DEC" routines DECCHK, DECINT,
+DECREA and DECREC are used for decoding character strings into real or integer
+values.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+  \bigskip
+Table A3 
+\testlastline
+
+\begin{indenting}{2.54cm}
+Classification of the TTUTIL library routines
+\end{indenting}
+\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-\\
+{\bf Interactive input}
+\testlastline
+
+\begin{indenting}{6.35cm}
+ENTREA, ENTINT, ENTCHA, ENTDRE, ENT\-DIN, ENTD\-CH 
+\end{indenting}
+{\bf Input from file}
+\testlastline
+
+\begin{indenting}{6.35cm}
+RDAREA, RDDATA, RDFROM, RDINDX, RDINIT, RDSCHA,
+RDSE\-TS, RDSINT, RDSRE\-A, GETCH, GETREC, MOFILP, COPFIL
+\end{indenting}
+{\bf Output to file}
+\testlastline
+
+\begin{indenting}{6.35cm}
+OUTCOM, OUTDAT, OUTPLT, OUTARR, PLTFUN, PLTHIS,
+COPFIL
+\end{indenting}
+{\bf Character string handling}
+\testlastline
+
+\begin{indenting}{6.35cm}
+DECCHK, EXTENS, IFINDC, ILEN, ISTART, REMOVE, STRIP,
+UPPE\-RC, WORDS
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf Decoding character strings to values}\> \> \> \> \> DECCHK, DECINT, DECREA, DECREC
+\end{tabbing}
+{\bf Files}
+\testlastline
+
+\begin{indenting}{6.35cm}
+EXTENS, FOPEN, FOPENG, COPFIL
+\end{indenting}
+{\bf Error handling}
+\testlastline
+
+\begin{indenting}{6.35cm}
+ERROR
+\end{indenting}
+{\bf AFGEN tables (lists of X,Y pairs)}
+\testlastline
+
+\begin{indenting}{6.35cm}
+AFINVS, LINT, PLTFUN, PLTHIS
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf Random numbers}\> \> \> \> \> BOXMUL, GAMMA, UNIFL
+\end{tabbing}
+{\bf Euler method in (crop) simulation}
+\testlastline
+
+\begin{indenting}{6.35cm}
+CHKTSK, INTGRL, TIMER
+\end{indenting}
+{\bf Euler and Runge-Kutta method}
+\testlastline
+
+\begin{indenting}{6.35cm}
+EUDRIV, RKDRIV, RKQCA, RK4A
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf Emulation of some CSMP functions}\> \> \> \> \> INSW, LIMIT, LINT, REAAND, REA\-NOR
+\end{tabbing}
+{\bf VT100 screen}
+\testlastline
+
+\begin{indenting}{6.35cm}
+CLS, POS
+\end{indenting}
+\GrBox(1000)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\GrBox(1010)\-
+
+Table A3 can be used for an efficient search through the library if you are looking for a
+routine that solves a specific programming problem. 
+
+\bigskip
+\bigskip
+{\bf The ENT routines}
+
+The usual way to obtain interactive input from the user is to write a question to the screen
+and to read the answer from the screen. Exactly that is the function of the simple routines
+ENTCHA, ENTINT and ENTREA. They can be used to ask for a character string, an
+integer value and a real value, respectively. For instance, the statement:
+
+\hspace*{1.28cm}CALL ENTREA ('Size of square',SIZE)
+
+writes the question "Size of square" to the screen and the number returned is assigned to
+the real variable SIZE. Several such calls together form a relatively short program section
+for interactive input. Successive questions are written neatly below each other and the
+cursor is always in column 53 of the screen, independent of question length.
+
+Somewhat less trivial are the subroutines ENTDCH, ENTDIN and ENTDRE. Again, the
+three routines are meant for entering a character string, an integer value or a real value,
+respectively. As an additional input argument, however, they accept a default value. The
+default value is returned to the calling program when the user does not type in a new
+value and presses the $<$Enter$>$ key only. The three ENTD routines write the default
+value between square brackets following the question. For instance, the statement:
+
+\hspace*{1.28cm}CALL ENTDRE ('Size of square',2.300,SIZE)
+
+\bigskip
+\bigskip
+causes the following line being written to  the screen:
+
+\hspace*{1.28cm}Size of square [2.3]:
+
+The user either supplies a new value or just presses $<$Return$>$ to accept the default.
+Note that the second argument (the default value) may also be a variable. The variable
+SIZE could be used, for instance, as the second and  third argument of ENTDRE. Than
+the (current) value of SIZE is used as the default answer.
+
+In order to keep the cursor behind the question, the ENT routines make use of a "\$" in
+the output format string. This is not allowed in standard FORTRAN and it forms the only
+exception to the use of standard FORTRAN in the entire library. There seems to be no
+standard way, however, to keep the cursor after writing to the screen. An additional
+advan\-tage of using the ENT routines is that interactive input sections can be kept free of a
+non-standard dollar.
+
+\bigskip
+\bigskip
+{\bf The RD routines}
+
+The ordinary method for reading data from a file consists of a number of READ
+statements, each reading data from a record of the file. That method clearly requires that
+the sequence of READ statements is consistent with the contents of the file. Moreover,
+array lengths have to be known in the program or have to be read as separate data items.
+Formatted reading, moreover, requires accurate positioning of the data items. In general,
+much time is invested in debugging such "simple" input sections.
+
+The solution suggested sometimes in text books on FORTRAN is to read data as character
+strings and to perform the decoding in the program. That requires a considerable
+program\-ming effort and a need was felt for generally applicable input routines based on
+that principle. The RD routines enable the construction of clear, short and robust input
+sections consisting of CALL's only. The idea is that the input file contains both the
+variable name \uline{and} the associated value(s). Then, the RD routines are able to find the
+value(s) to be assigned to a certain input variable. The syntax rules for the data files are
+the following:
+
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+The file consists of variable names and numerical values, separated by an '='
+sign;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Variable names have a maximum length of six characters;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+More than one value may appear on the right-hand side of the equal sign, separat\-ed by commas.
+\end{indenting}
+
+\zerotestlastline
+\begin{indenting}{1.27cm}
+This indicates that the variable is an array. In case of conti\-{\nobreak}nua\-tion on a following
+line the comma should be on the preceding line;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Values may be repeated. For instance, 100 times 1.0 can be written as 100*1.0;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Variables may appear in any order in the file;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Comment lines start with "*" in the first column, or "!" in any column (rest of
+line is ignored);
+\end{indenting}
+
+ \bigskip
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Different name--{}value combinations on the same line should be separated by a
+{\nobreak}semi--{}colon ";";
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+Only the first 80 characters of each line of the data file are decoded;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+The decimal point in a real value like 20. may be omitted;
+\end{indenting}
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+No TAB's may occur.
+\end{indenting}
+
+ \bigskip
+The subroutines RDINIT, RDSREA, RDAREA and RDSINT are just user interfaces to a
+lower level subroutine RDDATA which is called by these four. Sometimes the name
+RDDATA occurs in error messages, for instance when a variable name is not present in
+the file or in case of an array length error. In such error messages also the variable name
+is given. The suspect RD call is then easily identified.
+
+Using the RD routines, one should be aware of a few limitations. All values that occur in
+a data file are stored in an unformatted temporary file as single precision REAL numbers
+(4 byte REAL's). That implies that the number of significant digits is about 6. To obtain
+an integer number, routine RDSINT simply performs a nearest  integer operation on the
+stored value (using the intrinsic NINT function). In case of integer values larger than
+about 1,000,000 the result may differ from the contents of the data file. Future versions
+may require the use of a decimal point in real numbers. Hence, you may save yourself
+some (future) error messages by using these in all real numbers in your files. Double
+precision numbers will probably not be supported. Instructions will be added, however,
+for adapting the whole set of RD routines for reading double precision numbers.
+
+\bigskip
+\bigskip
+{\bf Making reruns with the RD routines}
+
+The use of the RD routines for input has the additional advantage of a built in "rerun
+facility". Calculations often need to be carried out for different values of input variables.
+Suppose that something is calculated using the input variables BB, EE and FF from the
+above file INPUT.DAT. The calculations have to be repeated for different combinations
+of BB and EE. Then a so called rerun file can be created by the user, containing the
+desired combinations of BB and EE.
+
+A rerun file consists of sets of variables. The order of the variables should be identical in
+all sets. The syntax rules are identical to those of an ordinary data file. Actual array
+lengths may differ between sets.
+
+This requires some further explanation: With a call to FOPEN a log file is opened, which
+is used for writing a report on rerun file usage. In the call to RDSETS the rerun file is
+analyzed and a short report is written to the log file (unit 40). When the rerun file is not
+present or empty the output variable INSETS is set to zero. Other\-wise the number of
+variable sets is returned. By means of the call to RDFROM in the DO--{}loop, a certain set
+is selected. Selection of set zero means that the contents of the original data file will be
+used. The input section for reading the values of BB, EE and FF is just an ordinary input
+section for reading variables from a data file. The RD routines, however, internally check
+whether reruns are being made and whether a non--{}zero set was selected. In that case, for
+variables occurring in the rerun file, the data file contents are replaced by the contents of
+the rerun file. Since this is a rather hidden activity, each replacement is reported to the
+log file. The CLOSE statements remove the temporary files created by the RD routines.
+
+The file "RERUNS.DAT" may be absent or present. If the file is absent, the above
+program section will carry out only one run using the contents of the data file.
+
+The rerun facility has a global character, i.e. variables stored in different data files may
+occur in a single rerun file. Within the above DO--{}loop, for instance, the variables BB
+and EE could be read from different input files by writing two separate input sections
+(each containing a call to RDINIT). As a consequence, the use of identical variable names
+in different input files leads to problems when reruns are made for that variable. Then the
+value of both  variables will be replaced by the contents of the rerun file. Both replace\-ments will be reported to the produced log file.
+\end{document}

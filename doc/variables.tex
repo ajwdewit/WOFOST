@@ -1,0 +1,1287 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+
+
+\begin{document}
+{\bf {\LARGE VARIABLES PER SUBROUTINES}}
+
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE ASSIM}\> \> \> (AMAX, EFF, LAI, KDIF, SINB, PARDIR, PARDIF, FGROS)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name \> \> Type \> Description                                       \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$ \> \> $-$$-$$-$$-$\> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$ \\
+AMAX\> \> R   \> maximum leaf CO2  assimilation rate       \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ \\
+EFF \> \> R   \> initial light$-$use efficiency of CO2 assimilation of single leaves  \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$  J$^{{\rm -1}}$ m$^{{\rm 2}}$\\
+FGL \> \> R   \> gross CO2 ass. rate at a certain depth and LAIC in the crop canopy\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ \\
+FGROS\> \> R   \> gross CO2 assimilation rate per hour of the canopy \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ \\
+FGRSH\> \> R   \> gross CO2 ass. rate of shaded leaves at a certain depth in canopy \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ \\
+FGRSUN\> \> R   \> gross CO2 ass. rate of sunlit leaves at a certain depth in canopy  \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ \\
+FSLLA   \> \> R   \> fraction of sunlit leaf area                 \> \> \> \> \> \> \> $-$\\
+I       \> \> I   \> DO$-$loop control variable                    \> \> \> \> \> \> \> $-$\\
+KDIF    \> \> R   \> extinction coefficient for diffuse visible light\> \> \> \> \> \> \> $-$\\
+KDIRBL  \> \> R   \> extinction coefficient for the direct component of direct radiation\> \> \> \> \> \> \> $-$\\
+KDIRT   \> \> R   \> extinction coefficient for total direct radiation     \> \> \> \> \> \> \> $-$ \\
+LAI     \> \> R \> leaf area index                                    \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAIC    \> \> R   \> leaf area index indicating different depths in the canopy \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+PARDIF  \> \> R   \> flux of diffuse photosynthetically active radiation \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+PARDIR  \> \> R   \> flux of direct photosynthetically active radiation \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+REFH    \> \> R   \> reflection coefficient of canopy with horizontal leaves        \> \> \> \> \> \> \> $-$\\
+REFS    \> \> R   \> reflection coefficient of canopy with spherical leaf angle distribution\> \> \> \> \> \> \> $-$\\
+SCV     \> \> R   \> scattering coefficient of a leaf                \> \> \> \> \> \> \> $-$\\
+SINB    \> \> R   \> sine of solar elevation                        \> \> \> \> \> \> \> $-$\\
+VISD    \> \> R   \> absorbed flux of direct component of direct rad.\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+VISDF   \> \> R   \> absorbed flux of diffuse radiation              \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+VISPP   \> \> R   \> absorbed flux of direct rad. by leaves perpendicular to direct beam\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+VISSHD  \> \> R   \> absorbed flux by shaded leaves       \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+VIST    \> \> R   \> absorbed flux of total direct radiation \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+WGAUSS    \> \> R   \> mathematical constants used for three$-$point Gaussian integration  \> \> \> \> \> \> \> $-$\\
+XGAUSS    \> \> R   \> mathematical constants used for three$-$point Gaussian integration   \> \> \> \> \> \> \> $-$
+\end{tabbing}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE ASTRO}\> \> \> (IDAY, LAT, AVRAD, DAYL, DAYL, DAYLP, \\
+\>\> \>  SINLD, COSLD, DIFPP, ATMTR, DSINBE)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type\> Description                    \> \> \> \> \>    \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$\> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                \> \> \>           \> \> \> \> $-$$-$$-$$-$$-$\\
+ANGLE   \> \> R   \> angle of the sun                          \> \> \> \> \> \> \> degrees\\
+ANGOT\> \> R\> extraterrestrial radiation\> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+AOB     \> \> R\> auxiliary variable                            \> \> \> \> \> \> \> $-$\\
+ATMTR   \> \> R   \> fraction of Angot's radiation actually received    \> \> \> \> \> \> \> $-$\\
+ATMTRA\> \> R\> array of calculated daily ATMTR values\> \> \> \> \> \> \> -\\
+AVRAD\> \> R\> daily shortwave radiation actually received\> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+AVRADA\> \> R\> array of calculated daily AVRAD values\> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+COSLD   \> \> R  \> cosine(latitude) times cosine(declination of sun)\> \> \> \> \> \> \> $-$\\
+COSLDA\> \> R\> array of calculated daily COSLD values\> \> \> \> \> \> \> -\\
+DAYL \> \> R \> day length                              \> \> \> \> \> \> \> h\\
+DAYLA\> \> R\> array of calculated daily DAYL values\> \> \> \> \> \> \> h\\
+DAYLP   \> \> R \> photoperiodic day length                 \> \> \> \> \> \> \> h\\
+DAYLPA\> \> R\> array of calculated daily DAYLP values\> \> \> \> \> \> \> h\\
+DEC     \> \> R \> declination of the sun                    \> \> \> \> \> \> \> radians\\
+DECA\> \> R\> array of calculated daily DEC values\> \> \> \> \> \> \> radians\\
+DIFPP\> \> R\> diffuse radiation perpendicular to direction of light\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+DIFPPA\> \> R\> array of calculated daily DIFPP values\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+DSINB   \> \> R   \> integral of sine of solar elevation over the day               \> \> \> \> \> \> \> s d$^{{\rm -1}}$  \\
+DSINBE  \> \> R   \> integral of sine of solar elevation over the day corrected for \\
+\>\> \> lower atmospheric transmission at low solar elevations               \> \> \> \> \> \> \> s d$^{{\rm -1}}$\\
+DSNBE\> \> R  \> array of calculated daily DSINBE values\> \> \> \> \> \> \> s d$^{{\rm -1}}$\\
+FRDIF   \> \> R   \> diffuse radiation as fraction of shortwave radiation actually received\> \> \> \> \> \> \> $-$\\
+IDAY    \> \> I  \> day number in the Julian calendar (1 to 365)\> \> \> \> \> \> \> $-$\\
+LAT     \> \> R   \> geographical latitude of location        \> \> \> \> \> \> \> degrees\\
+LATA\> \> R\> array of daily LAT values\> \> \> \> \> \> \> degrees\\
+PI      \> \> R   \> ratio circumference to diameter of a circle\> \> \> \> \> \> \> $-$\\
+RAD     \> \> R   \> factor to convert degrees to radians       \> \> \> \> \> \> \> rad degree$^{{\rm -1}}$\\
+SC      \> \> R   \> solar constant                                     \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+SCA\> \> R\> array of calculated daily SC values\> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+SINLD   \> \> R   \> sin(latitude) times sine(declination of sun) \> \> \> \> \> \> \> $-$\\
+SINLDA\> \> R\> array of calculated daily SINLD values\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE CROPSI}\> \> \> (ITASK, IDAY, DELT, TIME, IDEM, DOANTH, IDHALT, TERMNL, ISTATE,\\
+ \>\> \> \>  IWB, IOX, LAT, AVRAD, TMIN, TMAX, EO, ESO, ETO, CRFILE, IUPL,\\
+\>\> \> \>  IUOUT, IULOG, SM, SMO, SMFCF, SMW, CRAIRC, EVWMX, EVSMX,\\
+ \>\> \> \>  TRA, FR, RRI, IAIRDU, RDI, RDMCR)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$ \\
+ADMI    \> \> R   \> above$-$ground dry$-$matter increase                   \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+AMAX    \> \> R   \> maximum leaf CO2 assimilation rate                 \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$\\
+AMAXTB\> \> R\> AFGEN table with maximum CO2 assimilation rate as a function of\\
+\>\> \> development stage of the crop (AFGEN table)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$\\
+ASRC    \> \> R   \> carbohydrates available for dry matter increase    \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$\\
+ATMTR\> \> R\> daily atmospheric transmission\> \> \> \> \> \> \> -\\
+AVRAD   \> \> R   \> shortwave radiation actually received              \> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+CCHECK  \> \> R   \> check on carbon balance                            \> \> \> \> \> \> \> $-$\\
+CFET\> \> R\> correction factor for evapotranspiration\> \> \> \> \> \> \> -\\
+COSLD   \> \> R   \> cosine(latitude) times cosine(declination of the sun)             \> \> \> \> \> \> \> -\\
+CRAIRC\> \> R\> critical air content in the root zone\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+CRFILE\> \> C\> name of input file with crop data\> \> \> \> \> \> \> - \\
+CVF     \> \> R   \> average conversion efficiency of assimilates into crop dry matter  \> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVL\> \> R\> efficiency o conversion of assimilates into leaf dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVO\> \> R\> efficiency o conversion of assimilates into storage organ dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVR\> \> R\> efficiency o conversion of assimilates into root dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+CVS\> \> R\> efficiency o conversion of assimilates into stem dry matter\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+DALV    \> \> R   \> amount of leaves dying during current time step as result of ageing\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+DAYL    \> \> R   \> day length                                         \> \> \> \> \> \> \> h\\
+DAYLP   \> \> R   \> photoperiodic day length                           \> \> \> \> \> \> \> h\\
+DELT    \> \> R   \> time step = 1 day                                  \> \> \> \> \> \> \> d\\
+DEPNR\> \> R\> crop group number\> \> \> \> \> \> \> -\\
+DIFPP\> \> R\> diffuse irradiation perpendicular to the direction of light\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+DLC\> \> R\> lower threshold day length for development\> \> \> \> \> \> \> h\\
+DLO\> \> R\> optimum daylength for development\> \> \> \> \> \> \> h\\
+DMI     \> \> R   \> rate of dry$-$matter increase of the crop            \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DMI1\> \> R\> rate of dry$-$matter increase of the crop (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DOANTH\> \> I\> day of anthesis\> \> \> \> \> \> \> - \\
+DRLV    \> \> R   \> total death rate of leaves                         \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DRRT    \> \> R   \> death rate of roots                                \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DRSO    \> \> R   \> death rate of storage organs                       \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DRST    \> \> R   \> death rate of stems                                \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DSINBE\> \> R\> integral over the sine of of solar elevation with\\
+\>\> \> a correction for lowet atmospheric transmission\> \> \> \> \> \> \> s d$^{{\rm -1}}$\\
+DSLV    \> \> R   \> amount of dead leaves due to water stress or due to high LAI \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DSLV1   \> \> R   \> potential death rate of leaves due to water stress \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DSLV2   \> \> R   \> potential death rate of leaves due to high LAI     \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DSLVT   \> \> R   \> amount of dead leaves used to calculate last remaining class \\
+\>\> \> of living leaveskg \> \> \> \> \> \> \> ha$^{{\rm -1}}$\\
+DTEFF\> \> R\> effective temperature\> \> \> \> \> \> \> \degrees C\\
+DTEMP   \> \> R   \> average day temperature                            \> \> \> \> \> \> \> \degrees C\\
+DTGA    \> \> R   \> gross CO2  assimilation rate                       \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+DTSMTB\> \> R\> daily increase in temperature sum as a function \\
+\>\> \> of temperature (AFGEN table)\> \> \> \> \> \> \> \degrees C\\
+DTSUM\> \> R\> daily increase in temperature sum\> \> \> \> \> \> \> \degrees C\\
+DTSUME\> \> R\> daily increase in temperature sum at emergence\> \> \> \> \> \> \> \degrees C\\
+DURPP\> \> R\> duration crop growth (potential production)\> \> \> \> \> \> \> d\\
+DURWL\> \> R\> duration crop growth (water limited production)\> \> \> \> \> \> \> d\\
+DVR     \> \> R   \> actual development rate of the crop                \> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+DVRED   \> \> R   \> reduction factor for development rate, function of day length  \> \> \> \> \> \> \> $-$\\
+DVS     \> \> R   \> development stage of the crop                      \> \> \> \> \> \> \> $-$\\
+DVS1\> \> R\> development stage of the crop (output variable)              \> \> \> \> \> \> \> $-$\\
+DVSEND\> \> R\> development stage at harvest\> \> \> \> \> \> \> -\\
+DWLV    \> \> R   \> dry weight of dead leaves                          \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+DWRT    \> \> R   \> dry weight of dead roots                           \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+DWSO    \> \> R   \> dry weight of dead storage organs                  \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+DWST    \> \> R   \> dry weight of dead stems                           \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+E0      \> \> R   \> potential evaporation rate from water surface      \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EFF\> \> R\> initial light use efficiency of CO2 assimilation of single leaves \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ J$^{{\rm -1}}$ m$^{{\rm 2}}$s\\
+ES0     \> \> R   \> potential evaporation rate from soil surface      \> \> \> \> \> \>  \> cm d$^{{\rm -1}}$\\
+ET0     \> \> R   \> potential evapotranspiration rate                  \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVSMX\> \> R\> maximum evaporation rate from soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWMX\> \> R\> maximum evaporation rate from water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+FCHECK  \> \> R   \> check on partitioning fractions                    \> \> \> \> \> \> \> $-$\\
+FL      \> \> R   \> fraction of shoot dry$-$matter increase partitioned to the leaves\> \> \> \> \> \> \> - \\
+FLTB\> \> R\> fraction of above-ground dry-matter increase partitioned to leaves\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FO      \> \> R   \> fraction of shoot dry$-$matter increase partitioned to storage organs\> \> \> \> \> \> \> $-$\\
+FOTB\> \> R\> fraction of above-ground dry-matter increase partitioned to storage\\
+\>\> \> organs as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FR      \> \> R   \> fraction of dry$-$matter increase partitioned to the roots      \> \> \> \> \> \> \> $-$\\
+FRTB\> \> R\> fraction of total dry-matter increase partitioned to roots\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FS      \> \> R   \> fraction of shoot dry$-$matter increase partitioned to the stems \> \> \> \> \> \> \> $-$\\
+FSTB\> \> R\> fraction of above-ground dry-matter increase partitioned to stems\\
+\>\> \> as a function of development stage (AFGEN table)\> \> \> \> \> \> \> -\\
+FYSDEL  \> \> R   \> physiologic reduction factor for leave age increase            \> \> \> \> \> \> \> $-$\\
+GASS\> \> R\> actual gross assimilation rate of the canopy (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GASPP\> \> R\> total gross assimilation rate of the canopy, potential production  \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GASWL\> \> R\> total gross assimilation rate of the canopy, water limited production  \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GASS1   \> \> R   \> actual gross assimilation rate of the canopy \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GASST\> \> R\> total gross assimilation rate of the canopy \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GASSTX\> \> R\> total gross assimilation rate of the canopy (output variable) \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GLA\> \> R\> net growth rate of leaf area index\> \> \> \> \> \> \> ha leaf ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GLAIEX\> \> R\> exponential growth rate of leaf area index\> \> \> \> \> \> \> ha leaf ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GLASOL\> \> R\> source limited growth rate of leaf area index\> \> \> \> \> \> \> ha leaf ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GRLV    \> \> R   \> rate of increase in leaf blade dry matter          \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GRRT    \> \> R   \> rate of increase in root dry matter                \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GRST    \> \> R   \> rate of increase in stem dry matter                \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GWRT    \> \> R   \> rate of increase in living root dry matter         \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GWSO    \> \> R   \> rate of increase in storage organ dry matter       \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+GWST    \> \> R   \> rate of increase in living stem dry matter         \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+HINDEX\> \> R\> harvest index\> \> \> \> \> \> \> -\\
+HINDXX\> \> R\> harvest index (output variable)\> \> \> \> \> \> \> -\\
+HIPP\> \> R\> harvest index potential production (output variable)\> \> \> \> \> \> \> -\\
+HIWL\> \> R\> harvest index water limited production (output variable)\\
+I1\> \> I\> DO-loop control variable\> \> \> \> \> \> \> -\\
+I2      \> \> I   \> auxiliary variable                                 \> \> \> \> \> \> \> $-$\\
+IAIRDU\> \> I\> indicates presence (1) or absence (0) of airducts in the root zone\> \> \> \> \> \> \> -\\
+IDANTH\> \> I\> date of anthesis\> \> \> \> \> \> \> -\\
+IDANTX\> \> I\> date of anthesis (output variable)\> \> \> \> \> \> \> -\\
+IDAY    \> \> I   \> day number in the Julian calendar (between 1 and 365)        \> \> \> \> \> \> \> -\\
+IDDRY\> \> I\> total of days with water deficit\> \> \> \> \> \> \> d\\
+IDEM\> \> I\> day of emergence\> \> \> \> \> \> \> -\\
+IDFLPP\> \> I\> date of anthesis potential production (output variable)\> \> \> \> \> \> \> -\\
+IDFLWL\> \> I\> date of anthesis water limited production (output variable)\> \> \> \> \> \> \> -\\
+IDHALT\> \> I\> day number at which the simulation is halted\> \> \> \> \> \> \> -\\
+IDHALX\> \> I\> day number at which the simulation is halted (summary of results)\> \> \> \> \> \> \> -\\
+IDOS\> \> I\> indicates a day with waterlogging (1) or absence of waterlogging (0)\> \> \> \> \> \> \> -\\
+IDOSJ\> \> I\> subtotal (over print interval) of number of days with waterlogging\> \> \> \> \> \> \> d\\
+IDOST\> \> I\> total of days with waterlogging\> \> \> \> \> \> \> -\\
+IDSL\> \> I\> indicates whether pre-anthesis development depends on temperature\\
+\>\> \> (0) temperature, (1) daylength, (2) temperature and daylength\\
+IDWET\> \> I\> total of days with waterlogging (output variable)\> \> \> \> \> \> \> d\\
+IDWS\> \> I\> indactes a day with water deficit (1) or absence of water deficit (0)\> \> \> \> \> \> \> -\\
+IDWSJ\> \> I\> subtotal (over print interval) of number of days with water deficit\> \> \> \> \> \> \> d\\
+IDWST\> \> I\> total of days with water deficit\> \> \> \> \> \> \> d\\
+ILAMAX\> \> I\> number of elements in table AMAXTB\> \> \> \> \> \> \> -\\
+ILDTSM\> \> I\> number of elements in table DTSMTB\> \> \> \> \> \> \> -\\
+ILFL\> \> I\> number of elements in table FLTB\> \> \> \> \> \> \> -\\
+ILFO\> \> I\> number of elements in table FOTB\> \> \> \> \> \> \> -\\
+ILFR\> \> I\> number of elements in table FRTB\> \> \> \> \> \> \> -\\
+ILFS\> \> I\> number of elements in table FSTB\> \> \> \> \> \> \> -\\
+ILRDRR\> \> I\> number of elements in table RDRRTB\> \> \> \> \> \> \> -\\
+ILRDRS\> \> I\> number of elements in table RDRSTB\> \> \> \> \> \> \> -\\
+ILRFSE\> \> I\> number of elements in table RFSETB\> \> \> \> \> \> \> -\\
+ILSLA\> \> I\> number of elements in table SLATB\> \> \> \> \> \> \> -\\
+ILTMNF\> \> I\> number of elements in table TMNFTB\> \> \> \> \> \> \> -\\
+ILTMPF\> \> I\> number of elements in table TMPFTB\> \> \> \> \> \> \> -\\
+ILVOLD  \> \> I   \> class number of the oldest living leaves           \> \> \> \> \> \> \> -\\
+ISTATE\> \> I\> state indicator of the model\> \> \> \> \> \> \> -\\
+\>\> \> (0) model starts 10 days prior to earliest possible sowing date\\
+\>\> \> (1) model starts at sowing\\
+\>\> \> (3) model starts at emergence\\
+ITASK\> \> I\> task which the subroutine should perform\> \> \> \> \> \> \> -\\
+\>\> \> ITASK = 1, initialization\\
+\>\> \> ITASK = 2, rate calculation\\
+\>\> \> ITASK = 3, integration\\
+\>\> \> ITASK = 4, finish section\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> -\\
+IULOG\> \> I\> unit of log file\> \> \> \> \> \> \> -\\
+IUOUT\> \> I\> unit of output file with simulation results\> \> \> \> \> \> \> -\\
+IUPL\> \> I \> unit of input file with crop data\> \> \> \> \> \> \> -\\
+IWB     \> \> I\> flag; controlling calculation of water limited yield without (0) or \\
+\>\> \> with (1) accounting for oxygen shortage in the root zone\> \> \> \> \> \> \> -\\
+IOX\> \> I\> flag controlling calculation of wl yield without or with accounting\\
+\>\> \> for oxygen shortage in the root zone\> \> \> \> \> \> \> -\\
+KDIF\> \> R\> extinction coefficient for diffuse visible light\> \> \> \> \> \> \> -\\
+LAI     \> \> R   \> leaf area index                                    \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAI1\> \> R\> leaf area index (output variable)\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAICR   \> \> R   \> critical leaf area index                           \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAIEM\> \> R\> leaf area index at emergence\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAIEXP\> \> R\> leaf area index during the exponential growing stage\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAIMAX\> \> R\> maximum leaf area index (death plus living leaves)\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAMXPP\> \> R\> maxmum leaf area (potential production)\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAMXWL\> \> R\> maxmum leaf area (water limited production)\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LASUM   \> \> R   \> sum of leaf areas for all living leaves            \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+LAT\> \> R\> latitude of the site\> \> \> \> \> \> \> degrees\\
+LV      \> \> R   \> array with leaf weights for each leaf class        \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+LVAGE   \> \> R   \> array with the physiological age for each leaf class       \> \> \> \> \> \> \> d\\
+MRES    \> \> R   \> maintenance respiration rate\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+MRES1\> \> R\> maintenance respiration rate (output variable)\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+MREST\> \> R\> summation over the time steps of the maintenance respirarion\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+MRESTX\> \> R\> summation over the time steps of the maintenance respirarion\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+\>\> \> (summary variable)\\
+PERDL\> \> R\> maximum relative death rate of leaves due to water stress\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+PGASS   \> \> R   \> gross assimilation rate of the canopy, expressed in carbohydrates   \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+Q10\> \> R\> rel. increase in maintenance respiration per 10\degrees C increase in temp.\> \> \> \> \> \> \> -\\
+RATIO\> \> R\> grain straw ratio\> \> \> \> \> \> \> -\\
+RATPP\> \> R\> grain straw ratio (potential production)\> \> \> \> \> \> \> -\\
+RATWL\> \> R\> grain straw ratio (water limited production)\> \> \> \> \> \> \> -\\
+RDI\> \> R\> initial rooting depth\> \> \> \> \> \> \> cm\\
+RDMCR\> \> R\> crop-dependent maximum rooting depth\> \> \> \> \> \> \> cm\\
+RDRRTB\> \> R\> relative death rate of roots as a function of DVS (AFGEN table)\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RDRSTB\> \> R\> relative death rate of stems as a function of DVS (AFGEN table)\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RESPP\> \> R\> summation over the time steps of the maintenance \\
+\>\> \> respirarion (potential production)\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+REST\> \> R\> extra death of leave due to exceedance of life span\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+RESWL\> \> R\> summation over the time steps of the maintenance \\
+\>\> \> respirarion (water limited production)\> \> \> \> \> \> \> kg CH$_{{\rm 2}}$O ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RFSETB\> \> R\> reduction factor of the senescence as a function \\
+\>\> \> of DVS (AFGEN table)\> \> \> \> \> \> \> -\\
+RGRLAI\> \> R\> maximum relative increase in leaf area index\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RML\> \> R\> relative maintenance respiration rate of leaves\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RMO\> \> R\> relative maintenance respiration rate of storage organs\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RMR\> \> R\> relative maintenance respiration rate of roots\> \> \> \> \> \> \> d$^{{\rm -1}}$ \\
+RMRES   \> \> R   \> maintenance respiration rate of crop at average air \\
+\>\> \> temperature of 25 \degrees C \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$\\
+RMS\> \> R\> relative maintenance respiration rate of stems\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+RRI\> \> R\> root length growth rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+SINLD   \> \> R   \> sine(latitude) times sine(declination of the sun)                  \> \> \> \> \> \> \> -\\
+SLA     \> \> R   \> array with specific leaf areas for each leaf class       \> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SLAT\> \> R\> specific leaf area index\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SLATB\> \> R\> specific leaf area as a function of development stage (AFGEN table)\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SM\> \> R\> soil moisture content in the rooted zone\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> R\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMO\> \> R\> soil porosity, saturated moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMW\> \> R\> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SPA\> \> R\> specific pod area\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+SPAN\> \> R\> life span of leaves growing at an average temperature of 35 \degrees C\> \> \> \> \> \> \> d\\
+SSA\> \> R\> specific stem area\> \> \> \> \> \> \> ha kg$^{{\rm -1}}$\\
+T       \> \> R   \> actual transpiration rate                          \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TADW    \> \> R   \> total above$-$ground dry weight (living) of crop     \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TAGP\> \> R\> total above-ground dry weight of dead and living plant organs\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TAGP1\> \> R\> total above-ground dry weight of dead and living plant organs \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+\>\> \> (output variable)\\
+TAGPX\> \> R\> total above-ground dry weight of dead and living plant organs \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+\>\> \> (summary variable)\\
+TBASE\> \> R\> lower threshold temperature for physiological ageing of leaves\> \> \> \> \> \> \> \degrees C \\
+TBASEM\> \> R\> lower treshold temperature for emergence\> \> \> \> \> \> \> \degrees C\\
+TDWI\> \> R\> initial total dry weight of crop\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ \\
+TEFF    \> \> R   \> temperature effect on maintenance respiration      \> \> \> \> \> \> \> $-$\\
+TEFFMX\> \> R\> maximum effective temperature for emergence\> \> \> \> \> \> \> \degrees C\\
+TEMP    \> \> R   \> average daily air temperature                      \> \> \> \> \> \> \> \degrees C\\
+TERMNL\> \> L\> flag to indicate to stop the simulation\> \> \> \> \> \> \> -\\
+TIME\> \> R\> day number controlled by the timer routine\> \> \> \> \> \> \> -\\
+TMAX    \> \> R   \> maximum daily air temperature                      \> \> \> \> \> \> \> \degrees C\\
+TMIN    \> \> R   \> minimum daily air temperature                      \> \> \> \> \> \> \> \degrees C\\
+TMINRA  \> \> R   \> seven days running average of minimum daily air temperature   \> \> \> \> \> \> \> \degrees C\\
+TMNFTB\> \> R\> correction factor of daily gross CO2 assimilation rate as a\\
+\>\> \> function of low minimum temperatures (AFGEN table)\> \> \> \> \> \> \> \degrees C\\
+TMNSAV\> \> R\> seven day running average of minimum temperature\> \> \> \> \> \> \> \degrees C\\
+TMPFTB\> \> R\> correction factor of maximum leaf CO2 assimilation rate as a\\
+\>\> \> function of sub-optimum average day temperatures (AFGEN table)\> \> \> \> \> \> \> \degrees C\\
+TRA\> \> R\> crop transpiration rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRA1\> \> R\> crop transpiration rate (output variable)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRAMX\> \> R\> maximum crop transpiration rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRAT\> \> R\> total crop transpiration\> \> \> \> \> \> \> cm\\
+TRATPP\> \> R\> total crop transpiration, potential production\> \> \> \> \> \> \> cm\\
+TRATWL\> \> R\> total crop transpiration, water limited production\> \> \> \> \> \> \> cm\\
+TRATX\> \> R\> total crop transpiration (summary variable)\> \> \> \> \> \> \> cm\\
+TRC    \> \> R   \> transpiration coefficient  \> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+TRCPP\> \> R   \> transpiration coefficient, potential production  \> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+TRCWL\> \> R   \> transpiration coefficient, water limited production  \> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+TRCX\> \> R   \> transpiration coefficient (output variable)\> \> \> \> \> \> \> kg kg$^{{\rm -1}}$\\
+TSUM\> \> R\> temperature sum\> \> \> \> \> \> \> \degrees C\\
+TSUM1\> \> R\> treshold temperature sum from emergence to anthesis\> \> \> \> \> \> \> \degrees C\\
+TSUM2\> \> R\> treshold temperature sum from anthesis to maturity\> \> \> \> \> \> \> \degrees C\\
+TSUME\> \> R\> temperature sum from sowing to emergence\> \> \> \> \> \> \> \degrees C\\
+TSUMEM\> \> R\> treshold temperature temperature sum from sowing to emergence\> \> \> \> \> \> \> \degrees C\\
+TWLV\> \> R\> dry weight of dead and living leaves\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWLVX\> \> R\> dry weight of dead and living leaves (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWRT\> \> R\> dry weight of dead and living roots \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWRTX\> \> R\> dry weight of dead and living roots (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWSO\> \> R\> dry weight of dead and living storage organs\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWSOX\> \> R\> dry weight of dead and living storage organs (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWST\> \> R\> dry weight of dead and living stems \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+TWSTX\> \> R\> dry weight of dead and living stems (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WLV\> \> R\> dry weight of living leaves\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WLV1\> \> R\> dry weight of living leaves (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WRT     \> \> R   \> dry weight of living roots                         \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WSO     \> \> R   \> dry weight of living storage organs                \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WSO1\> \> R\> dry weight of living storage organs (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WST\> \> R   \> dry weight of living stems              \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+WST1\> \> R\> dry weight of living stem (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YAGPP\> \> R\> total above-ground dry weight of dead and living\\
+\>\> \> plant organs, potential production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YAGWL\> \> R\> total above-ground dry weight of dead and living\\
+\>\> \> plant organs, water limited production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YLVPP\> \> R\> dry weight of dead and living leaves, \\
+\>\> \> potential production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YLVWL\> \> R\> dry weight of dead and living leaves, \\
+\>\> \> water limited production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YRTPP\> \> R\> dry weight of dead and living roots, \\
+\>\> \> potential production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YRTWL\> \> R\> dry weight of dead and living roots, \\
+\>\> \> water limited production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YSOPP\> \> R\> dry weight of dead and storage organs,\\
+\>\> \> potential production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YSOWL\> \> R\> dry weight of dead and living storage organs, \\
+\>\> \> water limited production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YSTPP\> \> R\> dry weight of dead and stems,\\
+\>\> \> potential production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$\\
+YSTWL\> \> R\> dry weight of dead and living stems, \\
+\>\> \> water limited production (output variable)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$
+\end{tabbing}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE DATES}\> \> \> (ACTION, IYEAR, IDAY, IMONTH)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+ACTION\> \> C\> type of action to undertake\> \> \> \> \> \> \> -\\
+IDAY\> \> I\> day number\> \> \> \> \> \> \> -\\
+IDM1\> \> I\> array with data for normal year; month indication per day\> \> \> \> \> \> \> -\\
+IDM2\> \> I\> array with data for leap year; month indication per day\> \> \> \> \> \> \> -\\
+IMONTH\> \> I\> month number\> \> \> \> \> \> \> -\\
+IMOTB1\> \> I\> array with data for normal year; last daynumbers of each month\> \> \> \> \> \> \> -\\
+IMOTB2\> \> I\> array with data for leap year; last day numbers of each month\> \> \> \> \> \> \> -\\
+IYEAR\> \> I\> year number\> \> \> \> \> \> \> -\\
+LEAP\> \> L\> logical flag; (false) normal year, (true) leap year\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+\bigskip
+{\bf SUBROUTINE EVTRA}
+\testlastline
+
+\begin{indenting}{3.81cm}
+(IWB, IOX, IAIRDU, KDIF, CFET, DEPNR, E0, ES0, ET0, LAI, SM, SMO, SMFCF,
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+ \>\> \>  SMW, CRAIRC, EVWMX, EVSMX, TRAMX, TRA, IDOS, IDWS)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+CFET\> \> R\> crop specific correction parameter on potential transpiration rate\> \> \> \> \> \> \> -\\
+CRAIRC\> \> R\> critical air content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+DEPNR\> \> R   \> crop group number (from 1(= drought sensitive) to \\
+\>\> \> 5(= drought resistent))   \> \> \> \> \> \> \> $-$\\
+DSOS\> \> R\> days since oxygen shortage\> \> \> \> \> \> \> d\\
+E0\> \> R\> evaporation rate from a free water surface\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+EKL\> \> R\> reduction factor of the evapotranspiration due to shading\> \> \> \> \> \> \> -\\
+ES0\> \> R\> evaporation rate from a bare soil surface\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+ET0\> \> R\> potential transpiration rate\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+EVSMX\> \> R\> maximum evaporation rate from a shaded wet soil surface\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+EVWMX\> \> R\> maximum evaporation rate from a shaded water surface\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+IAIRDU\> \> I\> flag; indicates presence (1) or absence (0) of airducts in root zone\> \> \> \> \> \> \> -\\
+IDOS\> \> I\> number of days with oxygen shortage\> \> \> \> \> \> \> d\\
+IDWS\> \> I\> number of days with watewr shortage\> \> \> \> \> \> \> d\\
+IOX\> \> I\> flag; controlling calculation of potential (0) or water limited yield (1) \> \> \> \> \> \> \> -\\
+IWB\> \> I\> flag; controlling calculation of water limited yield without (0) or \\
+\>\> \> with (1) accounting for oxygen shortage in the root zone\> \> \> \> \> \> \> -\\
+KDIF\> \> R\> extinction coefficient for diffuse radiation\> \> \> \> \> \> \> -\\
+KGLOB\> \> R\> extinction coefficient for total global radiation\\
+LAI\> \> R\> leaf area index\> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+RFOS\> \> R\> reduction factor for transpirastion in case of oxygen shortage\> \> \> \> \> \> \> -\\
+RFOSMX\> \> R\> max. reduction factor for transpiration in case of oxygen shortage\> \> \> \> \> \> \> -\\
+RFWS\> \> R\> reduction factor for transpiration in case of water shortage\> \> \> \> \> \> \> -\\
+SM\> \> R\> soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM0\> \> R\> soil porosity, saturated mosture content \> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMAIR\> \> R\> critical soil moisture content for aeration\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMCR\> \> R \> critical soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> R\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMW\> \> R \> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SWDEP\> \> R\> soil water depletion factor\> \> \> \> \> \> \> -\\
+TRA\> \> R\> actual transpiration rate\> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+TRAMX\> \> R\> maximum transpiration rate\> \> \> \> \> \> \> mm d$^{{\rm -1}}$
+\end{tabbing}
+
+\bigskip
+{\bf SUBROUTINE METEO}
+\testlastline
+
+\begin{indenting}{3.81cm}
+(STNAM, IYEAR, IDAY, IWEATH, WTRDIR, CNTR, GEODIR, DRVDIR, DBMDIR,
+DBRDIR, ISTN, CLFILE, IUWE, IRNDAT, RSETRG, RSETRD, IURA, ITEARR, RAFILE,
+COEFA, COEFB, LAT, AVRAD, TMIN, TMAX, RAIN, WIND, VAPOUR, E0, ES0, ET0)
+\end{indenting}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+A\> \> R\> input parameter for STINFO\> \> \> \> \> \> \> -\\
+AVRAD\> \> R\> daily shortwave radiation\> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+B\> \> R\> input parameter for STINFO\> \> \> \> \> \> \> -\\
+CLFILE\> \> C\> name of climate file\> \> \> \> \> \> \> -\\
+CNTR\> \> C\> country name of weather data\> \> \> \> \> \> \> -\\
+COEFA\> \> R\> A coefficient in Angstrom formula\> \> \> \> \> \> \> -\\
+COEFB\> \> R\> B coefficient in Angstrom formula\> \> \> \> \> \> \> -\\
+DBMDIR\> \> C\> directory of DBMETEO weather\> \> \> \> \> \> \> -\\
+DRVDIR\> \> C\> dir. of index file of reference weather and current year grid data \> \> \> \> \> \> \> -\\
+E0\> \> R\> evaporation of open water\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+ELEV\> \> R\> elevation\> \> \> \> \> \> \> cm\\
+ES0\> \> R\> evapotranspiration of a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+ET0\> \> R\> evapotranspiration of short grass\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+GEODIR\> \> C\> directory of current year weather data\> \> \> \> \> \> \> -\\
+IDAY\> \> I\> day for which weather data are requested\> \> \> \> \> \> \> -\\
+IRNDAT\> \> I\> determines how rainfall data should be obtained\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+ISTAT\> \> I\> output parameter for information on errors and warnings\\
+\>\> \> ISTAT =0  no message\\
+\>\> \> -111111 $<$ ISTAT $<$ 0 error occured\\
+\>\> \> ISTAT $<$ -111111 one or more variables are missing and cannot \\
+\>\> \>         be supplied\\
+\>\> \> ISTAT $>$ 111111 one or more variables were obtained by either \\
+\>\> \>         interpolation or were estimated in some other way.\\
+ISTN\> \> I\> station number of weather data\> \> \> \> \> \> \> -\\
+IURA\> \> I\> unit number; external rainfall file\> \> \> \> \> \> \> -\\
+IUWE\> \> I\> unit number; wether data file\> \> \> \> \> \> \> -\\
+IWEATH\> \> I\> type of weather format that is requested\> \> \> \> \> \> \> -\\
+IYEAR\> \> I\> year for which weather data are requested\> \> \> \> \> \> \> -\\
+IYEARR\> \> I\> year for which rainfall data are requested\> \> \> \> \> \> \> -\\
+LAT\> \> R\> latitude of the site\> \> \> \> \> \> \> degrees\\
+LONGIE\> \> R\> longitude of the site\> \> \> \> \> \> \> degrees\\
+RAFILE\> \> I\> file from which rainfall data is to be obtained\> \> \> \> \> \> \> -\\
+RAIN\> \> R\> daily rainfall\> \> \> \> \> \> \> cm\\
+RSETRD\> \> L\> logical flag; reset rainfall distributor (only valid if IRNDAT=1)\> \> \> \> \> \> \> -\\
+RSETRG\> \> L\> logical flag; reset rainfall generator (only valid if IRNDAT=0)\> \> \> \> \> \> \> -\\
+STNAM\> \> R\> station name of DBMETEO data base\> \> \> \> \> \> \> -\\
+TMAX\> \> R\> daily maximum temperature\> \> \> \> \> \> \> \degrees C\\
+TMIN\> \> R\> daily minimum temperature\> \> \> \> \> \> \> \degrees C\\
+VAPOUR \> \> R\> daily average vapour pressure\> \> \> \> \> \> \> mbar\\
+WIND\> \> R\> daily average windspeed\> \> \> \> \> \> \> m s$^{{\rm -1}}$\\
+WTRDIR\> \> C\> directory where weather data are stored\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\bf SUBROUTINE PAUZE}     
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+ISCR    \> \> I   \> unit number of screen                              \> \> \> \> \> \> \> $-$
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+{\bf SUBROUTINE PENMAN}
+\testlastline
+
+\begin{indenting}{3.81cm}
+(IDAY, LAT, ELEV, AGSTA, ANGSTB, TMIN, TMAX, AVRAD, VAP,
+\end{indenting}
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+ \>\> \> \>  WIND2, E0, ES0, ET0)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name   \> Type \> Description                                        \> \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$   \> \> $-$$-$$-$$-$    \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+ANGSTA \> \> R   \> first empirical constant in \_ngstr\_m formula             \> \> \> \> \> \> \> $-$\\
+ANGSTB \> \> R   \> second empirical constant in \_ngstr\_m formula             \> \> \> \> \> \> \> $-$\\
+ATMTR   \> \> R   \> fraction of Angot's radiation actually received    \> \> \> \> \> \> \> $-$\\
+AVRAD   \> \> R   \> shortwave radiation actually received              \> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+BU      \> \> R   \> empirical constant of the wind function in the Penman formula  \> \> \> \> \> \> \> s m$^{{\rm -1}}$  \\
+COSLD   \> \> R   \> cosine(latitude) times cosin(declination of the sun)       \> \> \> \> \> \> \> $-$\\
+DAYL    \> \> R   \> day length                                         \> \> \> \> \> \> \> h\\
+DAYLP   \> \> R   \> photoperiodic day length                           \> \> \> \> \> \> \> h\\
+DELTA   \> \> R   \> slope of saturation vapour pressure curve between average air \\
+\>\> \> temperature and dew point \> \> \> \> \> \> \> mbar \degrees C$^{{\rm -1}}$\\
+DIFPP\> \> R\> diffuse radiation perpendicular to direction of light\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+DSINBE\> \> R  \> integral over the sine of of solar elevation with\\
+\>\> \> a correction for lowet atmospheric transmission\> \> \> \> \> \> \> s d$^{{\rm -1}}$\\
+E0      \> \> R   \> Penman potential evaporation rate from a free water surface       \> \> \> \> \> \> \> mm d$^{{\rm -1}}$ \\
+EA      \> \> R   \> evaporative demand of the atmosphere               \> \> \> \> \> \> \> mm d$^{{\rm -1}}$  \\
+EAC     \> \> R   \> evaporative demand of the atmosphere above a crop canopy\> \> \> \> \> \> \> mm d$^{{\rm -1}}$  \\
+ELEV    \> \> R   \> elevation above sea level                          \> \> \> \> \> \> \> m\\
+ES0     \> \> R   \> Penman potential evaporation rate from a bare soil surface       \> \> \> \> \> \> \> mm d$^{{\rm -1}}$ \\
+ET0     \> \> R   \> Penman potential transpiration rate from a crop canopy    \> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+GAMMA   \> \> R   \> psychrometer constant                              \> \> \> \> \> \> \> mbar \degrees C$^{{\rm -1}}$\\
+IDAY    \> \> I   \> day number in the Julian calendar (between 1 and 365)    \> \> \> \> \> \> \> $-$\\
+LAT     \> \> R   \> geographical latitude of location                  \> \> \> \> \> \> \> degrees\\
+LHVAP   \> \> R   \> latent heat of vaporization of water               \> \> \> \> \> \> \> J kg$^{{\rm -1}}$\\
+PBAR    \> \> R   \> atmospheric pressure                               \> \> \> \> \> \> \> mbar\\
+PSYCON  \> \> R   \> psychrometric instrument constant                  \> \> \> \> \> \> \> \degrees C$^{{\rm -1}}$\\
+RB      \> \> R   \> net outgoing longwave radiation                    \> \> \> \> \> \> \> J m$^{{\rm -2}}$ d$^{{\rm -1}}$\\
+REFCFC  \> \> R   \> albedo for crop canopy                             \> \> \> \> \> \> \> $-$\\
+REFCFS  \> \> R   \> albedo for bare soil surface                       \> \> \> \> \> \> \> $-$\\
+REFCFW  \> \> R   \> albedo for water surface                           \> \> \> \> \> \> \> $-$\\
+RELSSD  \> \> R   \> ratio of actual sunshine duration to max. duration on a cloudless day\> \> \> \> \> \> \> $-$\\
+RNC     \> \> R  \> net radiation absorbed by a crop canopy            \> \> \> \> \> \> \> mm d$^{{\rm -1}}$  \\
+RNS     \> \> R  \> net radiation absorbed by a bare soil surface      \> \> \> \> \> \> \> mm d$^{{\rm -1}}$  \\
+RNW     \> \> R   \> net radiation absorbed by a free water surface     \> \> \> \> \> \> \> mm d$^{{\rm -1}}$\\
+SINLD   \> \> R   \> sine(latitude) times sine(declination of the sun)  \> \> \> \> \> \> \> $-$\\
+STBC    \> \> R   \> Stefan Boltzman constant                           \> \> \> \> \> \> \> J m$^{{\rm -1}}$ d$^{{\rm -1}}$ K$^{{\rm -4}}$\\
+SVAP    \> \> R   \> saturated vapour pressure                          \> \> \> \> \> \> \> mbar\\
+TDIF    \> \> R   \> difference between maximum and minimum daily air temperature\> \> \> \> \> \> \> \degrees C\\
+TMAX    \> \> R   \> maximum daily air temperature                      \> \> \> \> \> \> \> \degrees C\\
+TMIN    \> \> R   \> minimum daily air temperature                      \> \> \> \> \> \> \> \degrees C\\
+TMPA    \> \> R   \> mean daily air temperature                         \> \> \> \> \> \> \> \degrees C\\
+VAP     \> \> R   \> 24 hours average vapour pressure                      \> \> \> \> \> \> \> mbar\\
+WIND2    \> \> R   \> 24 hours average wind speed at 2 meters        \> \> \> \> \> \> \> m s$^{{\rm -1}}$
+\end{tabbing}
+
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE ROOTD}\> \> \> (ITASK, DELT, IWB, IZT, FR, RRI, IAIRDU, RDI, RDMCR, RDMSOL, ZTI,\\
+ \>\> \> \>  ZT, RDM, RD)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+DELT\> \> R\> time step\\
+FR\> \> R\> \\
+IAIRDU\> \> I\> flag; (0) no airducts (1) airducts exist\> \> \> \> \> \> \> -\\
+ITASK\> \> I\> task which the subroutine should perform\> \> \> \> \> \> \> -\\
+\>\> \> ITASK = 1, initialization\\
+\>\> \> ITASK = 2, rate calculation\\
+\>\> \> ITASK = 3, integration\\
+\>\> \> ITASK = 4, finish section\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> -\\
+IWB\> \> I\> flag; controlling calculation of water limited yield without (0) or \\
+\>\> \> with (1) accounting for oxygen shortage in the root zone\> \> \> \> \> \> \> -\\
+IZT\> \> I\> flag; (0) no ground water influence, (1) ground water influence\> \> \> \> \> \> \> -\\
+RD\> \> R\> rooting depth\> \> \> \> \> \> \> cm\\
+RDI\> \> R\> initial rooting depth\> \> \> \> \> \> \> cm\\
+RDM\> \> R\> maximum rooting depth\> \> \> \> \> \> \> cm\\
+RDMCR\> \> R\> maximum rooting depth provided by user\> \> \> \> \> \> \> cm\\
+RDMO\> \> R\> maximum rooting depth reach under potential production\> \> \> \> \> \> \> cm\\
+RDMSOL\> \> R\> maximum rootable soil depth\> \> \> \> \> \> \> cm\\
+RR\> \> R\> root growth (not considered as a rate)\> \> \> \> \> \> \> cm \\
+RRI\> \> R\> initial root growth\> \> \> \> \> \> \> cm\\
+ZT\> \> R\> ground water depth\> \> \> \> \> \> \> cm\\
+ZTI\> \> R\> initial ground water depth\> \> \> \> \> \> \> cm
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SIMCRO}\> \> Main routine
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+CGM\_ABORT\> \> L\> logical flag\> \> \> \> \> \> \> -\\
+CHKEOT\> \> I\> end of data\> \> \> \> \> \> \> -\\
+CHCROP\> \> C\> character representation of cropnumber\> \> \> \> \> \> \> -\\
+COUNT\> \> I\> wait-loop variable\> \> \> \> \> \> \> -\\
+CRC\_COUNT\> \> I\> \\
+EOT\> \> I\> end of fetch\> \> \> \> \> \> \> -\\
+ERRSTAT\> \> I\> error indicator\> \> \> \> \> \> \> -\\
+FATAL\> \> L\> logical flag\> \> \> \> \> \> \> -\\
+I\> \> I\> general counter\> \> \> \> \> \> \> -\\
+ICROP\> \> I\> number which identifies crop\> \> \> \> \> \> \> -
+\end{tabbing}
+IDAYEN\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+IDEM\> \> I\> day of emergence (date 1-366)\> \> \> \> \> \> \> -
+\end{tabbing}
+IDESOW\\
+IDLSOW\\
+IDSOW\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+IEYEAR\> \> I\> end year of crop growth simulation\> \> \> \> \> \> \> -\\
+ISYEAR\> \> I\> starting year of crop growth simulation\> \> \> \> \> \> \> -\\
+NONFATAL\> \> L\> logical flag\> \> \> \> \> \> \> -\\
+NRCRPS\> \> I\> number of crops\> \> \> \> \> \> \> -\\
+PACRPNM\> \> C\> array for cropnames\> \> \> \> \> \> \> -\\
+PACRPNO\> \> I\> array for crop numbers\> \> \> \> \> \> \> -\\
+PCHKGRW\> \> \> check variable to see if grid-weather is complete for cuurent year\> \> \> \> \> \> \> -\\
+PCROPNO\> \> I\> check variable for crop number in input-output table\> \> \> \> \> \> \> -\\
+PCRPNM\> \> C\> check variable for crop name in input-output table\> \> \> \> \> \> \> -\\
+PCURYR\> \> I\> current year, boundary variable\> \> \> \> \> \> \> -\\
+PFROMDAY\> \> C*10\\
+PMAXWTH\> \> I\> number of days with available weather\> \> \> \> \> \> \> -\\
+PMINYR\> \> I\> minimum amount of years to be simulated\> \> \> \> \> \> \> -\\
+PMAXYR\> \> I\> maximum amount of years to be simulated\> \> \> \> \> \> \> -\\
+PTODAY\> \> C*10\\
+PYEAR\> \> I
+\end{tabbing}
+PUID\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+TMPCROP\> \> I\\
+WAIT\> \> I\> wait-loop variable\\
+YEAR\> \> I\> current year\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE SUBSOL} \> \> \> (PF, D, FLOW, CONTAB, ILCON)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                       \> \> \> \> \> \> \>  $-$$-$$-$$-$$-$\\
+CONDUC  \> \> R   \> array with conductivity values belonging to the matric head values used for \\
+\>\> \> function evaluation in the integration process              \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+CONTAB  \> \> R   \> the 10$-$log of conductivity as a function of the pF (AFGEN table)    \> \> \> \> \> \> \> log(cm/d)\\
+D       \> \> R   \> distance between groundwater and lower boundary of the root zone      \> \> \> \> \> \> \> cm\\
+D1      \> \> R   \> local variable (no formal parameter) equal to D    \> \> \> \> \> \> \> cm\\
+DEL     \> \> R   \> array containing ranges of at most four matric head integration intervals \`cm or log(cm)\\
+DF      \> \> R   \> accuracy of estimated flow during iteration        \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+ELOG10  \> \> R   \> mathematical constant (= log(10))                  \> \> \> \> \> \> \> $-$\\
+FL      \> \> R   \> lower bound of flow rate                           \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+FLOW    \> \> R   \> flow rate, equal to FLW, output variable           \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+FLW     \> \> R   \> estimated flow rate                                \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+FU      \> \> R   \> upper bound of flow rate                           \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+HULP    \> \> R   \> array with auxiliary variables, used to save execution time during iteration \> \> \> \> \> \> \> cm$^{{\rm 2}}$ d$^{{\rm -1}}$ \\
+I1      \> \> I   \> DO$-$loop control variable                           \> \> \> \> \> \> \> -\\
+I2      \> \> I   \> DO$-$loop control variable                           \> \> \> \> \> \> \> $-$\\
+I3      \> \> I   \> DO$-$loop control variable                           \> \> \> \> \> \> \> $-$\\
+IINT    \> \> I   \> number of integration intervals                    \> \> \> \> \> \> \> $-$\\
+ILCON\> \> I\> number of elements in the table CONTAB\> \> \> \> \> \> \> -\\
+IMAX    \> \> I   \> number of "points" (=3*IINT)                       \> \> \> \> \> \> \> $-$\\
+K0      \> \> R   \> hydraulic conductivity of saturated soil                     \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+LOGST4  \> \> R  \> mathematical constant, equal to 10$-$log(330)         \> \> \> \> \> \> \> log(cm)\\
+MH      \> \> R   \> matric head of root zone                            \> \> \> \> \> \> \> cm\\
+PF      \> \> R   \> pF value belonging to MH (i.e. 10$-$log(MH))          \> \> \> \> \> \> \> log(cm)\\
+PF1     \> \> R   \> equals PF, not a formal parameter                  \> \> \> \> \> \> \> log(cm)\\
+PFGAU   \> \> R   \> array with pF values belonging to the matric head values used for function \\
+\>\> \> evaluation in the integration process                         \> \> \> \> \> \> \> log(cm)\\
+PFSTAN  \> \> R   \> values for PFGAU belonging to the standard intervals for integration\\
+            \>\>\> (0, 45), (45, 170) and (170, 330)                  \> \> \> \> \> \> \> log(cm)\\
+PGAU    \> \> R   \> mathematical constants used for three$-$point Gaussian integration            \> \> \> \> \> \> \> $-$\\
+START   \> \> R   \> array containing standard interval bounds for Gaussian integration           \> \> \> \> \> \> \> cm\\
+WGAU    \> \> R   \> mathematical constants used for three$-$point Gaussian integration           \> \> \> \> \> \> \> $-$\\
+Z       \> \> R   \> distance between ground water and lower boundary of root zone\> \> \> \> \> \> \> cm
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+{\bf SUBROUTINE TIMER} 
+\testlastline
+
+\begin{indenting}{3.81cm}
+(ITASK, DAYB, DELT, PRDEL, FINTIM, IYEAR, TIME, DAY, IDAY, TERMNL, OUTPUT)
+\end{indenting}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+DAYB\> \> R\> Start day of simulation (leap years are not flagged when IYEAR $<$ 1500)\> \> \> \> \> \> \> -\\
+DAY\> \> R\> day number (REAL) of year=IYEAR\> \> \> \> \> \> \> -\\
+DELT\> \> R\> time step (= 1 day)\> \> \> \> \> \> \> d\\
+FINTIM\> \> R\> finish time of simulation (counted from start of simulation)\> \> \> \> \> \> \> -\\
+ICOUNT\> \> I\\
+IDAY\> \> I\> day number (INTEGER) of year=IYEAR\> \> \> \> \> \> \> -\\
+IFINT\> \> I\\
+ILDAY\> \> I\> Start day of simulation, local variable\\
+\>\> \> (leap years are not flagged when IYEAR $<$ 1500)\> \> \> \> \> \> \> -\\
+ILYEAR\> \> I\> start year (ITASK=1), current year (ITASK=2), local variable\> \> \> \> \> \> \> -\\
+IPRINT\> \> I\\
+IS\> \> I\\
+IT\> \> I\> inverse of time step (if 0 $<$ DELT $<$ 1)\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+ITASK\> \> I\> task that subroutine should perform\> \> \> \> \> \> \> -\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> -\\
+IYEAR\> \> I\> start year (ITASK=1), current year (ITASK=2)\> \> \> \> \> \> \> -\\
+LDELT\> \> R\> time step (=1 day), local variable\\
+LTIME\> \> R\> time from start of simulation, local variable\> \> \> \> \> \> \> -\\
+OUTPUT\> \> L\> logical flag; (false) not output, (true) output\> \> \> \> \> \> \> -\\
+PRDEL\> \> R\> time between succesive outputs (0, equal to or multiple of DELT)\> \> \> \> \> \> \> -\\
+PROUT\> \> L\> logical flag;\\
+R1\> \> R\> inverse of time step (if 0 $<$ DELT $<$ 1)\> \> \> \> \> \> \> d$^{{\rm -1}}$\\
+TERMNL\> \> L\> logical flag; (false) FINTIM not reached, (true) FINTIM reached\> \> \> \> \> \> \> -\\
+TIME\> \> R\> time from start of simulation\> \> \> \> \> \> \> -\\
+TINY\> \> R\> help variable which prevents errors due to rounding\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE TOTASS}\> \> \> (DAYL, AMAX, EFF, LAI, KDIF, AVRAD, DIFPP, DSINBE, SINLD, COSLD,\\
+ \>\> \> \>  DTGA)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+AMAX    \> \> R   \> maximum leaf CO2 assimilation rate (light saturation)\> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$\\
+AVRAD   \> \> R   \> daily shortwave radiation actually received  \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+COSLD   \> \> R   \> cosine(latitude) times cosine(declination of the sun)           \> \> \> \> \> \> \> $-$\\
+DAYL    \> \> R   \> astronomical day length\> \> \>  \> \> \> \> h\\
+DIFPP\> \> R\> diffuse irradiation perpendicular to direction of light\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+DSINBE\> \> R\> daily total of effective solar height\> \> \> \> \> \> \> s\\
+DTGA    \> \> R   \> daily total gross CO2  assimilation rate       \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$ \\
+EFF     \> \> R   \> initial light$-$use efficiency of CO2 assimilation of single leaves \`kg ha$^{{\rm -1}}$ h$^{{\rm -1}}$ J$^{{\rm -1}}$ m$^{{\rm 2}}$ s\\
+FGROS   \> \> R   \> gross CO2  assimilation rate per hour of whole crop        \> \> \> \> \> \> \> kg ha$^{{\rm -1}}$ d$^{{\rm -1}}$ \\
+HOUR    \> \> R   \> hour of the day                                    \> \> \> \> \> \> \> $-$\\
+I1     \> \> I   \> DO$-$loop control variable                           \> \> \> \> \> \> \> $-$\\
+KDIF    \> \> R   \> extinction coefficient for diffuse visible light   \> \> \> \> \> \> \> $-$\\
+LAI     \> \> R   \> leaf area index                                    \> \> \> \> \> \> \> ha ha$^{{\rm -1}}$\\
+PAR\> \> R\> photosynthetically active radiation\> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$\\
+PARDIF  \> \> R   \> flux of diffuse photosynthetically active radiation       \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$  \\
+PARDIR  \> \> R   \> flux of direct photosynthetically active radiation  \> \> \> \> \> \> \> J m$^{{\rm -2}}$ s$^{{\rm -1}}$ \\
+SINB    \> \> R   \> sine of solar elevation                            \> \> \> \> \> \> \> $-$\\
+SINLD   \> \> R   \> sine(latitude) times sine(declination of the sun)  \> \> \> \> \> \> \> $-$\\
+WGAUSS\> \> R\> mathematical constants used for three-point Gaussian integration\> \> \> \> \> \> \> -\\
+XGAUSS\> \> R\> mathematical constants used for three-point Gaussian integration\> \> \> \> \> \> \> -
+\end{tabbing}
+ 
+
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE WATFD}\> \> \> (ITASK, DELT, IDEM, IDHALT, SOFILE, IUSO, IUOUT, IULOG, RDM, RD,\\
+ \>\> \> \>  IAIRDU, IFUNRN, SSI, SSMAX, WAV, NOTINF, EVWMX, EVSMX, TRA,\\
+ \>\> \> \>  SMW, CRAIRC, SM, RAIN, SMO, SMFCF)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+AVAIL\> \> R\> amount of water available for infiltration\> \> \> \> \> \> \> cm\\
+CRAIRC\> \> R\> critical air content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+CRJ\> \> R\> sub total of actual rate of capillary rise over print interval\> \> \> \> \> \> \> cm\\
+\>\> \> (not used in WATFD, value is set to 0.0)\\
+DELT\> \> R\> time step = 1 day\> \> \> \> \> \> \> d\\
+DMAXJ\> \> R\> sub total of drainage rate over print interval\> \> \> \> \> \> \> cm\\
+\>\> \> (not used in WATFD, value is set to 0.0)\\
+DSLR\> \> R\> days since last rainfall\> \> \> \> \> \> \> -\\
+DW\> \> R\> rate of change in amount of soil moisture in rooted zone\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DWJ\> \> R\> sub total of variable DW over print interval\> \> \> \> \> \> \> cm  \\
+DWLOW\> \> R\> rate of change in amount of soil moisture between rooted zone \\
+\>\> \> and maximum rooting depth\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DWLOWJ\> \> R\> sub total of variable DWLOW over print interval\> \> \> \> \> \> \> cm \\
+DZJ\> \> R\> sub total of rate of change in groundwater depth over print interval\> \> \> \> \> \> \> cm\\
+EVS\> \> R\> evaporation rate from a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVS1\> \> R\> daily output soil water balance variable EVS\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVSJ\> \> R\> sub total of variable EVS over print interval\> \> \> \> \> \> \> cm \\
+EVSMX\> \> R\> maximum evaporation rate from a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVST\> \> R\> total evaporation from a shaded soil surface\> \> \> \> \> \> \> cm\\
+EVSTX\> \> R\> output cumulative water balance variable EVST\> \> \> \> \> \> \> cm\\
+EVW\> \> R\> evaporation rate from a shaded water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVW1\> \> R\> daily output soil water balance variable EWS\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWJ\> \> R\> sub total of variable EVW over print interval\> \> \> \> \> \> \> cm \\
+EVWMX\> \> R\> maximum evaporation rate from a shaded water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWT\> \> R\> total evaporation from a shaded water surface\> \> \> \> \> \> \> cm\\
+EVWTX\> \> R\> output cumulative water balance variable EVWT\> \> \> \> \> \> \> cm\\
+IAIRDU\> \> I\> flag for airducts in rootzone;  (0) absent, (1) present\> \> \> \> \> \> \> -\\
+IDEM\> \> I\> day of emergence (date 1-366)\> \> \> \> \> \> \> -\\
+IDHALT\> \> I\> day that simulation is halted (date 1-366)\> \> \> \> \> \> \> -\\
+IFUNRN\> \> I\> flag for calculation of non-infiltrating fraction of rainfall; (0) fixed\\
+ \>\> \> at NOTINF, (1) depends on daily rainfall (NINFTB) and NOTINF\> \> \> \> \> \> \> -\\
+ITASK\> \> I\> flag to control task to be performed\> \> \> \> \> \> \> -\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> --\\
+IULOG\> \> I\> unit number, log file\> \> \> \> \> \> \> -\\
+IUOUT\> \> I\> unit number, output file\> \> \> \> \> \> \> -\\
+IUSO\> \> I\> unit number, soil data file \> \> \> \> \> \> \> -\\
+K0\> \> R\> conductivity of saturated soil\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+KSUB\> \> R\> hydraulic conductivity used in calculations without groundwater\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+LOSS\> \> R\> loss of water at lower end of the maximum root zone\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+LOSSJ\> \> R\> sub total of variable LOSS over print interval\> \> \> \> \> \> \> cm\\
+LOSST\> \> R\> total loss of water by deep leaching\> \> \> \> \> \> \> cm\\
+LOSSTX\> \> R\> output cumulative water balance variable LOSST\> \> \> \> \> \> \> cm\\
+MWC\> \> R\> mean water content root zone during crop growth, end of simulation\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+MWCX\> \> R\> output for cumulative water balance of variable MWC\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+NINFTB\> \> R\> multiplier for non-infiltrating fraction of rainfall as function of\\
+\>\> \> daily rainfall (AFGEN table)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+NOTINF\> \> R\> (maximum) non infiltrating fraction of rainfall\> \> \> \> \> \> \> -\\
+PERC\> \> R\> actual percolation rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+PERC1\> \> R\> perc. from rooted zone to subsoil (= excess of moisture root zone)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+PERC2\> \> R\> maximum percolatiob (determined by uptake capacity subsoil)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+PERCJ\> \> R\> sub total of variable PERC over print interval\> \> \> \> \> \> \> cm\\
+PERCT\> \> R\> total percolation\> \> \> \> \> \> \> cm\\
+PERCTX\> \> R\> output cumulative water balance variable PERCT\> \> \> \> \> \> \> cm\\
+RAIN\> \> R\> daily rainfall\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RAINJ\> \> R\> sub total of variable RAIN over print interval\> \> \> \> \> \> \> cm\\
+RAINT\> \> R\> total rainfall\> \> \> \> \> \> \> cm\\
+RAINTX\> \> R\> output cumulative water balance variable RAINT\> \> \> \> \> \> \> cm\\
+RD\> \> R\> rooting depth\> \> \> \> \> \> \> cm\\
+RDM\> \> R\> maximum rooting depth\> \> \> \> \> \> \> cm\\
+RDOLD\> \> R\> old rooting depth\> \> \> \> \> \> \> cm\\
+RIN\> \> R\> actual infiltration rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RINJ\> \> R\> sub total of variable RIN over print interval\> \> \> \> \> \> \> cm\\
+RIRR\> \> R\> actual irriagtion rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RIRRJ\> \> R\> sub total of variable RIRR over print interval\> \> \> \> \> \> \> cm\\
+SM\> \> R\> actual soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM0\> \> R\> saturated moisture content; soil porosity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM1\> \> R\> daily output soil water balance variable SM\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> R\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMLIM\> \> R\> limit for initial soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMW\> \> R\> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SOFILE\> \> C\> name of soil data file\> \> \> \> \> \> \> -\\
+SOPE\> \> R\> conductivity of wet soil, limiting the unfiltration rate in case of \\
+\>\> \> surface storage, and in calculations without groundwater \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+SS\> \> R\> actual surface storage\> \> \> \> \> \> \> cm\\
+SS1\> \> R\> daily output soil water balance variable SS\> \> \> \> \> \> \> cm\\
+SSI\> \> R\> initial surface storage\> \> \> \> \> \> \> cm\\
+SSIX\> \> R\> output for cumulative water balance of variable SSI\> \> \> \> \> \> \> cm\\
+SSX\> \> R\> output for cumulative water balance of variable SS\> \> \> \> \> \> \> cm\\
+SSMAX\> \> R\> maximum surface storage\> \> \> \> \> \> \> cm\\
+SSPRE\> \> R \> preliminary calculated surface storage\> \> \> \> \> \> \> cm\\
+SUBTOT\> \> -\> COMMON BLOCK; subtotals summary water bal. (0 after printing)\> \> \> \> \> \> \> -\\
+SUMSM\> \> R\> total soil moisture content over growing peri \\
+TINFX\> \> R\> output cumulative water balance variable TOTINF\> \> \> \> \> \> \> cm\\
+TIRRX\> \> R\> output cumulative water balance variable TOTIRR\> \> \> \> \> \> \> cm\\
+TOTINF\> \> R\> total infiltration\> \> \> \> \> \> \> cm\\
+TOTIRR\> \> R\> total irrigation\> \> \> \> \> \> \> cm\\
+TRA\> \> R\> actual transpiration rate (as calculated in EVTRA)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRAJ\> \> R\> sub total of variable TRA over print interval\> \> \> \> \> \> \> cm\\
+TRAT\> \> R\> total transpiration\> \> \> \> \> \> \> cm\\
+TRATX\> \> R\> output cumulative water balance variable TRAT\> \> \> \> \> \> \> cm\\
+TSR\> \> R\> total surface runoff\> \> \> \> \> \> \> cm\\
+TSRX\> \> R\> output cumulative water balance variable TSR\> \> \> \> \> \> \> cm\\
+TWE\> \> R\> total water content of potentially rooted zone at end of simulation\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+TWEX\> \> R\> output for cumulative water balance of variable TWE\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+W\> \> R\> amount of water in the rooted zone\> \> \> \> \> \> \> cm\\
+WAV\> \> R\> amount of water in excess of wilting point at emergence \> \> \> \> \> \> \> cm\\
+WBALFD\> \> -\> COMMON BLOCK; output variables for summary water balance\> \> \> \> \> \> \> -\\
+WBALRT\> \> R\> checksum water balance for system without ground water influence\> \> \> \> \> \> \> cm\\
+WBALTT\> \> R\> checksum water balance for system without ground water influence\> \> \> \> \> \> \> cm\\
+WBTOTX\> \> R\> output for cumulative water balance of variable WBALTT\> \> \> \> \> \> \> cm\\
+WBRTX\> \> R\> output for cumulative water balance of variable WBALRT\> \> \> \> \> \> \> cm\\
+WDR\> \> R\> water added to the root zone by root growth\> \> \> \> \> \> \> cm\\
+WDRT\> \> R\> total water addition to root zone by root growth\> \> \> \> \> \> \> cm\\
+WDRTX\> \> R\> output cumulative water balance variable WDRT\> \> \> \> \> \> \> cm\\
+WE\> \> R\> equilibrium amount of soil moisture in the rooted zone\> \> \> \> \> \> \> cm\\
+WELOW\> \> R\> equilibrium amoint of soil moisture below rooted zone\> \> \> \> \> \> \> cm\\
+WFDDO\> \> -\> COMMON BLOCK; daily output of water variables from WATFD\> \> \> \> \> \> \> -\\
+WI\> \> R\> initial amount of water in the rooted zone\> \> \> \> \> \> \> cm\\
+WIX\> \> R\> output for cumulative watewr balance of variable WI\> \> \> \> \> \> \> cm\\
+WLOW\> \> R\> amount of water between rooted zone and max. rooting depth\> \> \> \> \> \> \> cm\\
+WLOWI\> \> R\> initial amount of water between rooted zone and max. root depth\> \> \> \> \> \> \> cm\\
+WLOWX\> \> R\> output for cumulative water balance of variable WLOW\> \> \> \> \> \> \> cm\\
+WWLOW\> \> R\> amount of water in the whole rootable zone\> \> \> \> \> \> \> cm\\
+WWLOW1\> \> R\> daily output soil water balance variable WWLOW\> \> \> \> \> \> \> cm\\
+WWLOWJ\> \> R\> sub total of variable WWLOW over print interval\> \> \> \> \> \> \> cm\\
+WX\> \> R\> output cumulative water balance variable W\> \> \> \> \> \> \> cm
+\end{tabbing}
+
+ 
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE WATGW}\> \> \> (ITASK, DELT, IDEM, IDHALT, TERMNL, SOFILE, IUSO, IUOUT, IULOG,\\
+ \>\> \> \>  IDRAIN, RD, IAIRDU, IFUNRN, SSI, SSMAX, ZTI, DD, NOTINF, EVWMX,\\
+ \>\> \> \>  EVSMX, TRA, SMW, CRAIRC, ZT, SM, RAIN, SMO, SMFCF)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+AIRC\> \> R\> air content above groundwater (groundwater in root zone)\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+AVAIL\> \> R\> amount of water available for infiltration\> \> \> \> \> \> \> cm\\
+CONTAB\> \> R\> table with 10log soil hydraulic conductivity as function of pF \> \> \> \> \> \> \> -------\\
+CR\> \> R\> actual rate of capillary rise\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+CRAIRC\> \> R\> critical air content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+CRT\> \> R\> total capillary rise\> \> \> \> \> \> \> cm\\
+CRTX\> \> R\> output of total capillary rise CRT\> \> \> \> \> \> \> cm\\
+DD\> \> R\> distance from soil surface to drains\> \> \> \> \> \> \> cm\\
+DEFDTB\> \> R\> table with height above groundwater as function of cum. amount of air\> \> \> \> \> \> \> ----\\
+DELT\> \> R\> time step = 1 day\> \> \> \> \> \> \> d\\
+DMAX\> \> R\> drainage rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DR1\> \> R\> capacity of artificial drainage system\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DR2\> \> R\> drainage rate limited by drainable amount of water\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DRAINT\> \> R\> total drainage\> \> \> \> \> \> \> cm\\
+DRAITX\> \> R\> output of cumulative drainage DRAINT\> \> \> \> \> \> \> cm\\
+DSLR\> \> R\> days since last rainfall\> \> \> \> \> \> \> -\\
+DW\> \> R\> rate of change in amount of soil moisture in rooted zone\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+DZ\> \> R\> rate of change in groundwater depth\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVS\> \> R\> evaporation rate from a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVS1\> \> R\> output daily soil water balance variable EVS\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVSMX\> \> R\> maximum evaporation rate from a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVST\> \> R\> total evaporation from a shaded soil surface\> \> \> \> \> \> \> cm\\
+EVSTX\> \> R\> output cumulative water balance variable EVST\> \> \> \> \> \> \> cm\\
+EVW\> \> R\> evaporation rate from a shaded water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVW1\> \> R\> output of daily soil water balance variable EWS\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWMX\> \> R\> maximum evaporation rate from a shaded water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWT\> \> R\> total evaporation from a shaded water surface\> \> \> \> \> \> \> cm\\
+EVWTX\> \> R\> output cumulative water balance variable EVWT\> \> \> \> \> \> \> cm\\
+FLOW\> \> R\> flow of water through root zone boundary\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+I\> \> I\> DO-loop control variable\> \> \> \> \> \> \> -\\
+I2\> \> I\> DO-loop control variable\> \> \> \> \> \> \> - \\
+I3\> \> I\> DO-loop control variable\> \> \> \> \> \> \> - \\
+I20\> \> I\> DO-loop control variable\> \> \> \> \> \> \> - \\
+IAIRDU\> \> I\> flag for airducts in rootzone;  (0) absent, (1) present\> \> \> \> \> \> \> -\\
+IDEM\> \> I\> day of emergence (date 1-366)\> \> \> \> \> \> \> -\\
+IDHALT\> \> I\> day that simulation is halted (date 1-366)\> \> \> \> \> \> \> -\\
+IDRAIN\> \> I\> indicates present (1) or absence of (0) of drains\> \> \> \> \> \> \> -\\
+IFUNRN\> \> I\> flag for calculation of non-infiltrating fraction of rainfall; (0) fixed\\
+ \>\> \> at NOTINF, (1) depends on daily rainfall (NINFTB) and NOTINF\> \> \> \> \> \> \> -\\
+ILCON\> \> I\> number of elements in table CONTAB\> \> \> \> \> \> \> -\\
+ILSM\> \> I\> number of elements in table SMTAB\> \> \> \> \> \> \> -\\
+ITASK\> \> I\> flag to control task to be performed\> \> \> \> \> \> \> -\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> -\\
+IULOG\> \> I\> unit number, log file\> \> \> \> \> \> \> -\\
+IUOUT\> \> I\> unit number, output file\> \> \> \> \> \> \> -\\
+IUSO\> \> I\> unit number, soil data file \> \> \> \> \> \> \> -\\
+K0\> \> R\> hydraulic conductivty of saturated soil\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+MH0\> \> R\> lower matric height of integration interval\> \> \> \> \> \> \> cm\\
+MH1\> \> R\> upper matric height of integration interval\> \> \> \> \> \> \> cm\\
+NINFTB\> \> R\> multiplier for non-infiltrating fraction of rainfall as function of\\
+\>\> \> daily rainfall [X,Y]\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+NOTINF\> \> R\> (maximum) non infiltrating fraction of rainfall\> \> \> \> \> \> \> -\\
+PERC\> \> R\> actual percolation rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+PERCT\> \> R\> total percolation\> \> \> \> \> \> \> cm\\
+PERCTX\> \> R\> output cumulative water balance variable PERCT\> \> \> \> \> \> \> cm\\
+PF\> \> R\> 10log of hydraulic head\> \> \> \> \> \> \> -\\
+PFTAB\> \> R\> table with pF data as a function of soil moisture\> \> \> \> \> \> \> -\\
+PGAU\> \> R\> mathematical constant used for three point Gaussian integration\> \> \> \> \> \> \> -\\
+RAIN\> \> R\> daily rainfall\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RAINT\> \> R\> total rainfall\> \> \> \> \> \> \> cm\\
+RAINT1\> \> R\> output of daily soil water balance variable RAINT\> \> \> \> \> \> \> cm\\
+RAINTX\> \> R\> output cumulative water balance variable RAINT\> \> \> \> \> \> \> cm\\
+RD\> \> R\> rooting depth\> \> \> \> \> \> \> cm\\
+RIN\> \> R\> actual infiltration rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RINPRE\> \> R\> preliminary infiltration rate (first estimation)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RIRR\> \> R\> actual irrigation rate\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+RTDF\> \> R\> counter of consecutive days with groundwater table within 10 cm\> \> \> \> \> \> \> -\\
+SDEFTB\> \> R\> cum. amount of air as a function of height above ground water\> \> \> \> \> \> \> cm \\
+SM\> \> R\> actual soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM0\> \> R\> saturated moisture content; soil porosity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM1\> \> R\> output of daily soil water balance variable SM\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> R\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMTAB\> \> R\> table with soil moisture data as a function of pF [X,Y]\> \> \> \> \> \> \> -\\
+SMW\> \> R\> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SOFILE\> \> C\> name of soil data file\> \> \> \> \> \> \> -\\
+SOPE\> \> R\> conductivity of wet soil, limiting the unfiltration rate in case of \\
+\>\> \> surface storage \> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+SS\> \> R\> actual surface storage\> \> \> \> \> \> \> cm\\
+SS1\> \> R\> output of daily soil water balance variable SS\> \> \> \> \> \> \> cm\\
+SSI\> \> R\> initial surface storage\> \> \> \> \> \> \> cm\\
+SSIX\> \> R\> output for cumulative water balance of variable SSI\> \> \> \> \> \> \> cm\\
+SSX\> \> R\> output for cumulative water balance of variable SS\> \> \> \> \> \> \> cm\\
+SSMAX\> \> R\> maximum surface storage\> \> \> \> \> \> \> cm\\
+SUBAI0\> \> R\> old value of SUBAIR\\
+SUBAIR\> \> R\> amount of air in soil below rooted zone\> \> \> \> \> \> \> cm\\
+SUMSM\> \> R\> mean soil moisture content over growing peri  ??????????????????????\\
+TERMNL\> \> L\> logical flag;\\
+TINFX\> \> R\> output cumulative water balance variable TOTINF\> \> \> \> \> \> \> cm\\
+TIRRX\> \> R\> output cumulative water balance variable TOTIRR\> \> \> \> \> \> \> cm\\
+TOTINF\> \> R\> total infiltration\> \> \> \> \> \> \> cm\\
+TOTIRR\> \> R\> total irrigation\> \> \> \> \> \> \> cm\\
+TRA\> \> R\> actual transpiration rate (as calculated in EVTRA)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRAT\> \> R\> total transpiration\> \> \> \> \> \> \> cm\\
+TRATX\> \> R\> output cumulative water balance variable TRAT\> \> \> \> \> \> \> cm\\
+TSR\> \> R\> total surface runoff\> \> \> \> \> \> \> cm\\
+TSRX\> \> R\> output cumulative water balance variable TSR\> \> \> \> \> \> \> cm\\
+W\> \> R\> amount of water in the rooted zone\> \> \> \> \> \> \> cm\\
+WBALGW\> \> -\> COMMON BLOCK; output variables for summary water balance\> \> \> \> \> \> \> -\\
+WBALRT\> \> R\> checksum water balance for system with ground water influence\> \> \> \> \> \> \> cm\\
+WBALTT\> \> R\> checksum water balance for system with ground water influence\> \> \> \> \> \> \> cm\\
+WBTOTX\> \> R\> output for cumulative water balance of variable WBALTT\> \> \> \> \> \> \> cm\\
+WBRTX\> \> R\> output for cumulative water balance of variable WBALRT\> \> \> \> \> \> \> cm\\
+WDR\> \> R\> water added to the root zone by root growth\> \> \> \> \> \> \> cm\\
+WDRT\> \> R\> total water addition to root zone by root growth\> \> \> \> \> \> \> cm\\
+WDRTX\> \> R\> output cumulative water balance variable WDRT\> \> \> \> \> \> \> cm\\
+WE\> \> R\> equilibrium amount of soil moisture in the rooted zone\> \> \> \> \> \> \> cm\\
+WEDTOT\> \> R\> equilibrium amount of moisture above drains to surface\> \> \> \> \> \> \> cm\\
+WGAU\> \> R\> mathematical constant used for three point Gaussian integration\> \> \> \> \> \> \> -\\
+WGWDO\> \> -\> COMMON BLOCK; daily output of water variables from WATGW\> \> \> \> \> \> \> -\\
+WI\> \> R\> initial amount of water in the rooted zone\> \> \> \> \> \> \> cm\\
+WIX\> \> R\> output for cumulative watewr balance of variable WI\> \> \> \> \> \> \> cm\\
+WX\> \> R\> output cumulative water balance variable W\> \> \> \> \> \> \> cm\\
+WZ\> \> R\> amount of moisture in soil below rooted zone\> \> \> \> \> \> \> cm\\
+WZI\> \> R\> initial amount of mousture in soil below rooted zone\> \> \> \> \> \> \> cm\\
+WZIX\> \> R\> initial amount of mousture in soil below rooted zone (output variable)\> \> \> \> \> \> \> cm\\
+WZX\> \> R\> amount of moisture in soil below rooted zone (output variable)\> \> \> \> \> \> \> cm\\
+XDEF\> \> R\> maximum depth of ground water table\> \> \> \> \> \> \> cm\\
+ZT\> \> R\> actual depth of the groundwater table below soil surface\> \> \> \> \> \> \> cm\\
+ZT1\> \> R\> output of daily soil water balanace variable ZT\> \> \> \> \> \> \> cm\\
+ZTI\> \> R\> initial depth of groundwater table\> \> \> \> \> \> \> cm\\
+ZTMRD\> \> R\> indicator for ground water table within (-) or below (+) root zone\> \> \> \> \> \> \> -
+\end{tabbing}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf SUBROUTINE WATPP}\> \> \> (ITASK, DELT, SOFILE, IUSO, IUOUT, IULOG, IAIRDU, SM0, SMFCF,\\
+ \>\> \> \>  SMW, EVWMX, EVSMX, TRA, SM)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+DELT\> \> R\> time step (= 1 day)\> \> \> \> \> \> \> d\\
+EVSMX\> \> R\> maximum evaporation rate from a shaded soil surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVST\> \> R\> total evaporation from a shaded soil surface\> \> \> \> \> \> \> cm\\
+EVSTX\> \> R\> output cumulative water balance variable EVST\> \> \> \> \> \> \> cm\\
+EVWMX\> \> R\> maximum evaporation rate from a shaded water surface\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+EVWT\> \> R\> total evaporation from a shaded water surface\> \> \> \> \> \> \> cm\\
+EVWTX\> \> R\> output cumulative water balance variable EVWT\> \> \> \> \> \> \> cm\\
+IAIRDU\> \> I\> flag for airducts in root zone; (0) absent, (1) present\> \> \> \> \> \> \> -\\
+ILSM\> \> I\> number of elements in table SMTAB\> \> \> \> \> \> \> -\\
+ITASK\> \> I\> flag to control task to be performed\> \> \> \> \> \> \> -\\
+ITOLD\> \> I\> retains number of last task performed\> \> \> \> \> \> \> -\\
+IULOG\> \> I\> unit number, log file\> \> \> \> \> \> \> -\\
+IUOUT\> \> I\> unit number, output file\> \> \> \> \> \> \> -\\
+IUSO\> \> I\> unit number, soil data file\> \> \> \> \> \> \> -\\
+SM\> \> R\> actual soil moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SM0\> \> R\> soil porosity; saturated moisture content\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMFCF\> \> R\> soil moisture content at field capacity\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SMTAB\> \> R\> table with soil moisture data as a function of pF [X,Y]\> \> \> \> \> \> \> -\\
+SMW\> \> R\> soil moisture content at wilting point\> \> \> \> \> \> \> cm$^{{\rm 3}}$ cm$^{{\rm -3}}$\\
+SOFILE\> \> C\> name of osil data file\> \> \> \> \> \> \> -\\
+TRA\> \> R\> actual transpiaration rate (as calculated in EVTRA)\> \> \> \> \> \> \> cm d$^{{\rm -1}}$\\
+TRAT\> \> R\> total transpiration\> \> \> \> \> \> \> cm\\
+TRATX\> \> R\> output cumulative water balance variable TRAT\> \> \> \> \> \> \> cm\\
+WATPP\> \> -\> COMMON BLOCK; summary output variables\> \> \> \> \> \> \> -
+\end{tabbing}
+\newpage
+{\LARGE {\bf FUNCTIONS}}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf FUNCTION AFGEN} \> \> \> (TABLE, ILTAB, X)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+AFGEN   \> \> R   \> returned value, result of interpolation            \> \> \> \> \> \> \> units Y\\
+I       \> \> I   \> DO$-$loop control variable                           \> \> \> \> \> \> \> $-$\\
+ILTAB\> \> I\> length of table\> \> \> \> \> \> \> -\\
+SLOPE   \> \> R   \> slope of function in range containing X            \> \> \> \> \> \> \> unitsY/unitsX\\
+TABLE   \> \> R   \> AFGEN function [X,Y]\> \> \> \> \> \> \> unitsX unitsY\\
+X       \> \> R   \> value of independent variable, for which function is evaluated\> \> \> \> \> \> \> units X
+\end{tabbing}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf FUNCTION LIMIT}\> \> \> ( )
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+-$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+LIMIT   \> \> R   \> returned value, limited within range of bounds     \> \> \> \> \> \> \> units X\\
+P1      \> \> R   \> lower bound imposed on X                           \> \> \> \> \> \> \> units X\\
+P2      \> \> R   \> upper bound imposed on X                           \> \> \> \> \> \> \> units X\\
+X       \> \> R   \> value to be evaluated                              \> \> \> \> \> \> \> units X
+\end{tabbing}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf FUNCTION RANDOM}\> \> \> (ITASK, ISET)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+I1\> \> I\> DO-loop control variable\> \> \> \> \> \> \> -\\
+INIT\> \> L\> flag to make sure that all sets are uninitialized\> \> \> \> \> \> \> -\\
+INITS\> \> L\> flag indicating if a certain set is initialized or not\> \> \> \> \> \> \> -\\
+INSET\> \> I\> pointer for the generation of random numbers\> \> \> \> \> \> \> -\\
+ITASK\> \> I\> task of execusion (different from ITASK in TIMER !!)\> \> \> \> \> \> \> -\\
+IX      \> \> I   \> intermediate variable                              \> \> \> \> \> \> \> $-$\\
+IXS\> \> I\> starting value for variable IX\> \> \> \> \> \> \> -\\
+IY      \> \> I   \> intermediate variable         \> \> \> \> \> \> \> -\\
+IYS\> \> I\> starting value for variable IY\> \> \> \> \> \> \> - \\
+IZ      \> \> I   \> intermediate variable                              \> \> \> \> \> \> \> $-$\\
+IZS\> \> I\> starting value for variable IZ\> \> \> \> \> \> \> -\\
+L       \> \> I   \> L=0 resets generator to initial values; L is returned as 1                     \> \> \> \> \> \> \> $-$\\
+RANDOM  \> \> R   \> returned value, pseudo$-$random number uniformly distributed between 0 and 1\> \> \> \> \> \> \> $-$
+\end{tabbing}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+{\bf FUNCTION SWEAF}\> \> \> (ET0, CGNR)
+\end{tabbing}
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+Name    \> \> Type   \> Description                                        \> \> \> \> \> \> \> Units\\
+$-$$-$$-$$-$    \> \> $-$$-$$-$$-$   \> $-$$-$$-$$-$$-$$-$$-$$-$$-$$-$$-$                                        \> \> \> \> \> \> \> $-$$-$$-$$-$$-$\\
+A       \> \> R   \> constant                                           \> \> \> \> \> \> \> $-$\\
+B       \> \> R   \> constant                                           \> \> \> \> \> \> \> d cm$^{{\rm -1}}$\\
+CGNR    \> \> R   \> crop group number (from 1(= drought sensitive) to 5(= drought resistent))   \> \> \> \> \> \> \> $-$  \\
+ET0     \> \> R   \> potential evapotranspiration rate                  \> \> \> \> \> \> \> cm d$^{{\rm -1}}$ \\
+SWEAF   \> \> R   \> returned value, fraction of easily available soil water between field \\
+\>\> \> capacity and wilting point                                      \> \> \> \> \> \> \> $-$
+\end{tabbing}
+
+\end{document}

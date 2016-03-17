@@ -1,0 +1,109 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+\usepackage[USenglish]{babel}
+
+
+\begin{document}
+\setcounter{page}{127}\pagenumpos{\pnbr}
+\section{  APPENDIX 4  }
+
+\bigskip
+{\bf {\large Establishing the sowing date }}
+
+\bigskip
+In the chapters four to six the simulation processes are being explained. As stated in
+\S 5.2.1, the start of the growing season can be either the date of sowing or the date of
+emergence. If the sowing date is not given by the user, it will be deter\-mined by the
+model. This is done in subroutine {\bf STDAY}.
+
+\bigskip
+\bigskip
+First the workability of the soil over the period before sowing is checked on the basis of
+soil and crop specific data. The workability of the soil is dependent of the excess amount
+of water in the plow layer. It is assumed that in case the excess amount of water during
+the previous time step is more than 0.5 cm, the capillary rise to surface is negligible\\
+and the soil evaporation equals the evaporation of a wet surface calculated with {\bf PEN\-MAN} (see \S 4.1.1). If the excess amount of water in the plow layer is less than 0.5 cm,
+the maximum capillary rise has to be considered. In subroutine {\bf STDAY} the maxi\-mum
+capillary rise is calculated with an AFGEN table (acronym: {\bf CAPFRU}) using the excess
+amount of water in the plow layer as an independent variable. This AFGEN table is soil
+dependent, however, in the model only one fixed table is used. The evaporation from the
+soil can be calculated by:
+
+\begin{displaymath}
+E _{s} ~= ~\min \, (EO _{s} \, ,\, CR _{\max } ~+~ P)
+\end{displaymath}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+where\> E$_{{\rm s}}$\> : Evaporation rate from a bare soil\> \> \> \> \> \> \> \> [cm d$^{{\rm -1}}$]\\
+\>EO$_{{\rm s}}$\> : Potential evaporation rate from a bare soil \\
+\>\>   surface (see \S 4.1.3)\> \> \> \> \> \> \> \> [cm]\\
+\>CR$_{{\rm max}}$\> : Maximum capillary rise\> \> \> \> \> \> \> \> [cm d$^{{\rm -1}}$]\\
+\>P \> : Precipitation intensity\> \> \> \> \> \> \> \> [cm d$^{{\rm -1}}$]
+\end{tabbing}
+
+\bigskip
+\bigskip
+The excess amount of water in the plow layer at time step t can now be established
+according to:
+
+\begin{displaymath}
+W _{exc,t} ~= ~\max \, (-1.\, ,\, W _{exc,t-1} ~+~ P ~+~E _{s} )\,\Delta t
+\end{displaymath}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+where\> W$_{{\rm exc,t}}$\> : Excess amount of water in the plow layer \\
+\>\>   at time step t\> \> \> \> \> \> \> \> [cm]\\
+\>E$_{{\rm s}}$\> : Evaporation rate from a bare soil\> \> \> \> \> \> \> \> [cm d$^{{\rm -1}}$]\\
+\>P \> : Precipitation intensity\> \> \> \> \> \> \> \> [cm d$^{{\rm -1}}$]
+\end{tabbing}
+
+\bigskip
+\bigskip
+A correction has to be made for the infiltration during the present time step in case the
+excess amount of water in the plow zone is more than zero. The infiltrating amount of
+water of water can be calculated by:
+
+\begin{displaymath}
+\IN _{pl} ~=~\min \, (W _{ext\, ,\, t} ~ Sp _{1} ~+~Sp _{2} \, ,\, W _{ext\, ,\, t} \, )
+\end{displaymath}
+
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+where\> In$_{{\rm pl}}$\> : Amount of water infiltrating in the plow layer\> \> \> \> \> \> \> \> [cm]\\
+\>W$_{{\rm exc,t}}$\> : Excess amount of water in the plow layer \\
+\>\>   at time step t\> \> \> \> \> \> \> \> [cm]\\
+\>Sp$_{{\rm 1}}$\> : First top soil seepage parameter\> \> \> \> \> \> \> \> [-]\\
+\>Sp$_{{\rm 2}}$\> : Second top soil seepage parameter\> \> \> \> \> \> \> \> [-]
+\end{tabbing}
+
+\bigskip
+\bigskip
+The soil is considered workable when the excess amount of water in the plow layer is
+below a preset value. This value is soil specific (acronym: {\bf DEFLIM}) and should be
+provided by the user. The number of workable days is established. However, in case a
+certain day cannot be considered as a workable day, the sum of workable days is set back
+to zero. It should be mentioned that there exist two types of seepage parameters. One for
+shallow seedbeds and another for deep seedbeds. The user should indicate which one
+should be used.
+
+\bigskip
+The sowing can take place when more then three consecutive workable days occur and if
+the sowing date falls within a predefined period, the earliest sowing date (acronym:
+{\bf IDESOW}) and the latest sowing date (acronym: {\bf IDLSOW}). This period is crop specific
+and should be provided by the user. 
+\end{document}

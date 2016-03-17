@@ -1,0 +1,256 @@
+% This file was created by the WP2LaTeX program version: 3.51 
+\documentclass[11pt]{article}
+\usepackage{wp2latex}
+\usepackage{graphicx}
+
+\graphicspath{{./}}
+
+\begin{document}
+\setcounter{page}{118}\pagenumpos{\pnbr}
+\section{  APPENDIX 1  } 
+
+\bigskip
+{\bf {\large Gaussian Integration}}
+
+The Gaussian integration method as applied in the model, is based on a study by Goudriaan
+(1986). In the following text this method will be briefly explained.
+
+The rate of crop photosynthesis can be computed from the photosynthesis - light response
+curve of individual leaves, the incoming radiation and the leaf area index. Leaf area
+distribution, extinction and reflection coefficients must also be known since they influence
+the distribution of the available radiation. This computational problem was essentially solved
+by De Wit (1965). He applied a stratification of the leaf canopy, calculated the absorbed
+radiation and the corresponding rates of photosynthesis of sunlit and shaded leaves in each
+layer. The contributions of the individual layers  were added to find the rate of crop
+photosynthesis. This procedure was repeated every 15 minutes to obtain the daily total of
+crop photosynthesis. This procedure is lucid and flexible, but rather time consuming.
+Therefore, its use during an entire season as one would want in simulation of crop growth,
+might become problematic.
+
+For application in such models Goudriaan and Van Laar (1978) developed a summary model
+for the daily total of crop photosynthesis, based on a semi-empirical equation, fitted to
+computer output of the detailed model.
+
+Usually integration in time or in spatial dimension is done by means of the well-known
+numerical methods such as Eulerian (rectangular), Simpson or Runga - Kuta methods. These
+methods are excellent and generally applicable because they permit feedback of the
+integrated value (state variable) on the rate itself. But when there is no such feedback, and
+the profile of the rate is known on forehand, a method, devised by the German
+mathematician Gauss, is much more efficient and accurate. 
+
+Several examples of processes where this feedback is absent can be defined in the crop
+growth modeling. In those cases the Gaussian integration can be applied. Examples in the
+WOFOST model where this method is used: \\
+$\bullet$
+\testlastline
+
+\begin{indenting}{1.27cm}
+the calculation of crop photosynthesis from a known light profile. Integration
+of the light response curve over the leaf area depth of the canopy. 
+\end{indenting}
+$\bullet$ 
+\testlastline
+
+\begin{indenting}{1.27cm}
+integrate an independently given diurnal course (for example assimilation) into
+a daily total.
+\end{indenting}
+
+ \bigskip
+Gaussian integration is explained in several textbooks on numerical methods (Lanczos, 1957;
+Scheid, 1968). The basic idea is to compute the rate at positions in the total integration
+interval area as representative as possible. In its simplest form, the Gaussian one-point
+method, one single value of the rate is taken halfway through the integration interval. It
+gives a more accurate result than the rectangular integration method, because errors left and
+right of the evaluation point in the center practically cancel.\\
+In a more formal analysis the integration interval is normalized to unity, and centralized
+between x=-$\frac{1}{2}$ and x=$\frac{1}{2}$. The polynomial given by y=a+bx+cx$^{{\rm 2}}$+dx$^{{\rm 3}}$ ... will have value
+a at the center point x=0. Therefore, the integrated value obtained by the one point
+Gaussian integration, will also be equal to a. Analytical integration of the polynomial term
+by term shows that the integrals of all odd terms disappear around x=0, That means that
+the one-point method not only exactly integrates y=a, but also y=a+bx. Similarly the two-point method will exactly integrate y=a+bx+cx$^{{\rm 2}}$ and y=a+bx+cx$^{{\rm 2}}$+dx$^{{\rm 3}}$. The next step is
+the three point method which will enable exact integration of the fourth order term (and
+automatically the fifth as well).
+ 
+\begin{figure}[htbp]
+ \begin{center}\includegraphics[width=6.53cm]{GAUS1.eps} \end{center}
+\end{figure}
+\begin{figure}[htbp]
+ \begin{center}\includegraphics[width=6.53cm]{GAUSS2.eps} \end{center}
+\end{figure}
+\begin{figure}[htbp]
+ \begin{center}\includegraphics[width=6.53cm]{GAUSS.eps} \end{center}
+\end{figure}
+     
+ \bigskip
+      1 - Rectangular - Gaussian one point\\
+      2 - Trapezoidal - Gaussian two point\\
+      3 - Gaussian three point
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+Fig. A1 Numerical integration methods for general use and the corresponding Gaussian
+methods for use when there is no feedback.
+
+\bigskip
+The three points of the Gaussian numerical integration are situated symmetrical around x =
+0, in order to integrate the interval [-0.5,0.5]. Therefore, one of the three function
+evaluation points will be at the center, x=0. The other two points will be located at either
+side of the Y-axis at distance $\gamma$ (so x=-$\gamma$ and x=$\gamma$). Now the interval [-0.5 ,0.5] is divided
+in three parts, around these three points. The lengths of these sub-intervals determine the
+weights which must be imposed on the Y-values corresponding to these three x-values and
+considered representative for their sub-interval. Because of the symmetry again, the weights
+belonging to -$\gamma$ and $\gamma$ are equal. When these weights are considered 1, the weight of the
+central sub-interval is equal to $\omega$.
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+The values of the relative distance $\gamma$ and of the weight $\omega$ can be derived from the
+requirement that both the second and the fourth order terms of the polynomial will be
+exactly integrated (Goudriaan, 1986):
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> \> \>  numerical result\> \> \> \>    analytical result
+\end{tabbing}
+
+\begin{eqnarray*}
+2 ^{\nd} ~ order~~~~~~~~{\frac{(- \gamma ) ^{2} ~+~0 \times \omega  ~+~\gamma ^{2} }{1~+~\omega ~+~1}} ~~=~~\begin{array}{c}{{\frac{1}{2}}}  \\
+\int  \\
+{-{\frac{1}{2}}} \end{array} ~~x ^{2} ~\dx ~=~{{\frac{1}{12}} }  \nonumber  \\
+4 ^{th} ~ order~~~~~~~~{\frac{(-\gamma )^{4} ~+0 \times \omega  ~+~\gamma ^{4} }{1~ +~\omega ~+~1}} ~~=~~\begin{array}{c}{{\frac{1}{2}}}  \\
+\int  \\
+{-{\frac{1}{2}}} \end{array} ~~x ^{4} ~dx~=~{{\frac{1}{80}} }
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+\>\> {\bf 2$^{{\rm nd}}$ order}\> \> \> \> \> {\bf 4$^{{\rm th}}$order}
+\end{tabbing}
+
+\begin{eqnarray*}
+{{\frac{(- \gamma ) ^{2} ~+~ \gamma ^{2} }{1~+~\omega  ~+~1}} ~=~{\frac{1}{12}} } ~~~~~~~~~~~~~~~~~~ {{\frac{(- \gamma ) ^{4} ~+~ \gamma ^{4} }{1~+~\omega  ~+~1}} ~=~{\frac{1}{80}} } \nonumber  \\
+~ \nonumber  \\
+{{\frac{2 \gamma ^{2} }{2~+~ \omega  }} ~=~{\frac{1}{12}} ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{\frac{2 \gamma ^{4} }{2~+~ \omega  }} ~=~{\frac{1}{80}} } \nonumber  \\
+~ \nonumber  \\
+24 \gamma ^{2} ~=~ 2 ~+~ \omega  ~~~~~~~~~~~~~~~~~~~~~~~~~~ 160 \gamma ^{4} ~=~ 2~+~ \omega
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+Substitution yields the following values for the relative distance and the weight:
+
+\begin{eqnarray*}
+~\gamma ~=~\sqrt{{\frac{24}{160}} } ~=~ \sqrt{0.15} \nonumber  \\
+~\omega  ~=~~1.6
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+{\bf {\it Examples of the use of Gaussian Integration in the model\/}}\\
+$\bullet$ Canopy assimilation is calculated as a weighted average of the assimilation at three
+horizons within the canopy. The leaf area index of the selected horizons can be calculated
+as:
+
+\begin{eqnarray*}
+ L~~=~(0.5~+~p \sqrt{0.15} )LAI~~~~p~=~-1,0,1 \Rightarrow   \nonumber  \\
+L _{1} ~=~0.1127017LAI \nonumber  \\
+L _{2} ~=~0.5LAI \nonumber  \\
+L _{3} ~=~0.8872983LAI
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+The weighted average of the assimilation over the three selected horizons is: 
+
+\begin{eqnarray*}
+A _{h~} =~{\frac{LAI(A _{-1} ~+~1.6A _{0} ~+~A _{1} )}{3.6}} \Rightarrow   \nonumber  \\
+A _{h~} =~LAI(0.2778A _{-1} ~+~0.4444A _{0} ~+~0.2778A _{1} )
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+where\> A$_{{\rm h}}$\> : Hourly canopy assimilation\> \> \> \> \>   \> \> \> [g CO$_{{\rm 2}}$ m$^{{\rm -2}}$ h$^{{\rm -1}}$]
+\end{tabbing}
+
+\bigskip
+\bigskip
+$\bullet$ To integrate the instantaneous canopy assimilation over the day, again the Gaussian
+approach of numerical integration is applied. The three selected points refer to the period
+from noon to sun set. Daily canopy assimilation is obtained as the weighted average of the
+instantaneous assimilation rates at the selected time points:
+
+\begin{eqnarray*}
+t _{h~} =~ 12 ~+~ 0.5D(0.5~+~p \sqrt{0.15} ) ~~~~where~p~=~-1,0,1  \nonumber  \\
+A _{d~} =~{\frac{D(A _{h,-1} ~+~ 1.6A _{h,o} ~+~A _{h,1} )}{3.6}}
+\end{eqnarray*}
+
+\bigskip
+\bigskip
+\bigskip
+\nwln
+\begin{tabbing}
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=\hspace{1.27cm}\=%
+\hspace{1.27cm}\=\hspace{1.27cm}\=\kill
+where\> D\> : Day length \> \> \> \> \> \> \> \> [h]\\
+\>th\> : Hour of day\> \> \> \> \> \> \> \> [h]\\
+\>A$_{{\rm d}}$\> : Daily canopy assimilation \> \> \> \> \> \> \> \> [g CO$_{{\rm 2}}$ m$^{{\rm -2}}$ d$^{{\rm -1}}$]
+\end{tabbing}
+\end{document}
