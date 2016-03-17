@@ -1361,7 +1361,8 @@ balance check will be simplified.
 
 \subsection{Growth and leaf senescence  }
 \label{sec:5.4.5}
-As is explained in paragraph 5.4.4, the growth rate of a certain plant organ is obtained by
+
+As is explained in paragraph \ref{sec:DMpartitioning}, the growth rate of a certain plant organ is obtained by
 multiplying the growth rate of either shoot or root by the fraction allocated to that organ.
 Its total dry biomass (dead and alive) is obtained by integrating this growth rate over
 time. Taking the death rate of the different organs into account, the integration of the net
@@ -1383,7 +1384,7 @@ and the stems increase in living biomass can be easily determined as the growth 
 minus death rate. This yields the net growth rate (eq. \ref{eq:5.48}). The death rate is crop
 specific and is defined as the daily amount of the living biomass which no longer
 participates in the plant processes. The death rate of stems and roots is considered to be a
-function of development stage (see fig. 5.7). This dependency is described using an
+function of development stage (see fig. \ref{fig:DeathRoots}). This dependency is described using an
 AFGEN table with the development stage as the independent variable (see also Appendix
 2). The death rate of leaves is more complicated. Leaf senescence due to shading (high
 LAI), water stress and also due to exceedance of the life span should be accounted for.
@@ -1514,7 +1515,8 @@ LAI$_{{\rm t}}$ &:& Leaf area index at time step t   &
 $\Delta$t &:& Time step   &    [d]
 \end{tabularx}
 
-The equation 5.51 is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by setting the starting
+The equation\ref{eq:5.51} is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by 
+setting the starting
 value equal to the leaf area index at emergence (acronym: {\bf LAIEM}). The leaf area index
 at emergence is crop specific and should be provided by the user.
 
@@ -1570,7 +1572,8 @@ LAI$_{{\rm t}}$ &:& Leaf area index at time step t     &
 $\Delta$t &:& Time step    &    [d]\\
 \end{tabularx}
  
-The equation 5.53 is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by setting the starting
+The equation \ref{eq:5.53} is recursive. In the model, {\bf LAI$_{{\rm t}}$} is initialized by 
+setting the starting
 value equal to the leaf area index at emergence (acronym: {\bf LAIEM}). The leaf area index
 at emergence is crop specific and should be provided by the user.
 
@@ -1760,7 +1763,7 @@ LAI &:& Leaf area index   &    [ha ha$^{{\rm -1}}$]\\
 LAI$_{{\rm c}}$ &:& Critical leaf area index   &     [ha ha$^{{\rm -1}}$]\\
 \end{tabularx}
 
-The critical leaf area index, LAI$_{{\rm c}}$,  can be computed by:
+The critical leaf area index, LAI$_{{\rm c}}$, can be computed by:
 
 \begin{equation}
 % eq:5.60
@@ -1808,6 +1811,7 @@ dissipated completely and the remaining amount of leaves remains positive. All l
 shifted every time step (daily) to the next class.
 
 \section{Root growth}
+\label{sec:rootgrowth}
 
 Subroutine {\bf ROOTD} calculates the vertical extension of roots. The rate of vertical root
 extension is equal to the maximum daily increase, unless maximum rooting depth is
@@ -1957,14 +1961,16 @@ photosynthetic pathway, three groups of species can be identified: C$_{{\rm 3}}$
 CAM plants. Lists of C$_{{\rm 4}}$ species have been published by Downton (1975) and
 Raghavendra \& Das (1978).   
 
-At a leaf temperature of 20\degrees C, both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species have an initial light use efficiency
-of approximately 12.5 $\mu$g CO$_{{\rm 2}}$ J$^{{\rm -1}}$ absorbed PAR or 0.45 kg 
+At a leaf temperature of 20\degrees C, both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species have an initial 
+light use efficiency of approximately 12.5 $\mu$g CO$_{{\rm 2}}$ J$^{{\rm -1}}$ absorbed PAR or 0.45 kg 
 CO$_{{\rm 2}}$ ha$^{{\rm -}{1}}$ leaf h$^{{\rm -}{1}}$ (J m$^{{\rm 2}}$ S$^{{\rm -}{1}}$)$^{{\rm -}{1}}$
 (Ehleringer \& Pearcy, 1983). In C$_{{\rm 3}}$ species, $\epsilon$ decreases with increasing temperature due
 to accelerated photo-respiration. This temperature effect is relatively small: $\epsilon$ changes by
 about 1\% with each change of 1\degrees C in temperature (Farquhar {\it et al.}, 1980; Ehleringer,
 1978; Leverenz \& \"{O}quist, 1987). In C$_{{\rm 4}}$ species, $\epsilon$ is not affected by temperature because
-photo-respiration is suppressed in the C$_{{\rm 4}}$ pathway. Among both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species, there
+photo-respiration is suppressed in the C$_{{\rm 4}}$ pathway. 
+
+Among both C$_{{\rm 3}}$ and C$_{{\rm 4}}$ species, there
 is hardly any variation in (Ehleringer \& Pearcy, 1983). However, when $\epsilon$ is expressed per
 unit of incident PAR, instead of per unit of absorbed PAR, apparent differences may
 occur, due to differences in the absorption coefficient of the leaves (Hunt {\it et al.}, 1985).
@@ -1973,7 +1979,8 @@ apparent decrease of $\epsilon$.
 
 Measured values of the gross assimilation rate of leaves at light saturation (A$_{{\rm m}}$) show a
 large variation. The main sources of variation are differences in measurement conditions
-of temperature and ambient CO$_{{\rm 2}}$ concentration, differences in physiological and anatomical properties of the leaves as a result of differences in leaf age and pre$-$treatment, and
+of temperature and ambient CO$_{{\rm 2}}$ concentration, differences in physiological and 
+anatomical properties of the leaves as a result of differences in leaf age and pre$-$treatment, and
 variation among species and cultivars.
 
 The influence of temperature on the rate of leaf photosynthesis is described in the model
@@ -1996,6 +2003,7 @@ shortly after full expansion of the leaf, followed by a gradual decline with age
 (Rawson {\it et al.}, 1983; Dwyer \& Stewart, 1986). Differences in photosynthetic capacity of
 the leaves are closely related to their nitrogen content, whether these variations are due to
 age, growing conditions or fertilizer application (van Keulen \& Seligman, 1987). Leaves
+
 lower in the canopy have a lower photosynthetic capacity because they are older and are
 adapted to lower radiation levels (Acock {\it et al.}, 1978; Williams, 1985). They also have
 lower nitrogen concentrations. The value of A$_{{\rm m}}$ used in the model, refers to the
