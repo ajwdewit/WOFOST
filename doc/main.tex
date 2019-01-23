@@ -1,22 +1,81 @@
-% This file was created by the WP2LaTeX program version: 3.51 
-\documentclass[11pt]{report}
+\documentclass[a4paper,12pt,oneside]{book}
 \usepackage[utf8]{inputenc}
-%\usepackage{InputPS}
 \usepackage[USenglish]{babel}
 \usepackage{amsmath}
+%\usepackage[abbr]{harvard}
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{longtable}
+\usepackage{fancyhdr}
+\usepackage[hang,small,it]{caption}
+\usepackage[charter]{mathdesign}
+\usepackage{ctable}
+\usepackage{rotating}
+\usepackage{booktabs}
 
+
+%=======================================================================
+% GENERAL SETTINGS
+%=======================================================================
+\oddsidemargin 40pt
+\evensidemargin 40pt
+\setlength{\captionmargin}{10pt}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em}
 \providecommand{\degrees}{{\char'027}}
 \newcommand{\FigDir}{/home/allard/Sources/WOFOST/doc/figs}
 
-%\ShowDisplacementBoxes
+%=======================================================================
+% A BIT MORE COMPACT ITEM LIST
+%=======================================================================
+\newenvironment{itemize*}%
+{\begin{itemize}%
+        \setlength{\parskip}{0pt}%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\parsep}{0pt}}%
+    {\end{itemize}}
 
-\setlength{\parskip}{0.5em}
+%more compact enumeration list
+\newenvironment{enumerate*}%
+{\begin{enumerate}%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\parskip}{0pt}}%
+    {\end{enumerate}}
 
+%=======================================================================
+% A BIT MORE COMPACT DESCRIPTION LIST
+%=======================================================================
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\textrm{#1}}
+
+\newenvironment{description*}%
+{\begin{description}%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\parskip}{0pt}}%
+    {\end{description}}
+
+%=======================================================================
+% DEFINITION OF THE FANCY HEADERS
+%=======================================================================
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{}
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\headheight 15pt
+
+\fancypagestyle{plain}{%
+    \fancyhead{} % get rid of headers
+    \renewcommand{\headrulewidth}{0pt} % and the line
+}
+\renewcommand{\headrulewidth}{0.4pt}
+
+%=======================================================================
+% MIXED EQUATION NUMBERS
 % This is to allow mixed equation number, see also:
 % http://tex.stackexchange.com/questions/34566/mixed-subequation-numbering-within-an-array#34568
+%=======================================================================
 \usepackage{etoolbox}% http://ctan.org/pkg/etoolbox
 \AtBeginEnvironment{align}{\setcounter{subeqn}{0}}% Reset subequation number at start of align
 \newcounter{subeqn} \renewcommand{\thesubeqn}{\theequation\alph{subeqn}}%
@@ -25,8 +84,19 @@
   \tag{\thesubeqn}% Label equation
 }  
 
+% PDF formatting
+\usepackage[pdftitle={System description of the WOFOST 6.0 crop simulation model Implemented in CGMS},pdfpagemode=UseOutlines, pdfauthor={Allard de Wit}, pdfpagetransition=Dissolve, bookmarks=true]{hyperref}
+
+
 \begin{document}
 
+\frontmatter
+\tableofcontents
+\listoffigures
+\listoftables
+\cleardoublepage
+
+\mainmatter
 \include{chapter1}
 \include{chapter2}
 \include{chapter3}
@@ -34,6 +104,8 @@
 \include{chapter5}
 \include{chapter6}
 
+\backmatter
+\appendix
 \include{appendix1}
 \include{appendix2}
 \include{appendix3}
