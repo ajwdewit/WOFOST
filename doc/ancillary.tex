@@ -6,8 +6,8 @@
 
 The average temperature is calculated as the average of the minimum and the maximum
 temperature. This average temperature \={T} is equal to the so called air temperature (T) used
-in the model calculations. The maximum and minimum temperature are measured daily
-values.
+in the model calculations. The maximum and minimum temperature are measured daily values or
+derived from other sources such as a weather forecasting model.
 
 \begin{equation}
 T ~=~{\frac{T _{\max } ~+~ T _{\min } }{2}}
@@ -19,6 +19,15 @@ Where:\\[5pt]
 	T$_{{\rm max}}$&:  & Maximum temperature & [\degrees C]\\
 	T$_{{\rm min}}$&: &  Minimum temperature & [\degrees C]\\
 \end{tabularx}
+
+Similarly, the daytime average temperature can be estimated as: 
+
+\begin{equation}
+% eq 5.32
+\label{eq:daytimetemp}
+T_{day} = {\frac{T_{\max} + T}{2}} ~~~~ where ~~~~ T = {\frac{T_{\max } + T_{\min}}{2}}
+\end{equation}
+
 
 
 The difference between maximum and minimum temperature is used to calculate the
@@ -467,7 +476,7 @@ model (R$_{{\rm av}}$=S$_{{\rm g,d}}$ is assumed). It should be mentioned that t
 
 The Penman-Monteith equation implemented in WOFOST closely follows the algorithm laid down in 
 FAO Irrigation and drainage paper 56 ("Crop evapotranspiration - Guidelines for computing crop 
-water requirements") by Allen et al. (1998) which is available online at: http://www.fao.org/3/X0490E/x0490e00.htm
+water requirements") by Allen et al. (1998) which is available online \footnote{http://www.fao.org/3/X0490E/x0490e00.htm}
 and will not be repeated here.
 
 Standard values for the reference canopy reflection and canopy resistance of 0.23 and 70 $s m^{-1}$ are used and
