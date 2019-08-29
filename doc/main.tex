@@ -8,7 +8,7 @@
 \usepackage{longtable}
 \usepackage{fancyhdr}
 \usepackage[hang,small,it]{caption}
-\usepackage{mathdesign}
+\usepackage[charter]{mathdesign}
 \usepackage{ctable}
 \usepackage{rotating}
 \usepackage{booktabs}
@@ -61,9 +61,9 @@
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
 \fancyhf{}
-\fancyhead[LE,RO]{\bfseries\thepage}
+%\fancyhead[LE,RO]{\bfseries\thepage}
 \fancyhead[LO]{\bfseries\rightmark}
-\fancyhead[RE]{\bfseries\leftmark}
+%\fancyhead[RE]{\bfseries\leftmark}
 \headheight 15pt
 
 \fancypagestyle{plain}{%
@@ -86,12 +86,41 @@
 }  
 
 % PDF formatting
-\usepackage[pdftitle={System description of the WOFOST 6.0 crop simulation model Implemented in CGMS},pdfpagemode=UseOutlines, pdfauthor={Allard de Wit}, pdfpagetransition=Dissolve, bookmarks=true]{hyperref}
+\usepackage[pdftitle={System description of the WOFOST 7.1 crop simulation model },pdfpagemode=UseOutlines, pdfauthor={Allard de Wit}, pdfpagetransition=Dissolve, bookmarks=true]{hyperref}
 
 
 \begin{document}
 
 \frontmatter
+\begin{titlepage}
+	\centering
+	\vfill
+	{\bfseries
+		{\LARGE
+		System description of the WOFOST 7.1 cropping system model}\\
+		\vskip1cm
+		{\large
+			Wageningen Environmental Research\\ 
+   	        \vskip0.5cm
+			September 2019}\\
+		\vskip1cm
+
+		\begin{figure}[h]
+		\includegraphics[width=\textwidth]{\FigDir/WOFOST_logo_kleur_CMYK.pdf}
+	    \end{figure}
+		\vskip1cm
+
+		{\large .... (editors)}\\
+		\vskip1cm
+     }
+     {\small 
+	This manual is an updated version of:\\
+    Supit, I., A. A. Hooijer, and C. A. Van Diepen. 
+	\textit{System description of the WOFOST 6.0 crop simulation model implemented in CGMS, vol. 1: 
+    Theory and Algorithms.} Joint Research Centre, Commission of the European Communities, EUR 15956 
+             (1994): 146.
+    }
+\end{titlepage}
 \tableofcontents
 \listoffigures
 \listoftables
@@ -102,6 +131,7 @@
 \include{ancillary}
 \include{growth_development}
 \include{soil_modules}
+\include{references}
 %\include{chapter3}
 %\include{chapter4}
 %\include{chapter5}

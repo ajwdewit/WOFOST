@@ -89,18 +89,92 @@ assumed to be at field capacity and no calculations have to be performed to simu
 water balance in the soil. Only the crop water requirements are quantified as the sum of 
 crop transpiration and evaporation from the shaded soil under the canopy. 
 
-For the calculation of the water limited production three different soil water balances are
-distinguished. The first water balance (called \emph{Classic water balance}) applies to a freely draining soil, where groundwater is so deep that it cannot have influence on the soil moisture content in the rooting zone. The soil profile is divided in two compartments, the rooted zone and the lower zone between actual rooting depth and maximum rooting depth. The subsoil below the maximum rooting depth is not defined. The second zone merges gradually with the first zone as the roots grow deeper towards the maximum rooting depth. This water balance applies to (regional) applications with limited information on soil properties.
+For the calculation of the water limited production two different soil water balances are
+distinguished. The first water balance (called \emph{Classic water balance}) applies to a freely draining soil, 
+where groundwater is so deep that it cannot have influence on the soil moisture content in the rooting zone. 
+The soil profile is divided in two compartments, the rooted zone and the lower zone between actual rooting
+depth and maximum rooting depth. The subsoil below the maximum rooting depth is not defined. The second
+zone merges gradually with the first zone as the roots grow deeper towards the maximum rooting depth. 
+This water balance applies to (regional) applications with limited information on soil properties.
 
-The second water balance (called \emph{Layered water balance}) takes into account the impact of different soil layers and the influence of groundwater. This water balance uses a simple but elegant solution to estimate water flow through the soil taking into account both gravitational flow as well flow due to differences in matric suction and groundwater. It is targeted at making good estimates of crop water availability under conditions when properties of the soil are well known, but without going into the complexity of Richard's equation type of soil water models. 
-
-Finally, the WOFOST implementation connected to the SWAP model has a detailed water balance which including multiple soil layers and variable integration time steps to account for highly non-linear processes in the soil. Besides estimating water availability, SWAP also deals with soil temperature and solute transport which allows to make 
+Second, the WOFOST implementation connected to the SWAP model has a detailed water balance which 
+including multiple soil layers and variable integration time steps to account for highly non-linear 
+processes in the soil. Besides estimating water availability, SWAP also deals with soil temperature and 
+solute transport which allows to make 
 detailed simulations of the behaviour of water and solutes in the soil and its impact on plant growth.
 The SWAP water balance is not treated in this manual as SWAP has its own set of documentation 
 \footnote{http://www.swap.alterra.nl} where the theory and usage of the model is described.
 
-\subsection{The classic Water balance}
+\subsection{Classic waterbalance: potential production}
+\label{sec:WATPP}
+
+The purpose of the water balance for potential production is to quantify the crop water requirements for
+continuous growth without drought stress. It is assumed that the soil is permanently at
+field capacity.
+
+\begin{equation}
+\label{eq:6.15}
+\theta  _{t} ~ =~\theta  _{fc} 
+\end{equation}
+
+Where:\\[5pt]
+\begin{tabularx}{\textwidth}{llXr}
+	$\theta$$_{{\rm t}}$ &:& Actual soil moisture content & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+	$\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+\end{tabularx}
+
+Rainfall, irrigation, capillary rise and drainage are not taken into account. This does not
+mean that these processes will not occur. The result of these processes will be a soil
+moisture content at field capacity level. The only two processes to consider are evaporation of 
+the surface and the transpiration of the crops. In the previous paragraph the
+calculation of these processes is described in detail.
+
+The evaporation rate is calculated for two situations. In the first situation
+Airducts are present in the roots. This means that the crop tolerates waterlogging. This
+is the case for example with rice. The evaporation rate is then calculated as the 
+evaporation rate from a shaded water surface:
+
+\begin{equation}
+%eq 6.16
+E _{w} ~=~ E _{w, \max } 
+\end{equation}
+
+Where:\\[5pt]
+\begin{tabularx}{\textwidth}{llXr}
+	E$_{{\rm w}}$ &:& Evaporation rate from a shaded water surface & [cm d$^{{\rm -1}}$]\\
+	E$_{{\rm w,max}}$ &:& Maximum evaporation rate from shaded 
+	water surface (see eq. \ref{eq:6.6}) & [cm d$^{{\rm -1}}$]\\
+\end{tabularx}
+
+In the second situation airducts are absent in the roots. This means that the crop does
+not tolerate water
+logging. This is the case for most crops. The evaporation rate is then calculated as the
+evaporation rate from a soil surface (van Diepen, personal communication):  
+
+\begin{equation}
+\label{eq:6.17}
+E _{s~} =~ E _{s,\max } {\frac{ \theta  _{fc} ~-~ {{\frac{\theta  _{wp} }{3}}} }{\theta  _{\max } ~-~{{\frac{\theta  _{wp} }{3}}} }}
+\end{equation}
+
+Where:\\[5pt]
+\begin{tabularx}{\textwidth}{llXr}
+	E$_{{\rm s}}$ &:& Evaporation rate from a shaded soil surface & [cm d$^{{\rm -1}}$]\\
+	E$_{{\rm s,max}}$ &:& Maximum evaporation rate from a shaded
+	soil surface (see eq. \ref{eq:6.7}) & [cm d$^{{\rm -1}}$]\\
+	$\theta$$_{{\rm fc}}$ &:& Soil moisture content at field capacity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+	$\theta$$_{{\rm wp}}$ &:& Soil moisture content at wilting point & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+	$\theta$$_{{\rm max}}$ &:& Soil porosity & [cm$^{{\rm 3}}$ cm$^{{\rm -3}}$]\\
+\end{tabularx}
+
+
+\subsection{Classic Water balance: water-limited production under free drainage conditions}
 \label{sec:WATFD}
+
+This soil module computes the variables of the soil water balance in the 
+water-limited production scenario for a freely draining soil. No influence from
+groundwater is assumed. The purpose is to quantify the crop water requirements for
+continuous growth with either drought stress or water excess, and to quantify a possible
+reduction of the crop transpiration rate, leading to a reduced growth.
 
 For the rooted zone the water balance equation is solved every daily time step. At the
 upper boundary, processes comprise the infiltration of water from precipitation or
@@ -237,9 +311,8 @@ fixed fraction of the precipitation will not infiltrate on the same day. This fr
 reduced in situations with relatively small amounts of rainfall. In the model a reduction
 factor is defined as function of the amount of rainfall (van Diepen {\it et al}., 1988). See 
 figure \ref{fig:NonInfiltFrac} and equation \ref{eq:6.26}. Note that the non infiltrating 
-fraction refers to rainfall only.
-Irrigation water is assumed to infiltrate freely. However, the irrigation option is not
-implemented in WOFOST 6.0.
+fraction refers to rainfall only. Irrigation water is assumed to infiltrate freely. Note
+that the possibilities to specify irrigation depend on the WOFOST implementation.
 
 \begin{figure}[p]
 	% Fig. 6.2 
@@ -335,10 +408,8 @@ Where:\\[5pt]
 	RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
 
-For rice an additional limit of five percent of the saturated soil conductivity is set to
-account for the effect of puddling (a rather arbitrary value, which may be easily changed
-in the program). The saturated soil conductivity (acronym: {\bf K0}) is soil specific. In the
-model, K0 is calculated using equating \ref{eq:6.67} with pF= -1.0 (i.e. a hydraulic head of 0.1
+The saturated soil conductivity (acronym: {\bf K0}) is soil specific. In the
+model, K0 is calculated from the pF curve assuming $pF = -1.0$ (i.e. a hydraulic head of 0.1
 cm) The percolation rate from the lower zone to the sub soil is not to exceed this value
 (van Diepen {\it et al}., 1988). 
 
@@ -566,8 +637,6 @@ Where:\\[5pt]
 	RD &:& Actual rooting depth  & [cm]\\
 \end{tabularx}
 
-\subsection{The layered water balance with groundwater influence}
-
 \subsection{The SWAP water balance}
 
 The WOFOST implementation connected to the SWAP model has a detailed water balance which including 
@@ -577,9 +646,3 @@ transport which allows to make
 detailed simulations of the behaviour of water and solutes in the soil and its impact on plant growth.
 The SWAP water balance is not treated in this manual as SWAP has its own set of documentation 
 \footnote{http://www.swap.alterra.nl} where the theory and usage of the model is described.
-
-\section{The soil nutrient balance for N/P/K}
-
-
-\section{The SnowMAUS module}
-

@@ -6,15 +6,16 @@
 WOFOST is the acronym for WOrld FOod STudies. It is the name of a model for
 simulating the growth of crops. WOFOST has been continuously developed by
 Wageningen Research and Wageningen University (and its predecessors) already
-since the 1980-ies. The current version 8.0 is maintained by Wageningen 
+since the 1980-ies. The model is maintained by Wageningen 
 Research and several implementation of the model are available which have been
 developed for both research and operational applications.
 
-for a generic introduction and overview to the WOFOST model see:
+for a generic introduction and overview to the WOFOST model see:\\
 Wit, Allard de, Hendrik Boogaard, Davide Fumagalli, Sander Janssen, Rob Knapen, 
 Daniel van Kraalingen, Iwan Supit, Raymond van der Wijngaart, and Kees van Diepen. 
-“25 Years of the WOFOST Cropping Systems Model.” Agricultural Systems 168 
-(January 1, 2019): 154–67. https://doi.org/10.1016/j.agsy.2018.06.018.
+\textit{25 Years of the WOFOST Cropping Systems Model.} Agricultural Systems 168 
+(January 1, 2019): 154–67. \footnote{https://doi.org/10.1016/j.agsy.2018.06.018}
+
 
 \section{Levels of crop production}
 Three levels of plant
@@ -43,15 +44,13 @@ harvest from their fields. The gap between the different yield levels (yield gap
 across the globe and finding approaches to close the yield gap is a an area of intense research,
 see http://yieldgap.org
 
-Note that the WOFOST crop simulation models can be applied in the domain of potential crop
-production and production with a water shortage and/or nutrient shortage.
-(Potential and attainable yield levels). 
-
+Note that the WOFOST 7.1 crop simulation model can be applied in the domain of potential crop
+production and production with a water shortage (Potential and attainable yield levels). 
 
 \section{Guide to this manual}
 
 This manual covers a detailed description of the processes of crop growth and water movement as they are
-implemented in WOFOST Version 8.0. First of all, ancillary calculation will be described including:
+implemented in WOFOST Version 7.1. First of all, ancillary calculation will be described including:
 \begin{itemize}
 	\item derived meteorological variables
 	\item reference evapotranspiration
@@ -65,8 +64,8 @@ Next, the different components of the crop simulation itself will be described i
 	\item transpiration
 	\item assimilation:
 	\subitem gross photosynthesis rate
-	\subitem Correction for temperature
-	\subitem Correction for water/nutrient stress
+	\subitem Correction for suboptimal temperature
+	\subitem Correction for water stress
 	\item Maintenance respiration
 	\item growth of the crop:
 	\subitem Net photosynthesis rate
@@ -76,12 +75,6 @@ Next, the different components of the crop simulation itself will be described i
 	\subitem stems
 	\subitem Roots
 	\subitem storage organs	
-	\item nutrients in the crop
 \end{itemize}
 
-Finally, the soil components are described which consist of several water balance implementations and the components for soil nutrients:
-\begin{itemize}
-	\item the 'classic' dual layer (rooted, unrooted) soil water balance 
-	\item the multi-layer soil water balance including ground water influence
-	\item the soil nutrient balance
-\end{itemize}
+Finally, the soil components are described which consist of several water balance implementations.

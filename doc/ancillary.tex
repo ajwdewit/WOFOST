@@ -282,10 +282,10 @@ daily extra-terrestrial radiation, S$_{{\rm o,d}}$, can be calculat\-ed.
 Strictly speaking, transpiration is the loss of water from the plants, and evaporation is the
 loss of water from the soil or from a free-water surface. Evapotranspiration covers both
 transpiration and evaporation.
-The principal driving force for evaporation is the gradient of vapor pressure between the
-evaporating surface and the surrounding air. The vapor pressure at the evaporating
-surface is equal to the saturated vapor pressure at the prevailing temperature of that
-surface. The vapor pressure of the air is a function of the ambient temperature and its
+The principal driving force for evaporation is the gradient of vapour pressure between the
+evaporating surface and the surrounding air. The vapour pressure at the evaporating
+surface is equal to the saturated vapour pressure at the prevailing temperature of that
+surface. The vapour pressure of the air is a function of the ambient temperature and its
 relative humidity. The rate of evaporation depends on the diffusion resistance between the
 evaporating surface and the air.
 The magnitude of the resistance is strongly related to wind speed. The two environ\-mental
@@ -296,9 +296,9 @@ The problem in the approach above is that the temperature of the evaporating sur
 usually not known from standard meteorological observations. Evaporation  of 1 mm
 layer of water requires 2.45 MJ m$^{{\rm -2}}$ of energy and can therefore be described through
 quantification of an energy balance. The energy dissipation, required for evaporation,
-leads to cooling of the evaporating surface which reduces the vapor gradient. Hence, a
+leads to cooling of the evaporating surface which reduces the vapour gradient. Hence, a
 driving force is required to maintain the corresponding surface temperature, and thus,
-maintain the vapor pres\-sure gradient. The energy for this driving force is supplied by the
+maintain the vapour pres\-sure gradient. The energy for this driving force is supplied by the
 net solar radiation received by the canopy and or soil.
 Net radiation is the balance between incoming (short-wave) radiation from the sun and
 radiation losses due to reflection and outgoing (long-wave) radiation. Heat supplied by
@@ -310,7 +310,8 @@ evapotranspiration, it is considered to be governed by two factors: radiation an
 
 Penman (1948) was the first to describe evapotranspiration in physical mathematical
 terms. He calculated evaporation from free-water surfaces, wet bare soil and low grass
-swards for 10-day periods. The original Penman reference evapotranspiration has now been superseeded by the 
+swards for 10-day periods. The original Penman reference evapotranspiration has now been 
+superseded by the 
 Penman-Monteith reference evapotranspiration. The latter has a better physical basis and
 is standardized and promoted by the Food and Agriculture Organization. WOFOST uses the
 Penman-Monteith equation to compute the crop reference evapotranspiration but still applies
@@ -328,12 +329,31 @@ so called crop factors can be used (e.g. Doorenbos \& Pruitt, 1977; Feddes {\it 
 Note that the equations used to compute ET0 provide the value in mm/day while internally
 this is converted into cm/day.
 
-
 \subsection{Terms in the Penman formula}
 \label{sec:penman}
 
+The Penman formula (equation \ref{eq:ET0}) consists of two segments. The first part, the radiative
+term, calculates the net absorbed radiation. The second part, the aerodynamic term,
+calculates the evapora\-tive demand of the atmo\-sphere (Choisnel {\it et al}., 1992; Fr\`{e}re and
+Popov, 1979; Penman, 1956, 1948). The resulting equations are used to calculate the
+potential evapora\-tion rates from a water surface, from bare soil surfaces and the potential
+evapotranspira\-tion rate from a crop canopy.
+
+\begin{equation}
+\label{eq:ET0}
+ET0 ~=~ W ~R _{na} ~+~(1\, -\, W) ~E _{a} 
+\end{equation}
+
+Where:\\[5pt]
+\begin{tabularx}{\textwidth}{llXr}
+	ET0&:& Evapo(transpi)ration & [mm d$^{{\rm -1}}$] \\
+	W&:& Temperature related weighing factor &  [-] \\
+	R$_{{\rm na}}$&: & Net absorbed radiation in equivalent evaporation & [mm d$^{{\rm -1}}$] \\
+	EA&: &  Evaporative demand in equivalent evaporation & [mm d$^{{\rm -1}}$] \\
+\end{tabularx}
+
 The temperature related weighing factor W in equation \ref{eq:ET0} is defined as 
-(Fr\`{e}re andPopov, 1979; Penman, 1948, 1956).
+(Fr\`{e}re and Popov, 1979; Penman, 1948, 1956).
 
 \begin{equation}
 W ~=~{\frac{\Delta}{(\Delta ~+~ \gamma )}} 
@@ -408,7 +428,7 @@ The soil's albedo depends on the surface color and on the moisture content. Albe
 values for dry soil vary from 0.14 (clay) to 0.37 (dune sand). Ten Berge (1986) described
 the depen\-dence of the albedo value on soil moisture in relation to the average water
 content of the top soil layer. See Table \ref{tab:AlbedoSoils}. 
-In WOFOST Version 6.0 the following values for the albedo are assumed: for bare soil
+In WOFOST 7.1 the following values for the albedo are assumed: for bare soil
 0.15, for a canopy  0.25 and for a water surface a value of 0.05.
 
 \begin{table}

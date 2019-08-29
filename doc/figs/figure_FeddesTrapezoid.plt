@@ -5,11 +5,11 @@ set xrange [0:0.35]
 set yrange [-0.05:1.2]
 set terminal svg size 800,600 enhanced font 'Verdana,10'
 #set terminal pngcairo size 800,600 enhanced font 'Verdana,10'
-set output 'figure7.svg'
+set output 'figure_FeddesTrapezoid.svg'
 set xlabel 'Soil Water Content [cm^{3} cm^{-3}]'
 set ylabel 'T_{a}/T_{p} [-]'
-plot 'figure7.csv' using 1:2 with lines t'' lt -1 lw 2,\
-     'figure7.csv' using 1:3 with lines t'' lt 0 lw 2 
+plot 'figure_FeddesTrapezoid.csv' using 1:2 with lines t'' lt -1 lw 2,\
+     'figure_FeddesTrapezoid.csv' using 1:3 with lines t'' lt 0 lw 2 
 set output
 set term X11
      

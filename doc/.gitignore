@@ -23,7 +23,7 @@
 *.synctex.gz
 *.tex~
 *.lst
-*.pdf
+main.pdf
 *.txss
 main_html/*
 *.html
