@@ -1588,6 +1588,19 @@ a function of soil moisture level $\theta$.
 
 \section{Nutrients}
 
+The implementation of nutrient dynamics is based on the method as described by (Groot and De Willigen, 1991) 
+and (Shibu et al., 2010). The approach uses the concept of nutrient deficiency which is defined as the ratio 
+of actual nutrient concentration and critical nutrient concentration in the crop. The actual nutrient 
+concentration in the crop depends on the nutrient amounts that are available in the soil, either through 
+fertilizer applications or through mineralisation. 
+
+Uptake of these nutrients is driven by demand, which on its turn is defined as the difference between the 
+maximum nutrient concentration in the crop and the actual nutrient concentration. Nutrient translocation, 
+i.e. nutrient transport to the storage organs from the other plant parts is accounted for. Note that nutrient 
+uptake and translocation stop at a certain development stage, which is crop dependent. WOFOST assumes
+that nutrient stress affects the assimilation rate, the dry matter partitioning as well as the leaf extension. 
+In case also drought stress occurs, the strongest of these factors is selected as the overall stress factor.
+
 
 \section{Growth}
 
@@ -2315,20 +2328,10 @@ Where:\\[5pt]
 \end{tabularx}
 
 In the model, the maximum rooting depth is established by taking the lowest value of the\\
-maximum rooting depth determined by the crop, RD$_{{\rm crop}}$, the maximum rooting depth
-determined by the soil, RD$_{{\rm soil}}$, and the depth the roots would reach in the potential
-production situation. It is assumed that the maximum rooting depth is always equal or
-higher than the initial rooting depth.
+maximum rooting depth determined by the crop, RD$_{{\rm crop}}$ and the maximum rooting depth
+determined by the soil, RD$_{{\rm soil}}$. It is assumed that the maximum rooting depth is 
+always equal or higher than the initial rooting depth.
 
-In theory, extension growth of the roots ceases when no more assimilates are available,
-when an impermeable layer in the profile is reached, when the root tip reaches a soil
-compartment with a moisture content at or below wilting point (Salim {\it et al.}, 1965) or
-when the root tip reaches the groundwater table. This last situation only occurs in case
-the crop cannot form airducts. In the model, however, only the following situations are
-distinguished. The root extension stops when no more assimilates are available, but then
-the complete simulation process ceases (eq. \ref{eq:5.47}). Root extension also stops, when the
-root tip comes within ten centimeters of the groundwater table and the crop cannot form
-airducts. The user should provide information if the crop can produce airducts (acronym:
-{\bf IAIRDU}) or not.
+
 
 
