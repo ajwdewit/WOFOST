@@ -77,4 +77,4 @@ order to check if the simulation results are reproduced correctly.
 More information and documentation about WOFOST can be obtained from our website_. The `WOFOST7.1 reference manual`_  contains detailed information on the use of WOFOST and the meaning of variable names in the various files.
 
 .. _website: http://www.wageningenur.nl/wofost
-.. _WOFOST7.1 reference manual: http://www.wageningenur.nl/web/file?uuid=5c0873c3-8c07-4ddf-85a3-dd98bdb38781&owner=b875561e-c6d9-442d-b599-58e9d13cb80d
+.. _WOFOST7.1 reference manual: https://www.wur.nl/upload_mm/b/9/d/f465ce32-1d86-420d-8c80-0bc37c679ee7_WCC_Manual.pdf
